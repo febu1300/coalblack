@@ -1,0 +1,444 @@
+<manifest alg="2" build="2018.0.0.379" opt="true" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="www.coalblack.de" resolutions="1x" timestamp="1519648929514">
+  <folder name="css">
+    <file name="site_global.css" crc="4191315435"/>
+    <file name="master_b-musters.css" crc="4045815657" ref="new-in:nadeln--griffstücke:diamond-tubes:marken:kontakt:open-magnum:inspiration:warenkorb:künstlerfarbe:sale:arbeitsmaterial:farbkappen:mein-konto:farbe--zubehör:flashbooks:übersicht:bibliothek:zeitschriften:faq:coal-black-produkte:liner:impressum:black-jizzle:zubehör:magnum:datenschutz:round-liner:3507-srl-mt:abg:one-off-liner:3509-mg-mt:versandinformationen:round-shader:mundspatel:zahlungsarten:soft-edge-magnum:newsletter"/>
+    <file name="master_a-musters.css" crc="3778927710" ref="index"/>
+    <file name="new-in.css" crc="4218619817" ref="new-in"/>
+    <file name="nadeln--griffst_cke.css" crc="3863270697" ref="nadeln--griffstücke"/>
+    <file name="diamond-tubes.css" crc="4075545244" ref="diamond-tubes"/>
+    <file name="marken.css" crc="4232242897" ref="marken"/>
+    <file name="kontakt.css" crc="450508563" ref="kontakt"/>
+    <file name="open-magnum.css" crc="3842868943" ref="open-magnum"/>
+    <file name="inspiration.css" crc="23347005" ref="inspiration"/>
+    <file name="warenkorb.css" crc="4251406521" ref="warenkorb"/>
+    <file name="k_nstlerfarbe.css" crc="4048831769" ref="künstlerfarbe"/>
+    <file name="sale.css" crc="4109733641" ref="sale"/>
+    <file name="arbeitsmaterial.css" crc="4261932632" ref="arbeitsmaterial"/>
+    <file name="farbkappen.css" crc="51407238" ref="farbkappen"/>
+    <file name="mein-konto.css" crc="4281385906" ref="mein-konto"/>
+    <file name="farbe--zubeh_r.css" crc="3926773325" ref="farbe--zubehör"/>
+    <file name="flashbooks.css" crc="3942791977" ref="flashbooks"/>
+    <file name="_bersicht.css" crc="3948026947" ref="übersicht"/>
+    <file name="bibliothek.css" crc="290230390" ref="bibliothek"/>
+    <file name="zeitschriften.css" crc="4082525164" ref="zeitschriften"/>
+    <file name="faq.css" crc="66798316" ref="faq"/>
+    <file name="coal-black-produkte.css" crc="213576333" ref="coal-black-produkte"/>
+    <file name="liner.css" crc="30322391" ref="liner"/>
+    <file name="impressum.css" crc="98894886" ref="impressum"/>
+    <file name="black-jizzle.css" crc="137940177" ref="black-jizzle"/>
+    <file name="zubeh_r.css" crc="310483107" ref="zubehör"/>
+    <file name="magnum.css" crc="334165318" ref="magnum"/>
+    <file name="datenschutz.css" crc="3928982781" ref="datenschutz"/>
+    <file name="round-liner.css" crc="505500586" ref="round-liner"/>
+    <file name="3507-srl-mt.css" crc="4264724479" ref="3507-srl-mt"/>
+    <file name="abg.css" crc="162760269" ref="abg"/>
+    <file name="one-off-liner.css" crc="267731707" ref="one-off-liner"/>
+    <file name="3509-mg-mt.css" crc="4188149634" ref="3509-mg-mt"/>
+    <file name="versandinformationen.css" crc="4204347150" ref="versandinformationen"/>
+    <file name="round-shader.css" crc="509155912" ref="round-shader"/>
+    <file name="mundspatel.css" crc="4263358651" ref="mundspatel"/>
+    <file name="zahlungsarten.css" crc="408112521" ref="zahlungsarten"/>
+    <file name="soft-edge-magnum.css" crc="3966371514" ref="soft-edge-magnum"/>
+    <file name="index.css" crc="295450570" ref="index"/>
+    <file name="newsletter.css" crc="525260746" ref="newsletter"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="209076791" ref="index:new-in:marken:inspiration:sale:mein-konto:übersicht:faq:impressum:datenschutz:abg:versandinformationen:zahlungsarten:newsletter:nadeln--griffstücke:arbeitsmaterial:farbe--zubehör:bibliothek:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:soft-edge-magnum:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:kontakt:warenkorb:zubehör"/>
+    <file name="museutils.js" crc="3803043152" ref="index:new-in:marken:inspiration:sale:mein-konto:übersicht:faq:impressum:datenschutz:abg:versandinformationen:zahlungsarten:newsletter:nadeln--griffstücke:arbeitsmaterial:farbe--zubehör:bibliothek:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:soft-edge-magnum:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:kontakt:warenkorb:zubehör"/>
+    <file name="whatinput.js" crc="86476730" ref="index:new-in:marken:inspiration:sale:mein-konto:übersicht:faq:impressum:datenschutz:abg:versandinformationen:zahlungsarten:newsletter:nadeln--griffstücke:arbeitsmaterial:farbe--zubehör:bibliothek:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:soft-edge-magnum:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:kontakt:warenkorb:zubehör"/>
+    <file name="museconfig.js" crc="4153641093" ref="index:new-in:marken:inspiration:sale:mein-konto:übersicht:faq:impressum:datenschutz:abg:versandinformationen:zahlungsarten:newsletter:nadeln--griffstücke:arbeitsmaterial:farbe--zubehör:bibliothek:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:soft-edge-magnum:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:kontakt:warenkorb:zubehör"/>
+    <file name="jquery.musemenu.js" crc="3784699396" ref="index:new-in:marken:inspiration:sale:mein-konto:übersicht:faq:impressum:datenschutz:abg:versandinformationen:zahlungsarten:newsletter:nadeln--griffstücke:arbeitsmaterial:farbe--zubehör:bibliothek:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:soft-edge-magnum:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:kontakt:warenkorb:zubehör"/>
+    <file name="jquery.musepolyfill.bgsize.js" crc="4148998990" ref="index:new-in:marken:inspiration:sale:abg:nadeln--griffstücke:arbeitsmaterial:farbe--zubehör:bibliothek:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:warenkorb:zubehör"/>
+    <file name="jquery.watch.js" crc="99325471" ref="index:new-in:marken:inspiration:sale:mein-konto:übersicht:faq:impressum:datenschutz:abg:versandinformationen:zahlungsarten:newsletter:nadeln--griffstücke:arbeitsmaterial:farbe--zubehör:bibliothek:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:soft-edge-magnum:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:kontakt:warenkorb:zubehör"/>
+    <file name="html5shiv.js" crc="4241844378" ref="index:new-in:marken:inspiration:sale:mein-konto:übersicht:faq:impressum:datenschutz:abg:versandinformationen:zahlungsarten:newsletter:nadeln--griffstücke:arbeitsmaterial:farbe--zubehör:bibliothek:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:soft-edge-magnum:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:kontakt:warenkorb:zubehör"/>
+    <file name="require.js" crc="4157109226" ref="index:new-in:marken:inspiration:sale:mein-konto:übersicht:faq:impressum:datenschutz:abg:versandinformationen:zahlungsarten:newsletter:nadeln--griffstücke:arbeitsmaterial:farbe--zubehör:bibliothek:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:soft-edge-magnum:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:kontakt:warenkorb:zubehör"/>
+    <file name="webpro.js" crc="242022427" ref="kontakt"/>
+    <file name="form_check.php" crc="147359589" ref="kontakt"/>
+    <file name="form_throttle.php" crc="93986428" ref="kontakt"/>
+    <file name="form_process.php" crc="3851993751" ref="kontakt"/>
+    <file name="form-u4909.php" crc="6224690" ref="kontakt"/>
+  </folder>
+  <folder name="images">
+    <file name="svg-152405x42.svg" crc="10078615" seo="true" ref="index:new-in:marken:inspiration:sale:mein-konto:übersicht:faq:impressum:datenschutz:abg:versandinformationen:zahlungsarten:newsletter:nadeln--griffstücke:arbeitsmaterial:farbe--zubehör:bibliothek:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:soft-edge-magnum:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:kontakt:warenkorb:zubehör">
+      <caption webpage="zubehör" alt=""/>
+      <caption webpage="farbkappen" alt=""/>
+      <caption webpage="versandinformationen" alt=""/>
+      <caption webpage="datenschutz" alt=""/>
+      <caption webpage="übersicht" alt=""/>
+      <caption webpage="farbe--zubehör" alt=""/>
+      <caption webpage="faq" alt=""/>
+      <caption webpage="mundspatel" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="liner" alt=""/>
+      <caption webpage="flashbooks" alt=""/>
+      <caption webpage="zahlungsarten" alt=""/>
+      <caption webpage="magnum" alt=""/>
+      <caption webpage="diamond-tubes" alt=""/>
+      <caption webpage="sale" alt=""/>
+      <caption webpage="zeitschriften" alt=""/>
+      <caption webpage="3507-srl-mt" alt=""/>
+      <caption webpage="round-shader" alt=""/>
+      <caption webpage="künstlerfarbe" alt=""/>
+      <caption webpage="soft-edge-magnum" alt=""/>
+      <caption webpage="abg" alt=""/>
+      <caption webpage="impressum" alt=""/>
+      <caption webpage="kontakt" alt=""/>
+      <caption webpage="3509-mg-mt" alt=""/>
+      <caption webpage="nadeln--griffstücke" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="black-jizzle" alt=""/>
+      <caption webpage="new-in" alt=""/>
+      <caption webpage="bibliothek" alt=""/>
+      <caption webpage="coal-black-produkte" alt=""/>
+      <caption webpage="mein-konto" alt=""/>
+      <caption webpage="warenkorb" alt=""/>
+      <caption webpage="newsletter" alt=""/>
+      <caption webpage="marken" alt=""/>
+      <caption webpage="open-magnum" alt=""/>
+      <caption webpage="inspiration" alt=""/>
+      <caption webpage="round-liner" alt=""/>
+      <caption webpage="one-off-liner" alt=""/>
+    </file>
+    <file name="svg 152405x42_poster_.png" crc="3972503182" ref="index"/>
+    <file name="svg-67244x59.svg" crc="334609378" seo="true" ref="index:new-in:marken:inspiration:sale:mein-konto:übersicht:faq:impressum:datenschutz:abg:versandinformationen:zahlungsarten:newsletter:nadeln--griffstücke:arbeitsmaterial:farbe--zubehör:bibliothek:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:soft-edge-magnum:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:kontakt:warenkorb:zubehör">
+      <caption webpage="zubehör" alt=""/>
+      <caption webpage="farbkappen" alt=""/>
+      <caption webpage="versandinformationen" alt=""/>
+      <caption webpage="datenschutz" alt=""/>
+      <caption webpage="übersicht" alt=""/>
+      <caption webpage="farbe--zubehör" alt=""/>
+      <caption webpage="faq" alt=""/>
+      <caption webpage="mundspatel" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="liner" alt=""/>
+      <caption webpage="flashbooks" alt=""/>
+      <caption webpage="zahlungsarten" alt=""/>
+      <caption webpage="magnum" alt=""/>
+      <caption webpage="diamond-tubes" alt=""/>
+      <caption webpage="sale" alt=""/>
+      <caption webpage="zeitschriften" alt=""/>
+      <caption webpage="3507-srl-mt" alt=""/>
+      <caption webpage="round-shader" alt=""/>
+      <caption webpage="künstlerfarbe" alt=""/>
+      <caption webpage="soft-edge-magnum" alt=""/>
+      <caption webpage="abg" alt=""/>
+      <caption webpage="impressum" alt=""/>
+      <caption webpage="kontakt" alt=""/>
+      <caption webpage="3509-mg-mt" alt=""/>
+      <caption webpage="nadeln--griffstücke" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="black-jizzle" alt=""/>
+      <caption webpage="new-in" alt=""/>
+      <caption webpage="bibliothek" alt=""/>
+      <caption webpage="coal-black-produkte" alt=""/>
+      <caption webpage="mein-konto" alt=""/>
+      <caption webpage="warenkorb" alt=""/>
+      <caption webpage="newsletter" alt=""/>
+      <caption webpage="marken" alt=""/>
+      <caption webpage="open-magnum" alt=""/>
+      <caption webpage="inspiration" alt=""/>
+      <caption webpage="round-liner" alt=""/>
+      <caption webpage="one-off-liner" alt=""/>
+    </file>
+    <file name="svg 67244x59_poster_.png" crc="403087348" ref="index"/>
+    <file name="blackgoat (11 von 95).jpg" crc="4063069327" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="blackgoat (24 von 95).jpg" crc="4084537473" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="blackgoat (24 von 95)-u422-r-fr.png" crc="390925733" ref="index"/>
+    <file name="blackgoat (27 von 95).jpg" crc="382144348" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="blackgoat (27 von 95)-u428-r-fr.png" crc="232485570" ref="index"/>
+    <file name="blackgoat (47 von 95).jpg" crc="4252827231" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="blackgoat (47 von 95)-u431-r-fr.png" crc="3846585812" ref="index"/>
+    <file name="blackgoat (45 von 95).jpg" crc="359600562" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="blackgoat (45 von 95)-u434-r-fr.png" crc="273570508" ref="index"/>
+    <file name="blackgoat (2 von 95).jpg" crc="295008922" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="blackgoat (2 von 95)-u419-r-fr.png" crc="328796433" ref="index"/>
+    <file name="blackgoat (49 von 95).jpg" crc="480734515" ref="index:new-in:abg">
+      <caption webpage="index" alt=""/>
+      <caption webpage="abg" alt=""/>
+      <caption webpage="new-in" alt=""/>
+      <caption webpage="new-in" alt=""/>
+    </file>
+    <file name="svg-99036x99.svg" crc="132201206" seo="true" ref="index:new-in:marken:inspiration:sale:mein-konto:übersicht:faq:impressum:datenschutz:abg:versandinformationen:zahlungsarten:newsletter:nadeln--griffstücke:arbeitsmaterial:farbe--zubehör:bibliothek:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:soft-edge-magnum:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:kontakt:warenkorb:zubehör">
+      <caption webpage="zubehör" alt=""/>
+      <caption webpage="farbkappen" alt=""/>
+      <caption webpage="versandinformationen" alt=""/>
+      <caption webpage="datenschutz" alt=""/>
+      <caption webpage="übersicht" alt=""/>
+      <caption webpage="farbe--zubehör" alt=""/>
+      <caption webpage="faq" alt=""/>
+      <caption webpage="mundspatel" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="liner" alt=""/>
+      <caption webpage="flashbooks" alt=""/>
+      <caption webpage="zahlungsarten" alt=""/>
+      <caption webpage="magnum" alt=""/>
+      <caption webpage="diamond-tubes" alt=""/>
+      <caption webpage="sale" alt=""/>
+      <caption webpage="zeitschriften" alt=""/>
+      <caption webpage="3507-srl-mt" alt=""/>
+      <caption webpage="round-shader" alt=""/>
+      <caption webpage="künstlerfarbe" alt=""/>
+      <caption webpage="soft-edge-magnum" alt=""/>
+      <caption webpage="abg" alt=""/>
+      <caption webpage="impressum" alt=""/>
+      <caption webpage="kontakt" alt=""/>
+      <caption webpage="3509-mg-mt" alt=""/>
+      <caption webpage="nadeln--griffstücke" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="black-jizzle" alt=""/>
+      <caption webpage="new-in" alt=""/>
+      <caption webpage="bibliothek" alt=""/>
+      <caption webpage="coal-black-produkte" alt=""/>
+      <caption webpage="mein-konto" alt=""/>
+      <caption webpage="warenkorb" alt=""/>
+      <caption webpage="newsletter" alt=""/>
+      <caption webpage="marken" alt=""/>
+      <caption webpage="open-magnum" alt=""/>
+      <caption webpage="inspiration" alt=""/>
+      <caption webpage="round-liner" alt=""/>
+      <caption webpage="one-off-liner" alt=""/>
+    </file>
+    <file name="svg 99036x99_poster_.png" crc="2380122" ref="index"/>
+    <file name="svg-99036x992.svg" crc="238755409" seo="true" ref="index:new-in:marken:inspiration:sale:mein-konto:übersicht:faq:impressum:datenschutz:abg:versandinformationen:zahlungsarten:newsletter:nadeln--griffstücke:arbeitsmaterial:farbe--zubehör:bibliothek:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:soft-edge-magnum:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:kontakt:warenkorb:zubehör">
+      <caption webpage="zubehör" alt=""/>
+      <caption webpage="farbkappen" alt=""/>
+      <caption webpage="versandinformationen" alt=""/>
+      <caption webpage="datenschutz" alt=""/>
+      <caption webpage="übersicht" alt=""/>
+      <caption webpage="farbe--zubehör" alt=""/>
+      <caption webpage="faq" alt=""/>
+      <caption webpage="mundspatel" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="liner" alt=""/>
+      <caption webpage="flashbooks" alt=""/>
+      <caption webpage="zahlungsarten" alt=""/>
+      <caption webpage="magnum" alt=""/>
+      <caption webpage="diamond-tubes" alt=""/>
+      <caption webpage="sale" alt=""/>
+      <caption webpage="zeitschriften" alt=""/>
+      <caption webpage="3507-srl-mt" alt=""/>
+      <caption webpage="round-shader" alt=""/>
+      <caption webpage="künstlerfarbe" alt=""/>
+      <caption webpage="soft-edge-magnum" alt=""/>
+      <caption webpage="abg" alt=""/>
+      <caption webpage="impressum" alt=""/>
+      <caption webpage="kontakt" alt=""/>
+      <caption webpage="3509-mg-mt" alt=""/>
+      <caption webpage="nadeln--griffstücke" alt=""/>
+      <caption webpage="index" alt=""/>
+      <caption webpage="black-jizzle" alt=""/>
+      <caption webpage="new-in" alt=""/>
+      <caption webpage="bibliothek" alt=""/>
+      <caption webpage="coal-black-produkte" alt=""/>
+      <caption webpage="mein-konto" alt=""/>
+      <caption webpage="warenkorb" alt=""/>
+      <caption webpage="newsletter" alt=""/>
+      <caption webpage="marken" alt=""/>
+      <caption webpage="open-magnum" alt=""/>
+      <caption webpage="inspiration" alt=""/>
+      <caption webpage="round-liner" alt=""/>
+      <caption webpage="one-off-liner" alt=""/>
+    </file>
+    <file name="svg 99036x99_poster_2.png" crc="3857185739" ref="index"/>
+    <file name="liquid dynamite (12 von 66).jpg" crc="496334991" ref="new-in:sale:arbeitsmaterial:coal-black-produkte:black-jizzle:round-liner:one-off-liner:round-shader:open-magnum:farbkappen:flashbooks:liner:magnum:3507-srl-mt:3509-mg-mt:mundspatel:diamond-tubes:zubehör">
+      <caption webpage="zubehör" alt=""/>
+      <caption webpage="farbkappen" alt=""/>
+      <caption webpage="3509-mg-mt" alt=""/>
+      <caption webpage="3509-mg-mt" alt=""/>
+      <caption webpage="3509-mg-mt" alt=""/>
+      <caption webpage="coal-black-produkte" alt=""/>
+      <caption webpage="coal-black-produkte" alt=""/>
+      <caption webpage="diamond-tubes" alt=""/>
+      <caption webpage="black-jizzle" alt=""/>
+      <caption webpage="black-jizzle" alt=""/>
+      <caption webpage="black-jizzle" alt=""/>
+      <caption webpage="new-in" alt=""/>
+      <caption webpage="new-in" alt=""/>
+      <caption webpage="mundspatel" alt=""/>
+      <caption webpage="mundspatel" alt=""/>
+      <caption webpage="mundspatel" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="liner" alt=""/>
+      <caption webpage="liner" alt=""/>
+      <caption webpage="liner" alt=""/>
+      <caption webpage="flashbooks" alt=""/>
+      <caption webpage="magnum" alt=""/>
+      <caption webpage="sale" alt=""/>
+      <caption webpage="sale" alt=""/>
+      <caption webpage="round-liner" alt=""/>
+      <caption webpage="3507-srl-mt" alt=""/>
+      <caption webpage="3507-srl-mt" alt=""/>
+      <caption webpage="3507-srl-mt" alt=""/>
+      <caption webpage="open-magnum" alt=""/>
+      <caption webpage="round-shader" alt=""/>
+      <caption webpage="one-off-liner" alt=""/>
+    </file>
+    <file name="liquid dynamite (40 von 66).jpg" crc="477938966" ref="new-in:sale:arbeitsmaterial:coal-black-produkte:round-liner:one-off-liner:open-magnum:farbkappen:liner:magnum:diamond-tubes:zubehör">
+      <caption webpage="zubehör" alt=""/>
+      <caption webpage="magnum" alt=""/>
+      <caption webpage="farbkappen" alt=""/>
+      <caption webpage="sale" alt=""/>
+      <caption webpage="sale" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="coal-black-produkte" alt=""/>
+      <caption webpage="open-magnum" alt=""/>
+      <caption webpage="diamond-tubes" alt=""/>
+      <caption webpage="new-in" alt=""/>
+      <caption webpage="new-in" alt=""/>
+      <caption webpage="round-liner" alt=""/>
+      <caption webpage="liner" alt=""/>
+      <caption webpage="liner" alt=""/>
+      <caption webpage="one-off-liner" alt=""/>
+    </file>
+    <file name="liquid dynamite (61 von 66).jpg" crc="3975577864" ref="new-in:sale:arbeitsmaterial:coal-black-produkte:liner">
+      <caption webpage="new-in" alt=""/>
+      <caption webpage="sale" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="coal-black-produkte" alt=""/>
+      <caption webpage="liner" alt=""/>
+    </file>
+    <file name="liquid dynamite (5 von 66).jpg" crc="220227081" ref="new-in:sale:arbeitsmaterial:coal-black-produkte:round-liner:one-off-liner:round-shader:open-magnum:künstlerfarbe:farbkappen:flashbooks:zeitschriften:liner:magnum:diamond-tubes:zubehör">
+      <caption webpage="zubehör" alt=""/>
+      <caption webpage="farbkappen" alt=""/>
+      <caption webpage="coal-black-produkte" alt=""/>
+      <caption webpage="künstlerfarbe" alt=""/>
+      <caption webpage="new-in" alt=""/>
+      <caption webpage="new-in" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="liner" alt=""/>
+      <caption webpage="liner" alt=""/>
+      <caption webpage="flashbooks" alt=""/>
+      <caption webpage="magnum" alt=""/>
+      <caption webpage="diamond-tubes" alt=""/>
+      <caption webpage="sale" alt=""/>
+      <caption webpage="sale" alt=""/>
+      <caption webpage="round-liner" alt=""/>
+      <caption webpage="open-magnum" alt=""/>
+      <caption webpage="round-shader" alt=""/>
+      <caption webpage="zeitschriften" alt=""/>
+      <caption webpage="one-off-liner" alt=""/>
+    </file>
+    <file name="liquid dynamite (6 von 66).jpg" crc="4228713515" ref="new-in:sale:arbeitsmaterial:coal-black-produkte:farbkappen:liner">
+      <caption webpage="new-in" alt=""/>
+      <caption webpage="farbkappen" alt=""/>
+      <caption webpage="sale" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="arbeitsmaterial" alt=""/>
+      <caption webpage="coal-black-produkte" alt=""/>
+      <caption webpage="liner" alt=""/>
+    </file>
+    <file name="hautpflege (1 von 28).jpg" crc="3772915060" ref="marken">
+      <caption webpage="marken" alt=""/>
+    </file>
+    <file name="hautpflege (2 von 28).jpg" crc="130768571" ref="marken">
+      <caption webpage="marken" alt=""/>
+    </file>
+    <file name="hautpflege (11 von 28).jpg" crc="287239766" ref="marken">
+      <caption webpage="marken" alt=""/>
+    </file>
+    <file name="hautpflege (22 von 28).jpg" crc="299246260" ref="marken:black-jizzle:3507-srl-mt:3509-mg-mt:mundspatel">
+      <caption webpage="3509-mg-mt" alt=""/>
+      <caption webpage="black-jizzle" alt=""/>
+      <caption webpage="mundspatel" alt=""/>
+      <caption webpage="marken" alt=""/>
+      <caption webpage="3507-srl-mt" alt=""/>
+    </file>
+    <file name="hautpflege (19 von 28).jpg" crc="4073029556" ref="marken">
+      <caption webpage="marken" alt=""/>
+    </file>
+    <file name="hautpflege (25 von 28).jpg" crc="355380720" ref="marken">
+      <caption webpage="marken" alt=""/>
+    </file>
+    <file name="hautpflege (13 von 28).jpg" crc="4107401000" ref="inspiration">
+      <caption webpage="inspiration" alt=""/>
+    </file>
+    <file name="hautpflege (21 von 28).jpg" crc="4152019998" ref="inspiration:nadeln--griffstücke:farbe--zubehör:bibliothek">
+      <caption webpage="farbe--zubehör" alt=""/>
+      <caption webpage="inspiration" alt=""/>
+      <caption webpage="bibliothek" alt=""/>
+      <caption webpage="nadeln--griffstücke" alt=""/>
+      <caption webpage="nadeln--griffstücke" alt=""/>
+      <caption webpage="nadeln--griffstücke" alt=""/>
+      <caption webpage="nadeln--griffstücke" alt=""/>
+    </file>
+    <file name="hautpflege (24 von 28).jpg" crc="3955141108" ref="inspiration:nadeln--griffstücke:farbe--zubehör:bibliothek">
+      <caption webpage="farbe--zubehör" alt=""/>
+      <caption webpage="inspiration" alt=""/>
+      <caption webpage="bibliothek" alt=""/>
+      <caption webpage="nadeln--griffstücke" alt=""/>
+      <caption webpage="nadeln--griffstücke" alt=""/>
+      <caption webpage="nadeln--griffstücke" alt=""/>
+      <caption webpage="nadeln--griffstücke" alt=""/>
+    </file>
+    <file name="hautpflege (22 von 28)-u3434-fr.jpg" crc="4014438655" ref="black-jizzle:3507-srl-mt:3509-mg-mt:mundspatel:warenkorb"/>
+    <file name="svg-139391x139.svg" crc="225158203" seo="true" ref="warenkorb">
+      <caption webpage="warenkorb" alt=""/>
+      <caption webpage="warenkorb" alt=""/>
+      <caption webpage="warenkorb" alt=""/>
+    </file>
+    <file name="svg 139391x139_poster_.png" crc="3772108627" ref="warenkorb"/>
+  </folder>
+  <file name="index.html" crc="3852396451" seo="true" mt="1519641763319" redirect="true"/>
+  <file name="new-in.html" crc="4126970041" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="marken.html" crc="3852472751" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="inspiration.html" crc="86604439" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="sale.html" crc="14287245" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="mein-konto.html" crc="4057849934" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="übersicht.html" crc="3785351140" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="faq.html" crc="481644014" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="impressum.html" crc="231856661" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="datenschutz.html" crc="482549357" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="abg.html" crc="3804527264" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="versandinformationen.html" crc="153034811" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="zahlungsarten.html" crc="275749522" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="newsletter.html" crc="4047686121" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="nadeln--griffstücke.html" crc="4226143047" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="arbeitsmaterial.html" crc="4278057071" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="farbe--zubehör.html" crc="21661040" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="bibliothek.html" crc="4294690024" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="coal-black-produkte.html" crc="406997301" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="black-jizzle.html" crc="4017366361" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="round-liner.html" crc="38645765" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="one-off-liner.html" crc="4038720362" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="round-shader.html" crc="86277191" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="soft-edge-magnum.html" crc="337518443" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="open-magnum.html" crc="3998798563" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="künstlerfarbe.html" crc="3833658947" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="farbkappen.html" crc="4275587653" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="flashbooks.html" crc="3879200243" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="zeitschriften.html" crc="149838322" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="liner.html" crc="4200083305" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="magnum.html" crc="3810364950" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="3507-srl-mt.html" crc="7433733" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="3509-mg-mt.html" crc="283276010" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="mundspatel.html" crc="281308509" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="diamond-tubes.html" crc="4109212835" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="kontakt.html" crc="3767757999" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="warenkorb.html" crc="3806482690" seo="true" mt="1519642190387" redirect="true"/>
+  <file name="zubehör.html" crc="351277954" seo="true" mt="1519642190387" redirect="true"/>
+</manifest>
