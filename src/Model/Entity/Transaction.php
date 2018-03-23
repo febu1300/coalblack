@@ -35,12 +35,16 @@ class Transaction extends Entity
         'transaction_type_id' => true,
         'product_id' => true,
         'user_id' => true,
-        'transaction_date' => true,
+        'created_date'=> true,
+        'updated_date'=> true,
+        'canceled_date'=> true,
         'quantity' => true,
         'price' => true,
-        'transaction_status' => true,
-        'transaction_type' => true,
-        'product' => true,
-        'user' => true
+        'order_number'=>true,
+        'transaction_number' => true,
+        'transaction_status_id' => true,
+        'payment_method_id' => true,
+      
+        'sent'=>true
     ];
 }

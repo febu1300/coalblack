@@ -14,7 +14,7 @@
 namespace App\View;
 
 use Cake\View\View;
-
+use Cake\View\Helper\BreadcrumbsHelper;
 /**
  * Application View
  *
@@ -36,5 +36,13 @@ class AppView extends View
      */
     public function initialize()
     {
+        parent::initialize();
+        $this->loadHelper('Link');
+                $this->loadHelper('Breadcrumbs');
     }
+    
+    public function add(){
+        
+    }
+    
 }

@@ -29,7 +29,14 @@ class SizesTableTest extends TestCase
         'app.products',
         'app.sub_catagories',
         'app.products_catagories',
-        'app.colors'
+        'app.discounts_types',
+        'app.colors',
+        'app.transactions',
+        'app.transaction_types',
+        'app.users',
+        'app.usergroups',
+        'app.users_detail',
+        'app.transactions_status'
     ];
 
     /**

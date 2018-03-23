@@ -14,8 +14,8 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Sizes'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Product Details'), ['controller' => 'ProductDetails', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Product Detail'), ['controller' => 'ProductDetails', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Product Details'), ['controller' => 'Products', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Product Detail'), ['controller' => 'Products', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="sizes form large-9 medium-8 columns content">

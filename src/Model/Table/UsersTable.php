@@ -9,7 +9,6 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property \App\Model\Table\UsergroupsTable|\Cake\ORM\Association\BelongsTo $Usergroups
  * @property \App\Model\Table\TransactionsTable|\Cake\ORM\Association\HasMany $Transactions
  * @property \App\Model\Table\UsersDetailTable|\Cake\ORM\Association\HasMany $UsersDetail
  *
@@ -20,6 +19,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\User[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\User findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class UsersTable extends Table
 {
@@ -38,10 +39,8 @@ class UsersTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Usergroups', [
-            'foreignKey' => 'usergroups_id',
-            'joinType' => 'INNER'
-        ]);
+        $this->addBehavior('Timestamp');
+
         $this->hasMany('Transactions', [
             'foreignKey' => 'user_id'
         ]);
@@ -61,30 +60,66 @@ class UsersTable extends Table
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
-
+          $validator
+            ->boolean('title')
+            ->requirePresence('title', 'create')
+            ->notEmpty('title');
+ $validator
+            ->scalar('fname')
+            ->maxLength('fname', 50)
+            ->requirePresence('fname', 'create')
+            ->allowEmpty('fname');
+  $validator
+            ->scalar('lname')
+            ->maxLength('lname', 50)
+            ->requirePresence('lname', 'create')
+            ->allowEmpty('lname');
+     
         $validator
-            ->scalar('first_name')
-            ->maxLength('first_name', 50)
-            ->requirePresence('first_name', 'create')
-            ->notEmpty('first_name');
-
+            ->add(
+                'username',
+                [
+                    'validEmail' => [
+                        'rule' => ['email'],
+                        'message' => 'Please provide valid email address!'
+                    ],
+                    'unique' => [
+                        'message' => 'Sorry, this email address is already taken!',
+                        'provider' => 'table',
+                        'rule' => 'validateUnique'
+                    ]
+                ]
+            )
+            ->requirePresence('username', 'create', 'Email address must be required!')
+            ->notEmpty('username', 'Email address must be required!');
         $validator
-            ->scalar('last_name')
-            ->maxLength('last_name', 50)
-            ->requirePresence('last_name', 'create')
-            ->notEmpty('last_name');
-
+            ->add(
+                'password',
+                [
+                    'minLength' => [
+                        'rule' => ['minLength', 6],
+                        'message' => 'Password must contain at least 6 character'
+                    ],
+                ]
+            )
+            ->requirePresence('password', 'create', 'Password must be required!')
+            ->notEmpty('password', 'Password must be required!');
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email');
-
-        $validator
-            ->scalar('password')
-            ->maxLength('password', 50)
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
-
+            ->requirePresence('cPassword', 'create', 'cPassword must be required!')
+            ->notEmpty('cPassword', 'Confirm password must be required!')
+            ->add(
+                'cPassword',
+                'custom',
+                [
+                    'rule' => function ($value, $context) {
+                            if (isset($context['data']['password']) && $value == $context['data']['password']) {
+                                return true;
+                            }
+                            return false;
+                        },
+                    'message' => 'Sorry, password and confirm password does not matched'
+                ]
+            );
         return $validator;
     }
 
@@ -97,8 +132,7 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
-        $rules->add($rules->existsIn(['usergroups_id'], 'Usergroups'));
+        $rules->add($rules->isUnique(['username']));
 
         return $rules;
     }

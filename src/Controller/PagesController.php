@@ -18,7 +18,7 @@ use Cake\Core\Configure;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
-
+use Cake\Event\Event;
 /**
  * Static content controller
  *
@@ -28,7 +28,10 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
-
+public function beforeFilter(Event $event)
+{
+$this->Auth->allow(['display']);
+}
     /**
      * Displays a view
      *
@@ -40,7 +43,7 @@ class PagesController extends AppController
      */
     public function display(...$path)
     {
-        
+
         $count = count($path);
         
         if (!$count) {
@@ -58,6 +61,7 @@ class PagesController extends AppController
             $subpage = $path[1];
         }
         $this->set(compact('page', 'subpage'));
+    
 
         try {
             $this->render(implode('/', $path));

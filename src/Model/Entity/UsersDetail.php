@@ -15,12 +15,7 @@ use Cake\ORM\Entity;
  * @property string $postal_code
  * @property string $country
  * @property bool $main_address
- * @property string $billing_adress_1
- * @property string $billing_adress_2
- * @property string $billing_postal_code
- * @property string $billing_city
- * @property string $billing_state
- * @property string $billing_country
+
  *
  * @property \App\Model\Entity\User $user
  */
@@ -45,12 +40,8 @@ class UsersDetail extends Entity
         'postal_code' => true,
         'country' => true,
         'main_address' => true,
-        'billing_adress_1' => true,
-        'billing_adress_2' => true,
-        'billing_postal_code' => true,
-        'billing_city' => true,
-        'billing_state' => true,
-        'billing_country' => true,
-        'user' => true
+ 
+        'is_similar' => true,
+        'user_detail_type_id'=>true
     ];
 }

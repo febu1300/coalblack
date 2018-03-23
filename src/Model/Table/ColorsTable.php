@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * Colors Model
  *
  * @property \App\Model\Table\ProductDetailsTable|\Cake\ORM\Association\HasMany $ProductDetails
+ * @property |\Cake\ORM\Association\HasMany $Products
  *
  * @method \App\Model\Entity\Color get($primaryKey, $options = [])
  * @method \App\Model\Entity\Color newEntity($data = null, array $options = [])
@@ -36,7 +37,8 @@ class ColorsTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->hasMany('ProductDetails', [
+    
+        $this->hasMany('Products', [
             'foreignKey' => 'color_id'
         ]);
     }

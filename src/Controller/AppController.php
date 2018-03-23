@@ -44,15 +44,46 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Filemanager');
-         $this->loadComponent('Checkout');
+        $this->loadComponent('Checkout');
+          $this->loadComponent('Passhashvalid');
+             $this->loadComponent('Checkout');
+         $this->loadComponent('Auth', [
+      'authorize'=> 'Controller',
+        'loginRedirect' => [
+        'controller' => 'Products',
+        'action' => 'index'
+        ],
+        'logoutRedirect' => [
+        'controller' => 'Pages',
+        'action' => 'display',
+        'home'
+        ]
+    ]);
         /*
          * Enable the following components for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
-    }
+
+        // Allow the display action so our PagesController
+        // continues to work. Also enable the read only actions.
     
+    }
+//public function beforeFilter(Event $event)
+//{
+//$this->Auth->allow(['index', 'view', 'display']);
+//}
+public function isAuthorized($user)
+{
+// Admin can access every action
+if (isset($user['role']) && $user['role'] === 'admin') {
+return true;
+}
+// Default deny
+return false;
+}
+
     
 
 

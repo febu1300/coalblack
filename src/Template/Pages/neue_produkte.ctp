@@ -20,7 +20,7 @@ $this->layout = 'frontlayout';
 <head>
 
     <title>New In</title>
-
+    
 </head>
 
 
@@ -28,22 +28,22 @@ $this->layout = 'frontlayout';
         
     <div class="row">
     <div class="col-sm-3 col-md-3 col-lg-3">
-        bread crumb
+ 
+           <?php $this->Html->addCrumb('New in');?>
+  
     </div>
     
     </div>
     <div class="row">
         <div class="col-sm-3 col-md-3 col-lg-3">
-<?=$this->element('elm_sidenav');?>
+<?=$this->element('sidebar/newin');?>
             </div>
-        <div class="col-sm-1 col-md-1 col-lg-1"></div>
-  <div class="col-sm-4 col-md-4 col-lg-4">
-<?php $cell=$this->cell('Newin')?>
+  
+  <div class="col-sm-9 col-md-9 col-lg-9">
+<?php $cell=$this->cell('Newin');?>
       <?=$cell?>
     </div>
-      <div class="col-sm-4 col-md-4 col-lg-4">
-<?=$this->element('elm_sidenav');?>
-    </div>
+
      
      </div>  
 

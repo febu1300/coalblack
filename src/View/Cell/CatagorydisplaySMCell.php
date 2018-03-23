@@ -35,7 +35,7 @@ class CatagorydisplaySMCell extends Cell
                         
                      ->select(['id','catagory_name','photo','photo_dir'])
                    
-                      ->where(!(['id'=>53]))
+                      ->where(!(['id'=>53]))            // important!!
 //                   
 		
 			->limit(4)

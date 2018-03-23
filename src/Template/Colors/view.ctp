@@ -11,8 +11,8 @@
         <li><?= $this->Form->postLink(__('Delete Color'), ['action' => 'delete', $color->id], ['confirm' => __('Are you sure you want to delete # {0}?', $color->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Colors'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Color'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Product Details'), ['controller' => 'ProductDetails', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Product Detail'), ['controller' => 'ProductDetails', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Product Details'), ['controller' => 'ProductsDetails', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Product Detail'), ['controller' => 'ProductsDetails', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="colors view large-9 medium-8 columns content">

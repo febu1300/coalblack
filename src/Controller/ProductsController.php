@@ -36,12 +36,15 @@ class ProductsController extends AppController
         //$this->set('_serialize', ['products']);  
     } else{
         $this->paginate = [
-           'contain' => ['SubCatagories', 'DiscountsTypes']
+           'contain' => ['SubCatagories', 'DiscountsTypes','sizes','colors']
         ];
         $products = $this->paginate($this->Products);
 
         $this->set(compact('products'));
-    $this->set('_serialize', ['products']);}
+    $this->set('_serialize', ['products']);
+ 
+    
+    }
     }
     
 
@@ -55,7 +58,7 @@ class ProductsController extends AppController
     public function view($id = null)
     {
         $product = $this->Products->get($id, [
-            'contain' => ['SubCatagories', 'DiscountsTypes', 'ProductDetails', 'Transactions']
+            'contain' => ['SubCatagories', 'DiscountsTypes','Sizes','Colors', 'ProductsDetails', 'Transactions','Pictures']
         ]);
 
         $this->set('product', $product);
@@ -85,7 +88,7 @@ class ProductsController extends AppController
         }
         $subCatagories = $this->Products->SubCatagories->find('list', ['limit' => 200]);
         $discountsTypes = $this->Products->DiscountsTypes->find('list', ['limit' => 200]);
-        $this->set(compact('product', 'subCatagories', 'discountsTypes'));
+        $this->set(compact('product', 'subCatagories', 'discountsTypes','sizes','colors'));
     }
 
     /**
@@ -111,7 +114,7 @@ class ProductsController extends AppController
         }
         $subCatagories = $this->Products->SubCatagories->find('list', ['limit' => 200]);
         $discountsTypes = $this->Products->DiscountsTypes->find('list', ['limit' => 200]);
-        $this->set(compact('product', 'subCatagories', 'discountsTypes'));
+        $this->set(compact('product', 'subCatagories', 'discountsTypes','sizes','colors'));
     }
 
     /**

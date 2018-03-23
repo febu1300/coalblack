@@ -11,8 +11,6 @@
         <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Usergroups'), ['controller' => 'Usergroups', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Usergroup'), ['controller' => 'Usergroups', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Users Detail'), ['controller' => 'UsersDetail', 'action' => 'index']) ?> </li>
@@ -23,28 +21,28 @@
     <h3><?= h($user->id) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('Usergroup') ?></th>
-            <td><?= $user->has('usergroup') ? $this->Html->link($user->usergroup->id, ['controller' => 'Usergroups', 'action' => 'view', $user->usergroup->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('First Name') ?></th>
-            <td><?= h($user->first_name) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Last Name') ?></th>
-            <td><?= h($user->last_name) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Email') ?></th>
-            <td><?= h($user->email) ?></td>
+            <th scope="row"><?= __('Username') ?></th>
+            <td><?= h($user->username) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Password') ?></th>
             <td><?= h($user->password) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Role') ?></th>
+            <td><?= h($user->role) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($user->id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Created') ?></th>
+            <td><?= h($user->created) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Modified') ?></th>
+            <td><?= h($user->modified) ?></td>
         </tr>
     </table>
     <div class="related">
@@ -63,6 +61,7 @@
                 <th scope="col"><?= __('Price') ?></th>
                 <th scope="col"><?= __('Transaction Number') ?></th>
                 <th scope="col"><?= __('Transaction Status Id') ?></th>
+                <th scope="col"><?= __('Payment Method Id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($user->transactions as $transactions): ?>
@@ -78,6 +77,7 @@
                 <td><?= h($transactions->price) ?></td>
                 <td><?= h($transactions->transaction_number) ?></td>
                 <td><?= h($transactions->transaction_status_id) ?></td>
+                <td><?= h($transactions->payment_method_id) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Transactions', 'action' => 'view', $transactions->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Transactions', 'action' => 'edit', $transactions->id]) ?>

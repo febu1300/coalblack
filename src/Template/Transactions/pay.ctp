@@ -31,9 +31,12 @@ $this->layout(false);
 </head>
 <div class="container align-items-center">
       <div class="row">
+          <div class="col-sm-4 col-md-4 col-lg-4">
+              
+         
      <div class="jumbotron">
      
-        <div class="card border-primary mb-3" style="width: 60rem;">
+        <div class="card border-primary mb-3" >
   <div class="card-header"><legend>Zahlungsmethoden</legend></div>
   <div class="card-body">  
 
@@ -80,7 +83,18 @@ $this->layout(false);
 </div>
 </div>
      </div>
-  </div>
+  </div> 
+     </div><div class="col-sm-8 col-md-8 col-lg-8">
+         <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+              <?=$this->cell('Shippingadd');?>
+          </div>
+              <div class="col-sm-4 col-md-4 col-lg-4">
+                 <?=$this->cell('Billingadd');?>
+          </div></div>
+          <div class="row">
+             <?=$this->cell('Orders');?>
+          </div>   </div>
 </div>
 </div>
      

@@ -47,10 +47,21 @@ class ProductsTable extends Table
             'foreignKey' => 'discount_type_id',
             'joinType' => 'INNER'
         ]);
-        $this->hasMany('ProductDetails', [
+              $this->belongsTo('Colors', [
+            'foreignKey' => 'color_id',
+            'joinType' => 'LEFT'
+        ]);
+        $this->belongsTo('Sizes', [
+            'foreignKey' => 'size_id',
+            'joinType' => 'LEFT'
+        ]);
+        $this->hasMany('ProductsDetails', [
             'foreignKey' => 'product_id'
         ]);
         $this->hasMany('Transactions', [
+            'foreignKey' => 'product_id'
+        ]);
+          $this->hasMany('Pictures', [
             'foreignKey' => 'product_id'
         ]);
     }
@@ -117,7 +128,7 @@ class ProductsTable extends Table
             ->scalar('photo_dir')
             ->maxLength('photo_dir', 100)
             ->requirePresence('photo_dir', 'create')
-            ->notEmpty('photo_dir');
+            ->allowEmpty('photo_dir');
 
         $validator
             ->scalar('photo')
@@ -139,6 +150,8 @@ class ProductsTable extends Table
     {
         $rules->add($rules->existsIn(['sub_catagory_id'], 'SubCatagories'));
         $rules->add($rules->existsIn(['discount_type_id'], 'DiscountsTypes'));
+        $rules->add($rules->existsIn(['color_id'], 'Colors'));
+        $rules->add($rules->existsIn(['size_id'], 'Sizes'));
 
         return $rules;
     }

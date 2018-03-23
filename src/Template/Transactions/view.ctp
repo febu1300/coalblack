@@ -1,7 +1,36 @@
  <?php
  $this->layout(false);
  ?>
-  <head>
+<head>
+    <style>
+        .button {
+    background-color: #000011; /* Green */
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+      .button5 {border-radius: 50%;}
+      .alignend{position:relative;}
+      
+      .push-down{
+          position:absolute;
+   bottom:0;
+   left:0;
+      }
+      .push-price{
+          position:absolute;
+   bottom:0;
+   left:0;
+      }
+.thebodyline{border-bottom: 3px darkgoldenrod solid;}
+
+    </style>
       <?= $this->Html->css('site_global.css') ?>
    <?= $this->Html->css('bootstrap.min.css') ?>
 
@@ -22,40 +51,26 @@
     
 <?php $u=0;if (($this->request->session()->read('Auth.User.username'))){$u=1;}else{$u=0;}?>
 
-<div class="container-fluid ">
-
+<div class="container">
     <div class="row">
-     <div class="jumbotron">
-          <div align="center">
-      <h1> Ihr Warenkorb</h1>
-        </div> 
-    
-    <div class="row">
-      
-            <table class="table table-responsive">
-                <thead>
-                    <tr>
-                        <th>Artikel</th>
-                         <th>Beschreibung</th>
-                         <th></th>
-                         <th class="text-center">Einzelpreis</th>
-                         <th>Anzahl</th>
-                         <th class="text-center">Gesamt</th>
-                        <th> </th>
-                    </tr>
-                </thead>
+        <div class="col-sm-3 col-md-3 col-lg-3 "></div>
+        <img class="media-object" src="/img/logo.svg" style="width:200px; height: 120px" >
+         <div class="col-sm-3 col-md-3 col-lg-3"></div>
+    </div>
+          <div class="row ">
+              <div class="col-sm-12 col-md-12 col-lg-12 ">
                    <?php $total=0;?>
  
     <?php foreach ($products as $product):?>
+     
                 <?php
              $productname= explode(" ",$product->product_name);
              $productname1=implode("",$productname);
              ?>
-    <?php //foreach ($colors as $color):?>
-                    <?php //foreach ($sizes as $size):?>
+   
         <?php if(($product->online_vorhanden && $product->photo)){ ?>
 
-                <div class="caption">
+           
              <?php 
             
             $session = $this->request->session();
@@ -66,89 +81,88 @@
              $this->set('name2',$name2);
              ?>
                 <?php if(($name2)){ ?>   
-                <tbody>
+      
                 
-                    <tr>
-                        <td class="col-md-6">
-                        <div class="media">
-                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="<?php echo '/'.$product['photo_dir']. '/thumb/'.$product['photo']; ?>" > </a>
-                            <div class="media-body">
-                              <?=$product['product_name']?>
-                      
-                              
-                            </div>
-                        </div></td>
-                        <td class="col-md-1 text-center">color 
-                            <?php//$color['color'] ?><br>
-                            size <?php //$size['size'] ?></td>
-                          <td class="col-md-1">
-                            <form method="post" action="/transactions/delete?prod=<?=$product->id?>&col=<?php//$color->id?>&siz=<?php//$size->id?>">   
-                         <button class="btn btn-danger" >
-                             <span class="glyphicon glyphicon-trash"></span></button> </form>
-                       </td>
-                         <td class="col-md-1 text-center"><strong>$<?=$product['price']?></strong></td>
-                        <td class="col-md-1" style="text-align: center">
-                        <div class="form-group">
-              <input  class="form-control form-control-sm"  style="width:60px"id="inputSmall" type="text"  value="<?=$name2[$product->id]?>">
- 
-                        </div>
-                        </td>
-                     
-                        <td class="col-md-1 text-center"><strong>$<?=$name2[$product->id]*$product['price']?></strong></td>
-                       
-            
-                    </tr>
-
+             <div class="row  " >
     
- <?php $total = $total + ($name2[$product->id]*$product['price']);?>
-                </tbody>
-                        <?php }}?>
-                
-      <?php endforeach;?>
- <?php //endforeach;?> 
-  <?php //endforeach;?> 
-                <tfoot>
-                  
-               
-                 
-                    <tr>
-                            <td>   </td>    <td>   </td>    <td>   </td>    <td>   </td>
-                        <td>Versand:</td>
-                        <td>Versand</td>
-                       
-                    </tr>
-                     <tr>
-                         <td>   </td>    <td>   </td>    <td>   </td>    <td>   </td>
-                        <td>Gesamtbeitrag:</td>
-                        <td>$<?=$total ;?></td>
-                       
-                    </tr>
-                       
-                 
-                        
-             </tr>
-                    <tr>
-                       
-                         <td>  </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td><a href="/" class="btn btn-default">
-                             weiter shoppen</a> 
-                       </td>
-                        <td>
-                            <a href="/Transactions/pay" type="btn btn-success">ZUR KASSE</a>
-                             <span class="glyphicon glyphicon-play"></span>
-
+                 <div class="col-sm-3 col-md-3 col-lg-3 thebodyline " >
+                            <a class="thumbnail pull-left " href="#"> <img src="<?php echo '/'.$product['photo_dir']. '/main/'.$product['photo']; ?>" style="width:150px; height:150px" > </a>
+                          </div>
+                  <div class="col-sm-1 col-md-1 col-lg-1 thebodyline alignend ">
+            
+                      <span class="push-down" > <h6><?=$name2[$product->id]?>x</h6></span>
+                         
+                       </div>
+                 <div class="col-sm-3 col-md-3 col-lg-3 thebodyline alignend">
+                     <span class="push-down"> <h6> <?=$product['product_name']?></h6></span>
+                 </div>
+                 <div class="col-sm-1 col-md-1 col-lg-1 thebodyline alignend "></div>
+                    <div class="col-sm-1 col-md-1 col-lg-1 thebodyline alignend ">
+                       <span class="push-price"><h6><?=money_format('%.2n', $name2[$product->id]*$product['price'])?></h6></span>
+                   </div>
+                         <div class="col-sm-1 col-md-1 col-lg-1 thebodyline alignend">
+                               <span class="pushdown"> <form method="post" action="/transactions/delete?prod=<?=$product->id?>">   
+                             
+                         <button class=" button button5 push-down" >
+                             <span ><img src="/img/x.svg" style="width:30px; height:30px"></span>
+                         </button> 
+                                     
+                            </form></span>
                           
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-       
-    </div>
+                         </div>
+          
+               
+             </div> <br>
+      
+ <?php $total = $total + ($name2[$product->id]*$product['price']);?>
+           
+                        <?php }}?>
+      
+      <?php endforeach;?>
+
 </div>
- </div></div>
+        </div>          
+       <div class="row">           
+           <div class="col-sm-6 col-md-6 col-lg-6">
+               
+           </div>       
+           <div class="col-sm-4 col-md-4 col-lg-4">
+               
+
+               <br>
+                 <div class="row"> 
+                     <div class="col-sm-6 col-md-6 col-lg-6 "> <span class="push-down"><h6> NettoBetrag:</h6> </span></div>
+                     <div class="col-sm-4 col-md-4 col-lg-4"><span class="push-down"><h6>   <?=money_format('%.2n', $total-$total*19/100)?>  </h6></span></div>
+                  
+                 </div><br>
+                               <div class="row"> 
+                     <div class="col-sm-6 col-md-6 col-lg-6 "> <span class="push-down"><h6> MWSt 19%:</h6> </span></div>
+                    <div class="col-sm-4 col-md-4 col-lg-4"><span class="push-down"><h6>  <?=money_format('%.2n',$total*19/100)?>    </h6></span></div>
+                               </div><br>
+                               <div class="row"> 
+                     <div class="col-sm-6 col-md-6 col-lg-6 "> <span class="push-down"><h6>Gesamtpreise:</h6> </span></div>
+                    <div class="col-sm-4 col-md-4 col-lg-4"><span class="push-down"><h6>   <?=money_format('%.2n',$total)?>    </h6></span></div>
+                               </div><br>
+               <div class="row">
+                     <a href="/" class="btn btn-primary btn-block">
+        << weiter shoppen</a> 
+               
+               </div>
+               <div class="row"></div><br>
+              
+                 <form method="post" action="/Users/ologin">
+                      <div class="row">  
+                     <button class="btn btn-primary btn-block" >
+                         ZUR KASSE <span>>></span></button> </div></form>
+           </div>    
+           
+ 
+          </div>               
+             <div class="row">  
+       
+</div>
+</div>
+ 
 
 
             

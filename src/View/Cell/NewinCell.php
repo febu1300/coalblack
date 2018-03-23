@@ -33,11 +33,11 @@ class NewinCell extends Cell
 		$products1=$this->Products->find()
                         
                         
-                     ->select(['id','product_name','photo','photo_dir','new_in','price'])
+                ->select(['id','product_name','photo','photo_dir','new_in','price','product_description'])
                    
-                     //      ->where(!(['new'=>NULL]))
+                 ->where((['new_in'=>true]))
 //                   
-			->order(['created_date' => 'DESC'])
+		->order(['id'=>'ASC'])
 			->limit(8)
 			->toArray();
               

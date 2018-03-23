@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * Sizes Model
  *
  * @property \App\Model\Table\ProductDetailsTable|\Cake\ORM\Association\HasMany $ProductDetails
+ * @property |\Cake\ORM\Association\HasMany $Products
  *
  * @method \App\Model\Entity\Size get($primaryKey, $options = [])
  * @method \App\Model\Entity\Size newEntity($data = null, array $options = [])
@@ -36,7 +37,8 @@ class SizesTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->hasMany('ProductDetails', [
+      
+        $this->hasMany('Products', [
             'foreignKey' => 'size_id'
         ]);
     }

@@ -1,8 +1,11 @@
 <?php
 namespace App\Controller;
-
+use Cake\I18n\Time;
+use Cake\Auth\DefaultPasswordHasher;
 use App\Controller\AppController;
-
+use Cake\Event\Event;
+use Facebook;
+use Cake\ORM\TableRegistry;
 /**
  * Users Controller
  *
@@ -12,7 +15,244 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
+     public function initialize() {
+        parent::initialize();
+      
+        $this->loadModel('Products');
+      
+//          $this->loadModel('Colors');
+//        $this->loadModel('Sizes');
 
+    }
+public function beforeFilter(Event $event)
+{
+parent::beforeFilter($event);
+$this->Auth->allow(['add', 'logout','login','clogin','cregister','hregister','hlogin','ologin']);
+}
+    public function login()
+        {
+            if ($this->request->is('post')) {
+                //$x=$this->Passhashvalid->checkpass('fac3b00k');
+                //pr($x);die();
+               $user = $this->Auth->identify();
+        
+            if ($user) {
+                $this->Auth->setUser($user);
+            return $this->redirect($this->Auth->redirectUrl());
+            }
+        $this->Flash->error(__('Invalid username or password, try again'));
+        }
+        }
+         public function ologin()
+        { $this->render(false);
+  
+       
+            if ($this->request->is('post')) {
+                
+  
+ 
+     
+                //$x=$this->Passhashvalid->checkpass('fac3b00k');
+                //pr($x);die();
+         $session = $this->request->session();
+      
+
+
+            if ($this->request->session()->read('Auth.User.id')) {
+                       $orderNo=uniqid();
+           
+        $products = $this->Products->find();
+//         $colors = $this->Colors->find();
+//             $sizes = $this->Sizes->find();
+        foreach ($products as $product) {
+             $productname = explode(" ", $product->product_name);
+            $productname1 = implode("", $productname);
+//            foreach ($colors as $color) {
+//            foreach ($sizes as $size) {
+             
+            //$colorname1 =  $productname1."_".$color->color."_".$size->size;
+             $colorname1 =  $productname1;
+            $name2 = $session->read($colorname1);
+            $this->set('name2', $name2);
+
+            if ($product->online_vorhanden && $product->photo && $name2) {
+            
+ $transactionsTable = TableRegistry::get('Transactions');
+ $transaction = $transactionsTable->newEntity();
+ $transaction->transaction_type_id=1;                   //transaction type Verkauf
+ $transaction->product_id=$product->id;
+ $transaction->created_date=Time::now();
+ $transaction->quantity=$name2[$product->id];
+ $transaction->price=$product->price;
+$transaction->user_id= $this->Auth->user('id');
+$transaction->transaction_status_id=1;      
+$transaction->order_number= $orderNo;
+$onum=$transaction->order_number;
+//$transaction->transaction_number=$result->transaction->id;
+//$transaction->color_id=$color->id;
+//$transaction->size_id=$size->id;
+$transactionsTable->save($transaction); 
+
+
+            }
+         
+            }
+             
+             return   $this->redirect(
+           [ 
+                  "controller" => "UsersDetail", 
+                  "action" => "sendadress"      ] );
+          //return $this->redirect(['controller'=>'UsersDetail','action' => 'sendadress']);
+            }
+        return $this->redirect(['controller'=>'Users','action' => 'clogin']);
+        }
+          
+    return $this->redirect(['controller'=>'Pages','action' => 'display','home']);
+        }
+            public function clogin()
+        {
+       
+                $this->viewBuilder()->setLayout('benutzerlayout');
+                      $session = $this->request->session();
+                     if($this->Auth->user('id')){
+                           return $this->redirect(['controller'=>'Pages','action' => 'display','home']);
+                     }else{
+            if ($this->request->is('post')) {
+              
+                //$x=$this->Passhashvalid->checkpass('fac3b00k');
+                //pr($x);die();
+               $user = $this->Auth->identify();
+        
+            if ($user) {
+                $this->Auth->setUser($user);
+              
+                         $session = $this->request->session();
+                 // if ($this->request->session()->read('Auth.User.id')) {
+                      $orderNo=uniqid();
+                
+        $products = $this->Products->find();
+//         $colors = $this->Colors->find();
+//             $sizes = $this->Sizes->find();
+        foreach ($products as $product) {
+             $productname = explode(" ", $product->product_name);
+            $productname1 = implode("", $productname);
+//            foreach ($colors as $color) {
+//            foreach ($sizes as $size) {
+             
+            //$colorname1 =  $productname1."_".$color->color."_".$size->size;
+             $colorname1 =  $productname1;
+            $name2 = $session->read($colorname1);
+            $this->set('name2', $name2);
+
+            if ($product->online_vorhanden && $product->photo && $name2) {
+            
+ $transactionsTable = TableRegistry::get('Transactions');
+ $transaction = $transactionsTable->newEntity();
+ $transaction->transaction_type_id=1;                   //transaction type Verkauf
+ $transaction->product_id=$product->id;
+ $transaction->created_date=Time::now();
+ $transaction->quantity=$name2[$product->id];
+ $transaction->price=$product->price;
+$transaction->user_id= $this->Auth->user('id');
+$transaction->transaction_status_id=1;      
+$transaction->order_number= $orderNo;
+//$onum=$transaction->order_number;
+//$transaction->transaction_number=$result->transaction->id;
+//$transaction->color_id=$color->id;
+//$transaction->size_id=$size->id;
+$transactionsTable->save($transaction); 
+
+
+            }
+
+            }
+            if($this->Checkout->verifyAddress($this->Auth->user('id'))===1){
+        
+          return $this->redirect(['controller'=>'Transactions','action' => 'pay']);
+        
+            }else{
+                     return   $this->redirect(
+           [ 
+                  "controller" => "UsersDetail", 
+                  "action" => "sendadress"  ] );
+            }}
+
+        }}
+        
+        }
+         public function cregister()
+    {
+             $this->viewBuilder()->setLayout('benutzerlayout');
+        $user = $this->Users->newEntity();
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+          $user->role='customer';
+       
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been saved.'));
+
+                return $this->redirect(['controller'=>'Transactions','action' => 'pay']);
+            }
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        }
+       $this->set('user', $user);
+    }
+    public function hlogin()
+        {
+        
+        
+                $this->viewBuilder()->setLayout('frontlayout');
+                
+//                
+//   $fb = new Facebook\Facebook([
+//  'app_id' => '1653299681414959', // Replace {app-id} with your app id
+//  'app_secret' => '0836400da33fe1a0e42ba8eb543b55e6',
+//  'default_graph_version' => 'v2.2',
+//  ]);
+//
+//$helper = $fb->getRedirectLoginHelper();
+//
+//$permissions = ['email']; // Optional permissions
+//$loginUrl = $helper->getLoginUrl('https://example.com/fb-callback.php', $permissions);
+//
+//echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+
+            if ($this->request->is('post')) {
+                //$x=$this->Passhashvalid->checkpass('fac3b00k');
+                //pr($x);die();
+               $user = $this->Auth->identify();
+        
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->redirect(['controller'=>'/']);
+           // return $this->redirect($this->Auth->redirectUrl());
+            }
+        $this->Flash->error(__('Invalid username or password, try again'));
+        }
+        }
+          public function hregister()
+    {
+             $this->viewBuilder()->setLayout('benutzerlayout');
+        $user = $this->Users->newEntity();
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+        
+          $user->role='customer';
+       
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been saved.'));
+
+                return $this->redirect(['controller'=>'Pages','action'=>'display','anmelden']);
+            }
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        }
+       $this->set('user', $user);
+    }
+public function logout()
+{
+    
+return $this->redirect($this->Auth->logout());
+}
     /**
      * Index method
      *
@@ -20,9 +260,6 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Usergroups']
-        ];
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
@@ -38,7 +275,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Usergroups', 'Transactions', 'UsersDetail']
+            'contain' => ['Transactions', 'UsersDetail']
         ]);
 
         $this->set('user', $user);
@@ -54,15 +291,15 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+          
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'login']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $usergroups = $this->Users->Usergroups->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'usergroups'));
+       $this->set('user', $user);
     }
 
     /**
@@ -86,8 +323,7 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $usergroups = $this->Users->Usergroups->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'usergroups'));
+        $this->set(compact('user'));
     }
 
     /**

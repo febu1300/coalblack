@@ -1,29 +1,25 @@
-<style>
-.navbar {
-  min-height: 50px;
-}
-.navbar-brand {
-  padding: 0 15px;
-  height: 80px;
-  line-height: 80px;
-}
-</style>
-<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-  
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav mr-auto">
+
+<nav class="navbar navbar-expand-sm  navbar-dark bg-primary minpadding ">
+   <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarColor01 ">
+    <ul class="navbar-nav mr-auto ">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+      
+<?php $cell=$this->cell('Dynamicnav')?>
+      <?=$cell?>
+      <li class="nav-item kein-gutters">
+        <a class="nav-link" href="/neue_produkte">NEW IN</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+      <li class="nav-item kein-gutters">
+        <a class="nav-link" href="/angeboten">SALE</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
+  
+    
     </ul>
   
   </div>

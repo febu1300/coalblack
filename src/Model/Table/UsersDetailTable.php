@@ -40,6 +40,10 @@ class UsersDetailTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
+         $this->belongsTo('UsersDetailsTypes', [
+            'foreignKey' => 'user_detail_type_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**
@@ -93,45 +97,17 @@ class UsersDetailTable extends Table
             ->boolean('main_address')
             ->allowEmpty('main_address');
 
-        $validator
-            ->scalar('billing_adress_1')
-            ->maxLength('billing_adress_1', 11)
-            ->requirePresence('billing_adress_1', 'create')
-            ->notEmpty('billing_adress_1');
 
-        $validator
-            ->scalar('billing_adress_2')
-            ->maxLength('billing_adress_2', 11)
-            ->requirePresence('billing_adress_2', 'create')
-            ->notEmpty('billing_adress_2');
-
-        $validator
-            ->scalar('billing_postal_code')
-            ->maxLength('billing_postal_code', 10)
-            ->requirePresence('billing_postal_code', 'create')
-            ->notEmpty('billing_postal_code');
-
-        $validator
-            ->scalar('billing_city')
-            ->maxLength('billing_city', 50)
-            ->requirePresence('billing_city', 'create')
-            ->notEmpty('billing_city');
-
-        $validator
-            ->scalar('billing_state')
-            ->maxLength('billing_state', 20)
-            ->requirePresence('billing_state', 'create')
-            ->notEmpty('billing_state');
-
-        $validator
-            ->scalar('billing_country')
-            ->maxLength('billing_country', 25)
-            ->requirePresence('billing_country', 'create')
-            ->notEmpty('billing_country');
-
+   $validator
+            ->boolean('is_similar')
+            ->allowEmpty('is_similar');
         return $validator;
     }
-
+public function isOwnedBy($usersDetailId, $userId)
+{
+return
+$this->exists(['id' => $usersDetailId, 'user_id' => $userId]);
+}
     /**
      * Returns a rules checker object that will be used for validating
      * application integrity.
@@ -142,7 +118,7 @@ class UsersDetailTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-
+    $rules->add($rules->existsIn(['user_detail_type_id'], 'UsersDetailsTypes'));
         return $rules;
     }
 }

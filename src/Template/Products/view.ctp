@@ -4,6 +4,10 @@
  * @var \App\Model\Entity\Product $product
  */
 ?>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
@@ -15,8 +19,8 @@
         <li><?= $this->Html->link(__('New Sub Catagory'), ['controller' => 'SubCatagories', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Discounts Types'), ['controller' => 'DiscountsTypes', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Discounts Type'), ['controller' => 'DiscountsTypes', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Product Details'), ['controller' => 'ProductDetails', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Product Detail'), ['controller' => 'ProductDetails', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Product Details'), ['controller' => 'ProductsDetails', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Product Detail'), ['controller' => 'ProductsDetails', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Product Prices'), ['controller' => 'ProductPrices', 'action' => 'index']) ?> </li>
@@ -24,7 +28,8 @@
     </ul>
 </nav>
 <div class="products view large-9 medium-8 columns content">
-    <img src="<?='/'. h($products->photo_dir.'/main/'.$products->photo)?>">
+
+    <img src="<?='/'. h($product->photo_dir.'/main/'.$product->photo)?>">
     <h3><?= h($product->id) ?></h3>
     <table class="vertical-table">
         <tr>
@@ -108,9 +113,9 @@
                 <td><?= h($productDetails->photo_dir) ?></td>
                 <td><?= h($productDetails->photo) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'ProductDetails', 'action' => 'view', $productDetails->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'ProductDetails', 'action' => 'edit', $productDetails->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'ProductDetails', 'action' => 'delete', $productDetails->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productDetails->id)]) ?>
+                    <?= $this->Html->link(__('View'), ['controller' => 'ProductsDetails', 'action' => 'view', $productDetails->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'ProductsDetails', 'action' => 'edit', $productDetails->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'ProductsDetails', 'action' => 'delete', $productDetails->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productDetails->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

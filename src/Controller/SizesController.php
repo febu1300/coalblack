@@ -35,7 +35,7 @@ class SizesController extends AppController
     public function view($id = null)
     {
         $size = $this->Sizes->get($id, [
-            'contain' => ['ProductDetails']
+            'contain' => ['Products']
         ]);
 
         $this->set('size', $size);

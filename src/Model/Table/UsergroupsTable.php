@@ -33,9 +33,7 @@ class UsergroupsTable extends Table
         $this->setTable('usergroups');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
-          $this->hasMany('Users', [
-            'foreignKey' => 'user_id'
-        ]);
+
     }
 
     /**

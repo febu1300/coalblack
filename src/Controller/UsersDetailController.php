@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\Event\Event;
 /**
  * UsersDetail Controller
  *
@@ -12,7 +12,11 @@ use App\Controller\AppController;
  */
 class UsersDetailController extends AppController
 {
-
+public function beforeFilter(Event $event)
+{
+parent::beforeFilter($event);
+$this->Auth->allow(['add','sendadress','rechenadress','addrechenadres']);
+}
     /**
      * Index method
      *
@@ -26,6 +30,8 @@ class UsersDetailController extends AppController
         $usersDetail = $this->paginate($this->UsersDetail);
 
         $this->set(compact('usersDetail'));
+        
+        
     }
 
     /**
@@ -62,9 +68,75 @@ class UsersDetailController extends AppController
             $this->Flash->error(__('The users detail could not be saved. Please, try again.'));
         }
         $users = $this->UsersDetail->Users->find('list', ['limit' => 200]);
-        $this->set(compact('usersDetail', 'users'));
+        $this->set(compact('usersDetail', $usersDetail));
     }
+  public function sendadress()
+    {    $this->viewBuilder()->setLayout('frontlayout');
+    
+         $session = $this->request->session();
+     
+//       $theUser=$this->Checkout->finduser($user);
+//        $this->set(compact('theUser', $theUser));
 
+ 
+      
+    $usersDetail = $this->UsersDetail->newEntity();
+   
+        if ($this->request->is('post')) {
+       $usersDetail->user_id=$this->Auth->user('id');
+        $usersDetail->address_line_1=$this->request->getData('address_line_1');
+        $usersDetail->address_line_2=$this->request->getData('address_line_2');
+        $usersDetail->postal_code=$this->request->getData('postal_code');
+        $usersDetail->city=$this->request->getData('city');
+        $usersDetail->state=$this->request->getData('state');
+        $usersDetail->country=$this->request->getData('country');
+         $usersDetail->user_detail_type_id=1;
+        $this->UsersDetail->save($usersDetail);
+       
+ $this->set(compact('usersDetail', 'users','usersDetailsTypes'));
+                            return   $this->redirect(
+           [ 
+                  "controller" => "UsersDetail", 
+                  "action" => "rechenadress",
+               "?"=>["theId"=>$usersDetail->id]
+               ] ); 
+        }
+          
+   
+    }
+        public function rechenadress()
+    { $id=$this->request->query('theId');
+    
+    $this->viewBuilder()->setLayout('frontlayout');
+      $usersDetail = $this->UsersDetail->get($id, [
+            'contain' => []
+        ]);
+        
+   $this->set(compact('usersDetail','users','usersDetailsTypes'));
+   
+  
+      
+    }
+    public function addrechenadres(){
+            $this->render(false);
+         $this->viewBuilder()->setLayout('frontlayout');
+        
+        $usersDetail = $this->UsersDetail->newEntity();
+        if ($this->request->is('post')) {
+            $usersDetail = $this->UsersDetail->patchEntity($usersDetail, $this->request->getData());
+            $usersDetail->user_id=$this->Auth->user('id');
+            $usersDetail->user_detail_type_id=2;
+            if ($this->UsersDetail->save($usersDetail)) {
+               // $this->Flash->success(__('The users detail has been saved.'));
+
+                return $this->redirect(['controller'=>'Transactions','action' => 'pay']);
+            }
+            $this->Flash->error(__('The users detail could not be saved. Please, try again.'));
+        }
+        $users = $this->UsersDetail->Users->find('list', ['limit' => 200]);
+        $this->set(compact('usersDetail', $usersDetail));
+      
+    }
     /**
      * Edit method
      *

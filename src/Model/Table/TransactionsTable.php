@@ -48,18 +48,21 @@ class TransactionsTable extends Table
         ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
-            'joinType' => 'INNER'
+            'joinType' => 'LEFT'
         ]);
              $this->belongsTo('TransactionsStatus', [
             'foreignKey' => 'transaction_status_id',
             'joinType' => 'INNER'
         ]);
-                $this->belongsTo('Transactions', [
+                $this->belongsTo('PaymentMethods', [
             'foreignKey' => 'payment_method_id',
                       'joinType' => 'INNER'
         ]);
     }
-
+public function isOwnedBy($transactionId, $userId)
+{
+return $this->exists(['id' => $transactionId, 'user_id' => $userId]);
+}
     /**
      * Default validation rules.
      *
@@ -93,7 +96,14 @@ class TransactionsTable extends Table
             ->decimal('price')
             ->requirePresence('price', 'create')
             ->allowEmpty('price');
-
+        $validator
+            ->scalar('order_number')
+            ->requirePresence('order_number', 'create')
+            ->allowEmpty('order_number');
+ $validator
+            ->boolean('sale')
+            ->requirePresence('sale', 'create')
+            ->allowEmpty('sale');
         $validator
             ->integer('transaction_status')
             ->requirePresence('transaction_status', 'create')

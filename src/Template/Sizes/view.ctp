@@ -11,8 +11,8 @@
         <li><?= $this->Form->postLink(__('Delete Size'), ['action' => 'delete', $size->id], ['confirm' => __('Are you sure you want to delete # {0}?', $size->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Sizes'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Size'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Product Details'), ['controller' => 'ProductDetails', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Product Detail'), ['controller' => 'ProductDetails', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Product'), ['controller' => 'Product', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Product'), ['controller' => 'Product', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="sizes view large-9 medium-8 columns content">
@@ -28,7 +28,7 @@
         </tr>
     </table>
     <div class="related">
-        <h4><?= __('Related Product Details') ?></h4>
+        <h4><?= __('Related Products') ?></h4>
         <?php if (!empty($size->product_details)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>

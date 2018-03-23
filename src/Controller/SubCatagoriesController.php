@@ -54,11 +54,13 @@ class SubCatagoriesController extends AppController
         $subCatagory = $this->SubCatagories->newEntity();
         if ($this->request->is('post')) {
             $subCatagory = $this->SubCatagories->patchEntity($subCatagory, $this->request->getData());
-              $subCatagory->photo_dir="img/".$this->name.'/'.$subCatagory->catagory_name;
+             
+            // this line is added to call component upload
+            $subCatagory->photo_dir="img/".$this->name.'/'.$subCatagory->catagory_name;
         $subCatagory->photo=$this->request->getData('photo.name');
       
        
-// this line is added to call component upload
+
         $this->Filemanager->doUpload($subCatagory);    
             if ($this->SubCatagories->save($subCatagory)) {
                 $this->Flash->success(__('The sub catagory has been saved.'));

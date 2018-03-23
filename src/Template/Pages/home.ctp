@@ -16,6 +16,7 @@
 $this->layout = 'frontlayout';
 
 
+
 ?>
 
 <head>
@@ -24,23 +25,21 @@ $this->layout = 'frontlayout';
     
 
 </head>
-<div class="col-sm-12 col-md-12 col-lg-12">
-    <div class="row">
-        bread crumb
-    </div> </div>  
-    <div class="col-sm-12 col-md-12 col-lg-12">
-   <div class="row">
+ 
+
+  
+
 <?=$this->element('/elm_home/elm_section');?>
-   
-  </div>  
+  
+     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="row">
           <div class="col-sm-4 col-md-4 col-lg-4">
-<?php $cell=$this->cell('Catagorydisplay')?>
-      <?=$cell?>
+<?=$this->cell('Catagorydisplay')?>
+      
     </div>
              <div class="col-sm-8 col-md-8 col-lg-8">
-<?php $cell=$this->cell('CatagorydisplaySM')?>
-      <?=$cell?>
+<?=$this->cell('CatagorydisplaySM')?>
+     
     </div>
 
         </div>
