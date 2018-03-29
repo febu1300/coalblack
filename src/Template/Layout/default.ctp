@@ -16,7 +16,7 @@
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,23 +41,7 @@
     
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-light " >
-  <a class="navbar-brand" href="#">Navbar</a>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-  
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-        <li><a href="/transactions"><span class="glyphicon glyphicon-bell"></span>  <span class="badge badge-secondary bg-danger badge-pill"><?=$this->cell('Notification')?></span></a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
     <?= $this->Flash->render() ?>
     <div class="container-fluid">
         <?= $this->fetch('content') ?>

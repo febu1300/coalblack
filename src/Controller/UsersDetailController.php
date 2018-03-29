@@ -84,6 +84,7 @@ $this->Auth->allow(['add','sendadress','rechenadress','addrechenadres']);
    
         if ($this->request->is('post')) {
        $usersDetail->user_id=$this->Auth->user('id');
+          $usersDetail->studio_name=$this->request->getData('studio_name');
         $usersDetail->address_line_1=$this->request->getData('address_line_1');
         $usersDetail->address_line_2=$this->request->getData('address_line_2');
         $usersDetail->postal_code=$this->request->getData('postal_code');
@@ -106,7 +107,7 @@ $this->Auth->allow(['add','sendadress','rechenadress','addrechenadres']);
     }
         public function rechenadress()
     { $id=$this->request->query('theId');
-    
+  
     $this->viewBuilder()->setLayout('frontlayout');
       $usersDetail = $this->UsersDetail->get($id, [
             'contain' => []

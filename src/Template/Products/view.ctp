@@ -44,6 +44,10 @@
             <th scope="row"><?= __('Product Description') ?></th>
             <td><?= h($product->product_description) ?></td>
         </tr>
+            <tr>
+            <th scope="row"><?= __('Unit') ?></th>
+            <td><?= h($product->unit) ?></td>
+        </tr>
         <tr>
             <th scope="row"><?= __('Sub Catagory') ?></th>
             <td><?= $product->has('sub_catagory') ? $this->Html->link($product->sub_catagory->id, ['controller' => 'SubCatagories', 'action' => 'view', $product->sub_catagory->id]) : '' ?></td>
@@ -108,6 +112,7 @@
                 <td><?= h($productDetails->id) ?></td>
                 <td><?= h($productDetails->product_id) ?></td>
                 <td><?= h($productDetails->description) ?></td>
+                
                 <td><?= h($productDetails->color_id) ?></td>
                 <td><?= h($productDetails->size_id) ?></td>
                 <td><?= h($productDetails->photo_dir) ?></td>

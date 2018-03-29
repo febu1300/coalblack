@@ -38,11 +38,14 @@ $this->layout = 'frontlayout';
 <?=$this->element('sidebar/meineseite');?>
             </div>
   
-  <div class="col-sm-9 col-md-9 col-lg-9">
-<?php $cell=$this->cell('Sale')?>
+  <div class="col-sm-4 col-md-4 col-lg-4">
+<?php $cell=$this->cell('Billingadd')?>
       <?=$cell?>
     </div>
-
+  <div class="col-sm-4 col-md-4 col-lg-4">
+<?php $cell=$this->cell('Shippingadd')?>
+      <?=$cell?>
+    </div>
      
      </div>  
 

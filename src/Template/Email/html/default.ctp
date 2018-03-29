@@ -1,20 +1,39 @@
+<?php $this->layout('frontlayout') ?>
+<table class="table table-hover">
+  <thead>
+  <h4>Order# <?=$value?></h4>
+    <tr>
+      <th scope="col">Artikel</th>
+      <th scope="col">Menge</th>
+      <th scope="col">Einzelpreise</th>
+      <th scope="col">Gesamt</th>
+    </tr>
+  </thead>
+   <tbody>
 <?php
-/**
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         0.10.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
- */
 
-$content = explode("\n", $content);
 
-foreach ($content as $line) :
-    echo '<p> ' . $line . "</p>\n";
-endforeach;
+
+foreach ($transaction as $trans)
+{
+
+
+?>
+
+
+    <tr class="table-primary table-striped table-dark">
+      <th scope="row"><?=$trans->product['product_name']?></th>
+      <td><?=$trans->quantity?></td>
+      <td><?=money_format('%.2n', $trans->product['price']) ?></td>
+      <td><?= money_format('%.2n', $trans->product['price']*$trans->quantity) ?></td>
+    </tr>
+   
+
+<?php
+}
+?>
+  </tbody>
+
+
+ 
+</table> 

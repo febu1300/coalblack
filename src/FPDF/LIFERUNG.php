@@ -14,7 +14,7 @@ use Cake\I18n\Time;
  * @author buruk
  */
 
-class PDF extends FPDF
+class LIFERUNG extends FPDF
 {
 protected $col = 0; // Current column
 protected $y0;      // Ordinate of column start
@@ -55,7 +55,7 @@ function ChapterTitle()
     // Title
     $this->SetFont('Arial','B',18);
    $this->SetFillColor(255,255,255);
-    $this->Cell(0,8,"RECHNUNG",0,1,'J',true);
+    $this->Cell(0,8,"LIFERUNGSCHEIN",0,1,'J',true);
     $this->Ln(8);
     // Save ordinate
     $this->y0 = $this->GetY();
@@ -197,7 +197,7 @@ function PrintDate($transactions){
 
   $this->MultiCell(50,5,'Datum: '.$transactions->created_date,0,1,'l');
    $this->MultiCell(50,5,'Bestell#: '.$transactions->order_number,0,1,'l');
-  $this->MultiCell(50,5,'Rechnungs#: '.$transactions->id,0,1,'l');
+  $this->MultiCell(50,5,'Lieferungs#: '.'CBLS'.$transactions->id,0,1,'l');
 
 }
 
@@ -213,4 +213,6 @@ function PrintChapter($usersDetail)
    
      //$this->ChapterBody1($usersDetail);
 }
+
+
 }

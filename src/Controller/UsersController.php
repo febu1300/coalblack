@@ -22,7 +22,7 @@ class UsersController extends AppController
       
 //          $this->loadModel('Colors');
 //        $this->loadModel('Sizes');
-
+        $session = $this->request->session();
     }
 public function beforeFilter(Event $event)
 {
@@ -40,11 +40,11 @@ $this->Auth->allow(['add', 'logout','login','clogin','cregister','hregister','hl
                 $this->Auth->setUser($user);
             return $this->redirect($this->Auth->redirectUrl());
             }
-        $this->Flash->error(__('Invalid username or password, try again'));
+        $this->Flash->error(__('ungültiger Benutzername oder Passwort, versuchen Sie noch einmal'));
         }
         }
          public function ologin()
-        { $this->render(false);
+        { $this->render(false);                     // after hloging if user goes to warenkorb
   
        
             if ($this->request->is('post')) {
@@ -58,50 +58,21 @@ $this->Auth->allow(['add', 'logout','login','clogin','cregister','hregister','hl
       
 
 
-            if ($this->request->session()->read('Auth.User.id')) {
-                       $orderNo=uniqid();
+            if ($this->Auth->user('id')) {
+                 
            
-        $products = $this->Products->find();
-//         $colors = $this->Colors->find();
-//             $sizes = $this->Sizes->find();
-        foreach ($products as $product) {
-             $productname = explode(" ", $product->product_name);
-            $productname1 = implode("", $productname);
-//            foreach ($colors as $color) {
-//            foreach ($sizes as $size) {
+  
              
-            //$colorname1 =  $productname1."_".$color->color."_".$size->size;
-             $colorname1 =  $productname1;
-            $name2 = $session->read($colorname1);
-            $this->set('name2', $name2);
-
-            if ($product->online_vorhanden && $product->photo && $name2) {
-            
- $transactionsTable = TableRegistry::get('Transactions');
- $transaction = $transactionsTable->newEntity();
- $transaction->transaction_type_id=1;                   //transaction type Verkauf
- $transaction->product_id=$product->id;
- $transaction->created_date=Time::now();
- $transaction->quantity=$name2[$product->id];
- $transaction->price=$product->price;
-$transaction->user_id= $this->Auth->user('id');
-$transaction->transaction_status_id=1;      
-$transaction->order_number= $orderNo;
-$onum=$transaction->order_number;
-//$transaction->transaction_number=$result->transaction->id;
-//$transaction->color_id=$color->id;
-//$transaction->size_id=$size->id;
-$transactionsTable->save($transaction); 
-
-
-            }
-         
-            }
-             
-             return   $this->redirect(
+          if($this->Checkout->verifyAddress($this->Auth->user('id'))===1){
+        
+          return $this->redirect(['controller'=>'Transactions','action' => 'pay']);
+        
+            }else{
+                     return   $this->redirect(
            [ 
                   "controller" => "UsersDetail", 
-                  "action" => "sendadress"      ] );
+                  "action" => "sendadress"  ] );
+            }
           //return $this->redirect(['controller'=>'UsersDetail','action' => 'sendadress']);
             }
         return $this->redirect(['controller'=>'Users','action' => 'clogin']);
@@ -111,7 +82,7 @@ $transactionsTable->save($transaction);
         }
             public function clogin()
         {
-       
+
                 $this->viewBuilder()->setLayout('benutzerlayout');
                       $session = $this->request->session();
                      if($this->Auth->user('id')){
@@ -128,7 +99,7 @@ $transactionsTable->save($transaction);
               
                          $session = $this->request->session();
                  // if ($this->request->session()->read('Auth.User.id')) {
-                      $orderNo=uniqid();
+          
                 
         $products = $this->Products->find();
 //         $colors = $this->Colors->find();
@@ -145,28 +116,9 @@ $transactionsTable->save($transaction);
             $this->set('name2', $name2);
 
             if ($product->online_vorhanden && $product->photo && $name2) {
-            
- $transactionsTable = TableRegistry::get('Transactions');
- $transaction = $transactionsTable->newEntity();
- $transaction->transaction_type_id=1;                   //transaction type Verkauf
- $transaction->product_id=$product->id;
- $transaction->created_date=Time::now();
- $transaction->quantity=$name2[$product->id];
- $transaction->price=$product->price;
-$transaction->user_id= $this->Auth->user('id');
-$transaction->transaction_status_id=1;      
-$transaction->order_number= $orderNo;
-//$onum=$transaction->order_number;
-//$transaction->transaction_number=$result->transaction->id;
-//$transaction->color_id=$color->id;
-//$transaction->size_id=$size->id;
-$transactionsTable->save($transaction); 
-
-
-            }
-
-            }
-            if($this->Checkout->verifyAddress($this->Auth->user('id'))===1){
+             
+ 
+    if($this->Checkout->verifyAddress($this->Auth->user('id'))===1){
         
           return $this->redirect(['controller'=>'Transactions','action' => 'pay']);
         
@@ -175,11 +127,18 @@ $transactionsTable->save($transaction);
            [ 
                   "controller" => "UsersDetail", 
                   "action" => "sendadress"  ] );
-            }}
+            }
+            
+        
+
+            }
+           
+        
+            }
 
         }}
         
-        }
+        }}
          public function cregister()
     {
              $this->viewBuilder()->setLayout('benutzerlayout');
@@ -189,17 +148,18 @@ $transactionsTable->save($transaction);
           $user->role='customer';
        
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('Der Benutzer wurde gespeichert. Sie können sich jetzt einloggen.'));
 
-                return $this->redirect(['controller'=>'Transactions','action' => 'pay']);
+                return $this->redirect(['action' => 'clogin']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('ungültiger Benutzername oder Passwort, versuchen Sie noch einmal.'));
         }
        $this->set('user', $user);
     }
     public function hlogin()
         {
-        
+//                $session = $this->request->session();
+//        $session->destroy();
         
                 $this->viewBuilder()->setLayout('frontlayout');
                 
@@ -227,7 +187,7 @@ $transactionsTable->save($transaction);
                 return $this->redirect(['controller'=>'/']);
            // return $this->redirect($this->Auth->redirectUrl());
             }
-        $this->Flash->error(__('Invalid username or password, try again'));
+        $this->Flash->error(__('ungültiger Benutzername oder Passwort, versuchen Sie noch einmal.'));
         }
         }
           public function hregister()
@@ -240,11 +200,11 @@ $transactionsTable->save($transaction);
           $user->role='customer';
        
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('Der Benutzer wurde gespeichert. Sie können sich jetzt einloggen.'));
 
                 return $this->redirect(['controller'=>'Pages','action'=>'display','anmelden']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('ungültiger Benutzername oder Passwort, versuchen Sie noch einmal.'));
         }
        $this->set('user', $user);
     }
@@ -293,11 +253,11 @@ return $this->redirect($this->Auth->logout());
             $user = $this->Users->patchEntity($user, $this->request->getData());
           
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('Der Benutzer wurde gespeichert. Sie können sich jetzt einloggen.'));
 
                 return $this->redirect(['action' => 'login']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('ungültiger Benutzername oder Passwort, versuchen Sie noch einmal.'));
         }
        $this->set('user', $user);
     }
@@ -317,11 +277,11 @@ return $this->redirect($this->Auth->logout());
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('Der Benutzer wurde gespeichert. Sie können sich jetzt einloggen.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('ungültiger Benutzername oder Passwort, versuchen Sie noch einmal.'));
         }
         $this->set(compact('user'));
     }
@@ -338,9 +298,9 @@ return $this->redirect($this->Auth->logout());
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+            $this->Flash->success(__('Der Benutzer wurde gelöscht.'));
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->error(__('ungültiger Benutzername oder Passwort, versuchen Sie noch einmal.'));
         }
 
         return $this->redirect(['action' => 'index']);

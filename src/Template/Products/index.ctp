@@ -37,6 +37,7 @@
                 <th scope="col"><?= $this->Paginator->sort('sub_catagory_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created_date') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('price') ?></th>
+                  <th scope="col"><?= $this->Paginator->sort('unit') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('online_vorhanden') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('new_in') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('sale') ?></th>
@@ -59,6 +60,7 @@
                 <td><?= $product->has('sub_catagory') ? $this->Html->link($product->sub_catagory->id, ['controller' => 'SubCatagories', 'action' => 'view', $product->sub_catagory->id]) : '' ?></td>
                 <td><?= h($product->created_date) ?></td>
                 <td><?= $this->Number->format($product->price) ?></td>
+                   <td><?= h($product->unit) ?></td>
                 <td><?= h($product->online_vorhanden) ?></td>
                 <td><?= h($product->new_in) ?></td>
                 <td><?= h($product->sale) ?></td>

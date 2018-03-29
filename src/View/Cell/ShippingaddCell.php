@@ -28,11 +28,11 @@ class ShippingaddCell extends Cell
         $UsersDetailTable = TableRegistry::get('UsersDetail');
 //  pr($article_type);die();
 $products1=$UsersDetailTable->find()
-->select(['id','user_id','address_line_1','address_line_2'])
+->select(['id','user_id','address_line_1','address_line_2','city','state','postal_code','country','main_address','is_similar','user_detail_type_id'])
           ->where((['user_detail_type_id'=>1]))
   ->where((['user_id'=>$this->request->session()->read('Auth.User.id')]))
 
-			->limit(1)
+			->limit(5)
 			->toArray();
 	
               

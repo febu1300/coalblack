@@ -4,12 +4,12 @@ namespace App\View\Cell;
 use Cake\View\Cell;
 
 /**
- * Notification cell
+ * Userinfo cell
  */
-class NotificationCell extends Cell
+class UserinfoCell extends Cell
 {
 
-    /**
+ /**
      * List of valid options that can be passed into this
      * cell's constructor.
      *
@@ -24,13 +24,17 @@ class NotificationCell extends Cell
      */
     public function display()
     {
-        $this->loadModel('Transactions');
-        $unread = $this->Transactions->find() 
-                ->select(['order_number','sent','id','transaction_status_id'])  
-               ->where(['transaction_status_id'=>2]) 
-                ->where(['sent'=>0]) 
-                ->distinct('order_number');
+        $this->loadModel('Users');
+        $unread = $this->Users->find() 
+                ->select(['id'])  
+               
+      
+                ->distinct('id');
         
         $this->set('unread_count', $unread->count());
+
     }
 }
+
+
+   

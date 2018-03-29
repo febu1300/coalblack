@@ -18,8 +18,13 @@ use SimpleXMLElement;
 use Sofort\SofortLib\Sofortueberweisung;
 use Sofort;
 use Cake\Utility\Xml;
+use Cake\Mailer\Email;
+use Cake\Mailer\Mailer;
+
+use Cake\Mailer\MailerAwareTrait;
 use FPDF;
 use App\FPDF\PDF;
+use App\FPDF\LIFERUNG;
 /**
  * Transactions Controller
  *
@@ -34,6 +39,7 @@ class TransactionsController extends AppController
         $this->loadModel('subCatagories');
         $this->loadModel('Products');
         $this->loadModel('Transactions');
+                $this->loadModel('UsersDetail');
 //          $this->loadModel('Colors');
 //        $this->loadModel('Sizes');
 
@@ -72,25 +78,27 @@ return parent::isAuthorized($user);
 //        }
 //    }
     public function pay(){
-        $bestlnumr='';
-      $transid=$this->Checkout->findcart($this->Auth->user('id'));
 
-    for($i=0;$i<end($transid); $i++){
- if(array_key_exists($i,$transid)){
-         $toeditTrans = $this->Transactions->get($transid[$i]);
-     
-           $toeditTrans->transaction_status_id=2;
-        
- $this->Transactions->save($toeditTrans);
- 
- }
-     }        
+//      $transid=$this->Checkout->findcart($this->Auth->user('id'));
+//
+//    for($i=0;$i<end($transid); $i++){
+// if(array_key_exists($i,$transid)){
+//         $toeditTrans = $this->Transactions->get($transid[$i]);
+//     
+//           $toeditTrans->transaction_status_id=2;
+//        
+// $this->Transactions->save($toeditTrans);
+// 
+// }
+//     }       
+        $bestlnumr=uniqid();
 
             if($this->request->session()->read('Auth.User.id')){
                  
           $items=[];
         $GesamtMenge=0;
-    
+   $Gg=0;
+   $tax=0;
 //          $apiContext = new \PayPal\Rest\ApiContext(
 //        new \PayPal\Auth\OAuthTokenCredential(
 //            'AVCrZPxpI14gLQgZL5rv5aWBLptPDAoU9pNDqzKNrYXnXyZ_RklwfpMozm2LSswQ0gbAES-AEvDsY40U',     // live
@@ -118,67 +126,80 @@ return parent::isAuthorized($user);
 
  if($this->request->is('post')){
      $selMeth=$this->request->getData();
+      
  // pr($selMeth);die();
 if(  $selMeth['customRadio']=='1'){  
-  $bestlnumr=$this->Checkout->findorder($this->Auth->user('id'));
-     $payer = new \PayPal\Api\Payer();
+ 
+       $payer = new \PayPal\Api\Payer();
 $payer->setPaymentMethod('paypal');
-//           $this->paginate = [
-//            'contain' => ['Products', 'TransactionTypes','TransactionsStatus']
-//        ];
-//        $transactions = $this->paginate($this->Transactions);
-//
-//        $this->set(compact('transactions'));
+   
+
           
         $session = $this->request->session();
         $products = $this->Products->find();
-//         $colors = $this->Colors->find();
-//             $sizes = $this->Sizes->find();
+////         $colors = $this->Colors->find();
+////             $sizes = $this->Sizes->find();
         foreach ($products as $product) {
              $productname = explode(" ", $product->product_name);
             $productname1 = implode("", $productname);
-//            foreach ($colors as $color) {
-//            foreach ($sizes as $size) {
-             
-            //$colorname1 =  $productname1."_".$color->color."_".$size->size;
+////            foreach ($colors as $color) {
+////            foreach ($sizes as $size) {
+//             
+//            //$colorname1 =  $productname1."_".$color->color."_".$size->size;
              $colorname1 =  $productname1;
             $name2 = $session->read($colorname1);
             $this->set('name2', $name2);
-
+//
             if ($product->online_vorhanden && $product->photo && $name2) {
-         
-
+         $transaction = $this->Transactions->newEntity();
+ $transaction->transaction_type_id=1;                   //transaction type Verkauf
+ $transaction->product_id=$product->id;
+ $transaction->created_date=Time::now();
+ $transaction->quantity=$name2[$product->id];
+ $transaction->price=$product->price;
+ $transaction->user_id= $this->Auth->user('id');
+ $transaction->transaction_status_id=1;   
+   $transaction->payment_method_id=1;  
+ $transaction->order_number= $bestlnumr;
+//$onum=$transaction->order_number;
+//$transaction->transaction_number=$result->transaction->id;
+//$transaction->color_id=$color->id;
+//$transaction->size_id=$size->id;
+$this->Transactions->save($transaction); 
+                
              $item1 = new \PayPal\Api\Item();
-$item1->setName($product->product_name) 
+            $item1->setName($product->product_name) 
         ->setCurrency('EUR')
         ->setQuantity($name2[$product->id]) 
         ->setSku($product->id) // Similar to `item_number` in Classic API 
-        ->setPrice($product->price);
+        ->setPrice($product->price-$product->price*19/100);
       // $total = $total + ($name2[$product->id]*$product['product_price']);
    array_push($items,$item1);
-   $GesamtMenge=$GesamtMenge+$product->price*$name2[$product->id];
-   
+   $GesamtMenge=($GesamtMenge+($product->price-$product->price*19/100)*$name2[$product->id]);
+   $Gg=($Gg+$product->price*$name2[$product->id]);
+   $tax=$Gg-$GesamtMenge; 
             } else {
           
             }
-//            }}
-   
-      
+////           }}
+//   
+//      
         }
+
 $itemList = new \PayPal\Api\ItemList(); 
 $itemList->setItems($items);
 
-$details = new \PayPal\Api\Details(); 
-$details->setShipping(1) 
-        ->setTax($GesamtMenge*19/100)
+$details = new \PayPal\Api\Details();
+$details->setShipping(0.00) 
+        ->setTax($tax)
         ->setSubtotal($GesamtMenge);
-        
+       
 
 
 $amount = new \PayPal\Api\Amount();
            $amount->setDetails($details)
-                   ->setTotal($GesamtMenge+$GesamtMenge*19/100+1)
-            ->setCurrency('EUR');
+            ->setTotal($Gg+0.00)
+            ->setCurrency('EUR'); 
 $wennreturn='http://coalblack'.Router::url([
     'controller' => 'Transactions',
     'action' => 'success',
@@ -197,7 +218,7 @@ $transaction->setAmount($amount)
     ->setInvoiceNumber($bestlnumr);
 $redirectUrls = new \PayPal\Api\RedirectUrls();
 $redirectUrls->setReturnUrl($wennreturn)
-    ->setCancelUrl("http://coalblack/transactions");
+    ->setCancelUrl("http://coalblack/transactions/canceled");
 
 $payment = new \PayPal\Api\Payment();
 $payment->setIntent('sale')
@@ -218,16 +239,68 @@ catch (\PayPal\Exception\PayPalConnectionException $ex) {
     //REALLY HELPFUL FOR DEBUGGING
     echo $ex->getData();
 }
+
+
+
 }else if($selMeth['customRadio']==2){ 
  $configkey = '166950:430655:d5e84b3e416d898b8338490cd991f0e5';
 $Sofortueberweisung = new Sofortueberweisung($configkey);
-$Sofortueberweisung->setAmount(10.21);
+
+              $session = $this->request->session();
+        $products = $this->Products->find();
+////         $colors = $this->Colors->find();
+////             $sizes = $this->Sizes->find();
+        foreach ($products as $product) {
+             $productname = explode(" ", $product->product_name);
+            $productname1 = implode("", $productname);
+////            foreach ($colors as $color) {
+////            foreach ($sizes as $size) {
+//             
+//            //$colorname1 =  $productname1."_".$color->color."_".$size->size;
+             $colorname1 =  $productname1;
+            $name2 = $session->read($colorname1);
+            $this->set('name2', $name2);
+//
+            if ($product->online_vorhanden && $product->photo && $name2) {
+         $transaction = $this->Transactions->newEntity();
+ $transaction->transaction_type_id=1;                   //transaction type Verkauf
+ $transaction->product_id=$product->id;
+ $transaction->created_date=Time::now();
+ $transaction->quantity=$name2[$product->id];
+ $transaction->price=$product->price;
+ $transaction->user_id= $this->Auth->user('id');
+ $transaction->transaction_status_id=1;      
+  $transaction->payment_method_id=1;  
+ $transaction->order_number= $bestlnumr;
+//$onum=$transaction->order_number;
+//$transaction->transaction_number=$result->transaction->id;
+//$transaction->color_id=$color->id;
+//$transaction->size_id=$size->id;
+$this->Transactions->save($transaction); 
+  
+
+
+              }
+              
+}
+      
+$Sofortueberweisung->setAmount($GesamtMenge);
 $Sofortueberweisung->setCurrencyCode('EUR');
 
 $Sofortueberweisung->setSenderCountryCode('DE');
-$Sofortueberweisung->setReason('Testueberweisung', 'Verwendungszweck');
-$Sofortueberweisung->setSuccessUrl('http://www.google.de', true);
-$Sofortueberweisung->setAbortUrl('http://www.google.de');
+$wennreturn='http://coalblack'.Router::url([
+    'controller' => 'Transactions',
+    'action' => 'success',
+    '?' => ['best' =>$bestlnumr]
+]);
+$wenncanceled='http://coalblack'.Router::url([
+    'controller' => 'Transactions',
+    'action' => 'canceled',
+    '?' => ['best' =>$bestlnumr]
+]);
+$Sofortueberweisung->setReason($bestlnumr, 'Verwendungszweck');
+$Sofortueberweisung->setSuccessUrl($wennreturn, true);
+$Sofortueberweisung->setAbortUrl($wenncanceled);
 //$Sofortueberweisung->setSenderSepaAccount('88888888','SFRTDE20XX', 'Max Mustermann');
 // $Sofortueberweisung->setNotificationUrl('http://www.google.de', 'loss,pending');
 // $Sofortueberweisung->setNotificationUrl('http://www.yahoo.com', 'loss');
@@ -264,23 +337,98 @@ public function success()
 {
     $bestnum=$this->request->query('best');
     $transnum=$this->request->query('paymentId');
-           $this->render(false);
-              $transaction =$this->Transactions->find(); 
+   // $this->render(false); 
+ 
+   $transaction =$this->Transactions->find()
+           ->contain('Products')
+           ->where(['Transactions.order_number'=>$bestnum]) 
+           ->where(['Transactions.user_id'=>$this->Auth->user('id')]); 
+ 
+   foreach($transaction as $trans){
+   if($trans->order_number===$bestnum && $trans->user_id===$this->Auth->user('id')  ){
+
+     $thistrans = $this->Transactions->get($trans->id, [
+            'contain' => ['Products']
+        ]);
+            // pr($thistrans['transaction_status_id']);die();
+     $thistrans->transaction_status_id=2;
+     $thistrans->updated_date=Time::now();
+     $thistrans->transaction_number=$transnum;
+  
+     $this->Transactions->save($thistrans);
+          $session = $this->request->session();
+     
+           $products = $this->Products->find();
+//         $colors = $this->Colors->find();
+//             $sizes = $this->Sizes->find();
+        foreach ($products as $product) {
+             $productname = explode(" ", $product->product_name);
+            $productname1 = implode("", $productname);
+//            foreach ($colors as $color) {
+//            foreach ($sizes as $size) {
+             
+            //$colorname1 =  $productname1."_".$color->color."_".$size->size;
+             $colorname1 =  $productname1;
+            $name2 = $session->read($colorname1);
+            $this->set('name2', $name2);
+
+            if ($product->online_vorhanden && $product->photo && $name2) {
+    
+        $count1 = $session->read('count');
+        $this->set('count', $count1);
+        $count2=$count1-$name2[$product->id];
+        $session->delete( $colorname1);
+        $session->write('count',$count2);
+       
+            }
+         
+            }
+   
+      
+              }
+    
+}
+
+ $this->set(compact('transaction', $transaction));
+
+ $useremail=$this->Checkout->findEmail($this->Auth->user('id') );
+$email = new Email('default');
+
+$email->from(['buruktetemke@gmail.com' => 'Coalblack'])
+    ->to($useremail)
+    ->template('default','default') 
+         ->subject('Zahlungsbestätigung')
+         ->emailFormat('html')
+    ->viewVars(['value' => $bestnum])
+
+    ->viewVars(['transaction' => $transaction])
+        
+    ->send();
+  // return redirect           
+}
+   public function canceled()
+{
+    $bestnum=$this->request->query('best');
+    $transnum=$this->request->query('paymentId');
+    $this->render(false);
+    
+    $transaction =$this->Transactions->find(); 
               foreach($transaction as $trans){
     if($trans->order_number===$bestnum && $trans->user_id===$this->Auth->user('id')  ){
 
-           $thistrans = $this->Transactions->get($trans->id);
+     $thistrans = $this->Transactions->get($trans->id);
             // pr($thistrans['transaction_status_id']);die();
-     $thistrans->transaction_status_id=3;
+     $thistrans->transaction_status_id=4;
+     $thistrans->canceled_date=Time::now();
      $thistrans->transaction_number=$transnum;
   
 $this->Transactions->save($thistrans);
               }
               
 }
+
   // return redirect           
-}
-    
+} 
     /**
      * Index method
      *
@@ -288,28 +436,105 @@ $this->Transactions->save($thistrans);
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['TransactionTypes', 'Products', 'Users','TransactionsStatus']
-        ];
-        $transactions = $this->paginate($this->Transactions);
-
-        $this->set(compact('transactions'));
+        $transactions=$this->Transactions->find()->where(['transaction_status_id'=>2])
+                ->group('order_number')
+                ->having(!['sent' => true]);
+ 
+        $this->set(compact('transactions',$transactions));
  
     }
     public function makepdf()
-            { $this->viewBuilder()->setLayout(false);
-$pdf = new PDF();
-$pdf->AliasNbPages();
-$pdf->AddPage();
-$pdf->SetFont('Times','',12);
-for($i=1;$i<=40;$i++){
-$pdf->Cell(0,10,'Printing line number '.$i,0,1);
+{  if($this->request->is('post')){
+        $bestnum=$this->request->data['orderId'];
+          $transaction =$this->Transactions->find()
+           ->contain('Products') 
+           ->contain('Users')
+               
+           ->where(['Transactions.order_number'=>$bestnum]); 
+          $userId=$this->Checkout->finduserdet($bestnum);
+   
+         $usersDetail=$this->UsersDetail->find()
+                 ->where(['UsersDetail.user_id'=>$userId])
+                 ->where(['UsersDetail.user_detail_type_id'=>2]);
+         
+         $transactions =$this->Transactions->find()
+               ->select(['created_date','order_number','transaction_number','id'])
+           ->where(['Transactions.order_number'=>$bestnum])->first(); 
+        $this->set(compact('usersDetail',$usersDetail));
+                $this->set(compact('transactions',$transactions));
+                $this->set(compact('transaction',$transaction));
 
-}
+$this->viewBuilder()->setLayout(false);
+
+$pdf = new PDF();
+
+$title = 'Rechnung';
+$text='Bei Rückfragen erreichen Sie uns unter der unten angegebenen Telefonnummer';
+$pdf->SetTitle($title);
+$pdf->SetAuthor('Lucas Teufel');
+$pdf->PrintChapter($usersDetail);
+
+$pdf->PrintDate($transactions);
+$pdf->Ln();
+ 
+   
+$pdf->FancyTable($transaction);
+$pdf->Ln();
+$pdf->FancyTable1($transaction);
+$pdf->Ln();
+$pdf->Ending($text);
+$pdf->Ln();
 $pdf->Output();
 
 die();
-            }
+}
+}
+   public function makeliferung()
+{  if($this->request->is('post')){
+        $bestnum=$this->request->data['orderId'];
+          $transaction =$this->Transactions->find()
+           ->contain('Products') 
+           ->contain('Users')
+               
+           ->where(['Transactions.order_number'=>$bestnum]); 
+          $userId=$this->Checkout->finduserdet($bestnum);
+   
+         $usersDetail=$this->UsersDetail->find()
+                 ->where(['UsersDetail.user_id'=>$userId])
+                 ->where(['UsersDetail.user_detail_type_id'=>2]);
+         
+         $transactions =$this->Transactions->find()
+               ->select(['created_date','order_number','transaction_number','id'])
+           ->where(['Transactions.order_number'=>$bestnum])->first(); 
+        $this->set(compact('usersDetail',$usersDetail));
+                $this->set(compact('transactions',$transactions));
+                $this->set(compact('transaction',$transaction));
+
+$this->viewBuilder()->setLayout(false);
+
+$pdf = new LIFERUNG();
+
+$title = 'Rechnung';
+$text='Bei Rückfragen erreichen Sie uns unter der unten angegebenen Telefonnummer';
+$pdf->SetTitle($title);
+$pdf->SetAuthor('Lucas Teufel');
+$pdf->PrintChapter($usersDetail);
+
+$pdf->PrintDate($transactions);
+$pdf->Ln();
+ 
+   
+$pdf->FancyTable($transaction);
+$pdf->Ln();
+$pdf->FancyTable1($transaction);
+$pdf->Ln();
+$pdf->Ending($text);
+$pdf->Ln();
+$pdf->Output();
+
+die();
+}
+}
 public function add() {
       $this->render(false);
 
@@ -334,7 +559,7 @@ public function add() {
 
                     //$colorname1 =  $productname1."_".$color->color."_".$size->size;
                 $colorname1=$productname1;
-                    $name2 = $session->read($colorname1);
+                $name2 = $session->read($colorname1);
                     $this->set('name2', $name2);
 
                     if (null != $name2) {
@@ -350,7 +575,9 @@ public function add() {
                     // echo "second time";
                     $session->write($colorname1, $name2);
     
-          }}}
+          }
+          
+                    }}
 //                    }
 //                }
 //            }
@@ -386,6 +613,7 @@ public function add() {
         //$this->set(compact($productname1,$name2));
 
         echo $count;
+        
            $session->write('count', $count);
     }
 
@@ -394,8 +622,10 @@ public function add() {
     public function view() {
 $total=0;
 $pro = array();
-
+//$ordNo= uniqid();
         $session = $this->request->session();
+        $count=$session->read('count');
+       if($count){
         $products = $this->Products->find();
 //         $colors = $this->Colors->find();
 //             $sizes = $this->Sizes->find();
@@ -411,8 +641,8 @@ $pro = array();
             $this->set('name2', $name2);
 
             if ($product->online_vorhanden && $product->photo && $name2) {
-          
-                 
+         
+             
        $total = $total + ($name2[$product->id]*$product['product_price']);
    
             } else {
@@ -427,7 +657,10 @@ $pro = array();
         $this->set('_serialize', ['products']);
         $this->set(compact('pro'));
       
-        }
+       }} else {
+            $this->Flash->success(__('Ihrer Warenkorb ist Leer!'));
+      return $this->redirect(['controller'=>'Pages','action' => 'display','home']);
+}
      
     }
 
@@ -498,10 +731,38 @@ $product = $productTable->get($prodd);
         } else {
             $this->Flash->error(__('The item is removed from your shoping cart Please, try again.'));
         }
-
-        return $this->redirect(['controller'=>'transactions','action' => 'view']);
+        
+   $count=$session->read('count');
+   if($count){
+   return $this->redirect(['controller'=>'transactions','action' => 'view']);}else{
+            $this->Flash->success(__('Ihrer Warenkorb ist Leer!'));
+          return $this->redirect(['controller'=>'Pages','action' => 'display','home']);
+   }
     }
     
-    
+ public function sent() {
+     // $orderId = $this->request->query('orderId');
+         if($this->request->is('post')){
+  $orderId=implode("",$this->request->getData());
+
+ 
+     
+     $carts = $this->Transactions->find()
+ ->where(['order_number'=>$orderId]);
+
+     foreach($carts as $result){
+              $trans = $this->Transactions->get($result->id , [
+            'contain' => []
+        ]);
+
+ $trans->sent=1;
+ $this->Transactions->save($trans);
+        
+    }
+     return $this->redirect(['action' => 'index']);
+     }
+      
+ 
+      }   
 
 }

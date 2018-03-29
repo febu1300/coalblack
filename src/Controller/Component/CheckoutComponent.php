@@ -18,28 +18,22 @@ class CheckoutComponent extends Component
      */
     protected $_defaultConfig = [];
     
-         public function checkout($orders) {
-      //$this->render(true); 
 
- foreach($orders as $order){
- $transactionsTable = TableRegistry::get('Transactions');
- $transaction = $transactionsTable->newEntity();
- $transaction->transaction_type_id=1;
- $transaction->product_id=$order->product_id;
- $transaction->created_date=Time::now();
- $transaction->quantity=$order->quantity;
-    $transaction->price=$order->price;
-//$transaction->user_id= $this->Auth->user('id');
-$transaction->transaction_status_id=$order->transaction_status_id;
-//$transaction->transaction_number=$result->transaction->id;
-//$transaction->color_id=$color->id;
-//$transaction->size_id=$size->id;
-$transactionsTable->save($transaction); 
- }
-     //$total = $total + ($name2[$product->id]*$product['price']);
-
-
-     } 
+public function findEmail($useremail){
+      $usersTable = TableRegistry::get('Users');
+      
+      $product =$usersTable->get($useremail);
+   return $product->username;
+}
+    public function   findtId($userid,$prId) {
+            $usersTable = TableRegistry::get('Transactions');
+              $product =$usersTable->find(); 
+              foreach($product as $trans){
+                     if($userid==$trans->user_id && $trans->transaction_status_id==1 && $trans->product_id===$prId){
+                       return  $trans->id;  
+                     }
+              }
+    }
           public function findcart($userid) {
               $transid=[]; $i=0;
                $usersTable = TableRegistry::get('Transactions');
@@ -56,7 +50,7 @@ $transactionsTable->save($transaction);
              return $transid;
             
           }
-      
+
             public function findorder($userId){
     $bestid='';
               $usersTable = TableRegistry::get('Transactions');
@@ -68,16 +62,34 @@ $transactionsTable->save($transaction);
               }
               return $bestid;
           }
+                   public function finduserdet($bestId){
+   $useid='';
+              $usersTable = TableRegistry::get('Transactions');
+              $product =$usersTable->find(); 
+              foreach($product as $trans){
+              if( $trans->order_number===$bestId ){
+                $useid=$trans->user_id;
+                      }
+              }
+              return $useid;
+          }
 public function verifyAddress($ucheckoutid){
-$addressflag=0;
+
+
 $this->UsersDetail = TableRegistry::get('UsersDetail');
 $useraddress= $this-> UsersDetail->find() ;
+
 foreach ($useraddress as $address){
-   if($ucheckoutid==$address->user_id) {
-       $addressflag=1;
+ 
+   if($ucheckoutid===$address->user_id) {
+
+       return 1;
+   }else{
+      
+     
    }
 }
-return $addressflag;
+  return 0;
 }
     
 }

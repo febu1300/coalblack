@@ -27,7 +27,7 @@
         <a class="nav-link" href="/kontakt">KONTAKT</a>
       </li>
        <li class="nav-item no-gutters">
-        <a class="nav-link" href="/transactions/view">WARENKORB</a>
+        <a class="nav-link"  href="/transactions/view">WARENKORB</a>
              <?php if (!null == $this->request->session()->read('count')) {
                                         $c = $this->request->session()->read('count');
                                     } else {
@@ -36,7 +36,7 @@
                                     ?>
       </li>
        <li> <a href="/transactions/view"><span class="badge badge-pill badge-primary" id="cart-counter"><?php echo $c; ?></span> 
-      <img class="svg" id="u406" src="images/svg-67244x59.svg?crc=334609378" width="23" height="20" alt="" /> 
+      <img class="svg" id="u406" src="/img/cart.svg" width="23" height="20" alt="" /> 
                               
 </a> 
        </li>
@@ -44,7 +44,7 @@
 </ul>
 
 
-    
+
    
        
  

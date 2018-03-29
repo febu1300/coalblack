@@ -1,7 +1,7 @@
  <?php
  $this->layout(false);
  ?>
-     <!DOCTYPE html>
+ 
     <head>
        <?= $this->Html->css('site_global.css') ?>
    <?= $this->Html->css('bootstrap.min.css') ?>

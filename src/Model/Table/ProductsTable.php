@@ -88,6 +88,10 @@ class ProductsTable extends Table
             ->scalar('product_title')
             ->maxLength('product_title', 150)
             ->allowEmpty('product_title');
+        $validator
+            ->scalar('unit')
+            ->maxLength('unit', 150)
+            ->allowEmpty('unit');
 
         $validator
             ->scalar('product_description')

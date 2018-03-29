@@ -30,6 +30,7 @@
             echo $this->Form->control('product_description');
             echo $this->Form->control('sub_catagory_id', ['options' => $subCatagories]);
             echo $this->Form->control('created_date');
+            echo $this->Form->control('unit');
             echo $this->Form->control('price');
             echo $this->Form->control('online_vorhanden');
             echo $this->Form->control('new_in');

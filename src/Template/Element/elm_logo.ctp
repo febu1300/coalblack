@@ -1,3 +1,9 @@
-  <div class="clip_frame grpelem" id="u176"><!-- svg -->
-      <a href="/"><img class="svg" id="u174" src="images/svg-152405x42.svg?crc=10078615" width="300" height="170" alt="" data-mu-svgfallback="images/svg%20152405x42_poster_.png?crc=3972503182"/></a> 
+<style>
+    .svg1{
+    z-index: 9999999;
+}
+
+</style>
+<div class="clip_frame grpelem" ><!-- svg -->
+      <a href="/"><img class="svg1"  src="/img/logo.svg" width="300" height="170" alt="coalblack logo" /></a> 
      </div>

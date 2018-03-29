@@ -57,7 +57,12 @@ class UsersDetailTable extends Table
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
-
+   $validator
+            ->scalar('studio_name')
+            ->maxLength('studio_name', 100)
+            ->requirePresence('studio_name', 'create')
+            ->allowEmpty('studio_name');
+ 
         $validator
             ->scalar('address_line_1')
             ->maxLength('address_line_1', 100)

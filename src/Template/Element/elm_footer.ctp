@@ -16,6 +16,7 @@
 	width: 100%;
 	border-bottom: 1px solid darkgoldenrod;
 	border-top: 1px solid darkgoldenrod;
+        z-index: 999999;
 }
 .footer p {
 	margin: 0;

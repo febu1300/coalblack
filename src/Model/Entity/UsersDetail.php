@@ -33,6 +33,7 @@ class UsersDetail extends Entity
      */
     protected $_accessible = [
         'user_id' => true,
+        'studio_name' => true,
         'address_line_1' => true,
         'address_line_2' => true,
         'city' => true,
