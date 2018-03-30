@@ -34,7 +34,7 @@ class SubCatagoriesTable extends Table
         parent::initialize($config);
 
         $this->setTable('sub_catagories');
-        $this->setDisplayField('id');
+        $this->setDisplayField('sub_catagory_name');
         $this->setPrimaryKey('id');
 
         $this->belongsTo('ProductsCatagories', [

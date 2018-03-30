@@ -69,6 +69,7 @@ return true;
 }
 return parent::isAuthorized($user);
 }
+
 //          public function beforeRender(Event $event)
 //    {
 //        if (!array_key_exists('_serialize', $this->viewVars) &&
@@ -666,22 +667,30 @@ $pro = array();
 
     public function edit($id = null)
     {
-        $transaction = $this->Transactions->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $transaction = $this->Transactions->patchEntity($transaction, $this->request->getData());
-            if ($this->Transactions->save($transaction)) {
-                $this->Flash->success(__('The transaction has been saved.'));
+        $prodId=$id;
+      $transactions = $this->Transactions->newEntity();
+        if ($this->request->is('post')) {
+    $transactions->transaction_type_id=2;
+    $transactions->product_id=$prodId;
+    $transactions->user_id=$this->Auth->user('id');
+    $transactions->created_date=Time::now();
+   
+      
+    $transactions->quantity=$this->request->getData('quantity');
+    $transactions->price=$this->request->getData('price');
+    $transactions->transaction_number= uniqid();
+    $transactions->transaction_status_id=3;
+       
 
-                return $this->redirect(['action' => 'index']);
+            if ($this->Transactions->save($transactions)) {
+                $this->Flash->success(__('The products catagory has been saved.'));
+                return $this->redirect(['action' => 'bestandsposten']);
             }
-            $this->Flash->error(__('The transaction could not be saved. Please, try again.'));
+            $this->Flash->error(__('The products catagory could not be saved. Please, try again.'));
         }
-        $transactionTypes = $this->Transactions->TransactionTypes->find('list', ['limit' => 200]);
-        $products = $this->Transactions->Products->find('list', ['limit' => 200]);
-        $users = $this->Transactions->Users->find('list', ['limit' => 200]);
-        $this->set(compact('transaction', 'transactionTypes', 'products', 'users'));
+        $this->set(compact('transactions'));
+        
+        
     }
 
     /**
@@ -763,6 +772,25 @@ $product = $productTable->get($prodd);
      }
       
  
-      }   
+      } 
+      
+ public function bestandsposten(){
+              
+   
+
+
+        //$this->set('_serialize', ['products']);  
+   
+        $this->paginate = [
+           'contain' => ['SubCatagories', 'DiscountsTypes','sizes','colors']
+        ];
+        $products = $this->paginate($this->Products);
+
+        $this->set(compact('products'));
+    $this->set('_serialize', ['products']);
+ 
+     $this->set(compact('transactions'));
+ 
+ }
 
 }

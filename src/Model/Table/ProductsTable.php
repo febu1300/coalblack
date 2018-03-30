@@ -34,9 +34,9 @@ class ProductsTable extends Table
     public function initialize(array $config)
     {
         parent::initialize($config);
-
+$this->addBehavior('Translate', ['fields' => ['title']]);
         $this->setTable('products');
-        $this->setDisplayField('id');
+        $this->setDisplayField('product_name');
         $this->setPrimaryKey('id');
 
         $this->belongsTo('SubCatagories', [
@@ -95,7 +95,7 @@ class ProductsTable extends Table
 
         $validator
             ->scalar('product_description')
-            ->maxLength('product_description', 255)
+            ->maxLength('product_description', 1000)
             ->allowEmpty('product_description');
 
         $validator
@@ -126,7 +126,7 @@ class ProductsTable extends Table
         $validator
             ->decimal('discount')
             ->requirePresence('discount', 'create')
-            ->notEmpty('discount');
+            ->allowEmpty('discount');
 
         $validator
             ->scalar('photo_dir')

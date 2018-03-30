@@ -39,6 +39,7 @@ class AppView extends View
         parent::initialize();
         $this->loadHelper('Link');
                 $this->loadHelper('Breadcrumbs');
+                 $this->loadHelper('Number');
     }
     
     public function add(){

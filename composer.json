@@ -9,6 +9,7 @@
         "ext-simplexml": "^0.0.0",
         "baltpeter/internetmarke-php": "^0.1.1",
         "cakephp/cakephp": "3.5.*",
+        "cakephp/localized": "^3.4",
         "cakephp/migrations": "^1.0",
         "cakephp/plugin-installer": "^1.0",
         "elasticsearch/elasticsearch": "@stable",

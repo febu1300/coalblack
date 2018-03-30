@@ -43,6 +43,7 @@ use Cake\Log\Log;
 use Cake\Mailer\Email;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
+use Cake\I18n\I18n;
 
 /**
  * Uncomment block of code below if you want to use `.env` file during development.
@@ -56,7 +57,7 @@ use Cake\Utility\Security;
 //         ->toEnv()
 //         ->toServer();
 // }
-
+Configure::write('Config.language', 'de_DE');
 /*
  * Read configuration file and inject configuration into various
  * CakePHP classes.
@@ -93,7 +94,7 @@ if (Configure::read('debug')) {
  * choice but using UTC makes time calculations / conversions easier.
  * Check http://php.net/manual/en/timezones.php for list of valid timezone strings.
  */
-date_default_timezone_set('UTC');
+date_default_timezone_set('Europe/Berlin');
 
 /*
  * Configure the mbstring extension to use the correct encoding.
@@ -214,3 +215,5 @@ Type::build('timestamp')
 if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
+
+Plugin::load('Cake/Localized');

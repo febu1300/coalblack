@@ -3,6 +3,11 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\I18n\Time;
+use Cake\I18n\I18n;
+   
+// Prior to 3.5 use I18n::locale()
+
 /**
  * Products Controller
  *
@@ -20,6 +25,12 @@ class ProductsController extends AppController
             $this->set('_serialize', true);
         }
     }
+    public function beforeFilter(Event $event)
+{
+   
+        I18n::setLocale('de_DE');
+
+}
     /**
      * Index method
      *
@@ -27,7 +38,7 @@ class ProductsController extends AppController
      */
     public function index()
     {
-      
+         I18n::setLocale('de_DE');
         
               if($this->request->is('json')){
    
@@ -74,7 +85,9 @@ class ProductsController extends AppController
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
+              $product->created_date=Time::now();
               // the next 3 lines are added to call component upload
+            
             $product->photo_dir="img/".$this->name.'/'.$product->product_name;
             $product->photo=$this->request->getData('photo.name');
             $this->Filemanager->doUpload($product); 

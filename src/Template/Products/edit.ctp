@@ -4,49 +4,103 @@
  * @var \App\Model\Entity\Product $product
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $product->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Products'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Sub Catagories'), ['controller' => 'SubCatagories', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Sub Catagory'), ['controller' => 'SubCatagories', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Discounts Types'), ['controller' => 'DiscountsTypes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Discounts Type'), ['controller' => 'DiscountsTypes', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Product Details'), ['controller' => 'ProductsDetails', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Product Detail'), ['controller' => 'ProductsDetails', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Product Prices'), ['controller' => 'ProductPrices', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Product Price'), ['controller' => 'ProductPrices', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="products form large-9 medium-8 columns content">
+  <div class="modal-header pull-left">
+              
+                   <legend><?= __('Produktdatai ändern')?></legend>
+                   
+                </div>
+<div class="container-fluid">
+    <div class="col-sm-1 col-md-1 col-lg-1"></div>
+<div class="col-sm-9 col-md-9 col-lg-9">
     <?= $this->Form->create($product) ?>
     <fieldset>
-        <legend><?= __('Edit Product') ?></legend>
-        <?php
-            echo $this->Form->control('product_name');
-            echo $this->Form->control('product_title');
-            echo $this->Form->control('product_description');
-            echo $this->Form->control('sub_catagory_id', ['options' => $subCatagories]);
-            echo $this->Form->control('created_date');
-            echo $this->Form->control('price');
-                echo $this->Form->control('unit');
+    
+           <h3><?= h($product->id) ?>.<?= h($product->product_name) ?></h3>
+       
+            <div class="row"> 
+                <?php 
+            echo $this->Form->label('Subkatagorie');
+            echo $this->Form->control('sub_catagory_id', ['options' => $subCatagories,'label'=>false]); ?>
+            </div>
+         <hr>
+                <div class="row"> 
+                     <div class="col-sm-6 col-md-6 col-lg-6">
+                    <?php
+                         echo $this->Form->label('Produktname');
+            echo $this->Form->control('product_name',['label'=>false]);
+                        echo $this->Form->label('Produkttitle');
+            echo $this->Form->control('product_title',['label'=>false]);
+           echo $this->Form->label('Einheit');
+            echo $this->Form->control('unit',['label'=>false]);
+                    ?>
+                     </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                    <?php
+        
+            echo $this->Form->label('Produktsbeschreibung');
+            echo $this->Form->control('product_description',['label'=>false,'style'=>'width:300px']);
+  echo $this->Form->control('created_date',['type'=>'hidden']);
+                    ?> 
+                    </div>
+               </div>
+       <hr>
+       
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                         <?php
+            echo $this->Form->label('Verkaufspreise');
+            echo $this->Form->control('price',['label'=>false]);
+         
+     
+            ?>
+            </div>
+           <div class="col-sm-6 col-md-6 col-lg-6">
+                 <?php
+            echo $this->Form->label('Online Vorhanden');
             echo $this->Form->control('online_vorhanden');
-            echo $this->Form->control('new_in');
-            echo $this->Form->control('sale');
-            echo $this->Form->control('discount');
-            echo $this->Form->control('discount_type_id', ['options' => $discountsTypes]);
-            echo $this->Form->control('photo_dir',['type'=>'hidden']);
-            echo $this->Form->control('photo');
+           
+         
+       
+//            echo $this->Form->label('Produktname');
+//            echo $this->Form->control('photo_dir',['label'=>false]);
+    
         ?>
+                  </div>     
+        </div> 
+       <div class="row">
+             <div class="col-sm-6 col-md-6 col-lg-6">
+             <?php
+              echo $this->Form->label('Newin anmerken');
+            echo $this->Form->control('new_in');
+            ?></div>
+                   <div class="col-sm-6 col-md-6 col-lg-6">
+                <?php
+            echo $this->Form->label('Sale anmerken');
+            echo $this->Form->control('sale');
+             ?>
+                       </div>
+       </div><hr>
+            <div class="row">
+             <div class="col-sm-6 col-md-6 col-lg-6">
+             <?php
+             echo $this->Form->label('Angebotname');
+            echo $this->Form->control('discount_type_id', ['options' => $discountsTypes,'label'=>false]);
+            ?></div>
+                   <div class="col-sm-6 col-md-6 col-lg-6">
+                <?php
+                echo $this->Form->label('Angebotsbetrag');
+            echo $this->Form->control('discount',['label'=>false]);
+             ?>
+                       </div>
+       </div>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <hr>
+    <?= $this->Form->button(__('Versenden'),['class'=>'btn btn-primary btn-lg btn-block']) ?>
     <?= $this->Form->end() ?>
 </div>
+</div>
+   <div class="clearfix"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Abschließen</button>
+
+                </div>

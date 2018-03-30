@@ -31,7 +31,7 @@ class DiscountsTypesTable extends Table
         parent::initialize($config);
 
         $this->setTable('discounts_types');
-        $this->setDisplayField('id');
+        $this->setDisplayField('discount_type');
         $this->setPrimaryKey('id');
           $this->hasMany('Products', [
             'foreignKey' => 'discount_type_id'

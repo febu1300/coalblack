@@ -60,6 +60,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
+   
     $routes->connect('/versanddetail', ['controller' => 'Pages', 'action' => 'display','versanddetail']);
     $routes->connect('/anmelden', ['controller' => 'Pages', 'action' => 'display','anmelden']);
     $routes->connect('/angeboten', ['controller' => 'Pages', 'action' => 'display','angeboten']);
@@ -70,6 +71,8 @@ Router::scope('/', function (RouteBuilder $routes) {
          
     $routes->connect('/cbbackend', ['controller' => 'Pages', 'action' => 'display','admin']);
     $routes->connect('/cb_admin', ['controller' => 'Dashboard', 'action' => 'index','dashboard']);
+    $routes->connect('/cb_admin', ['controller' => 'Dashboard', 'action' => 'index','dashboard']);
+
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
     /**

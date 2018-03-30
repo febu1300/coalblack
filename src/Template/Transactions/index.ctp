@@ -4,6 +4,16 @@
   * @var \App\View\AppView $this
   */
 ?>
+<style>
+    .no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+margin-top:0;
+margin-bottom:0;
+
+}
+</style>
+ <div class="container-fluid">
 <nav class="navbar navbar-expand-lg navbar-dark bg-light " >
   <a class="navbar-brand" href="#">Navbar</a>
 
@@ -26,32 +36,31 @@
     <div class="col-sm-3 col-md-3 col-lg-3 ">
  
 
-<ul class="nav nav-pills flex-column">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
-</ul>
+
+
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item"><?= $this->Html->link(__('Dashboard'), ['controller' => 'Dashboard', 'action' => 'index']) ?></li>
+           <li class="nav-item"><?= $this->Html->link(__('Bestandsaufnahme'), ['controller' => 'Transactions', 'action' => 'bestandsposten']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('Neue Produkt'), ['controller'=>'products','action' => 'add']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('List Sub Catagories'), ['controller' => 'SubCatagories', 'action' => 'index']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('New Sub Catagory'), ['controller' => 'SubCatagories', 'action' => 'add']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('List Discounts Types'), ['controller' => 'DiscountsTypes', 'action' => 'index']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('New Discounts Type'), ['controller' => 'DiscountsTypes', 'action' => 'add']) ?></li>
+       
+   
+
+        <li class="nav-item"><?= $this->Html->link(__('List Product Details'), ['controller' => 'ProductsDetails', 'action' => 'index']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('New Product Detail'), ['controller' => 'ProductsDetails', 'action' => 'add']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('List Product Prices'), ['controller' => 'ProductPrices', 'action' => 'index']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('New Product Price'), ['controller' => 'ProductPrices', 'action' => 'add']) ?></li>
+    </ul>
 
 
     </div>
     <div class="col-sm-9 col-md-9 col-lg-9">
-       <table class="table table-sm table-inverse" cellpadding="0" cellspacing="0">
+       <table class="table table-sm table-bordered " cellpadding="0" cellspacing="0">
         <thead>
             <tr> <th scope="col">#</th>
                 <th scope="col">Order Id</th>
@@ -66,30 +75,28 @@
     <tr>
      <?php if ($cart->sent==Null):?>
         <td><?= $i=$i+1?></td>
-         <td><?= $cart->order_number?></td>
+        <td><p><strong><?= $cart->order_number?></strong></p></td>
 
       
-<td >
+<td class="no-gutters" >
 <form  method="post" action="/transactions/sent">
-     
-    <input type="checkbox" name="orderId"  oninvalid="this.setCustomValidity('Einchecken erst ob die waren verschickt ist')" required value="<?= $cart->order_number?>"> 
-   
-  <input label="verschickt" type="submit" value="Verschicken" >
-
+    <input style=" width:50px " type="checkbox" name="orderId"  oninvalid="this.setCustomValidity('Einchecken erst ob die waren verschickt ist')" required value="<?= $cart->order_number?>"> 
+    <button  type="submit"  formtarget="_blank" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span></button>
 </form> 
 </td>
- <td class="actions">
+ <td class="no-gutters">
 <form method='post' action="/transactions/makepdf">
   <input type="input" hidden name="orderId" value="<?= $cart->order_number?>"> 
  
-  <input label="drucken" type="submit"  formtarget="_blank" value="Drucken">
+ <button  type="submit"  formtarget="_blank" class="btn btn-primary"><span class="glyphicon glyphicon-print"></span></button>
 </form>               
  </td>
-  <td class="actions">
+  <td class="no-gutters">
 <form method='post' action="/transactions/makeliferung">
   <input type="input" hidden name="orderId" value="<?= $cart->order_number?>"> 
+  <button  type="submit"  formtarget="_blank" class="btn btn-primary"><span class="glyphicon glyphicon-print"></span></button>
+
  
-  <input label="drucken" type="submit"  formtarget="_blank" value="Drucken">
 </form>               
  </td>
             </tr>
@@ -101,5 +108,6 @@
     </table>
 
     </div>
-         
+        
     </div>
+</div>
