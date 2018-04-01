@@ -25,12 +25,7 @@ class ProductsController extends AppController
             $this->set('_serialize', true);
         }
     }
-    public function beforeFilter(Event $event)
-{
-   
-        I18n::setLocale('de_DE');
 
-}
     /**
      * Index method
      *
@@ -38,7 +33,7 @@ class ProductsController extends AppController
      */
     public function index()
     {
-         I18n::setLocale('de_DE');
+      
         
               if($this->request->is('json')){
    

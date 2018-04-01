@@ -16,7 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
-use Cake\I18n\I18n;
+
 
 /**
  * Application Controller
@@ -47,6 +47,7 @@ class AppController extends Controller
         $this->loadComponent('Filemanager');
         $this->loadComponent('Checkout');
           $this->loadComponent('Passhashvalid');
+            $this->loadComponent('Preiseangebote');
              $this->loadComponent('Checkout');
          $this->loadComponent('Auth', [
       'authorize'=> 'Controller',
@@ -69,7 +70,7 @@ class AppController extends Controller
 
         // Allow the display action so our PagesController
         // continues to work. Also enable the read only actions.
-    I18n::locale('de');
+
     }
 //public function beforeFilter(Event $event)
 //{

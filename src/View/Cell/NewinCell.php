@@ -35,9 +35,9 @@ class NewinCell extends Cell
                         
                 ->select(['id','product_name','photo','photo_dir','new_in','price','product_description'])
                    
-                 ->where((['new_in'=>true]))
-//                   
-		->order(['id'=>'ASC'])
+                 ->where((['new_in'=>1]))
+           ->where((['online_vorhanden'=>1]))
+
 			->limit(8)
 			->toArray();
               

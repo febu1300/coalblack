@@ -14,6 +14,7 @@ div.row-eq-height {
     display:flex;    
     align-items:stretch;
 }
+.mb-1{color:#000011;}
 </style>
 <?php foreach ($products1 as $product): ?>
 
@@ -34,7 +35,18 @@ div.row-eq-height {
     </div>
          <hr>
             <div class="d-flex w-50 justify-content-between">
-                <h5 class="mb-1"><small> <?php echo money_format('%i', $product['price']); ?>$</small></h5>
+                          <p class="bold"><strong><?php if($product->discount_type_id===1) 
+    {
+        echo $this->Number->currency($product->price,'EUR');
+    
+    }elseif(($product->discount_type_id===2) ){
+        echo $this->Number->currency($product->price-$product->discount,'EUR');
+    }elseif($product->discount_type_id===3){
+        echo $this->Number->currency($product->price-$product->price*($product->discount/100),'EUR');
+    }
+            
+            ?></strong></p>
+             
       
     </div>
          <small class="text-muted">zzgl. Versand</small>

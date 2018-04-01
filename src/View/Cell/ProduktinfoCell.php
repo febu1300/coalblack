@@ -33,7 +33,7 @@ class ProduktinfoCell extends Cell
 $ProductsTabel = TableRegistry::get('Products');
 //  pr($article_type);die();
 $products1=$ProductsTabel->find()
-->select(['id','product_name','photo','photo_dir','new_in','online_vorhanden','price','product_description'])
+->select(['id','product_name','photo','photo_dir','new_in','online_vorhanden','price','product_description','discount','discount_type_id'])
         
   ->where((['id'=>$wh]))
         ->order(['id'=>'ASC'])

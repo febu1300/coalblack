@@ -120,10 +120,47 @@ return parent::isAuthorized($user);
 //        )
 //);
             
+$total=0;
+$pro = array();
+//$ordNo= uniqid();
+        $session = $this->request->session();
+        $count=$session->read('count');
+       if($count){
+        $products = $this->Products->find();
+//         $colors = $this->Colors->find();
+//             $sizes = $this->Sizes->find();
+        foreach ($products as $product) {
+             $productname = explode(" ", $product->product_name);
+            $productname1 = implode("", $productname);
+//            foreach ($colors as $color) {
+//            foreach ($sizes as $size) {
+             
+            //$colorname1 =  $productname1."_".$color->color."_".$size->size;
+             $colorname1 =  $productname1;
+            $name2 = $session->read($colorname1);
+            $this->set('name2', $name2);
 
-//   $prodd= $this->request->query('name');
-//   //$value=$this->Transaction->get($value);
-//   pr($prodd);die();
+            if ($product->online_vorhanden && $product->photo && $name2) {
+         
+             
+       $total = $total + ($name2[$product->id]*$product['product_price']);
+   
+            } else {
+          
+            }
+//            }}
+        $this->paginate($this->Products);
+       
+        //$this->set(compact('colors'));
+        $this->set(compact('products'));
+        //$this->set(compact('sizes'));
+        $this->set('_serialize', ['products']);
+        $this->set(compact('pro'));
+      
+       }} else {
+            $this->Flash->success(__('Ihrer Warenkorb ist Leer!'));
+      return $this->redirect(['controller'=>'Pages','action' => 'display','home']);
+}
 
  if($this->request->is('post')){
      $selMeth=$this->request->getData();
@@ -262,8 +299,8 @@ $Sofortueberweisung = new Sofortueberweisung($configkey);
             $name2 = $session->read($colorname1);
             $this->set('name2', $name2);
 //
-            if ($product->online_vorhanden && $product->photo && $name2) {
-         $transaction = $this->Transactions->newEntity();
+   if ($product->online_vorhanden && $product->photo && $name2) {
+ $transaction = $this->Transactions->newEntity();
  $transaction->transaction_type_id=1;                   //transaction type Verkauf
  $transaction->product_id=$product->id;
  $transaction->created_date=Time::now();
@@ -271,17 +308,14 @@ $Sofortueberweisung = new Sofortueberweisung($configkey);
  $transaction->price=$product->price;
  $transaction->user_id= $this->Auth->user('id');
  $transaction->transaction_status_id=1;      
-  $transaction->payment_method_id=1;  
+ $transaction->payment_method_id=1;  
  $transaction->order_number= $bestlnumr;
 //$onum=$transaction->order_number;
 //$transaction->transaction_number=$result->transaction->id;
 //$transaction->color_id=$color->id;
 //$transaction->size_id=$size->id;
 $this->Transactions->save($transaction); 
-  
-
-
-              }
+ }
               
 }
       
@@ -440,6 +474,7 @@ $this->Transactions->save($thistrans);
         $transactions=$this->Transactions->find()->where(['transaction_status_id'=>2])
                 ->group('order_number')
                 ->having(!['sent' => true]);
+     
  
         $this->set(compact('transactions',$transactions));
  
@@ -561,7 +596,6 @@ public function add() {
                     //$colorname1 =  $productname1."_".$color->color."_".$size->size;
                 $colorname1=$productname1;
                 $name2 = $session->read($colorname1);
-                    $this->set('name2', $name2);
 
                     if (null != $name2) {
 
@@ -643,8 +677,9 @@ $pro = array();
 
             if ($product->online_vorhanden && $product->photo && $name2) {
          
-             
-       $total = $total + ($name2[$product->id]*$product['product_price']);
+        $newprice=$this->Preiseangebote->discountarten($product->id);
+    
+    $total = $total + ($name2[$product->id]*$newprice);
    
             } else {
           
@@ -653,11 +688,11 @@ $pro = array();
         $this->paginate($this->Products);
        
         //$this->set(compact('colors'));
-        $this->set(compact('products'));
+        $this->set(compact('products',$products));
         //$this->set(compact('sizes'));
-        $this->set('_serialize', ['products']);
-        $this->set(compact('pro'));
-      
+//        $this->set('_serialize', ['products']);
+//        $this->set(compact('pro'));
+   
        }} else {
             $this->Flash->success(__('Ihrer Warenkorb ist Leer!'));
       return $this->redirect(['controller'=>'Pages','action' => 'display','home']);
@@ -683,7 +718,7 @@ $pro = array();
        
 
             if ($this->Transactions->save($transactions)) {
-                $this->Flash->success(__('The products catagory has been saved.'));
+                $this->Flash->success(__('Diese Bestandsmenge ist gespeichert.'));
                 return $this->redirect(['action' => 'bestandsposten']);
             }
             $this->Flash->error(__('The products catagory could not be saved. Please, try again.'));

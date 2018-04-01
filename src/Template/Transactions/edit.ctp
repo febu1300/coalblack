@@ -10,10 +10,13 @@
                     <button type="button" class="btn btn-primary">Save changes</button>-->
                  <legend><?= __('Bestandsaufnahme') ?></legend>
                 </div>
-<div class="transactions form large-9 medium-8 columns content">
+             
+
+<div class="col-sm-9 col-md-9 col-lg-9">
+
     <?= $this->Form->create($transactions) ?>
     <fieldset>
-       
+    
         <?php
            echo $this->Form->label('Menge');
             echo $this->Form->control('quantity',['label'=>false]);
@@ -22,12 +25,12 @@
  
         ?>
     </fieldset>
-
+   <hr>         <?= $this->Form->button(__('Speichern'),['class'=>"btn btn-primary"]) ?>
+    <?= $this->Form->end() ?>
 </div>
          <div class="clearfix"></div>
                 <div class="modal-footer">
-                        <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+
 <!--                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>-->
                 </div>

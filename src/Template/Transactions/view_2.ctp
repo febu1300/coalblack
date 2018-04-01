@@ -1,6 +1,5 @@
  <?php
  $this->layout(false);
- 
  ?>
 <head>
     <style>
@@ -100,22 +99,7 @@
                  <div class="col-sm-1 col-md-1 col-lg-1 thebodyline alignend "></div>
                     <div class="col-sm-1 col-md-1 col-lg-1 thebodyline alignend ">
                         
-                       <span class="push-price"><h6>
-                                  <?php if($product->discount_type_id===1) 
-    {
-           $cal= $name2[$product->id]*$product['price'];
-        echo $this->Number->currency( $cal,'EUR');
-    
-    }elseif(($product->discount_type_id===2) ){
-       $cal= $name2[$product->id]*$product['price']-$name2[$product->id]*$product->discount;
-        echo $this->Number->currency( $cal,'EUR');
-    }elseif($product->discount_type_id===3){
-      $cal=$name2[$product->id]*$product['price']-$name2[$product->id]*$product['price']*($name2[$product->id]*$product->discount/100);
-        echo $this->Number->currency( $cal,'EUR');
-    }
-            
-            ?>  
-                               </h6></span>
+                       <span class="push-price"><h6><?=$this->Number->currency( $name2[$product->id]*$product['price'],'EUR')?></h6></span>
                    </div>
                          <div class="col-sm-1 col-md-1 col-lg-1 thebodyline alignend">
                                <span class="pushdown"> <form method="post" action="/transactions/delete?prod=<?=$product->id?>">   
@@ -131,7 +115,7 @@
                
              </div> <br>
       
- <?php $total = $total + ($cal);?>
+ <?php $total = $total + ($name2[$product->id]*$product['price']);?>
            
                         <?php }}?>
       
@@ -149,16 +133,16 @@
                <br>
                  <div class="row"> 
                      <div class="col-sm-6 col-md-6 col-lg-6 "> <span class="push-down"><h6> NettoBetrag:</h6> </span></div>
-                     <div class="col-sm-4 col-md-4 col-lg-4"><span class="push-down"><h6>   <?=$this->Number->currency($total-$total*19/100,'EUR')?>  </h6></span></div>
+                     <div class="col-sm-4 col-md-4 col-lg-4"><span class="push-down"><h6>   <?=money_format('%.2n', $total-$total*19/100)?>  </h6></span></div>
                   
                  </div><br>
-                               <div class="row "> 
+                               <div class="row"> 
                      <div class="col-sm-6 col-md-6 col-lg-6 "> <span class="push-down"><h6> MWSt 19%:</h6> </span></div>
-                    <div class="col-sm-4 col-md-4 col-lg-4 pull-right"><span class="push-down"><h6>  <?=$this->Number->currency($total*19/100,'EUR')?>    </h6></span></div>
+                    <div class="col-sm-4 col-md-4 col-lg-4"><span class="push-down"><h6>  <?=money_format('%.2n',$total*19/100)?>    </h6></span></div>
                                </div><br>
                                <div class="row"> 
                      <div class="col-sm-6 col-md-6 col-lg-6 "> <span class="push-down"><h6>Gesamtpreise:</h6> </span></div>
-                    <div class="col-sm-4 col-md-4 col-lg-4"><span class="push-down"><h6>   <?=$this->Number->currency($total,'EUR')?>    </h6></span></div>
+                    <div class="col-sm-4 col-md-4 col-lg-4"><span class="push-down"><h6>   <?=money_format('%.2n',$total)?>    </h6></span></div>
                                </div><br>
                <div class="row">
                      <a href="/" class="btn btn-primary btn-block">

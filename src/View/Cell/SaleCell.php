@@ -33,12 +33,12 @@ class SaleCell extends Cell
 		$products1=$this->Products->find()
                         
                         
-                     ->select(['id','product_name','photo','photo_dir','new_in','price','product_description'])
+                     ->select(['id','online_vorhanden','product_name','photo','photo_dir','new_in','price','product_description','discount','discount_type_id'])
                    
                          ->where((['sale'=>true]))
-//                   
+             ->where((['online_vorhanden'=>1]))
 		
-			->limit(8)
+	
 			->toArray();
               
     $this->set(['products1'=>$products1]);

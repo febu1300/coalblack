@@ -20,12 +20,7 @@
     <img src="<?='/'. h($product->photo_dir.'/main/'.$product->photo)?>" style="width:150px; height:150px;">
     </div>
         <div class="col-sm-9 col-md-9 col-lg-9">
-            
-        </div>    
-        </div>
-      <div class="row">
-   
-    <table class="horizontalSlideShow-table">
+            <table class="horizontalSlideShow-table">
    
         <tr>
             <th scope="row"><?= __('Product Title') ?></th>
@@ -47,14 +42,7 @@
             <th scope="row"><?= __('Discounts Type') ?></th>
             <td><?= $product->has('discounts_type') ? $this->Html->link($product->discounts_type->discount_type, ['controller' => 'DiscountsTypes', 'action' => 'view', $product->discounts_type->id]) : '' ?></td>
         </tr>
-        <tr>
-            <th scope="row"><?= __('Photo Dir') ?></th>
-            <td><?= h($product->photo_dir) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Photo') ?></th>
-            <td><?= h($product->photo) ?></td>
-        </tr>
+ 
         <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($product->id) ?></td>
@@ -68,22 +56,27 @@
             <td><?= $this->Number->format($product->discount) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Created Date') ?></th>
+            <th scope="row"><?= __('Datum') ?></th>
             <td><?= h($product->created_date) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Online Vorhanden') ?></th>
-            <td><?= $product->online_vorhanden ? __('Yes') : __('No'); ?></td>
+            <td><?= $product->online_vorhanden ? __('Ja') : __('Nein'); ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('New In') ?></th>
-            <td><?= $product->new_in ? __('Yes') : __('No'); ?></td>
+            <td><?= $product->new_in ? __('Ja') : __('Nein'); ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Sale') ?></th>
-            <td><?= $product->sale ? __('Yes') : __('No'); ?></td>
+            <td><?= $product->sale ? __('Ja') : __('Nein'); ?></td>
         </tr>
-    </table>
+    </table>  
+        </div>    
+        </div>
+      <div class="row">
+   
+  
 
       </div>
  

@@ -4,13 +4,13 @@
  * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
  */
 ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-light " >
-  <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg  bg-light " >
+  <a class="navbar-brand" href="/dashboard">Dashboard</a>
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      
       </li>
   
     </ul>
@@ -25,33 +25,27 @@
  
 
 <ul class="nav nav-pills flex-column">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
+ 
+    <li class="nav-item"><?= $this->Html->link(__('Neue Benützer hinzufügen'), ['controller'=>'Users','action' => 'add']) ?></li>
+           <li class="nav-item"><?= $this->Html->link(__('Bestandsverwaltung'), ['controller' => 'Transactions', 'action' => 'bestandsposten']) ?></li>
+           <li class="nav-item"><?= $this->Html->link(__('Lagerverwaltung'), ['controller' => 'Transactions', 'action' => 'index']) ?></li>
+           <li class="nav-item"><?= $this->Html->link(__('Benützerverwaltung'), ['controller'=>'Users','action' => 'index']) ?></li>
+           <hr>
+
+           <li class="nav-item"><?= $this->Html->link(__('Produktliste'), ['controller'=>'products','action' => 'index']) ?></li>
+           <li class="nav-item"><?= $this->Html->link(__('Subkatagorieliste'), ['controller'=>'subCatagories','action' => 'index']) ?></li>
+     <li class="nav-item"><?= $this->Html->link(__('Haupkatagorieliste'), ['controller'=>'ProductsCatagories','action' => 'index']) ?></li>
+
+   
+
 </ul>
 
 
     </div>
 <div class="col-sm-9 col-md-9 col-lg-9 ">
-<div class="users index large-9 medium-8 columns content">
+
     <h3><?= __('Users') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table class="table table-sm table-bordered " cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
@@ -91,5 +85,5 @@
         </ul>
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
-</div>
+
 </div>

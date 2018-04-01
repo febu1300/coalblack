@@ -1,10 +1,9 @@
 <?php foreach ($products1 as $product): ?>
-<?= $product['studio_name'] ?>
-<?= $product['address_line_1'] ?>
-<?= $product['address_line_2'] ?>
-<?= $product['city'] ?>
-<?= $product['state'] ?>
-<?= $product['postal_code'] ?>
-<?= $product['country'] ?>
+<h6><?= $product['studio_name'] ?></h6>
+<p><span><?= $product['address_line_1'] ?>&nbsp;</span> <span><?= $product['address_line_2'] ?></span><p>
+<p><?= $product['postal_code'] ?>,<p>
+<p><?= $product['city'] ?> <span>&nbsp;</span><?= $product['state'] ?><p>
+
+<p><?= $product['country'] ?><p>
 
 <?php endforeach; ?>

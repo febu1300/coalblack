@@ -14,13 +14,13 @@ margin-bottom:0;
 }
 </style>
  <div class="container-fluid">
-<nav class="navbar navbar-expand-lg navbar-dark bg-light " >
-  <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg  bg-light " >
+  <a class="navbar-brand" href="/dashboard">Dashboard</a>
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      
       </li>
   
     </ul>
@@ -40,26 +40,18 @@ margin-bottom:0;
 
     <ul class="nav nav-pills flex-column">
       <li class="nav-item"><?= $this->Html->link(__('Dashboard'), ['controller' => 'Dashboard', 'action' => 'index']) ?></li>
-           <li class="nav-item"><?= $this->Html->link(__('Bestandsaufnahme'), ['controller' => 'Transactions', 'action' => 'bestandsposten']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('Neue Produkt'), ['controller'=>'products','action' => 'add']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('List Sub Catagories'), ['controller' => 'SubCatagories', 'action' => 'index']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('New Sub Catagory'), ['controller' => 'SubCatagories', 'action' => 'add']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('List Discounts Types'), ['controller' => 'DiscountsTypes', 'action' => 'index']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('New Discounts Type'), ['controller' => 'DiscountsTypes', 'action' => 'add']) ?></li>
-       
+           <li class="nav-item"><?= $this->Html->link(__('Bestandsverwaltung'), ['controller' => 'Transactions', 'action' => 'bestandsposten']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('Produktliste'), ['controller'=>'products','action' => 'index']) ?></li>
+      
    
 
-        <li class="nav-item"><?= $this->Html->link(__('List Product Details'), ['controller' => 'ProductsDetails', 'action' => 'index']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('New Product Detail'), ['controller' => 'ProductsDetails', 'action' => 'add']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('List Product Prices'), ['controller' => 'ProductPrices', 'action' => 'index']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('New Product Price'), ['controller' => 'ProductPrices', 'action' => 'add']) ?></li>
+      
     </ul>
 
 
     </div>
     <div class="col-sm-9 col-md-9 col-lg-9">
+        <h3><?= __('Versandverwaltung') ?></h3>
        <table class="table table-sm table-bordered " cellpadding="0" cellspacing="0">
         <thead>
             <tr> <th scope="col">#</th>
@@ -73,11 +65,11 @@ margin-bottom:0;
         <tbody><?php $i=0;?>
     <?php foreach ($transactions as $cart):?>
     <tr>
-     <?php if ($cart->sent==Null):?>
+     <?php if ($cart->sent==0):?>
         <td><?= $i=$i+1?></td>
         <td><p><strong><?= $cart->order_number?></strong></p></td>
 
-      
+  
 <td class="no-gutters" >
 <form  method="post" action="/transactions/sent">
     <input style=" width:50px " type="checkbox" name="orderId"  oninvalid="this.setCustomValidity('Einchecken erst ob die waren verschickt ist')" required value="<?= $cart->order_number?>"> 
