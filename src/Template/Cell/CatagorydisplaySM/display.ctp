@@ -1,5 +1,9 @@
 <style>
-
+.textoverimg{
+overflow-x: hidden;
+    word-wrap: break-word;
+  
+}
 </style>
 
 <div class="container">
@@ -11,7 +15,7 @@
      
       <div class="gold-block">
           
-    <h2 class="textoverimg"><?=$productcat['catagory_name']?>></h2>
+    <h2 class="textoverimg"><?=$productcat['catagory_name']?> ></h2>
 
   </div>
                </a>

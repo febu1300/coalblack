@@ -38,14 +38,39 @@ $this->layout = 'frontlayout';
 <?=$this->element('sidebar/meineseite');?>
             </div>
   
-  <div class="col-sm-4 col-md-4 col-lg-4">
-<?php $cell=$this->cell('Billingadd')?>
-      <?=$cell?>
+        <div class="col">
+                <div class="jumbotron" >
+    <div class="card-header"><h5>Versandadress</h5></div>
+  <div class="card-body">
+   <div class="col-sm-6 col-md-6 col-lg-6">
+ 
+    <?=$this->cell('Shippingadd');?>
     </div>
-  <div class="col-sm-4 col-md-4 col-lg-4">
-<?php $cell=$this->cell('Shippingadd')?>
-      <?=$cell?>
-    </div>
+      </div>  
+  
+     
+      <div class="card-header"><h5>Rechnungadress</h5></div>
+      
+    <div class="card-body">
+      <div class="col-sm-6 col-md-6 col-lg-6">
+ <?=$this->cell('Billingadd');?>
+</div>
+</div>
+         
+      
+    
+
+
+    <div class="card-header"><h5>Bestellungen</h5></div>
+      
+
+      <div class="col-sm-12 col-md-12 col-lg-12">
+ <?=$this->cell('Orders');?>
+</div>
+
+          </div>
+    
+     </div>  
      
      </div>  
 

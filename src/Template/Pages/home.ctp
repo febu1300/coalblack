@@ -20,8 +20,16 @@ $this->layout = 'frontlayout';
 ?>
 
 <head>
-  
+    <title>
+        Tattoo Supply
+    </title>
 
+    <style>
+        .underlinegold{
+                 border-bottom: 2px solid #C7984E;
+        }
+    
+    </style>
     
 
 </head>
@@ -31,9 +39,9 @@ $this->layout = 'frontlayout';
 
 <?=$this->element('/elm_home/elm_section');?>
   
-     <div class="col-sm-12 col-md-12 col-lg-12">
+     <div class="col-sm-12 col-md-12 col-lg-12 underlinegold">
         <div class="row">
-          <div class="col-sm-4 col-md-4 col-lg-4">
+          <div class="col-sm-4 col-md-4 col-lg-4 ">
 <?=$this->cell('Catagorydisplay')?>
       
     </div>
@@ -44,3 +52,8 @@ $this->layout = 'frontlayout';
 
         </div>
     </div>
+<div class="col-sm-12 col-md-12 col-lg-12 underlinegold">
+    <?=$this->element('/elm_home/elm_rowlogo')?>
+    <?=$this->element('/elm_home/elm_abovefooter')?>
+</div>
+<br><br>

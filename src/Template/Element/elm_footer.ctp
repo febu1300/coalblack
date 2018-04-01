@@ -18,9 +18,7 @@
 	border-top: 1px solid darkgoldenrod;
         z-index: 999999;
 }
-.footer p {
-	margin: 0;
-}
+
 .footer img {
 	max-width: 100%;
 }
@@ -53,82 +51,26 @@ li{
 }
 
 
-.bg-gray {
-	background-image: -moz-linear-gradient(center bottom, #BBBBBB 0%, #F0F0F0 100%);
-	box-shadow: 0 1px 0 #B4B3B3;
-}
-.social li {
-	background: none repeat scroll 0 0 #B5B5B5;
-	border: 2px solid #B5B5B5;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	-o-border-radius: 50%;
-	-ms-border-radius: 50%;
-	border-radius: 50%;
-	float: left;
-	height: 36px;
-	line-height: 36px;
-	margin: 0 8px 0 0;
-	padding: 0;
-	text-align: center;
-	width: 36px;
-	transition: all 0.5s ease 0s;
-	-moz-transition: all 0.5s ease 0s;
-	-webkit-transition: all 0.5s ease 0s;
-	-ms-transition: all 0.5s ease 0s;
-	-o-transition: all 0.5s ease 0s;
-}
-.social li:hover {
-	transform: scale(1.15) rotate(360deg);
-	-webkit-transform: scale(1.1) rotate(360deg);
-	-moz-transform: scale(1.1) rotate(360deg);
-	-ms-transform: scale(1.1) rotate(360deg);
-	-o-transform: scale(1.1) rotate(360deg);
-}
-.social li a {
-	color: #ffffff;
-}
-.social li:hover {
-	border: 2px solid #2c3e50;
-	background: #2c3e50;
-}
-.social li a i {
-	font-size: 16px;
-	margin: 0 0 0 5px;
-	color: #EDEFF1 !important;
-}
-.footer-bottom {
-	background: #000011;
-	border-top: 1px solid #DDDDDD;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-.footer-bottom p.pull-left {
-	padding-top: 6px;
-}
-.payments {
-	font-size: 1em;	
-       background: red;
-   margin-left:45%;
-}
+
+
+
+
+
 .centered {
    text-align: center;
    font-size: 0;
+      align-content:  center;
 }
 .liner{
     color: darkgoldenrod;
     font-weight: bold;
 }
-.zenter{
-    
-    align-content:  center;
-}
-h5{color: white;}
-h6{color: white;}
+
+h6.c,h5.c{color:white;}
+
 </style> 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <div class="footer" id="footer">
+  <div class="footer">
         <div class="container">
             <div class="row centered">
                 <div class="col-lg-3  col-md-3 col-sm-4 col-xs-6 ">
@@ -177,25 +119,25 @@ h6{color: white;}
     </div>
     <!--/.footer-->
     
-    <div class="footer-bottom">
+    <div class="footer">
         <div class="container">
+            <br>
             <div class="row centered">
             
-                <div class="col-lg-4  col-md-4 col-sm-4 col-xs-6 "></div>
-<div class="col-lg-5  col-md-5 col-sm-5 col-xs-5 ">
-                <h5>EINFACH UND SICHER BEZAHLEN</h5>
-                <p>RECHNUNG - NACHNAHME - PAYPAL</p>
+      
+<div class="col ">
+                <h5 class="c">EINFACH UND SICHER BEZAHLEN</h5>
+             
+                <h6 class="c">SOFORTÜBERWEISUNG - NACHNAHME - PAYPAL</h6>            
+                <p class="c"> copyright 2018</p>
 </div>
-                <div class="col-lg-3  col-md-3 col-sm-4 col-xs-6 "></div>
+              
             </div>
-                      <div class="row centered">
+                      <div class="row ">
             
-                <div class="col-lg-4  col-md-4 col-sm-4 col-xs-6 "></div>
-<div class="col-lg-5  col-md-5 col-sm-5 col-xs-5 ">
-                <h6>SOFORTÜBERWEISUNG - NACHNAHME - PAYPAL</h6>
-                
-</div>
-                <div class="col-lg-3  col-md-3 col-sm-4 col-xs-6 "></div>
+
+     
+
             </div>
         </div>    </div>
 

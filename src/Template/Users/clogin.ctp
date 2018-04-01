@@ -5,10 +5,17 @@
  */
 
 ?>
-<div class="users form">
+<div class="row">
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        
+    </div>
+        
+ 
+<div class="form-group">
 <?= $this->Flash->render() ?>
 <?= $this->Form->create() ?>
 <fieldset>
+    
 <legend><?= __('EINLOGGEN') ?></legend>
 
 
@@ -22,6 +29,7 @@
 
     <a href="/users/cregister">Anmelden</a>
 </div>
+    </div>
 <script>
 
 </script>

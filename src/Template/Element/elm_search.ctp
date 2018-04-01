@@ -1,25 +1,5 @@
 <style>
-  .border-color{
-
-        border-style:solid;
-        border-width:2px;
-        border-color:#c7984e;   
-    }
-    .searchbox{position:relative;
-    margin-top:15%;}
-    
-
-       
-          
-            #livesearch{
-                margin-top: 5px;
-            }
-        #livesearch{ width: 19em;
-        position:absolute;
-        z-index: 99999;
-        background-color:white;
-        font-size:18px; }
-      
+ 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>
@@ -30,15 +10,15 @@
 });
 
     </script>
-<div class="col-sm-3 col-md-3 col-lg-3 searchbox" ><!-- content -->
+<!-- content -->
         <div class="row"></div><div class="row"></div>
  
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control bg-light border-color" id="inputid" list="product" name="ptoducts" autocomplete="off"   onkeyup="showResult(this.value)" type="text" placeholder="Suchst du etwas spezielles?">
+      <input   class="form-control bg-light border-color" id="inputid" list="product" name="ptoducts" autocomplete="off"   onkeyup="showResult(this.value)" type="text" placeholder="Suchst du etwas spezielles?">
       
     </form>
 <div  id="livesearch" ></div>
-</div>
+
 
 <script>
     

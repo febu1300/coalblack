@@ -52,7 +52,7 @@ public function isAuthorized($user)
 {
 // All registered users can add articles
 // Prior to 3.4.0 $this->request->param('action') was used.
-if($this->request->getParam('action') === 'pay'||$this->request->getParam('action') === 'success') {
+if($this->request->getParam('action') === 'pay'||$this->request->getParam('action') === 'success'||$this->request->getParam('action') === 'danke') {
 return true;
 }
 // The owner of an article can edit and delete it
@@ -372,7 +372,7 @@ public function success()
 {
     $bestnum=$this->request->query('best');
     $transnum=$this->request->query('paymentId');
-   // $this->render(false); 
+$this->viewBuilder()->setLayout('frontlayout'); 
  
    $transaction =$this->Transactions->find()
            ->contain('Products')
@@ -439,7 +439,15 @@ $email->from(['buruktetemke@gmail.com' => 'Coalblack'])
     ->viewVars(['transaction' => $transaction])
         
     ->send();
-  // return redirect           
+  return $this->redirect(['controller'=>'transactions','action' => 'danke',"?"=>['best'=>$bestnum]]);     
+}
+public function danke(){
+    $this->viewBuilder()->setLayout('frontlayout');
+        $bestnum=$this->request->query('best');
+         $transTable = TableRegistry::get('Transactions');
+         $orders=$transTable->find()->where(['order_number'=>$bestnum]);
+         $this->set(compact('orders',$orders));
+            $this->set(compact('bestnum',$bestnum));
 }
    public function canceled()
 {

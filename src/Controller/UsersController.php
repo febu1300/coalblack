@@ -83,7 +83,7 @@ $this->Auth->allow(['add', 'logout','login','clogin','cregister','hregister','hl
             public function clogin()
         {
 
-                $this->viewBuilder()->setLayout('benutzerlayout');
+                $this->viewBuilder()->setLayout('frontlayout');
                       $session = $this->request->session();
                      if($this->Auth->user('id')){
                            return $this->redirect(['controller'=>'Pages','action' => 'display','home']);

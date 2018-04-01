@@ -63,13 +63,13 @@ class ProductsDetailsTable extends Table
             ->scalar('photo_dir')
             ->maxLength('photo_dir', 150)
             ->requirePresence('photo_dir', 'create')
-            ->notEmpty('photo_dir');
+            ->allowEmpty('photo_dir');
 
         $validator
             ->scalar('photo')
             ->maxLength('photo', 150)
             ->requirePresence('photo', 'create')
-            ->notEmpty('photo');
+            ->allowEmpty('photo');
 
         return $validator;
     }

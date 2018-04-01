@@ -4,6 +4,10 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
+<div class="row">
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        
+    </div>
 <div class="users form">
 <?= $this->Form->create($user) ?>
 <fieldset>
@@ -29,4 +33,4 @@
 </fieldset>
 <?= $this->Form->button(__('Submit'),['class'=>'btn btn-primary btn-sm btn-block']); ?>
 <?= $this->Form->end() ?>
-</div>
+</div></div>

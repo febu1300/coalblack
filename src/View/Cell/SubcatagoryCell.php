@@ -24,7 +24,7 @@ class SubcatagoryCell extends Cell
      */
     public function display()
     {
-         	
+         
         $this->loadModel('SubCatagories');
          $wh = $this->request->query('wh');   
          
