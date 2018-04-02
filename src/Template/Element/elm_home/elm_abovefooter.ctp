@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="col-sm-7 col-md-7 col-lg-7">
-        <a href="http://coalblack/angeboten"><img src="/img/saleNicePrice.jpg" class="responsive" > </a>
+        <a href="/angeboten"><img src="/img/saleNicePrice.jpg" class="responsive" > </a>
     </div>
 
     <div class="col-sm-5 col-md-5 col-lg-5">
