@@ -35,7 +35,7 @@ class CatagorydisplayCell extends Cell
                         
                      ->select(['id','catagory_name','photo','photo_dir'])
                    
-                      ->where((['id'=>54]))                  // important!! set coalblack Produkte id 53
+                      ->where((['id'=>54]))                  // important!! set coalblack Produkte id 54
 //                   
 	
 			->limit(1)
