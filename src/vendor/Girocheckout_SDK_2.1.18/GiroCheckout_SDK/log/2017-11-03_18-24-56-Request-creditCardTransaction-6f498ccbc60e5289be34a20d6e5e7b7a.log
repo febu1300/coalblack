@@ -1,0 +1,97 @@
+[start @2017-11-03 18:24:56]
+
+[PHP ini]
+
+PHP version: 5.6.10
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-11-03 18:24:56]
+Zahlart: creditCardTransaction
+
+
+[params set @2017-11-03 18:24:56]
+merchantId=350000
+projectId=442
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Beispieltransaktion
+urlRedirect=https://www.my-domain.de/girocheckout/redirect-creditcard
+urlNotify=https://www.my-domain.de/girocheckout/redirect-creditcard
+
+
+[cURL request @2017-11-03 18:24:58]
+params:
+merchantId=350000
+projectId=442
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Beispieltransaktion
+urlRedirect=https://www.my-domain.de/girocheckout/redirect-creditcard
+urlNotify=https://www.my-domain.de/girocheckout/redirect-creditcard
+hash=377d554e49a632000e717958ea908466
+sourceId=localhost;PHP 2.1.16;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:56.0) Gecko/20100101 Firefox/56.0
+
+CurlInfo:
+url=http://localhost.gs/girocheckout/api/v2/transaction/start
+content_type=application/json
+http_code=200
+header_size=306
+request_size=197
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=1.810263
+namelookup_time=0.001266
+connect_time=0.00141
+pretransfer_time=0.001833
+size_upload=1412
+size_download=127
+speed_download=70
+speed_upload=779
+download_content_length=127
+upload_content_length=1412
+starttransfer_time=0.001841
+redirect_time=0
+redirect_url=
+primary_ip=::1
+certinfo {
+}
+primary_port=80
+local_ip=::1
+local_port=55403
+request_header=POST /girocheckout/api/v2/transaction/start HTTP/1.1
+Host: localhost.gs
+Accept: */*
+Content-Length: 1412
+Content-Type: multipart/form-data; boundary=------------------------7e3be0a525725d90
+
+
+
+
+[cURL reply @2017-11-03 18:24:58]
+result:HTTP/1.1 200 OK
+Date: Fri, 03 Nov 2017 21:24:56 GMT
+Server: Apache
+X-Powered-By: PHP/5.6.10
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: e71e2adcf12b4606f48ec02b61ff089f
+Content-Length: 127
+Content-Type: application/json
+
+{"reference":"17cc6e08-efac-48a3-9f9f-2554c28a6398","redirect":"","rc":"5101","msg":"Verbindungsproblem zum Zahlungsabwickler"}
+curl_error log:
+
+[reply params @2017-11-03 18:24:58]
+rc=5101
+msg=Verbindungsproblem zum Zahlungsabwickler
+reference=17cc6e08-efac-48a3-9f9f-2554c28a6398
+redirect=
+
+

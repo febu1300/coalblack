@@ -1,0 +1,108 @@
+[start @2017-08-04 10:56:37]
+
+[PHP ini]
+
+PHP version: 7.0.8
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-08-04 10:56:37]
+Zahlart: paypageTransaction
+
+
+[params set @2017-08-04 10:56:37]
+merchantId=350000
+projectId=29535
+merchantTxId=123456
+amount=3215
+currency=EUR
+purpose=17.0.15234
+paymethods=11
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=en
+test=0
+
+
+[cURL request @2017-08-04 10:56:37]
+params:
+merchantId=350000
+projectId=29535
+merchantTxId=123456
+amount=3215
+currency=EUR
+purpose=17.0.15234
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=en
+paymethods=11
+test=0
+hash=28af2da8ec51531406a15f066fc064fb
+sourceId=localhost;PHP 2.1.14;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0
+
+CurlInfo:
+url=https://dev.girosolution.de/girocheckout/api/v2/paypage/init
+content_type=application/json
+http_code=200
+header_size=303
+request_size=199
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=0.182406
+namelookup_time=0.000685
+connect_time=0.030605
+pretransfer_time=0.109979
+size_upload=1556
+size_download=52
+speed_download=285
+speed_upload=8530
+download_content_length=52
+upload_content_length=1556
+starttransfer_time=0.109994
+redirect_time=0
+redirect_url=
+primary_ip=46.252.21.136
+certinfo {
+}
+primary_port=443
+local_ip=192.168.0.64
+local_port=60896
+request_header=POST /girocheckout/api/v2/paypage/init HTTP/1.1
+Host: dev.girosolution.de
+Accept: */*
+Content-Length: 1556
+Content-Type: multipart/form-data; boundary=------------------------0f13c9326fd0e200
+
+
+
+
+[cURL reply @2017-08-04 10:56:37]
+result:HTTP/1.1 200 OK
+Date: Fri, 04 Aug 2017 08:56:37 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+Content-Length: 52
+Content-Type: application/json
+
+{"rc":5000,"msg":"Authentifizierung fehlgeschlagen"}
+curl_error log:
+
+[exception @2017-08-04 10:56:37]
+authentication failure
+
+[exception @2017-08-04 10:56:37]
+Failure: authentication failure
+HTTP/1.1 200 OK
+Fri, 04 Aug 2017 08:56:37 GMT
+Apache
+max-age=31536000; includeSubDomains
+Sun, 19 Nov 1978 05:00:00 GMT
+no-cache, must-revalidate
+nosniff
+52
+application/json{"rc":5000,"msg":"Authentifizierung fehlgeschlagen"}
+

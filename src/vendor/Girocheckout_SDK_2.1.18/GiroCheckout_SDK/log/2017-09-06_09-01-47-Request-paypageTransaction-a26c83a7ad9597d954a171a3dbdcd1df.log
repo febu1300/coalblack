@@ -1,0 +1,99 @@
+[start @2017-09-06 09:01:47]
+
+[PHP ini]
+
+PHP version: 7.0.8
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-09-06 09:01:47]
+Zahlart: paypageTransaction
+
+
+[params set @2017-09-06 09:01:47]
+merchantId=350000
+projectId=29535
+merchantTxId=123456
+amount=3215
+currency=EUR
+purpose=17.0.15234
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=de
+test=0
+
+
+[cURL request @2017-09-06 09:01:48]
+params:
+merchantId=350000
+projectId=29535
+merchantTxId=123456
+amount=3215
+currency=EUR
+purpose=17.0.15234
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=de
+test=0
+hash=29281824b026d50105e7d9dc8a9457af
+sourceId=localhost;PHP 2.1.15;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0
+
+CurlInfo:
+url=https://payment.girosolution.de/girocheckout/api/v2/paypage/init
+content_type=application/json
+http_code=200
+header_size=344
+request_size=203
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=1.401211
+namelookup_time=0.001118
+connect_time=0.252825
+pretransfer_time=1.05982
+size_upload=1455
+size_download=211
+speed_download=150
+speed_upload=1038
+download_content_length=211
+upload_content_length=1455
+starttransfer_time=1.059827
+redirect_time=0
+redirect_url=
+primary_ip=46.163.91.68
+certinfo {
+}
+primary_port=443
+local_ip=192.168.0.10
+local_port=54965
+request_header=POST /girocheckout/api/v2/paypage/init HTTP/1.1
+Host: payment.girosolution.de
+Accept: */*
+Content-Length: 1455
+Content-Type: multipart/form-data; boundary=------------------------11f36ddc82e9806e
+
+
+
+
+[cURL reply @2017-09-06 09:01:48]
+result:HTTP/1.1 200 OK
+Date: Wed, 06 Sep 2017 12:01:48 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: b36677ececd6136d5759cbf9bf2c3d80
+Content-Length: 211
+Content-Type: application/json
+
+{"reference":"bc569f5b-fd4e-42eb-abcc-913e6cc01079","url":"https:\/\/pay.girocheckout.de\/v1\/paypage\/de\/rHPOh-zNMEfVUcOHOF0i54zrkBlhYEwq6l23drABZwXenYwmw970wZfbaazbZRXjiMZnj90B8ur-2QKdHMvz4A","rc":0,"msg":""}
+curl_error log:
+
+[reply params @2017-09-06 09:01:48]
+rc=0
+msg=
+reference=bc569f5b-fd4e-42eb-abcc-913e6cc01079
+url=https://pay.girocheckout.de/v1/paypage/de/rHPOh-zNMEfVUcOHOF0i54zrkBlhYEwq6l23drABZwXenYwmw970wZfbaazbZRXjiMZnj90B8ur-2QKdHMvz4A
+
+

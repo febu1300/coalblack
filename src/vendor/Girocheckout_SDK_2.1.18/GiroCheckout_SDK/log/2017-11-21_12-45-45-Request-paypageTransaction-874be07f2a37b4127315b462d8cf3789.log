@@ -1,0 +1,111 @@
+[start @2017-11-21 12:45:45]
+
+[PHP ini]
+
+PHP version: 5.6.10
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-11-21 12:45:45]
+Zahlart: paypageTransaction
+
+
+[params set @2017-11-21 12:45:45]
+merchantId=350000
+projectId=14108
+merchantTxId=22e74d1d-84b8-413c-b4b6-59e7ac17f750
+amount=3215
+currency=EUR
+purpose=17.0.15234
+paymethods=2,11,12, 14
+payprojects=442,14126
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=de
+test=0
+successUrl=https://dev.girosolution.de/redirect.php?success=1
+backUrl=https://dev.girosolution.de/redirect.php?back=1
+failUrl=https://dev.girosolution.de/redirect.php?fail=1
+notifyUrl=https://dev.girosolution.de/notify.php
+
+
+[cURL request @2017-11-21 12:45:46]
+params:
+merchantId=350000
+projectId=14108
+merchantTxId=22e74d1d-84b8-413c-b4b6-59e7ac17f750
+amount=3215
+currency=EUR
+purpose=17.0.15234
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=de
+paymethods=2,11,12, 14
+payprojects=442,14126
+test=0
+successUrl=https://dev.girosolution.de/redirect.php?success=1
+backUrl=https://dev.girosolution.de/redirect.php?back=1
+failUrl=https://dev.girosolution.de/redirect.php?fail=1
+notifyUrl=https://dev.girosolution.de/notify.php
+hash=ae5b062fa80e696c412cd38a540a529f
+sourceId=localhost;PHP 2.1.17;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:56.0) Gecko/20100101 Firefox/56.0
+
+CurlInfo:
+url=http://mheumann.hopto.org/girocheckout/api/v2/paypage/init
+content_type=application/json
+http_code=200
+header_size=306
+request_size=198
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=0.843923
+namelookup_time=0.001724
+connect_time=0.001934
+pretransfer_time=0.002353
+size_upload=2275
+size_download=210
+speed_download=248
+speed_upload=2695
+download_content_length=210
+upload_content_length=2275
+starttransfer_time=0.002363
+redirect_time=0
+redirect_url=
+primary_ip=::1
+certinfo {
+}
+primary_port=80
+local_ip=::1
+local_port=54599
+request_header=POST /girocheckout/api/v2/paypage/init HTTP/1.1
+Host: mheumann.hopto.org
+Accept: */*
+Content-Length: 2275
+Content-Type: multipart/form-data; boundary=------------------------d0b96a97339c0d0b
+
+
+
+
+[cURL reply @2017-11-21 12:45:46]
+result:HTTP/1.1 200 OK
+Date: Tue, 21 Nov 2017 15:45:45 GMT
+Server: Apache
+X-Powered-By: PHP/5.6.10
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: cd4e9ed8c287f5f32111de6fd03f10dc
+Content-Length: 210
+Content-Type: application/json
+
+{"reference":"86f51df1-8b3e-4cf5-aaf4-8419e82e8f7b","url":"http:\/\/mheumann2.hopto.org\/v1\/paypage\/de\/y-drffoYVja180WMAMzzy4L3b-a7xFCgqdLB1B_l-0Tshm5Q0VRbyWfXSvDFPn-EKzJ8bGkftPKAC9Z3-cyIwA","rc":0,"msg":""}
+curl_error log:
+
+[reply params @2017-11-21 12:45:46]
+rc=0
+msg=
+reference=86f51df1-8b3e-4cf5-aaf4-8419e82e8f7b
+url=http://mheumann2.hopto.org/v1/paypage/de/y-drffoYVja180WMAMzzy4L3b-a7xFCgqdLB1B_l-0Tshm5Q0VRbyWfXSvDFPn-EKzJ8bGkftPKAC9Z3-cyIwA
+
+

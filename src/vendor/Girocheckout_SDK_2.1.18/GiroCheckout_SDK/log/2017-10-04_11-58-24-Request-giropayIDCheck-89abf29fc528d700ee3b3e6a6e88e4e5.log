@@ -1,0 +1,100 @@
+[start @2017-10-04 11:58:24]
+
+[PHP ini]
+
+PHP version: 5.6.10
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-10-04 11:58:24]
+Zahlart: giropayIDCheck
+
+
+[params set @2017-10-04 11:58:24]
+merchantId=350000
+projectId=7262
+merchantTxId=1234567890
+bic=TESTDETT421
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+
+
+[cURL request @2017-10-04 11:58:26]
+params:
+merchantId=350000
+projectId=7262
+merchantTxId=1234567890
+bic=TESTDETT421
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+hash=70c9a5380d35c3a7622e4fed8c732f7b
+sourceId=localhost;PHP 2.1.15;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0
+
+CurlInfo:
+url=https://payment.girosolution.de/girocheckout/api/v2/transaction/start
+content_type=application/json
+http_code=200
+header_size=303
+request_size=208
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=1.956835
+namelookup_time=0.239974
+connect_time=0.574487
+pretransfer_time=1.276134
+size_upload=1167
+size_download=52
+speed_download=26
+speed_upload=596
+download_content_length=52
+upload_content_length=1167
+starttransfer_time=1.276161
+redirect_time=0
+redirect_url=
+primary_ip=46.163.91.68
+certinfo {
+}
+primary_port=443
+local_ip=192.168.0.15
+local_port=54586
+request_header=POST /girocheckout/api/v2/transaction/start HTTP/1.1
+Host: payment.girosolution.de
+Accept: */*
+Content-Length: 1167
+Content-Type: multipart/form-data; boundary=------------------------b08d5831d6ddc3f2
+
+
+
+
+[cURL reply @2017-10-04 11:58:26]
+result:HTTP/1.1 200 OK
+Date: Wed, 04 Oct 2017 14:58:25 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+Content-Length: 52
+Content-Type: application/json
+
+{"rc":5000,"msg":"Authentifizierung fehlgeschlagen"}
+curl_error log:
+
+[exception @2017-10-04 11:58:26]
+authentication failure
+
+[exception @2017-10-04 11:58:26]
+Failure: authentication failure
+HTTP/1.1 200 OK
+Wed, 04 Oct 2017 14:58:25 GMT
+Apache
+max-age=31536000; includeSubDomains
+Sun, 19 Nov 1978 05:00:00 GMT
+no-cache, must-revalidate
+nosniff
+52
+application/json{"rc":5000,"msg":"Authentifizierung fehlgeschlagen"}
+

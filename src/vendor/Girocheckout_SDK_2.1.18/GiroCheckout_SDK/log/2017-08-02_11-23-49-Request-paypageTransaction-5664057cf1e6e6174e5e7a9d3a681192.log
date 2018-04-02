@@ -1,0 +1,101 @@
+[start @2017-08-02 11:23:49]
+
+[PHP ini]
+
+PHP version: 7.0.8
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-08-02 11:23:49]
+Zahlart: paypageTransaction
+
+
+[params set @2017-08-02 11:23:49]
+merchantId=350000
+projectId=9330
+merchantTxId=123456
+amount=3215
+currency=EUR
+purpose=17.0.15234
+paymethods=11
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=en
+test=0
+
+
+[cURL request @2017-08-02 11:23:49]
+params:
+merchantId=350000
+projectId=9330
+merchantTxId=123456
+amount=3215
+currency=EUR
+purpose=17.0.15234
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=en
+paymethods=11
+test=0
+hash=494f117d1d64450a4891b10fab8de281
+sourceId=localhost;PHP 2.1.14;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0
+
+CurlInfo:
+url=https://dev.girosolution.de/girocheckout/api/v2/paypage/init
+content_type=application/json
+http_code=200
+header_size=347
+request_size=199
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=0.173807
+namelookup_time=0.000966
+connect_time=0.030078
+pretransfer_time=0.100068
+size_upload=1555
+size_download=216
+speed_download=1242
+speed_upload=8946
+download_content_length=216
+upload_content_length=1555
+starttransfer_time=0.100084
+redirect_time=0
+redirect_url=
+primary_ip=46.252.21.136
+certinfo {
+}
+primary_port=443
+local_ip=192.168.0.64
+local_port=56574
+request_header=POST /girocheckout/api/v2/paypage/init HTTP/1.1
+Host: dev.girosolution.de
+Accept: */*
+Content-Length: 1555
+Content-Type: multipart/form-data; boundary=------------------------0d64bd0a522bcc1f
+
+
+
+
+[cURL reply @2017-08-02 11:23:49]
+result:HTTP/1.1 200 OK
+Date: Wed, 02 Aug 2017 09:23:49 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000; includeSubDomains“
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: 412148661b66b2e57e693d5c3c234366
+Content-Length: 216
+Content-Type: application/json
+
+{"reference":"b576cbfb-ba71-4af6-89ae-ad04e4b3ba85","url":"https:\/\/test-pay.girocheckout.de\/v1\/paypage\/en\/9-LuDdV0QUl9WDSwlg_8PdU7OKiaqQp92RCLjeYlvkYCCSRCDCcwweXIOOlk7tmOQgFelqwb6TZWkImCWPMVWw","rc":0,"msg":""}
+curl_error log:
+
+[reply params @2017-08-02 11:23:49]
+rc=0
+msg=
+reference=b576cbfb-ba71-4af6-89ae-ad04e4b3ba85
+url=https://test-pay.girocheckout.de/v1/paypage/en/9-LuDdV0QUl9WDSwlg_8PdU7OKiaqQp92RCLjeYlvkYCCSRCDCcwweXIOOlk7tmOQgFelqwb6TZWkImCWPMVWw
+
+

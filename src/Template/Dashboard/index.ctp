@@ -92,14 +92,14 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3><?=$this->cell('Prodcount')?></h3>
 
-              <p>Bounce Rate</p>
+              <p>Bestandverwaltung</p>
             </div>
             <div class="icon">
               <i class="ion ion-android-document"></i>
             </div>
-            <a href="#" class="small-box-footer">Mehr info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/transactions/bestandsposten" class="small-box-footer">Mehr info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -122,14 +122,14 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <h3><?=$this->cell('Newsletter')?></h3>
 
-              <p>Unique Visitors</p>
+              <p>Abonnenten</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">Mehr info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/newsletter" class="small-box-footer">Mehr info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

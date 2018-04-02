@@ -1,0 +1,101 @@
+[start @2017-08-04 10:49:40]
+
+[PHP ini]
+
+PHP version: 7.0.8
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-08-04 10:49:40]
+Zahlart: paypageTransaction
+
+
+[params set @2017-08-04 10:49:40]
+merchantId=350000
+projectId=14108
+merchantTxId=123456
+amount=3215
+currency=EUR
+purpose=17.0.15234
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=en
+test=0
+successUrl=https://dev.girosolution.de/redirect.php
+
+
+[cURL request @2017-08-04 10:49:40]
+params:
+merchantId=350000
+projectId=14108
+merchantTxId=123456
+amount=3215
+currency=EUR
+purpose=17.0.15234
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=en
+test=0
+successUrl=https://dev.girosolution.de/redirect.php
+hash=50bc50a46e84ae55daea2d61236013b0
+sourceId=localhost;PHP 2.1.14;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0
+
+CurlInfo:
+url=http://mheumann.hopto.org/girocheckout/api/v2/paypage/init
+content_type=application/json
+http_code=200
+header_size=305
+request_size=198
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=0.336604
+namelookup_time=0.000648
+connect_time=0.000794
+pretransfer_time=0.000909
+size_upload=1594
+size_download=210
+speed_download=623
+speed_upload=4735
+download_content_length=210
+upload_content_length=1594
+starttransfer_time=0.000916
+redirect_time=0
+redirect_url=
+primary_ip=::1
+certinfo {
+}
+primary_port=80
+local_ip=::1
+local_port=60071
+request_header=POST /girocheckout/api/v2/paypage/init HTTP/1.1
+Host: mheumann.hopto.org
+Accept: */*
+Content-Length: 1594
+Content-Type: multipart/form-data; boundary=------------------------cbe1133c1211aa40
+
+
+
+
+[cURL reply @2017-08-04 10:49:40]
+result:HTTP/1.1 200 OK
+Date: Fri, 04 Aug 2017 08:49:40 GMT
+Server: Apache
+X-Powered-By: PHP/7.0.8
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: 7ebf4dbdd0db41fdd931b9e0f2306a09
+Content-Length: 210
+Content-Type: application/json
+
+{"reference":"c8a96d1e-3ce7-422e-a92e-1612268a226c","url":"http:\/\/mheumann2.hopto.org\/v1\/paypage\/en\/rHVoV0mkAj_UJt1zPdtgCWbQLp3g4wleUkKVBGLFYEt_VEFnEvbGu9oTIp0VWBUeobaltY7blsxtSheVww66TQ","rc":0,"msg":""}
+curl_error log:
+
+[reply params @2017-08-04 10:49:40]
+rc=0
+msg=
+reference=c8a96d1e-3ce7-422e-a92e-1612268a226c
+url=http://mheumann2.hopto.org/v1/paypage/en/rHVoV0mkAj_UJt1zPdtgCWbQLp3g4wleUkKVBGLFYEt_VEFnEvbGu9oTIp0VWBUeobaltY7blsxtSheVww66TQ
+
+

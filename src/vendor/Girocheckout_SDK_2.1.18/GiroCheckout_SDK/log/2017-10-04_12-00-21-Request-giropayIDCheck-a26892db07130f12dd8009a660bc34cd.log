@@ -1,0 +1,93 @@
+[start @2017-10-04 12:00:21]
+
+[PHP ini]
+
+PHP version: 5.6.10
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-10-04 12:00:21]
+Zahlart: giropayIDCheck
+
+
+[params set @2017-10-04 12:00:21]
+merchantId=350000
+projectId=8844
+merchantTxId=1234567890
+bic=TESTDETT421
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+
+
+[cURL request @2017-10-04 12:00:23]
+params:
+merchantId=350000
+projectId=8844
+merchantTxId=1234567890
+bic=TESTDETT421
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+hash=e11c2c7020d07a7c354a48219e365d83
+sourceId=localhost;PHP 2.1.15;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0
+
+CurlInfo:
+url=https://payment.girosolution.de/girocheckout/api/v2/transaction/start
+content_type=application/json
+http_code=200
+header_size=344
+request_size=208
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=2.003913
+namelookup_time=0.000973
+connect_time=0.227526
+pretransfer_time=1.11348
+size_upload=1167
+size_download=229
+speed_download=114
+speed_upload=582
+download_content_length=229
+upload_content_length=1167
+starttransfer_time=1.113491
+redirect_time=0
+redirect_url=
+primary_ip=46.163.91.68
+certinfo {
+}
+primary_port=443
+local_ip=192.168.0.15
+local_port=54736
+request_header=POST /girocheckout/api/v2/transaction/start HTTP/1.1
+Host: payment.girosolution.de
+Accept: */*
+Content-Length: 1167
+Content-Type: multipart/form-data; boundary=------------------------1e85ef4ab67805cb
+
+
+
+
+[cURL reply @2017-10-04 12:00:23]
+result:HTTP/1.1 200 OK
+Date: Wed, 04 Oct 2017 15:00:22 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: 4caa2dc1d1dceb992193c4889588c624
+Content-Length: 229
+Content-Type: application/json
+
+{"reference":"230d88b5-3ca8-44c3-af35-f826e84e9c5f","redirect":"https:\/\/ftg-customer-integration.giropay.de\/ftg\/b\/go\/07i2i1k00pp189lmvaxef4rq;jsessionid=CFA19A96B199CE8C1866EE396BD0C657.sf-testapp02tom24","rc":"0","msg":""}
+curl_error log:
+
+[reply params @2017-10-04 12:00:23]
+rc=0
+msg=
+reference=230d88b5-3ca8-44c3-af35-f826e84e9c5f
+redirect=https://ftg-customer-integration.giropay.de/ftg/b/go/07i2i1k00pp189lmvaxef4rq;jsessionid=CFA19A96B199CE8C1866EE396BD0C657.sf-testapp02tom24
+
+

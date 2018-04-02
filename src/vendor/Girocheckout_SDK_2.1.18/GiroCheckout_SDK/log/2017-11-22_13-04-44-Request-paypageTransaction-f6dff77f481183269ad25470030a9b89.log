@@ -1,0 +1,16 @@
+[start @2017-11-22 13:04:44]
+
+[PHP ini]
+
+PHP version: 7.0.8
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-11-22 13:04:44]
+Zahlart: paypageTransaction
+
+
+[exception @2017-11-22 13:04:44]
+Failure: param "orderid" not valid or misspelled. Please check API Params List.
+

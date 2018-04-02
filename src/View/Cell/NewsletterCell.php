@@ -22,8 +22,16 @@ class NewsletterCell extends Cell
      *
      * @return void
      */
-    public function display()
+       public function display()
     {
-   
+        $this->loadModel('Newsletter');
+        $unread = $this->Newsletter->find() 
+                ->select(['id'])  
+               
+      
+                ->distinct('id');
+        
+        $this->set('unread_count', $unread->count());
+
     }
 }
