@@ -122,7 +122,7 @@
        </div>
     </fieldset>
     <hr>
-    <?= $this->Form->button(__('Versenden'),['class'=>'btn btn-primary btn-lg btn-block']) ?>
+    <?= $this->Form->button(__('Speichern'),['class'=>'btn btn-primary btn-lg btn-block']) ?>
     <?= $this->Form->end() ?>
 </div>
 </div>

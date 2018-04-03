@@ -463,7 +463,7 @@ class TransactionsController extends AppController {
     public function index() {
         $transactions = $this->Transactions->find()->where(['transaction_status_id' => 2])
                 ->group('order_number')
-                ->having(!['sent' => true]);
+                ->having(['sent!=' =>1]);
 
 
         $this->set(compact('transactions', $transactions));
@@ -537,40 +537,43 @@ class TransactionsController extends AppController {
 
             $this->viewBuilder()->setLayout(false);
 
-            $pdf = new LIFERUNG();
+            $lif = new LIFERUNG();
 
             $title = 'Rechnung';
             $text = 'Bei Rückfragen erreichen Sie uns unter der unten angegebenen Telefonnummer';
-            $pdf->SetTitle($title);
-            $pdf->SetAuthor('Lucas Teufel');
-            $pdf->PrintChapter($usersDetail);
+           $lif ->SetTitle($title);
+        $lif ->SetAuthor('Lucas Teufel');
+           $lif ->PrintChapter($usersDetail);
 
-            $pdf->PrintDate($transactions);
-            $pdf->Ln();
+            $lif ->PrintDate($transactions);
+            $lif ->Ln();
 
 
-            $pdf->FancyTable($transaction);
-            $pdf->Ln();
-            $pdf->FancyTable1($transaction);
-            $pdf->Ln();
-            $pdf->Ending($text);
-            $pdf->Ln();
-            $pdf->Output();
+            $lif ->FancyTable($transaction);
+            $lif ->Ln();
+          $lif ->FancyTable1($transaction);
+           $lif ->Ln();
+            $lif ->Ending($text);
+            $lif ->Ln();
+       $lif ->Output();
 
             die();
         }
     }
 
     public function add() {
-        $this->render(false);
-
+        
+        $this->autoRender=false;
+  
         $products = $this->Products->find();
 //         $colors = $this->Colors->find();
 //             $sizes = $this->Sizes->find();
+        
         if ($this->request->is('post')) {
             $session = $this->request->session();
 
             $recieveId = $this->request->data['product_id']; //added to cart id
+
             //$colorId = $this->request->data['color_id'];
             //$sizeId = $this->request->data['size_id'];
             //$session->destroy();die();
@@ -601,7 +604,8 @@ class TransactionsController extends AppController {
                     $session->write($colorname1, $name2);
                 }
             }
-        }
+        }else{  return $this->redirect(['controller' => 'Pages', 'action' => 'display', 'home']);}
+       
 //                    }
 //                }
 //            }
@@ -628,7 +632,7 @@ class TransactionsController extends AppController {
 
                 $count = $count + ($name2[$product->id]);
             } else {
-//          
+    
 //            }
 //  }  
             }
@@ -639,6 +643,7 @@ class TransactionsController extends AppController {
         echo $count;
 
         $session->write('count', $count);
+   
     }
 
     // return $this->redirect(['controller' => 'Pages', 'action' => 'display','home']);

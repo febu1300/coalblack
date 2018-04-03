@@ -4,16 +4,38 @@
  * @var \App\Model\Entity\ProductsCatagory[]|\Cake\Collection\CollectionInterface $productsCatagories
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Products Catagory'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Sub-Catagories'), ['controller' => 'SubCatagories', 'action' => 'index']) ?></li>
+
+<div class="container-fluid">
+<nav class="navbar navbar-expand-lg  bg-light " >
+  <a class="navbar-brand" href="/dashboard">Dashboard</a>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+      
+      </li>
+  
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/transactions"><span class="glyphicon glyphicon-bell"></span>  <span class="badge badge-secondary bg-danger badge-pill"><?= $this->cell('Notification') ?></span></a></li>
+     
+      <li><a href="/users/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2">
+<nav class="navbar navbar-expand-lg navbar-dark bg-light" id="actions-sidebar">
+    <ul class="nav nav-pills flex-column">
+ <li  class="nav-item"><?= $this->Html->link(__('New Products Catagory'), ['action' => 'add']) ?></li>
+        <li  class="nav-item"><?= $this->Html->link(__('List Sub-Catagories'), ['controller' => 'SubCatagories', 'action' => 'index']) ?></li>
+          
     </ul>
 </nav>
-<div class="productsCatagories index large-9 medium-8 columns content">
+        </div>
+<div class="col-sm-10 col-md-10 col-lg-10">
     <h3><?= __('Products Catagories') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table class="table table-sm table-bordered "  cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
@@ -30,9 +52,11 @@
                 <td><?= h($productsCatagory->catagory_name) ?></td>
                <td><img src="<?='/'. h($productsCatagory->photo_dir.'/thumb/'.$productsCatagory->photo)?>"></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $productsCatagory->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $productsCatagory->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $productsCatagory->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productsCatagory->id)]) ?>
+                    <?= $this->Html->link(__(' '), ['action' => 'view', $productsCatagory->id],['class' => " glyphicon glyphicon-eye-open", 'data-toggle' => "modal", 'data-target' => "#viewSubcatagory"]) ?>
+                    <?= $this->Html->link(__(''), ['action' => 'edit', $productsCatagory->id], ['class' => "glyphicon glyphicon-edit", 'data-toggle' => "modal", 'data-target' => "#editSubcatagory"]) ?>
+                    
+                
+                    <?= $this->Form->postLink(__(' '), ['action' => 'delete', $productsCatagory->id], ['confirm' => __('sind sie sicher dass sie # {0} löschen möchten ?', $productsCatagory->id),'class' => "glyphicon glyphicon-trash"]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -49,3 +73,60 @@
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
 </div>
+</div></div>
+
+
+
+
+       <script>                    
+                    $('body').on('hidden.bs.modal', '.modal', function () {
+        $(this).removeData('bs.modal');
+      });
+              </script>
+              
+              
+              
+               <div id="viewSubcatagory" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                     
+                <div class="modal-body">                                       
+   
+
+ 
+
+
+                    </div>
+                    <div class="clearfix"></div>
+                <div class="modal-footer">
+                   
+                    <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+           
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+       
+    
+<!--        Edit Products-->
+    <div id="editSubcatagory" class="modal fade ">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                     
+                <div class="modal-body">   
+
+
+
+
+               </div>
+                    <div class="clearfix"></div>
+                <div class="modal-footer">
+           
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>

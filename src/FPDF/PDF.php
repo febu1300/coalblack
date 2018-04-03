@@ -134,8 +134,8 @@ function FancyTable( $data)
   $this->SetFillColor(240,240,240);
   $this->Cell(40,7,'Beschreibung',1,0,'C',1);
   $this->Cell(15,7,'Menge',1,0,'C',1);
-  $this->Cell(40,7,'Einheit.',1,0,'C',1);
-
+  $this->Cell(30,7,'Preise.',1,0,'C',1);
+  $this->Cell(30,7,'Ges.Betrag.',1,0,'C',1);
   $this->Ln();
  
 
@@ -151,13 +151,13 @@ function FancyTable( $data)
      
           
 $this->Cell(40,6,$col->product->product_name,'LR');
-$this->Cell(15,6,$col->quantity,'LR');
-$this->Cell(40,6,$col->product->unit,'LR');
-
+$this->Cell(15,6,$col->quantity.' '.metaphone($col->product->unit),'LR');
+$this->Cell(30,6, money_format('%i EUR',$col->product->price),'R',0,'R');
+$this->Cell(30,6,money_format('%i EUR',$col->product->price*$col->quantity),'R',0,'R');
 $this->Ln();
 
      }
- $this->Cell(95,0,'','T');
+ $this->Cell(115,0,'','T');
 
     }
    
@@ -172,7 +172,15 @@ $ges=0;
      $steuer=$steuer+$row->price*19/100;
      $ges=$ges+$row->price;
     }
-
+ $this->Cell(55,6,'',0,0,'C',0);
+     $this->Cell(30,6,'Netto','R',0,'C',0);
+$this->Cell(30,6, money_format('%i EUR',$netto),1,0,'R',1);$this->Ln();
+  $this->Cell(55,6,'',0,0,'C',0);
+     $this->Cell(30,6,'Mstr 19%','R',0,'C',0);
+$this->Cell(30,6, money_format('%i EUR',$steuer),1,0,'R',1);$this->Ln();
+ $this->Cell(55,6,'',0,0,'C',0);
+     $this->Cell(30,6,'Gesamt','R',0,'C',0);
+$this->Cell(30,6, money_format('%i EUR',$ges),1,0,'R',1);
     // Header
  
 
@@ -197,7 +205,7 @@ function PrintDate($transactions){
 
   $this->MultiCell(50,5,'Datum: '.$transactions->created_date,0,1,'l');
    $this->MultiCell(50,5,'Bestell#: '.$transactions->order_number,0,1,'l');
-  $this->MultiCell(50,5,'Rechnungs#: '.$transactions->id,0,1,'l');
+  $this->MultiCell(50,5,'Rechnungs#: '.'CBR'.$transactions->id,0,1,'l');
 
 }
 

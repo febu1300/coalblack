@@ -12,7 +12,7 @@ use App\Controller\AppController;
  */
 class SubCatagoriesController extends AppController
 {
-
+   
     /**
      * Index method
      *
@@ -27,7 +27,10 @@ class SubCatagoriesController extends AppController
 
         $this->set(compact('subCatagories'));
     }
-
+public function closemodal()
+    {         if ($this->request->is('post')) {
+    return $this->redirect(['action' => 'index']);}
+    }
     /**
      * View method
      *

@@ -33,7 +33,7 @@ class ProductsCatagoriesTable extends Table
         parent::initialize($config);
 
         $this->setTable('products_catagories');
-        $this->setDisplayField('id');
+        $this->setDisplayField('catagory_name');
         $this->setPrimaryKey('id');
 
         $this->hasMany('SubCatagories', [

@@ -81,32 +81,32 @@ class UsersTable extends Table
                 [
                     'validEmail' => [
                         'rule' => ['email'],
-                        'message' => 'Please provide valid email address!'
+                        'message' => 'Bitte e mail adresse eingeben!'
                     ],
                     'unique' => [
-                        'message' => 'Sorry, this email address is already taken!',
+                        'message' => 'Diese emailadresse ist nicht verfügbar!',
                         'provider' => 'table',
                         'rule' => 'validateUnique'
                     ]
                 ]
             )
-            ->requirePresence('username', 'create', 'Email address must be required!')
-            ->notEmpty('username', 'Email address must be required!');
+            ->requirePresence('username', 'create', 'Passwort ist erforderlich!')
+            ->notEmpty('username', 'Bitte e mail adresse eingeben!');
         $validator
             ->add(
                 'password',
                 [
                     'minLength' => [
                         'rule' => ['minLength', 6],
-                        'message' => 'Password must contain at least 6 character'
+                        'message' => ' Passwortlänge muss mindestens 6 Zeichen betragen '
                     ],
                 ]
             )
-            ->requirePresence('password', 'create', 'Password must be required!')
-            ->notEmpty('password', 'Password must be required!');
+            ->requirePresence('password', 'create', 'Passwort Wählen!')
+            ->notEmpty('password', 'Passwort ist erforderlich!');
         $validator
-            ->requirePresence('cPassword', 'create', 'cPassword must be required!')
-            ->notEmpty('cPassword', 'Confirm password must be required!')
+            ->requirePresence('cPassword', 'create', 'Passwort Wiederholen')
+            ->notEmpty('cPassword', 'Passwort ist erforderlich!')
             ->add(
                 'cPassword',
                 'custom',
@@ -117,7 +117,7 @@ class UsersTable extends Table
                             }
                             return false;
                         },
-                    'message' => 'Sorry, password and confirm password does not matched'
+                    'message' => 'Passwort stimmt nicht überein'
                 ]
             );
         return $validator;

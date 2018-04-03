@@ -40,8 +40,17 @@
 
 
     </div>
-<div class="col-sm-9 col-md-9 col-lg-9 ">
 
+
+    
+    
+<style>
+   .down{margin-top:10%;}
+</style>
+
+
+<div class="col-sm-1 col-md-1 col-lg-1 "></div>
+<div class="col-sm-4 col-md-4 col-lg-4 ">
 <?= $this->Form->create($user) ?>
 <fieldset>
      <div class="row">
@@ -50,33 +59,35 @@
     <input type="radio" name="title" value="0" id="title-0">Herr</label><br>
 <label for="title-1">
     <input type="radio" name="title" value="1" id="title-1">Frau</label><br>
-    </div> 
     <hr>
-       <div class="row">
-                      
-            <?php echo $this->Form->label('Benützername');
-echo $this->Form->control('username',['label'=>false]);?>
-       </div>
-      <div class="row">
-             <?= $this->Form->label('Vorname');?>
-<?= $this->Form->control('fname',['label'=>false]) ?>
-             <?= $this->Form->label('Nachname');?>
-<?= $this->Form->control('lname',['label'=>false]) ?>
-        </div>  
-    <hr>
-        <div class="row">
-<?= $this->Form->control('password') ?>
-<?= $this->Form->control('cPassword',['type'=>'password']) ?>
-        </div> 
-    <hr>
-    <div class="row">
-<?= $this->Form->control('role', [
-'options' => ['admin' => 'Admin', 'author' => 'Author']
-]) ?>
-    </div>
-        <hr>
-</fieldset>
-<?= $this->Form->button(__('Submit')); ?>
-<?= $this->Form->end() ?>
+     </div> 
+   <div class="row">
 
- </div>
+        <?= $this->Form->control('username',['label'=>false,'placeholder'=>'E-Mail*','class'=>'form-control bg-light border-color']) ?>  </div>
+
+     <div class="row">     <?= $this->Form->control('fname',['label'=>false,'placeholder'=>'Name*','class'=>'form-control bg-light border-color']) ?>  </div>
+
+    <div class="row">      <?= $this->Form->control('lname',['label'=>false,'placeholder'=>'Vorname*','class'=>'form-control bg-light border-color']) ?>  </div>
+      <div class="row">    <?= $this->Form->control('password',['label'=>false,'placeholder'=>'Passwort*','class'=>'form-control bg-light border-color']) ?>  </div>
+
+      <div class="row">    <?= $this->Form->control('cPassword',['label'=>false,'placeholder'=>'Passwort bestätigen*','type'=>'password','class'=>'form-control bg-light border-color']) ?>  </div>
+
+   
+      <div class="row">
+<?= $this->Form->control('role', [
+'options' => ['admin' => 'Admin', 'author' => 'customer']
+]) ?>
+        <hr></div>
+        </fieldset> 
+            <div class="row">
+    <div class="col-sm-4 col-md-4 col-lg-4 ">
+
+        <?= $this->Form->button(__('Speichern'),['class'=>'btn btn-primary btn-sm btn-block']); ?>
+<?= $this->Form->end() ?>
+ 
+   </div>
+    </div>
+    </div>
+  
+
+

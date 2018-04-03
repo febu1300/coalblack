@@ -87,7 +87,7 @@
                 <td class="actions">
                              <?= $this->Html->link(__(' '), ['action' => 'view', $product->id],['class'=>" glyphicon glyphicon-eye-open",'data-toggle'=>"modal",'data-target'=>"#viewProduct"]) ?>
                     <?= $this->Html->link(__(' '), ['action' => 'edit', $product->id],['class'=>"glyphicon glyphicon-edit",'data-toggle'=>"modal",'data-target'=>"#editProduct"]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]) ?>
+                    <?= $this->Form->postLink(__(''), ['action' => 'delete', $product->id], ['confirm' => __('Sind Sie sicher, dass Sie # {0} löchen möchten?', $product->id),'class' => "glyphicon glyphicon-trash"]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

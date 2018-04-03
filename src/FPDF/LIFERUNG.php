@@ -168,7 +168,7 @@ $netto=0;
 $ges=0;
   foreach($data as $row)
     { 
-           $netto=$netto+$row->price-$row->price*19/100;
+     $netto=$netto+$row->price-$row->price*19/100;
      $steuer=$steuer+$row->price*19/100;
      $ges=$ges+$row->price;
     }
@@ -197,7 +197,7 @@ function PrintDate($transactions){
 
   $this->MultiCell(50,5,'Datum: '.$transactions->created_date,0,1,'l');
    $this->MultiCell(50,5,'Bestell#: '.$transactions->order_number,0,1,'l');
-  $this->MultiCell(50,5,'Lieferungs#: '.'CBLS'.$transactions->id,0,1,'l');
+  $this->MultiCell(50,5,'Lieferungs#: '.'CBL'.$transactions->id,0,1,'l');
 
 }
 

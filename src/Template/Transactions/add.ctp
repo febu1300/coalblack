@@ -1,4 +1,5 @@
 <?php
+  return $this->redirect(['controller' => 'Pages', 'action' => 'display', 'home']);
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Transaction $transaction
