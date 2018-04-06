@@ -18,9 +18,8 @@
         <legend><?= __('Add Products Detail') ?></legend>
         <?php
             echo $this->Form->control('product_id', ['options' => $products]);
-            echo $this->Form->control('description');
-            echo $this->Form->control('photo_dir');
-            echo $this->Form->control('photo');
+            echo $this->Form->input('description');
+ 
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

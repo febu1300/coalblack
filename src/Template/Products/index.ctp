@@ -4,7 +4,8 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product[]|\Cake\Collection\CollectionInterface $products
  */
-?><div class="container-fluid">
+?>
+<div class="container-fluid">
 <nav class="navbar navbar-expand-lg  bg-light " >
   <a class="navbar-brand" href="/dashboard">Dashboard</a>
 
@@ -30,10 +31,10 @@
         <li  class="nav-item"><?= $this->Html->link(__('Neueprodukt '), ['action' => 'add']) ?></li>
         <li class="nav-item"><?= $this->Html->link(__('Lagerbestandverwalten'), ['controller' => 'Transactions', 'action' => 'bestandsposten']) ?></li>
         <li class="nav-item"><?= $this->Html->link(__('Subkatagorieliste'), ['controller' => 'SubCatagories', 'action' => 'index']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('Angebotsverwalten'), ['controller' => 'DiscountsTypes', 'action' => 'index']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('Produktdetailbearbeiten'), ['controller' => 'ProductsDetails', 'action' => 'index']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('Produktdetailbearbeiten'), ['controller' => 'ProductsDetails', 'action' => 'detailsindex']) ?></li>
        <li class="nav-item"><?= $this->Html->link(__('Neueproduktdetail'), ['controller' => 'ProductsDetails', 'action' => 'add']) ?></li>
- 
+        <li class="nav-item"><?= $this->Html->link(__('MehrBilder'), ['controller' => 'Pictures', 'action' => 'add']) ?></li>
+
         
     </ul>
 </nav>
@@ -83,8 +84,17 @@
                                 <td><?= $product->has('size') ? $this->Html->link($product->size->id, ['controller' => 'Size', 'action' => 'view', $product->size->id]) : '' ?></td>
                 <td><?= $product->has('color') ? $this->Html->link($product->color->id, ['controller' => 'Color', 'action' => 'view', $product->color->id]) : '' ?></td>
 
-    <td><img src="<?='/'. h($product->photo_dir.'/thumb/'.$product->photo)?>"></td>
+
+           <td>
+         
+        <img src="<?='/'. h($product->photo_dir.'/thumb/'.$product->photo)?>">
+           <?= $this->Html->link(__(''), 
+            ['action' => 'changepic', $product->id], 
+            ['class' => "glyphicon glyphicon-edit", 'data-toggle' => "modal", 'data-target' => "#changeImage"]) ?>
+
+                </td>
                 <td class="actions">
+                    
                              <?= $this->Html->link(__(' '), ['action' => 'view', $product->id],['class'=>" glyphicon glyphicon-eye-open",'data-toggle'=>"modal",'data-target'=>"#viewProduct"]) ?>
                     <?= $this->Html->link(__(' '), ['action' => 'edit', $product->id],['class'=>"glyphicon glyphicon-edit",'data-toggle'=>"modal",'data-target'=>"#editProduct"]) ?>
                     <?= $this->Form->postLink(__(''), ['action' => 'delete', $product->id], ['confirm' => __('Sind Sie sicher, dass Sie # {0} löchen möchten?', $product->id),'class' => "glyphicon glyphicon-trash"]) ?>
@@ -105,7 +115,34 @@
     </div>
 </div>
 </div></div>
+       <script>                    
+                    $('body').on('hidden.bs.modal', '.modal', function () {
+        $(this).removeData('bs.modal');
+      });
+              </script>
+                       <div id="changeImage" class="modal fade">
+                           
+        <div class="modal-dialog modal-lg">
+            <div class="modal-header pull-left">
+                   <h3><?= h($product->id) ?>.<?= h($product->product_name) ?></h3>
+                   
+  </div>
+            <div class="modal-content">
+                     
+                <div class="modal-body">                                       
+      <div class="col-sm-9 col-md-9 col-lg-9">
 
+</div>
+
+ 
+
+
+                    </div>
+         
+            </div>
+        </div>
+    </div>
+            
 
     <div id="viewProduct" class="modal fade">
         <div class="modal-dialog modal-lg">
@@ -118,11 +155,7 @@
 
 
                     </div>
-                    <div class="clearfix"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+       
             </div>
         </div>
     </div>
@@ -142,8 +175,7 @@
                </div>
                     <div class="clearfix"></div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+            
                 </div>
             </div>
         </div>

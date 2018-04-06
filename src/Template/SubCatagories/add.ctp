@@ -47,14 +47,14 @@
     <?= $this->Form->create($subCatagory,['type'=>'file']) ?>
     <fieldset>
         <legend><?= __('Neue Subkatagorie anlegen') ?></legend>
-      
+     
        
             <div class="row"> 
        
-                <?=$this->Form->label('Subkatagorie')?>
+                <?=$this->Form->label('Product Catagory')?>
                 <?php 
   
-            echo $this->Form->control('sub_catagory_name', ['options' => $productsCatagories,'label'=>false]); ?>
+            echo $this->Form->control('products_catagory_id', ['options' => $productsCatagories,'label'=>false]); ?>
             </div>
          <hr>
                 <div class="row"> 

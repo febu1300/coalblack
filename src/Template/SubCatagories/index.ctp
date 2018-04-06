@@ -58,9 +58,16 @@
                          
                 
                 <td><?= h($subCatagory->sub_catagory_name) ?></td>
-            <td><img src="<?='/'. h($subCatagory->photo_dir.'/thumb/'.$subCatagory->photo)?>"></td>
+    
+       <td>
+         
+        <img src="<?='/'. h($subCatagory->photo_dir.'/thumb/'.$subCatagory->photo)?>">
+           <?= $this->Html->link(__(''), 
+            ['action' => 'changepic', $subCatagory->id], 
+            ['class' => "glyphicon glyphicon-edit", 'data-toggle' => "modal", 'data-target' => "#changeImage"]) ?>
 
-      
+                </td>
+             <td><?= h($subCatagory->photo_dir) ?></td>
                     <td class="actions">
                           <?= $this->Html->link(__(' '), ['action' => 'view', $subCatagory->id],['class' => " glyphicon glyphicon-eye-open", 'data-toggle' => "modal", 'data-target' => "#viewSubcatagory"]) ?>
               
@@ -93,6 +100,31 @@
       });
               </script>
 
+              
+                       <div id="changeImage" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                     
+                <div class="modal-body">                                       
+      <div class="col-sm-9 col-md-9 col-lg-9">
+
+</div>
+
+ 
+
+
+                    </div>
+                    <div class="clearfix"></div>
+                <div class="modal-footer">
+                   
+                    <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+           
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+              
     <div id="viewSubcatagory" class="modal fade">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">

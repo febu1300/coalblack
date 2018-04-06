@@ -138,7 +138,7 @@ $this->addBehavior('Translate', ['fields' => ['title']]);
             ->scalar('photo')
             ->maxLength('photo', 100)
             ->requirePresence('photo', 'create')
-            ->notEmpty('photo');
+            ->allowEmpty('photo');
 
         return $validator;
     }

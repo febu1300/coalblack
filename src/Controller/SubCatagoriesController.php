@@ -27,10 +27,7 @@ class SubCatagoriesController extends AppController
 
         $this->set(compact('subCatagories'));
     }
-public function closemodal()
-    {         if ($this->request->is('post')) {
-    return $this->redirect(['action' => 'index']);}
-    }
+
     /**
      * View method
      *
@@ -59,7 +56,8 @@ public function closemodal()
             $subCatagory = $this->SubCatagories->patchEntity($subCatagory, $this->request->getData());
              
             // this line is added to call component upload
-            $subCatagory->photo_dir="img/".$this->name.'/'.$subCatagory->catagory_name;
+            $subCatagory->photo_dir="img/".$this->name.'/'.$subCatagory->sub_catagory_name;
+      
         $subCatagory->photo=$this->request->getData('photo.name');
       
        
@@ -76,6 +74,35 @@ public function closemodal()
         $this->set(compact('subCatagory', 'productsCatagories'));
     }
 
+    public function changepic($id=null){
+// 
+           $subCatagory = $this->SubCatagories->get($id, [
+            'contain' => []
+        ]);
+           $productToDelete= $subCatagory;
+        if ($this->request->is(['patch', 'post', 'put'])) {
+        $subCatagory = $this->SubCatagories->patchEntity($subCatagory, $this->request->getData());
+        $this->Filemanager->doDelete($productToDelete);      
+
+        $subCatagory->photo_dir="img/".$this->name.'/'.$subCatagory->sub_catagory_name;
+        $subCatagory->photo=$this->request->getData('photo1.name');
+
+   
+   
+// this line is added to call component upload
+        $this->Filemanager->doChange($subCatagory);   
+               
+         if ($this->SubCatagories->save($subCatagory)) {
+                $this->Flash->success(__('The products catagory has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The products catagory could not be saved. Please, try again.'));
+        }
+        $this->set(compact('subCatagory'));
+ 
+}
+    
     /**
      * Edit method
      *

@@ -22,16 +22,16 @@ class Productinfo2Cell extends Cell
      *
      * @return void
      */
-    public function display()
+    public function display($wh)
     {
-          $wh = $this->request->query('wh');
+        
 $ProductsTabel = TableRegistry::get('ProductsDetails');
 //  pr($article_type);die();
 $products1=$ProductsTabel->find()
-->select(['id','product_id','photo','photo_dir','description'])
-  ->where((['product_id'=>$wh]))
+->select(['id','product_id','photo','description'])
+  ->where(['product_id'=>$wh])
 
-			->limit(8)
+			->limit(2)
 			->toArray();
 	
               

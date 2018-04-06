@@ -95,7 +95,35 @@ class PicturesController extends AppController
         $products = $this->Pictures->Products->find('list', ['limit' => 200]);
         $this->set(compact('picture', 'products'));
     }
+public function changepic($id=null){
+// 
+            $picture = $this->Pictures->get($id, [
+            'contain' => []
+        ]);
+           $productToDelete= $picture;
+        if ($this->request->is(['patch', 'post', 'put'])) {
+             $picture = $this->Pictures->patchEntity( $picture, $this->request->getData());
+                $this->Filemanager->doDelete($productToDelete);      
+             $picture->id=$this->request->getData('id');
+         $picture->photo_dir="img/".$this->name.'/'. $picture->id;
+         $picture->photo=$this->request->getData('photo1.name');
 
+   
+   
+// this line is added to call component upload
+        $this->Filemanager->doChange( $picture);   
+            
+            
+            if ($this->Pictures->save( $picture)) {
+                $this->Flash->success(__('The products catagory has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The products catagory could not be saved. Please, try again.'));
+        }
+        $this->set(compact('picture'));
+    
+}
     /**
      * Delete method
      *

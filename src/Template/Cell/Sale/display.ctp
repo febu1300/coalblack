@@ -40,16 +40,19 @@
 <div class=" col-sm-3 col-md-3 col-lg-3 ">
     <p class="bold"><?php if($product->discount_type_id===2 ||$product->discount_type_id===3){echo "<strike>". $this->Number->currency($product->price,'EUR')."</strike>";} ?></p>
 
-</div>        				
+</div>        	
            <div class=" col-sm-3 col-md-3 col-lg-3">
                <p class="bold"><strong><?php if($product->discount_type_id===1) 
     {
-        echo $this->Number->currency($product->price,'EUR');
+        echo $this->Number->format($product->price,['places' => 2,'before'=>'€', 'locale' => 'de_DE']);
     
     }elseif(($product->discount_type_id===2) ){
-        echo $this->Number->currency($product->price-$product->discount,'EUR');
+        
+        echo $this->Number->format($product->price-$product->discount,['places' => 2,'before'=>'€', 'locale' => 'de_DE']) ;
     }elseif($product->discount_type_id===3){
-        echo $this->Number->currency($product->price-$product->price*($product->discount/100),'EUR');
+               echo $this->Number->format($product->price-$product->price*($product->discount/100),['places' => 2,'before'=>'€', 'locale' => 'de_DE']) ;
+
+      
     }
             
             ?></strong></p>

@@ -1,4 +1,7 @@
+<style>
 
+
+</style>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary minpadding ">
   <a class="navbar-brand" href="#"></a>
@@ -6,14 +9,14 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
+  <div class="collapse navbar-collapse  " id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+
       <?=$this->cell('Dynamicnav')?>
-      </li>
+   
      <li class="nav-item kein-gutters">
         <a class="nav-link" href="/neue_produkte">NEW IN</a>
       </li>

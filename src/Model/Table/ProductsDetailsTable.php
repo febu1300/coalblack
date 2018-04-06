@@ -56,19 +56,19 @@ class ProductsDetailsTable extends Table
 
         $validator
             ->scalar('description')
-            ->maxLength('description', 255)
+            ->maxLength('description', 1000)
             ->allowEmpty('description');
 
         $validator
             ->scalar('photo_dir')
             ->maxLength('photo_dir', 150)
-            ->requirePresence('photo_dir', 'create')
+  
             ->allowEmpty('photo_dir');
 
         $validator
             ->scalar('photo')
             ->maxLength('photo', 150)
-            ->requirePresence('photo', 'create')
+          
             ->allowEmpty('photo');
 
         return $validator;

@@ -12,7 +12,15 @@ use App\Controller\AppController;
  */
 class ProductsDetailsController extends AppController
 {
-
+public function initialize() {
+        parent::initialize();
+        $this->loadModel('subCatagories');
+        $this->loadModel('Products');
+        $this->loadModel('Transactions');
+        $this->loadModel('UsersDetail');
+//          $this->loadModel('Colors');
+//        $this->loadModel('Sizes');
+    }
     /**
      * Index method
      *
@@ -21,7 +29,8 @@ class ProductsDetailsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Products']
+            'contain' => ['Products'],
+             'limit' => 2
         ];
         $productsDetails = $this->paginate($this->ProductsDetails);
 
@@ -63,6 +72,67 @@ class ProductsDetailsController extends AppController
         }
         $products = $this->ProductsDetails->Products->find('list', ['limit' => 200]);
         $this->set(compact('productsDetail', 'products'));
+    }
+    
+        public function detailsindex() {
+
+
+
+
+        //$this->set('_serialize', ['products']);  
+
+        $this->paginate = [
+            'contain' => ['SubCatagories', 'DiscountsTypes', 'sizes', 'colors']
+        ];
+        $products = $this->paginate($this->Products);
+
+        $this->set(compact('products'));
+        $this->set('_serialize', ['products']);
+
+        $this->set(compact('transactions'));
+    }
+        public function bearbeiten($id=null)
+    {  $prodIdfetched = $id;
+
+$productsDetail=$this->ProductsDetails->newEntity();
+$productsDetail->product_id= $prodIdfetched;
+        if ($this->request->is('post')) {
+        
+            for($i=0;$i<2;$i++){
+            
+            if($i==0){
+    $productsDet=$this->ProductsDetails->newEntity();
+        $prdId =$this->request->getData('product_id');
+            $prdodet=$this->request->getData('details');
+                              $prdode1=$this->request->getData('retoure');
+                              
+       $w= $this->ProductsDetails->patchEntity(  $productsDet,$this->request->getData());
+              $w->product_id=$prodIdfetched;
+                $w->description=$prdodet;
+              $w->photo='details';
+        
+                $this->ProductsDetails->save( $w);
+           
+            }elseif($i==1){
+                    $productsDet=$this->ProductsDetails->newEntity();
+                   $w= $this->ProductsDetails->patchEntity($productsDet,$this->request->getData());
+        $w->product_id=$prodIdfetched;
+                $w->description=$prdode1; 
+             $w->photo='retoure';
+        
+                $this->ProductsDetails->save( $w);
+        if ($this->ProductsDetails->save($w)) {
+               $this->Flash->success(__('The products detail has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+        }
+            }
+            }
+  
+        }
+        $products = $this->ProductsDetails->Products->find('list', ['limit' => 200]);
+        $this->set(compact('productsDetail', 'products'));
+         $this->set(compact('prodIdfetched ') );
     }
 
     /**

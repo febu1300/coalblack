@@ -463,7 +463,7 @@ class TransactionsController extends AppController {
     public function index() {
         $transactions = $this->Transactions->find()->where(['transaction_status_id' => 2])
                 ->group('order_number')
-                ->having(['sent!=' =>1]);
+                ->having(!['sent' =>1]);
 
 
         $this->set(compact('transactions', $transactions));

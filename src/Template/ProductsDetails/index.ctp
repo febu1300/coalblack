@@ -26,48 +26,37 @@
         <div class="col-sm-2 col-md-2 col-lg-2">
 <nav class="navbar navbar-expand-lg navbar-dark bg-light" id="actions-sidebar">
     <ul class="nav nav-pills flex-column">
-        <li class="nav-item"><?= $this->Html->link(__('Neueproduktdetail'), ['action' => 'add']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('Neueproduktdetail'), ['action' => 'detailsindex']) ?></li>
         <li class="nav-item"><?= $this->Html->link(__('Produktliste'), ['controller' => 'Products', 'action' => 'index']) ?></li>
         <li class="nav-item"><?= $this->Html->link(__('Neueprodukt'), ['controller' => 'Products', 'action' => 'add']) ?></li>
-        <li  class="nav-item"><?= $this->Html->link(__('Neueprodukt '), ['action' => 'add']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('Lagerbestandverwalten'), ['controller' => 'Transactions', 'action' => 'bestandsposten']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('Subkatagorieliste'), ['controller' => 'SubCatagories', 'action' => 'index']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('Angebotsverwalten'), ['controller' => 'DiscountsTypes', 'action' => 'index']) ?></li>
-        
-       
+      
  
         
     </ul>
 </nav>
         </div>
-<div class="productsDetails index large-9 medium-8 columns content">
+<div class="col-sm-8 col-md-8 col-lg-8">
     <h3><?= __('Produktdetail') ?></h3>
-    <table class="table table-sm table-bordered " cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('product_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('description') ?></th>
-           
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
+ <table  class="table  " >
+     <tbody>
             <?php foreach ($productsDetails as $productsDetail): ?>
-            <tr>
-                <td><?= $this->Number->format($productsDetail->id) ?></td>
-                <td><?= $productsDetail->has('product') ? $this->Html->link($productsDetail->product->product_name, ['controller' => 'Products', 'action' => 'view', $productsDetail->product->id]) : '' ?></td>
-                <td><?= h($productsDetail->description) ?></td>
-           
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $productsDetail->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $productsDetail->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $productsDetail->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productsDetail->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+          <tr>
+             <td>  <?=h($productsDetail->photo) ?>      </td> 
+              <td> <div class="col-sm-8 col-md-8 col-lg-8"><?= $this->Text->autoParagraph(h($productsDetail->description)) ?></div>
+                 </td>  
+
+       <td class="actions">
+           <div class="col-sm-4 col-md-4 col-lg-4">
+                    <?= $this->Html->link(__(' '), ['action' => 'view', $productsDetail->id],['class' => " glyphicon glyphicon-eye-open", 'data-toggle' => "modal", 'data-target' => "#viewSubcatagory"]) ?>
+                    <?= $this->Html->link(__(''), ['action' => 'edit', $productsDetail->id], ['class' => "glyphicon glyphicon-edit", 'data-toggle' => "modal", 'data-target' => "#editSubcatagory"]) ?>
+                    
+                
+                    <?= $this->Form->postLink(__(' '), ['action' => 'delete', $productsDetail->id], ['confirm' => __('sind sie sicher dass sie # {0} löschen möchten ?', $productsDetail->id),'class' => "glyphicon glyphicon-trash"]) ?>
+           </div>     
+           </td>
+                        <?php endforeach; ?>
+          </tr></tbody>
+           </table>
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('first')) ?>

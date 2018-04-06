@@ -47,6 +47,41 @@ class FilemanagerComponent extends Component{
         imagejpeg($virtual_image, $tempdir_thumb.$toupload->photo);
       return 0;
     }
+    
+      public function doChange($toupload){
+      //  pr($toupload);die();
+        $desired_width=75;
+        $tempdir_main=$toupload->photo_dir.'/main/';
+        $tempdir_thumb=$toupload->photo_dir.'/thumb/';
+          if (!file_exists($tempdir_main)) {
+            mkdir($tempdir_main, 0755, true);
+            mkdir($tempdir_thumb,0755,true);
+        }
+      
+        //$extension = pathinfo($toupload->photo, PATHINFO_EXTENSION);
+        
+      // $imagecreate='imagecreatefrom'.$extension;
+        
+     
+        
+        //$target_dir = $toupload->photo_dir;
+        $target_file = $tempdir_main . basename($_FILES["photo1"]["name"]);
+        move_uploaded_file($_FILES["photo1"]["tmp_name"], $target_file);
+        
+        $source_image=imagecreatefromjpeg($tempdir_main.$toupload->photo);
+        //pr($source_image);die();
+        $width=imagesx($source_image);
+        $height=imagesy($source_image);
+        
+        $desired_height = floor($height * ($desired_width / $width));
+        $virtual_image = imagecreatetruecolor($desired_width, $desired_height);
+        imagecopyresampled($virtual_image, $source_image, 0, 0, 0, 0, $desired_width, $desired_height, $width, $height);
+        imagejpeg($virtual_image, $tempdir_thumb.$toupload->photo);
+      return 0;
+    }
+    
+    
+    
     public function doDelete($todelete){
              $dir =new Folder($todelete->photo_dir);
             //pr()

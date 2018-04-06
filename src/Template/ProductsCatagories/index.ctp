@@ -50,8 +50,16 @@
             <tr>
                 <td><?= $this->Number->format($productsCatagory->id) ?></td>
                 <td><?= h($productsCatagory->catagory_name) ?></td>
-               <td><img src="<?='/'. h($productsCatagory->photo_dir.'/thumb/'.$productsCatagory->photo)?>"></td>
+                <td>
+         
+        <img src="<?='/'. h($productsCatagory->photo_dir.'/thumb/'.$productsCatagory->photo)?>">
+           <?= $this->Html->link(__(''), 
+            ['action' => 'changepic', $productsCatagory->id], 
+            ['class' => "glyphicon glyphicon-edit", 'data-toggle' => "modal", 'data-target' => "#changeImage"]) ?>
+
+                </td>
                 <td class="actions">
+   
                     <?= $this->Html->link(__(' '), ['action' => 'view', $productsCatagory->id],['class' => " glyphicon glyphicon-eye-open", 'data-toggle' => "modal", 'data-target' => "#viewSubcatagory"]) ?>
                     <?= $this->Html->link(__(''), ['action' => 'edit', $productsCatagory->id], ['class' => "glyphicon glyphicon-edit", 'data-toggle' => "modal", 'data-target' => "#editSubcatagory"]) ?>
                     
@@ -77,14 +85,36 @@
 
 
 
-
        <script>                    
                     $('body').on('hidden.bs.modal', '.modal', function () {
         $(this).removeData('bs.modal');
       });
               </script>
               
-              
+         <div id="changeImage" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                     
+                <div class="modal-body">                                       
+      <div class="col-sm-9 col-md-9 col-lg-9">
+
+</div>
+
+ 
+
+
+                    </div>
+                    <div class="clearfix"></div>
+                <div class="modal-footer">
+                   
+                    <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+           
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
               
                <div id="viewSubcatagory" class="modal fade">
         <div class="modal-dialog modal-lg">

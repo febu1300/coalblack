@@ -4,12 +4,9 @@
  * @var \App\Model\Entity\Product $product
  */
 ?>
-  <div class="modal-header pull-left">
-              
-                   <legend><?= __('Produktdatai ändern')?></legend>
-                   
-                </div>
+
 <div class="container-fluid">
+             <legend><?= __('Produktdatai ändern')?></legend>
     <div class="col-sm-1 col-md-1 col-lg-1"></div>
 <div class="col-sm-9 col-md-9 col-lg-9">
     <?= $this->Form->create($product) ?>
@@ -97,10 +94,7 @@
     <hr>
     <?= $this->Form->button(__('Versenden'),['class'=>'btn btn-primary btn-lg btn-block']) ?>
     <?= $this->Form->end() ?>
+      <br>
 </div>
+   
 </div>
-   <div class="clearfix"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Abschließen</button>
-
-                </div>

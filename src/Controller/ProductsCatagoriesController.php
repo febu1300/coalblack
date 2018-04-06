@@ -85,6 +85,9 @@ class ProductsCatagoriesController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $productsCatagory = $this->ProductsCatagories->patchEntity($productsCatagory, $this->request->getData());
+          
+        
+            
             if ($this->ProductsCatagories->save($productsCatagory)) {
                 $this->Flash->success(__('The products catagory has been saved.'));
 
@@ -94,7 +97,35 @@ class ProductsCatagoriesController extends AppController
         }
         $this->set(compact('productsCatagory'));
     }
+public function changepic($id=null){
+// 
+           $productsCatagory = $this->ProductsCatagories->get($id, [
+            'contain' => []
+        ]);
+           $productToDelete=$productsCatagory;
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $productsCatagory = $this->ProductsCatagories->patchEntity($productsCatagory, $this->request->getData());
+                $this->Filemanager->doDelete($productToDelete);      
+            $productsCatagory->catagory_name=$this->request->getData('catagory_name');
+        $productsCatagory->photo_dir="img/".$this->name.'/'.$productsCatagory->catagory_name;
+        $productsCatagory->photo=$this->request->getData('photo1.name');
 
+   
+   
+// this line is added to call component upload
+        $this->Filemanager->doChange($productsCatagory);   
+            
+            
+            if ($this->ProductsCatagories->save($productsCatagory)) {
+                $this->Flash->success(__('The products catagory has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The products catagory could not be saved. Please, try again.'));
+        }
+        $this->set(compact('productsCatagory'));
+    
+}
     /**
      * Delete method
      *
@@ -108,6 +139,7 @@ class ProductsCatagoriesController extends AppController
         
         $productsCatagory = $this->ProductsCatagories->get($id);
         //this line is added to delete a Photo
+         if ($this->request->is('post')) {
         $this->Filemanager->doDelete($productsCatagory);
         if ($this->ProductsCatagories->delete($productsCatagory)) {
             $this->Flash->success(__('The products catagory has been deleted.'));
@@ -117,4 +149,6 @@ class ProductsCatagoriesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    
+        }
 }

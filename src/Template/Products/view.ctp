@@ -5,10 +5,7 @@
  */
 ?>
 
-  <div class="modal-header pull-left">
-                   <h3><?= h($product->id) ?>.<?= h($product->product_name) ?></h3>
-                   
-  </div>
+  
 <div class="container">
     
     <div class="row">

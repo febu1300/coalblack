@@ -98,7 +98,35 @@ class ProductsController extends AppController
         $discountsTypes = $this->Products->DiscountsTypes->find('list', ['limit' => 200]);
         $this->set(compact('product', 'subCatagories', 'discountsTypes','sizes','colors'));
     }
+public function changepic($id=null){
+// 
+           $product = $this->Products->get($id, [
+            'contain' => []
+        ]);
+           $productToDelete=$product;
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $product = $this->Products->patchEntity($product, $this->request->getData());
+                $this->Filemanager->doDelete($productToDelete);      
+   
+        $product->photo_dir="img/".$this->name.'/'.$product->product_name;
+        $product->photo=$this->request->getData('photo1.name');
 
+   
+   
+// this line is added to call component upload
+        $this->Filemanager->doChange($product);   
+            
+            
+            if ($this->Products->save($product)) {
+                $this->Flash->success(__('The products catagory has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The products catagory could not be saved. Please, try again.'));
+        }
+        $this->set(compact('product'));
+    
+}
     /**
      * Edit method
      *
@@ -112,7 +140,9 @@ class ProductsController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+           
             $product = $this->Products->patchEntity($product, $this->request->getData());
+            $product->created_date=Time::now();
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
 

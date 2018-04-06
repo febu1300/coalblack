@@ -75,7 +75,7 @@
             <div class="col-sm-6 col-md-6 col-lg-6">
                          <?php
             echo $this->Form->label('Verkaufspreise');
-            echo $this->Form->control('price',['label'=>false,'type' => 'decimal']);
+            echo $this->Form->control('price',['label'=>false]);
          
      
             ?>

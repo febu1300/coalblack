@@ -36,13 +36,16 @@ div.row-eq-height {
          <hr>
             <div class="d-flex w-50 justify-content-between">
                           <p class="bold"><strong><?php if($product->discount_type_id===1) 
-    {
-        echo $this->Number->currency($product->price,'EUR');
+   {
+        echo $this->Number->format($product->price,['places' => 2,'before'=>'€', 'locale' => 'de_DE']);
     
     }elseif(($product->discount_type_id===2) ){
-        echo $this->Number->currency($product->price-$product->discount,'EUR');
+        
+        echo $this->Number->format($product->price-$product->discount,['places' => 2,'before'=>'€', 'locale' => 'de_DE']) ;
     }elseif($product->discount_type_id===3){
-        echo $this->Number->currency($product->price-$product->price*($product->discount/100),'EUR');
+               echo $this->Number->format($product->price-$product->price*($product->discount/100),['places' => 2,'before'=>'€', 'locale' => 'de_DE']) ;
+
+      
     }
             
             ?></strong></p>
