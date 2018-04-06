@@ -1,0 +1,110 @@
+[start @2017-08-23 09:57:20]
+
+[PHP ini]
+
+PHP version: 7.0.8
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-08-23 09:57:20]
+Zahlart: directDebitTransaction
+
+
+[params set @2017-08-23 09:57:20]
+merchantId=350000
+projectId=441
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Lastschrift Transaktion
+type=SALE
+iban=DE87123456781234567890
+accountHolder=Max Mustermann
+mandateSignedOn=2014-02-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+pkn=5754467832f5ed65f93b2734c189140d
+
+
+[cURL request @2017-08-23 09:57:22]
+params:
+merchantId=350000
+projectId=441
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Lastschrift Transaktion
+type=SALE
+iban=DE87123456781234567890
+accountHolder=Max Mustermann
+mandateSignedOn=2014-02-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+pkn=5754467832f5ed65f93b2734c189140d
+hash=8d7261f088f5a4a973e12696adacc8ac
+sourceId=localhost;PHP 2.1.14;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0
+
+CurlInfo:
+url=https://payment.girosolution.de/girocheckout/api/v2/transaction/payment
+content_type=application/json
+http_code=200
+header_size=363
+request_size=210
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=2.072206
+namelookup_time=0.002096
+connect_time=0.222889
+pretransfer_time=0.917708
+size_upload=1903
+size_download=156
+speed_download=75
+speed_upload=918
+download_content_length=156
+upload_content_length=1903
+starttransfer_time=0.917724
+redirect_time=0
+redirect_url=
+primary_ip=46.163.91.68
+certinfo {
+}
+primary_port=443
+local_ip=192.168.0.12
+local_port=61289
+request_header=POST /girocheckout/api/v2/transaction/payment HTTP/1.1
+Host: payment.girosolution.de
+Accept: */*
+Content-Length: 1903
+Content-Type: multipart/form-data; boundary=------------------------bff465027ed1f809
+
+
+
+
+[cURL reply @2017-08-23 09:57:22]
+result:HTTP/1.1 200 OK
+Date: Wed, 23 Aug 2017 12:57:21 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: e5d62add56d034f896c4f273dd8c091b
+Content-Length: 156
+Connection: close
+Content-Type: application/json
+
+{"reference":"528a0ab3-ceec-4b26-a39c-9ac72d48dc81","backendTxId":"12909779_01","mandateReference":"350000-12909779","resultPayment":"4000","rc":0,"msg":""}
+curl_error log:
+
+[reply params @2017-08-23 09:57:22]
+rc=0
+msg=
+reference=528a0ab3-ceec-4b26-a39c-9ac72d48dc81
+backendTxId=12909779_01
+mandateReference=350000-12909779
+resultPayment=4000
+
+

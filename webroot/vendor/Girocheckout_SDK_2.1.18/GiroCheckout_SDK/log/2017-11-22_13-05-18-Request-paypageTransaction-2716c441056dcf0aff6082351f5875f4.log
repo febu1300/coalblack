@@ -1,0 +1,107 @@
+[start @2017-11-22 13:05:18]
+
+[PHP ini]
+
+PHP version: 7.0.8
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-11-22 13:05:18]
+Zahlart: paypageTransaction
+
+
+[params set @2017-11-22 13:05:18]
+merchantId=350000
+projectId=14108
+merchantTxId=22e74d1d-84b8-413c-b4b6-59e7ac17f750
+amount=3215
+currency=EUR
+purpose=17.0.15234
+orderid=Order MH 3920-87
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=de
+test=0
+successUrl=https://dev.girosolution.de/redirect.php?success=1
+backUrl=https://dev.girosolution.de/redirect.php?back=1
+failUrl=https://dev.girosolution.de/redirect.php?fail=1
+notifyUrl=https://dev.girosolution.de/notify.php
+
+
+[cURL request @2017-11-22 13:05:19]
+params:
+merchantId=350000
+projectId=14108
+merchantTxId=22e74d1d-84b8-413c-b4b6-59e7ac17f750
+amount=3215
+currency=EUR
+purpose=17.0.15234
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=de
+orderid=Order MH 3920-87
+test=0
+successUrl=https://dev.girosolution.de/redirect.php?success=1
+backUrl=https://dev.girosolution.de/redirect.php?back=1
+failUrl=https://dev.girosolution.de/redirect.php?fail=1
+notifyUrl=https://dev.girosolution.de/notify.php
+hash=bd88aba0067b029ab104b2a5b50a5dc3
+sourceId=localhost;PHP 2.1.17;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:56.0) Gecko/20100101 Firefox/56.0
+
+CurlInfo:
+url=http://mheumann.hopto.org/girocheckout/api/v2/paypage/init
+content_type=application/json
+http_code=200
+header_size=304
+request_size=198
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=0.582234
+namelookup_time=0.00093
+connect_time=0.001094
+pretransfer_time=0.001215
+size_upload=2168
+size_download=69
+speed_download=118
+speed_upload=3723
+download_content_length=69
+upload_content_length=2168
+starttransfer_time=0.001225
+redirect_time=0
+redirect_url=
+primary_ip=::1
+certinfo {
+}
+primary_port=80
+local_ip=::1
+local_port=58400
+request_header=POST /girocheckout/api/v2/paypage/init HTTP/1.1
+Host: mheumann.hopto.org
+Accept: */*
+Content-Length: 2168
+Content-Type: multipart/form-data; boundary=------------------------17f2239aaa14dcdf
+
+
+
+
+[cURL reply @2017-11-22 13:05:19]
+result:HTTP/1.1 200 OK
+Date: Wed, 22 Nov 2017 16:05:18 GMT
+Server: Apache
+X-Powered-By: PHP/7.0.8
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: 7381a46b9f89212af72f97e34da5bb7f
+Content-Length: 69
+Content-Type: application/json
+
+{"reference":null,"url":null,"rc":5090,"msg":"orderId ung\u00fcltig"}
+curl_error log:
+
+[reply params @2017-11-22 13:05:19]
+rc=5090
+msg=orderId ungültig
+
+

@@ -1,0 +1,99 @@
+[start @2017-10-06 10:11:50]
+
+[PHP ini]
+
+PHP version: 5.6.10
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-10-06 10:11:50]
+Zahlart: maestroTransaction
+
+
+[params set @2017-10-06 10:11:50]
+merchantId=350000
+projectId=9470
+merchantTxId=1234567890
+amount=100
+currency=EUR
+type=SALE
+purpose=Beispieltransaktion
+urlRedirect=https://www.my-domain.de/girocheckout/redirect-creditcard
+urlNotify=https://www.my-domain.de/girocheckout/redirect-creditcard
+
+
+[cURL request @2017-10-06 10:11:52]
+params:
+merchantId=350000
+projectId=9470
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Beispieltransaktion
+type=SALE
+urlRedirect=https://www.my-domain.de/girocheckout/redirect-creditcard
+urlNotify=https://www.my-domain.de/girocheckout/redirect-creditcard
+hash=695bf87a6e7cb1d031db79e7b3a8d68d
+sourceId=localhost;PHP 2.1.15;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0
+
+CurlInfo:
+url=https://dev.girosolution.de/girocheckout/api/v2/transaction/start
+content_type=application/json
+http_code=200
+header_size=344
+request_size=204
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=1.987216
+namelookup_time=0.231869
+connect_time=0.466145
+pretransfer_time=0.953925
+size_upload=1510
+size_download=190
+speed_download=95
+speed_upload=759
+download_content_length=190
+upload_content_length=1510
+starttransfer_time=0.953933
+redirect_time=0
+redirect_url=
+primary_ip=46.252.21.136
+certinfo {
+}
+primary_port=443
+local_ip=192.168.0.15
+local_port=51920
+request_header=POST /girocheckout/api/v2/transaction/start HTTP/1.1
+Host: dev.girosolution.de
+Accept: */*
+Content-Length: 1510
+Content-Type: multipart/form-data; boundary=------------------------b83f8e40f118755e
+
+
+
+
+[cURL reply @2017-10-06 10:11:52]
+result:HTTP/1.1 200 OK
+Date: Fri, 06 Oct 2017 13:11:52 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: fefd52923f5fcbdd608872567b0ea30a
+Content-Length: 190
+Content-Type: application/json
+
+{"reference":"36534bdc-fe6d-4647-9534-1dd395c1d3a7","redirect":"https:\/\/test-payform.girocheckout.de\/web-api\/de\/R.po?n=UC2eWGp_22hXhuXhpJCPpm-uanVEWaUP2LDHYWEKDGwP1F","rc":"0","msg":""}
+curl_error log:
+
+[reply params @2017-10-06 10:11:52]
+rc=0
+msg=
+reference=36534bdc-fe6d-4647-9534-1dd395c1d3a7
+redirect=https://test-payform.girocheckout.de/web-api/de/R.po?n=UC2eWGp_22hXhuXhpJCPpm-uanVEWaUP2LDHYWEKDGwP1F
+
+

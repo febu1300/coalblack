@@ -1,0 +1,101 @@
+[start @2017-09-01 11:42:25]
+
+[PHP ini]
+
+PHP version: 7.0.8
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-09-01 11:42:25]
+Zahlart: paypageTransaction
+
+
+[params set @2017-09-01 11:42:25]
+merchantId=350000
+projectId=14108
+merchantTxId=123456
+amount=3215
+currency=EUR
+purpose=17.0.15234
+payprojects=441,442,14126
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=de
+test=0
+
+
+[cURL request @2017-09-01 11:42:26]
+params:
+merchantId=350000
+projectId=14108
+merchantTxId=123456
+amount=3215
+currency=EUR
+purpose=17.0.15234
+description=Bezahlung Ihrer Anfrage im Verfahren Fischereidokumente Schleswig-Holstein
+locale=de
+payprojects=441,442,14126
+test=0
+hash=1e4909e557c3ba49a15f20cdece993b1
+sourceId=localhost;PHP 2.1.14;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0
+
+CurlInfo:
+url=http://mheumann.hopto.org/girocheckout/api/v2/paypage/init
+content_type=application/json
+http_code=200
+header_size=305
+request_size=198
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=0.408106
+namelookup_time=0.001215
+connect_time=0.001355
+pretransfer_time=0.001616
+size_upload=1568
+size_download=210
+speed_download=514
+speed_upload=3842
+download_content_length=210
+upload_content_length=1568
+starttransfer_time=0.001625
+redirect_time=0
+redirect_url=
+primary_ip=::1
+certinfo {
+}
+primary_port=80
+local_ip=::1
+local_port=62943
+request_header=POST /girocheckout/api/v2/paypage/init HTTP/1.1
+Host: mheumann.hopto.org
+Accept: */*
+Content-Length: 1568
+Content-Type: multipart/form-data; boundary=------------------------8ccf4b48bce61d6d
+
+
+
+
+[cURL reply @2017-09-01 11:42:26]
+result:HTTP/1.1 200 OK
+Date: Fri, 01 Sep 2017 14:42:25 GMT
+Server: Apache
+X-Powered-By: PHP/7.0.8
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: f67be47b5b5376fb9f819aa1941187d6
+Content-Length: 210
+Content-Type: application/json
+
+{"reference":"a00e17f7-37d6-4735-adec-0c9f87985b44","url":"http:\/\/mheumann2.hopto.org\/v1\/paypage\/de\/Hz0IUumabkG5t_WDA0ipJZPwBvINZQmUoq3id5Cnc7bE4hNzVn_4LUht7A9DUcIlWE2ZPi1NDcsnKSdBtiFC7w","rc":0,"msg":""}
+curl_error log:
+
+[reply params @2017-09-01 11:42:26]
+rc=0
+msg=
+reference=a00e17f7-37d6-4735-adec-0c9f87985b44
+url=http://mheumann2.hopto.org/v1/paypage/de/Hz0IUumabkG5t_WDA0ipJZPwBvINZQmUoq3id5Cnc7bE4hNzVn_4LUht7A9DUcIlWE2ZPi1NDcsnKSdBtiFC7w
+
+
