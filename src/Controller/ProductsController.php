@@ -4,7 +4,8 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\I18n\Time;
-use Cake\I18n\I18n;
+use Cake\Filesystem\Folder;
+use Cake\Filesystem\File;
    
 // Prior to 3.5 use I18n::locale()
 
@@ -163,17 +164,24 @@ public function changepic($id=null){
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
-    {
+    {  
         $this->request->allowMethod(['post', 'delete']);
-        $product = $this->Products->get($id);
+          $product = $this->Products->get($id);
+      if ($this->request->is('post')) {
                      //this line is added to delete a Photo
-        $this->Filemanager->doDelete($product);
+            $this->Filemanager->doDelete($product);
+    
+          pr($this);die();
+          
         if ($this->Products->delete($product)) {
+     
             $this->Flash->success(__('The product has been deleted.'));
         } else {
             $this->Flash->error(__('The product could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);
-    }
+    }  
+    
+        }
 }

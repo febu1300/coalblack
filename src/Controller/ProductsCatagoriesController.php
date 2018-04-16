@@ -140,6 +140,7 @@ public function changepic($id=null){
         $productsCatagory = $this->ProductsCatagories->get($id);
         //this line is added to delete a Photo
          if ($this->request->is('post')) {
+             
         $this->Filemanager->doDelete($productsCatagory);
         if ($this->ProductsCatagories->delete($productsCatagory)) {
             $this->Flash->success(__('The products catagory has been deleted.'));
