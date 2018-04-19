@@ -25,16 +25,17 @@ class BillingaddCell extends Cell
     public function display()
     {
                 $UsersDetailTable = TableRegistry::get('UsersDetail');
-//  pr($article_type);die();
+
+                
 $products1=$UsersDetailTable->find()
-->select(['id','user_id','address_line_1','address_line_2','user_detail_type_id'])
+->select(['id','user_id','studio_name','address_line_1','address_line_2','city','state','postal_code','country','main_address','is_similar','user_detail_type_id'])
         ->where((['user_detail_type_id'=>2]))
   ->where((['user_id'=>$this->request->session()->read('Auth.User.id')]))
 
 			->limit(1)
 			->toArray();
-	
-              
-    $this->set(['products1'=>$products1]);
+
+            $this->set(['products1'=>$products1]);
     }
+    
 }

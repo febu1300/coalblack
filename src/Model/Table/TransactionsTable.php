@@ -40,11 +40,11 @@ class TransactionsTable extends Table
 
         $this->belongsTo('TransactionTypes', [
             'foreignKey' => 'transaction_type_id',
-            'joinType' => 'INNER'
+            'joinType' => 'LEFT'
         ]);
         $this->belongsTo('Products', [
             'foreignKey' => 'product_id',
-            'joinType' => 'INNER'
+            'joinType' => 'LEFT'
         ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',

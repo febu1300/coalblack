@@ -3,7 +3,13 @@ $this->layout(false);
 
 ?>
 <head>
-         
+              <?= $this->fetch('title') ?>
+       <?= $this->Html->meta(
+    'favicon.ico',
+    'img/icon.svg',
+    ['type' => 'icon']
+);
+?> <?= $this->Html->css('site_global.css') ?>
    <?= $this->Html->css('bootstrap.min.css') ?>
 
    <?= $this->Html->css('coalblack.css') ?>
@@ -34,13 +40,24 @@ $this->layout(false);
 }
     </style>
 </head>
-<div class="container align-items-right">
+<div class="container ">
     
-       <div class="row">
+       <div class="row ">
         <div class="col-sm-3 col-md-4 col-lg-4 "></div>
         <img class="media-object" src="/img/logo.svg" style="width:200px; height: 120px" >
          <div class="col-sm-3 col-md-3 col-lg-3"></div>
     </div>
+    <div class="row">
+      <div class="col-sm-1 col-md-1 col-lg-1"></div>
+    <div class="breadcrumb flat">
+        <a href="#" class="cap" > <span class="fa fa-cart-plus fa-2x"> </span>Warenkorb</a>
+        
+        <a href="#" class="cap"><span class="fa fa-pencil-square-o fa-2x"></span>Personlicher Angabe</a>
+        <a href="#" class="active cap"><span class="fa fa-euro fa-2x"></span>Zahlungsart</a>
+        <a href="#" class="cap"><span class="fa fa-check-square-o fa-2x"></span>Checkout</a>
+         
+    </div>
+</div>
     <div class="jumbotron bg-light">
       <div class="row">
           <div class="col">
@@ -67,13 +84,15 @@ $this->layout(false);
       <label class="custom-control-label" for="customRadio1">Paypal</label>
      
   </div>
+      <hr>
   <div class="custom-control custom-radio">
       <input id="customRadio2" name="customRadio" class="custom-control-input" value='2' type="radio">
       <label class="custom-control-label" for="customRadio2">Sofortüberweisung</label>
   </div>
+      <hr>
   <div class="custom-control custom-radio">
       <input id="customRadio3" name="customRadio" class="custom-control-input" value='3' type="radio">
-      <label class="custom-control-label" for="customRadio3">Nachnahme</label>
+      <label class="custom-control-label" for="customRadio3">Nachnahme (Kostet €7.00 mehr)</label>
    </div>
   </div>
 
@@ -95,7 +114,7 @@ $this->layout(false);
                 <div class="jumbotron" >
     <div class="card-header"><h5>Versandadress</h5></div>
   <div class="card-body">
-   <div class="col-sm-6 col-md-6 col-lg-6">
+   <div class="col-sm-8 col-md-8 col-lg-8">
  
     <?=$this->cell('Shippingadd');?>
     </div>
@@ -105,7 +124,7 @@ $this->layout(false);
       <div class="card-header"><h5>Rechnungadress</h5></div>
       
     <div class="card-body">
-      <div class="col-sm-6 col-md-6 col-lg-6">
+      <div class="col-sm-8 col-md-8 col-lg-8">
  <?=$this->cell('Billingadd');?>
 </div>
 </div>

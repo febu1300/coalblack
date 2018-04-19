@@ -29,7 +29,7 @@
 
 <?= $this->Html->meta(
     'favicon.ico',
-    '/img/icon.svg',
+    'img/icon.svg',
     ['type' => 'icon']
 );
 ?>

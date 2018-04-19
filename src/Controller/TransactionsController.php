@@ -56,7 +56,7 @@ class TransactionsController extends AppController {
         if ($this->request->getParam('action') === 'pay' || $this->request->getParam('action') === 'success' || $this->request->getParam('action') === 'danke') {
             return true;
         }
-        if ($this->request->getParam('action') === 'checkout' ) {
+        if ($this->request->getParam('action') === 'checkout'|| $this->request->getParam('action') === 'nachname' ) {
             return true;
         }
         
@@ -241,7 +241,7 @@ class TransactionsController extends AppController {
                     $amount->setDetails($details)
                             ->setTotal($Gg + 0.00)
                             ->setCurrency('EUR');
-                    $wennreturn = 'http://coalblack' . Router::url([
+                    $wennreturn = 'http://coalblack.supply' . Router::url([
                                 'controller' => 'Transactions',
                                 'action' => 'success',
                                 '?' => ['best' => $bestlnumr]
@@ -256,7 +256,7 @@ class TransactionsController extends AppController {
                             ->setInvoiceNumber($bestlnumr);
                     $redirectUrls = new \PayPal\Api\RedirectUrls();
                     $redirectUrls->setReturnUrl($wennreturn)
-                            ->setCancelUrl("http://coalblack/transactions/canceled");
+                            ->setCancelUrl("http://coalblack.supply/transactions/canceled");
 
                     $payment = new \PayPal\Api\Payment();
                     $payment->setIntent('sale')
@@ -276,6 +276,7 @@ class TransactionsController extends AppController {
                         //REALLY HELPFUL FOR DEBUGGING
                         echo $ex->getData();
                     }
+                    return $this->redirect(['controller' => 'transactions', 'action' => 'success']);   
                 } else if ($selMeth['customRadio'] == 2) {
                     $configkey = '166950:430655:d5e84b3e416d898b8338490cd991f0e5';
                     $Sofortueberweisung = new Sofortueberweisung($configkey);
@@ -304,7 +305,7 @@ class TransactionsController extends AppController {
                             $transaction->price = $product->price;
                             $transaction->user_id = $this->Auth->user('id');
                             $transaction->transaction_status_id = 1;
-                            $transaction->payment_method_id = 1;
+                            $transaction->payment_method_id = 2;
                             $transaction->order_number = $bestlnumr;
 //$onum=$transaction->order_number;
 //$transaction->transaction_number=$result->transaction->id;
@@ -353,10 +354,55 @@ class TransactionsController extends AppController {
                         return $this->redirect($paymentUrl);
                     }
                 } elseif ($selMeth['customRadio'] == 3) {
-                    echo "this is nachname";
+          $session = $this->request->session();
+                    $products = $this->Products->find();
+////         $colors = $this->Colors->find();
+////             $sizes = $this->Sizes->find();
+                    foreach ($products as $product) {
+                        $productname = explode(" ", $product->product_name);
+                        $productname1 = implode("", $productname);
+////            foreach ($colors as $color) {
+////            foreach ($sizes as $size) {
+//             
+//            //$colorname1 =  $productname1."_".$color->color."_".$size->size;
+                        $colorname1 = $productname1;
+                        $name2 = $session->read($colorname1);
+                        $this->set('name2', $name2);
+//
+                        if ($product->online_vorhanden && $product->photo && $name2) {
+                            $transaction = $this->Transactions->newEntity();
+                            $transaction->transaction_type_id = 1;                   //transaction type Verkauf
+                            $transaction->product_id = $product->id;
+                            $transaction->created_date = Time::now();
+                            $transaction->quantity = $name2[$product->id];
+                            $transaction->price = $product->price;
+                            $transaction->user_id = $this->Auth->user('id');
+                            $transaction->transaction_status_id = 1;
+                            $transaction->payment_method_id = 3;
+                            $transaction->order_number = $bestlnumr;
+//$onum=$transaction->order_number;
+//$transaction->transaction_number=$result->transaction->id;
+//$transaction->color_id=$color->id;
+//$transaction->size_id=$size->id;
+                            $this->Transactions->save($transaction);
+
+                      $this->redirect([
+                         'controller'=>'transactions', 
+                         'action'=>'nachname',
+                                '?' => ['best' => $bestlnumr,'paymentId'=> uniqid()]]);
+                        } else {
+                            
+                        }
+////           }}
+//   
+//      
+                    }
+
+                 
+               
                 }
 
-//return $this->redirect(['controller' => 'transactions', 'action' => 'success']);   
+
                 //}  
             }
         } else {
@@ -829,5 +875,70 @@ public function checkout(){
 
         $this->set(compact('transactions'));
     }
+public function nachname(){
+      $bestnum = $this->request->query('best');
+        $transnum = $this->request->query('paymentId');
+        $this->viewBuilder()->setLayout('frontlayout');
 
+        $transaction = $this->Transactions->find()
+                ->contain('Products')
+                ->where(['Transactions.order_number' => $bestnum])
+                ->where(['Transactions.user_id' => $this->Auth->user('id')]);
+
+        foreach ($transaction as $trans) {
+            if ($trans->order_number === $bestnum && $trans->user_id === $this->Auth->user('id')) {
+
+                $thistrans = $this->Transactions->get($trans->id, [
+                    'contain' => ['Products']
+                ]);
+                // pr($thistrans['transaction_status_id']);die();
+                $thistrans->transaction_status_id = 2;
+                $thistrans->updated_date = Time::now();
+                $thistrans->transaction_number = $transnum;
+
+                $this->Transactions->save($thistrans);
+                $session = $this->request->session();
+
+                $products = $this->Products->find();
+//         $colors = $this->Colors->find();
+//             $sizes = $this->Sizes->find();
+                foreach ($products as $product) {
+                    $productname = explode(" ", $product->product_name);
+                    $productname1 = implode("", $productname);
+//            foreach ($colors as $color) {
+//            foreach ($sizes as $size) {
+                    //$colorname1 =  $productname1."_".$color->color."_".$size->size;
+                    $colorname1 = $productname1;
+                    $name2 = $session->read($colorname1);
+                    $this->set('name2', $name2);
+
+                    if ($product->online_vorhanden && $product->photo && $name2) {
+
+                        $count1 = $session->read('count');
+                        $this->set('count', $count1);
+                        $count2 = $count1 - $name2[$product->id];
+                        $session->delete($colorname1);
+                        $session->write('count', $count2);
+                    }
+                }
+            }
+        }
+$this->set(compact('transaction', $transaction));
+
+        $useremail = $this->Checkout->findEmail($this->Auth->user('id'));
+        $email = new Email('default');
+
+        $email->from(['meinebestellung@coalblack.supply' => 'coalblack'])
+                ->to($useremail)
+                ->template('nachname', 'nachname')
+                ->subject('Zahlungsbestätigung')
+                ->emailFormat('html')
+                ->viewVars(['value' => $bestnum])
+                ->viewVars(['transaction' => $transaction])
+                ->send();
+
+        return $this->redirect(['controller' => 'transactions', 'action' => 'danke', "?" => ['best' => $bestnum]]);
+
+
+}
 }

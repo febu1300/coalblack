@@ -27,10 +27,15 @@
         <?php $this->fetch('title') ?>
     </title>
 
-
+<?= $this->Html->meta(
+    'favicon.ico',
+    'img/icon.svg',
+    ['type' => 'icon']
+);
+?>
   
    <?= $this->Html->css('bootstrap.min.css') ?>
-
+   <?= $this->Html->css('coalblack.css') ?>
 
     <?= $this->Html->script('jquery-1.8.3.min.js') ?>
     <?= $this->Html->script('popper.min.js') ?>
