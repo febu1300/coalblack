@@ -1,0 +1,100 @@
+[start @2017-11-03 21:10:51]
+
+[PHP ini]
+
+PHP version: 5.6.10
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-11-03 21:10:51]
+Zahlart: creditCardRefund
+
+
+[params set @2017-11-03 21:10:51]
+merchantId=350000
+projectId=442
+merchantTxId=59fd058b3a42d
+amount=100
+currency=EUR
+purpose=Erstattung Nr. 3902
+reference=0964ea69-b85d-4cbf-8c3d-163a6651a527
+
+
+[cURL request @2017-11-03 21:10:53]
+params:
+merchantId=350000
+projectId=442
+merchantTxId=59fd058b3a42d
+amount=100
+currency=EUR
+purpose=Erstattung Nr. 3902
+reference=0964ea69-b85d-4cbf-8c3d-163a6651a527
+hash=f07bd9ffbf4ac056ee0199658041c7bc
+sourceId=localhost;PHP 2.1.16;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:56.0) Gecko/20100101 Firefox/56.0
+
+CurlInfo:
+url=https://dev.girosolution.de/girocheckout/api/v2/transaction/refund
+content_type=application/json
+http_code=200
+header_size=344
+request_size=205
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=2.695405
+namelookup_time=0.000993
+connect_time=0.24849
+pretransfer_time=0.803235
+size_upload=1237
+size_download=250
+speed_download=92
+speed_upload=458
+download_content_length=250
+upload_content_length=1237
+starttransfer_time=0.803249
+redirect_time=0
+redirect_url=
+primary_ip=46.252.21.136
+certinfo {
+}
+primary_port=443
+local_ip=192.168.0.10
+local_port=49977
+request_header=POST /girocheckout/api/v2/transaction/refund HTTP/1.1
+Host: dev.girosolution.de
+Accept: */*
+Content-Length: 1237
+Content-Type: multipart/form-data; boundary=------------------------ae024cbe1ba4c061
+
+
+
+
+[cURL reply @2017-11-03 21:10:53]
+result:HTTP/1.1 200 OK
+Date: Sat, 04 Nov 2017 00:10:54 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: 1184cfda76a7cdd180d22505f45e3408
+Content-Length: 250
+Content-Type: application/json
+
+{"reference":"6da2e7f8-b629-435c-a363-d508f4fd5907","referenceParent":"0964ea69-b85d-4cbf-8c3d-163a6651a527","merchantTxId":"59fd058b3a42d","backendTxId":"nRxeUaTwfXMNCDzRO94GTe","amount":"100","currency":"EUR","resultPayment":"4000","rc":0,"msg":""}
+curl_error log:
+
+[reply params @2017-11-03 21:10:53]
+rc=0
+msg=
+reference=6da2e7f8-b629-435c-a363-d508f4fd5907
+referenceParent=0964ea69-b85d-4cbf-8c3d-163a6651a527
+merchantTxId=59fd058b3a42d
+backendTxId=nRxeUaTwfXMNCDzRO94GTe
+amount=100
+currency=EUR
+resultPayment=4000
+
+

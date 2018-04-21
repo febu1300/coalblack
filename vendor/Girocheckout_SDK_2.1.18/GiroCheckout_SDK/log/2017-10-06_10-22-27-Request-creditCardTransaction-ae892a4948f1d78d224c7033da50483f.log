@@ -1,0 +1,99 @@
+[start @2017-10-06 10:22:27]
+
+[PHP ini]
+
+PHP version: 5.6.10
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-10-06 10:22:27]
+Zahlart: creditCardTransaction
+
+
+[params set @2017-10-06 10:22:27]
+merchantId=350000
+projectId=442
+merchantTxId=1234567890
+amount=100
+currency=EUR
+type=SALE
+purpose=Beispieltransaktion
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+
+
+[cURL request @2017-10-06 10:22:29]
+params:
+merchantId=350000
+projectId=442
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Beispieltransaktion
+type=SALE
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+hash=d7791213f5134f5301575e6d465fbfcc
+sourceId=localhost;PHP 2.1.15;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0
+
+CurlInfo:
+url=https://dev.girosolution.de/girocheckout/api/v2/transaction/start
+content_type=application/json
+http_code=200
+header_size=344
+request_size=204
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=2.047814
+namelookup_time=0.000636
+connect_time=0.232342
+pretransfer_time=0.714777
+size_upload=1473
+size_download=190
+speed_download=92
+speed_upload=719
+download_content_length=190
+upload_content_length=1473
+starttransfer_time=0.714785
+redirect_time=0
+redirect_url=
+primary_ip=46.252.21.136
+certinfo {
+}
+primary_port=443
+local_ip=192.168.0.15
+local_port=52838
+request_header=POST /girocheckout/api/v2/transaction/start HTTP/1.1
+Host: dev.girosolution.de
+Accept: */*
+Content-Length: 1473
+Content-Type: multipart/form-data; boundary=------------------------2231b0fe28f0ed3c
+
+
+
+
+[cURL reply @2017-10-06 10:22:29]
+result:HTTP/1.1 200 OK
+Date: Fri, 06 Oct 2017 13:22:29 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: 196690cb069438fa87db8cbf2ec87728
+Content-Length: 190
+Content-Type: application/json
+
+{"reference":"0e0dcf37-eda3-4e61-8935-5e43bb75c6be","redirect":"https:\/\/test-payform.girocheckout.de\/web-api\/de\/R.po?n=88Gm7Ab5etRrgzmC4rhSQfhj9JRRN6zea2k5rUyHQHPxSw","rc":"0","msg":""}
+curl_error log:
+
+[reply params @2017-10-06 10:22:29]
+rc=0
+msg=
+reference=0e0dcf37-eda3-4e61-8935-5e43bb75c6be
+redirect=https://test-payform.girocheckout.de/web-api/de/R.po?n=88Gm7Ab5etRrgzmC4rhSQfhj9JRRN6zea2k5rUyHQHPxSw
+
+

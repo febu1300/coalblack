@@ -1,0 +1,109 @@
+[start @2017-09-29 15:11:55]
+
+[PHP ini]
+
+PHP version: 7.0.8
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-09-29 15:11:55]
+Zahlart: directDebitTransactionWithPaymentPage
+
+
+[params set @2017-09-29 15:11:55]
+merchantId=350000
+projectId=14147
+merchantTxId=1234567890
+amount=1250
+currency=EUR
+purpose=Spende an den FC
+type=SALE
+locale=de_DE_stadtn
+mandateReference=12345abcde
+mandateSignedOn=2014-01-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+
+
+[cURL request @2017-09-29 15:11:56]
+params:
+merchantId=350000
+projectId=14147
+merchantTxId=1234567890
+amount=1250
+currency=EUR
+purpose=Spende an den FC
+type=SALE
+locale=de_DE_stadtn
+mandateReference=12345abcde
+mandateSignedOn=2014-01-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+hash=531d15d914d13475abafb4f838f7d22f
+sourceId=localhost;PHP 2.1.15;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0
+
+CurlInfo:
+url=http://mheumann.hopto.org/girocheckout/api/v2/transaction/start
+content_type=application/json
+http_code=200
+header_size=305
+request_size=203
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=0.372271
+namelookup_time=0.000619
+connect_time=0.000773
+pretransfer_time=0.001225
+size_upload=2042
+size_download=212
+speed_download=569
+speed_upload=5485
+download_content_length=212
+upload_content_length=2042
+starttransfer_time=0.001234
+redirect_time=0
+redirect_url=
+primary_ip=::1
+certinfo {
+}
+primary_port=80
+local_ip=::1
+local_port=51728
+request_header=POST /girocheckout/api/v2/transaction/start HTTP/1.1
+Host: mheumann.hopto.org
+Accept: */*
+Content-Length: 2042
+Content-Type: multipart/form-data; boundary=------------------------bb2c33217eb2ba07
+
+
+
+
+[cURL reply @2017-09-29 15:11:56]
+result:HTTP/1.1 200 OK
+Date: Fri, 29 Sep 2017 18:11:55 GMT
+Server: Apache
+X-Powered-By: PHP/7.0.8
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: cd75b8a256a691dc4823df2842b51788
+Content-Length: 212
+Content-Type: application/json
+
+{"mandateReference":"12345abcde","reference":"5f6dc994-cca5-49cf-908b-ab0a27ca2fc2","redirect":"http:\/\/mheumann2.hopto.org\/v1\/directdebit\/formservice\/de_DE_stadtn\/Ol7R6_tviRrpCQ4cvAgE3g","rc":"0","msg":""}
+curl_error log:
+
+[reply params @2017-09-29 15:11:56]
+rc=0
+msg=
+reference=5f6dc994-cca5-49cf-908b-ab0a27ca2fc2
+redirect=http://mheumann2.hopto.org/v1/directdebit/formservice/de_DE_stadtn/Ol7R6_tviRrpCQ4cvAgE3g
+
+

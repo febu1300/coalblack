@@ -1,0 +1,109 @@
+[start @2017-09-26 12:13:49]
+
+[PHP ini]
+
+PHP version: 7.0.8
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-09-26 12:13:49]
+Zahlart: directDebitTransactionWithPaymentPage
+
+
+[params set @2017-09-26 12:13:49]
+merchantId=350000
+projectId=14147
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Lastschrift Transaktion
+type=SALE
+locale=de_DE_stadtn
+mandateReference=12345abcde
+mandateSignedOn=2014-01-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+
+
+[cURL request @2017-09-26 12:13:51]
+params:
+merchantId=350000
+projectId=14147
+merchantTxId=1234567890
+amount=100
+currency=EUR
+purpose=Lastschrift Transaktion
+type=SALE
+locale=de_DE_stadtn
+mandateReference=12345abcde
+mandateSignedOn=2014-01-01
+mandateReceiverName=Max Mustermann Shops
+mandateSequence=1
+urlRedirect=https://dev.girosolution.de/redirect.php
+urlNotify=https://dev.girosolution.de/notify.php
+hash=c736082f1b4008bc8f740159514dbd93
+sourceId=localhost;PHP 2.1.15;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0
+
+CurlInfo:
+url=http://mheumann.hopto.org/girocheckout/api/v2/transaction/start
+content_type=application/json
+http_code=200
+header_size=305
+request_size=203
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=1.392228
+namelookup_time=0.000839
+connect_time=0.000981
+pretransfer_time=0.00127
+size_upload=2048
+size_download=159
+speed_download=114
+speed_upload=1471
+download_content_length=159
+upload_content_length=2048
+starttransfer_time=0.001278
+redirect_time=0
+redirect_url=
+primary_ip=::1
+certinfo {
+}
+primary_port=80
+local_ip=::1
+local_port=62133
+request_header=POST /girocheckout/api/v2/transaction/start HTTP/1.1
+Host: mheumann.hopto.org
+Accept: */*
+Content-Length: 2048
+Content-Type: multipart/form-data; boundary=------------------------d92f44e3b2d52620
+
+
+
+
+[cURL reply @2017-09-26 12:13:51]
+result:HTTP/1.1 200 OK
+Date: Tue, 26 Sep 2017 15:13:49 GMT
+Server: Apache
+X-Powered-By: PHP/7.0.8
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: 4a68d21c3954eabe633ef1bd540cf419
+Content-Length: 159
+Content-Type: application/json
+
+{"mandateReference":"12345abcde","reference":"fefcb1a1-f1d6-473f-8b47-99b51c53c347","redirect":"","rc":"5101","msg":"Verbindungsproblem zum Zahlungsabwickler"}
+curl_error log:
+
+[reply params @2017-09-26 12:13:51]
+rc=5101
+msg=Verbindungsproblem zum Zahlungsabwickler
+reference=fefcb1a1-f1d6-473f-8b47-99b51c53c347
+redirect=
+
+

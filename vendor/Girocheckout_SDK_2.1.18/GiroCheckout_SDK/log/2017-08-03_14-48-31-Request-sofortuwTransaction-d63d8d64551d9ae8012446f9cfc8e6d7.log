@@ -1,0 +1,97 @@
+[start @2017-08-03 14:48:31]
+
+[PHP ini]
+
+PHP version: 7.0.8
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-08-03 14:48:31]
+Zahlart: sofortuwTransaction
+
+
+[params set @2017-08-03 14:48:31]
+merchantId=350000
+projectId=7550
+merchantTxId=123456
+amount=4452
+currency=EUR
+purpose=Zweck
+urlRedirect=https://www.my-domain.de/girocheckout/redirect.php
+urlNotify=https://www.my-domain.de/girocheckout/notify.php
+
+
+[cURL request @2017-08-03 14:48:33]
+params:
+merchantId=350000
+projectId=7550
+merchantTxId=123456
+amount=4452
+currency=EUR
+purpose=Zweck
+urlRedirect=https://www.my-domain.de/girocheckout/redirect.php
+urlNotify=https://www.my-domain.de/girocheckout/notify.php
+hash=05cef89dd86d621086fe16ce63ef8952
+sourceId=localhost;PHP 2.1.14;;
+userAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0
+
+CurlInfo:
+url=https://dev.girosolution.de/girocheckout/api/v2/transaction/start
+content_type=application/json
+http_code=200
+header_size=344
+request_size=204
+filetime=-1
+ssl_verify_result=0
+redirect_count=0
+total_time=1.102709
+namelookup_time=0.001002
+connect_time=0.053863
+pretransfer_time=0.134463
+size_upload=1380
+size_download=163
+speed_download=147
+speed_upload=1251
+download_content_length=163
+upload_content_length=1380
+starttransfer_time=0.134472
+redirect_time=0
+redirect_url=
+primary_ip=46.252.21.136
+certinfo {
+}
+primary_port=443
+local_ip=192.168.0.64
+local_port=57901
+request_header=POST /girocheckout/api/v2/transaction/start HTTP/1.1
+Host: dev.girosolution.de
+Accept: */*
+Content-Length: 1380
+Content-Type: multipart/form-data; boundary=------------------------58e6a8b2a50c5065
+
+
+
+
+[cURL reply @2017-08-03 14:48:33]
+result:HTTP/1.1 200 OK
+Date: Thu, 03 Aug 2017 12:48:32 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+X-Content-Type-Options: nosniff
+hash: cd22c9815e7103913e3f6b0799e07d9b
+Content-Length: 163
+Content-Type: application/json
+
+{"reference":"7a974730-3660-4b63-9d94-53c32f275713","redirect":"https:\/\/www.sofort.com\/payment\/go\/df3d34a3b46fa67a509980b2d6fb200e2e9ab7d0","rc":"0","msg":""}
+curl_error log:
+
+[reply params @2017-08-03 14:48:33]
+rc=0
+msg=
+reference=7a974730-3660-4b63-9d94-53c32f275713
+redirect=https://www.sofort.com/payment/go/df3d34a3b46fa67a509980b2d6fb200e2e9ab7d0
+
+
