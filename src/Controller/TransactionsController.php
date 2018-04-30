@@ -243,7 +243,7 @@ class TransactionsController extends AppController {
                     $amount->setDetails($details)
                             ->setTotal($Gg + 0.00)
                             ->setCurrency('EUR');
-                    $wennreturn = 'http://coalblack.supply/' . Router::url([
+                    $wennreturn = 'http://coalblack/' . Router::url([
                                 'controller' => 'Transactions',
                                 'action' => 'success',
                                 '?' => ['best' => $bestlnumr]

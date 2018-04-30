@@ -19,6 +19,7 @@
         "mobiledetect/mobiledetectlib": "2.*",
         "omnipay/omnipay": "~2.0",
         "paypal/rest-api-sdk-php": "*",
+     
         "setasign/fpdf": "1.8.1",
         "sofort/sofortlib-php": "^3.3",
         "zurb/foundation": "^6.4"
