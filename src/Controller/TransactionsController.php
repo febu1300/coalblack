@@ -59,9 +59,7 @@ class TransactionsController extends AppController {
         if ($this->request->getParam('action') === 'checkout'|| $this->request->getParam('action') === 'nachname' ) {
             return true;
         }
-         if ($this->request->getParam('action') === 'success'|| $this->request->getParam('action') === 'danke' ) {
-            return true;
-        }
+       
 // The owner of an article can edit and delete it
 // Prior to 3.4.0 $this->request->param('action') was used.
         if (in_array($this->request->getParam('action'), ['edit'])) {
