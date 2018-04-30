@@ -55,6 +55,9 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/unterkatagorien', ['controller' => 'Pages', 'action' => 'display','unterkatagorien']);
     $routes->connect('/faq', ['controller' => 'Pages', 'action' => 'display','faq']);
     $routes->connect('/kontakt', ['controller' => 'Pages', 'action' => 'display','kontakt']);
+        $routes->connect('/agb', ['controller' => 'Pages', 'action' => 'display','agb']);
+    $routes->connect('/datenschutz', ['controller' => 'Pages', 'action' => 'display','datenschutz']);
+
     $routes->connect('/meineseite', ['controller' => 'Pages', 'action' => 'display','meineseite']);
 
     /**

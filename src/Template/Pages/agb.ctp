@@ -20,7 +20,7 @@ $this->layout = 'frontlayout';
 ?>
 <head>
 
-    <title>Kontakt</title>
+    <title>ALLGEMEINE GESCHÄFTSBEDINGUNGEN (AGB)</title>
 
 </head>
 

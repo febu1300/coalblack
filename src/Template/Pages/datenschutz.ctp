@@ -20,7 +20,7 @@ $this->layout = 'frontlayout';
 ?>
 <head>
 
-    <title>Kontakt</title>
+    <title>Datenschütz</title>
 
 </head>
 

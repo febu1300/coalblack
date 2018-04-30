@@ -92,8 +92,8 @@ h6.c,h5.c{color:white;}
                         <li class="liner"> ------</li><br>
                         <li> <a href="#"> Versandinformationen </a> </li>
                         <li> <a href="#"> Hilfe / FAQ </a> </li>
-                        <li> <a href="#"> AGB </a> </li>
-                        <li> <a href="#"> Datenschutz </a> </li>
+                        <li> <a href="/agb"> AGB </a> </li>
+                        <li> <a href="/datenschutz"> Datenschutz </a> </li>
                 
                         <li> <a href="#"> Zahlungsarten </a> </li>
                         <li> <a href="#"> Newsletter </a> </li>
