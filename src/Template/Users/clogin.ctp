@@ -30,18 +30,6 @@
     <a href="/users/cregister">Anmelden</a>
 </div>
     </div>
-<?php
-echo $this->Form->postLink(
-        'Login with Facebook', [
-    'prefix' => false,
-    'plugin' => 'ADmad/SocialAuth',
-    'controller' => 'Auth',
-    'action' => 'login',
-    'provider' => 'facebook',
-    '?' => ['redirect' => $this->request->getQuery('redirect')]
-        ]
-);
-?>
 <script>
 
 </script>

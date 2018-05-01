@@ -29,20 +29,20 @@ public function beforeFilter(Event $event)
 parent::beforeFilter($event);
 $this->Auth->allow(['add', 'logout','login','clogin','cregister','hregister','hlogin','ologin']);
 }
-//    public function login()
-//        {
-//            if ($this->request->is('post')) {
-//                //$x=$this->Passhashvalid->checkpass('fac3b00k');
-//                //pr($x);die();
-//               $user = $this->Auth->identify();
-//        
-//            if ($user) {
-//                $this->Auth->setUser($user);
-//            return $this->redirect($this->Auth->redirectUrl());
-//            }
-//        $this->Flash->error(__('ungültiger Benutzername oder Passwort, versuchen Sie noch einmal'));
-//        }
-//        }
+    public function login()
+        {
+            if ($this->request->is('post')) {
+                //$x=$this->Passhashvalid->checkpass('fac3b00k');
+                //pr($x);die();
+               $user = $this->Auth->identify();
+        
+            if ($user) {
+                $this->Auth->setUser($user);
+            return $this->redirect($this->Auth->redirectUrl());
+            }
+        $this->Flash->error(__('ungültiger Benutzername oder Passwort, versuchen Sie noch einmal'));
+        }
+        }
          public function ologin()
         { $this->render(false);                     // after hloging if user goes to warenkorb
   
@@ -155,17 +155,6 @@ $this->Auth->allow(['add', 'logout','login','clogin','cregister','hregister','hl
             $this->Flash->error(__('ungültiger Benutzername oder Passwort, versuchen Sie noch einmal.'));
         }
        $this->set('user', $user);
-    }
-     public function login()
-    {
-        if ($this->request->is('post') || $this->request->query('provider')) {
-            $user = $this->Auth->identify();
-            if ($user) {
-                $this->Auth->setUser($user);
-                return $this->redirect($this->Auth->redirectUrl());
-            }
-            $this->Flash->error(__('Invalid username or password, try again'));
-        }
     }
     public function hlogin()
         {

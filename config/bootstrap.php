@@ -217,7 +217,3 @@ if (Configure::read('debug')) {
 }
 
 Plugin::load('Cake/Localized');
-Plugin::load('ADmad/SocialAuth', ['bootstrap' => true, 'routes' => true]);
-Plugin::load('ADmad/SocialAuth', ['bootstrap' => true, 'routes' => true]);
-
-Plugin::load('ADmad/SocialAuth', ['bootstrap' => true, 'routes' => true]);

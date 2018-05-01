@@ -4,85 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "27ba00d470edb70e830b423b8bf9b167",
-    "content-hash": "f78b5ec3f238011f7805b586530b3b62",
+    "hash": "c9d539969ebd0dbc5c7a71573f9c6031",
+    "content-hash": "4b7a73241e451689aeab5b531e74be6f",
     "packages": [
-        {
-            "name": "admad/cakephp-hybridauth",
-            "version": "4.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ADmad/CakePHP-HybridAuth.git",
-                "reference": "8334203a5343cc2e12c2984d2c94423bf609f1ad"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ADmad/CakePHP-HybridAuth/zipball/8334203a5343cc2e12c2984d2c94423bf609f1ad",
-                "reference": "8334203a5343cc2e12c2984d2c94423bf609f1ad",
-                "shasum": ""
-            },
-            "require": {
-                "cakephp/cakephp": "~3.1",
-                "hybridauth/hybridauth": "^2.9.1"
-            },
-            "type": "cakephp-plugin",
-            "autoload": {
-                "psr-4": {
-                    "ADmad\\HybridAuth\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A CakePHP plugin for using the HybridAuth social sign on library",
-            "homepage": "http://github.com/ADmad/CakePHP-HybridAuth",
-            "keywords": [
-                "cakephp",
-                "hybridauth",
-                "multi provider",
-                "social",
-                "social authentication",
-                "social signon"
-            ],
-            "time": "2017-03-30 08:28:39"
-        },
-        {
-            "name": "admad/cakephp-social-auth",
-            "version": "0.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ADmad/cakephp-social-auth.git",
-                "reference": "c1dcb9b0df472682cfc802c49e17ca43c3ff0134"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ADmad/cakephp-social-auth/zipball/c1dcb9b0df472682cfc802c49e17ca43c3ff0134",
-                "reference": "c1dcb9b0df472682cfc802c49e17ca43c3ff0134",
-                "shasum": ""
-            },
-            "require": {
-                "cakephp/cakephp": "^3.4",
-                "socialconnect/auth": "^1.5.1"
-            },
-            "type": "cakephp-plugin",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "ADmad\\SocialAuth\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A CakePHP plugin which allows you to authenticate using social providers like Facebook/Google/Twitter etc.",
-            "time": "2017-10-16 06:59:46"
-        },
         {
             "name": "aura/intl",
             "version": "3.0.0",
@@ -758,63 +682,6 @@
                 "stream"
             ],
             "time": "2014-10-12 19:18:40"
-        },
-        {
-            "name": "hybridauth/hybridauth",
-            "version": "v2.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hybridauth/hybridauth.git",
-                "reference": "57f5a5bf677be6303cd23467e3d1d302f3f0777a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/57f5a5bf677be6303cd23467e3d1d302f3f0777a",
-                "reference": "57f5a5bf677be6303cd23467e3d1d302f3f0777a",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "facebook/graph-sdk": "^5.4",
-                "paypal/rest-api-sdk-php": "*",
-                "php": ">=5.2.0"
-            },
-            "require-dev": {
-                "squizlabs/php_codesniffer": "2.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Hybrid": "hybridauth/"
-                },
-                "classmap": [
-                    "hybridauth/Hybrid"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "(MIT or GPL-3.0+)"
-            ],
-            "authors": [
-                {
-                    "name": "Miled",
-                    "email": "hybridauth@gmail.com"
-                }
-            ],
-            "description": "Open source social sign on PHP library.",
-            "homepage": "http://hybridauth.sourceforge.net",
-            "keywords": [
-                "OpenId",
-                "facebook",
-                "google",
-                "hybridauth",
-                "login",
-                "oauth",
-                "social",
-                "twitter",
-                "yahoo"
-            ],
-            "time": "2017-11-29 17:29:38"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -2830,54 +2697,6 @@
             "time": "2017-10-23 08:31:50"
         },
         {
-            "name": "paragonie/random_compat",
-            "version": "v2.0.12",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "258c89a6b97de7dfaf5b8c7607d0478e236b04fb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/258c89a6b97de7dfaf5b8c7607d0478e236b04fb",
-                "reference": "258c89a6b97de7dfaf5b8c7607d0478e236b04fb",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*|5.*"
-            },
-            "suggest": {
-                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "lib/random.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Paragon Initiative Enterprises",
-                    "email": "security@paragonie.com",
-                    "homepage": "https://paragonie.com"
-                }
-            ],
-            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
-            "keywords": [
-                "csprng",
-                "pseudorandom",
-                "random"
-            ],
-            "time": "2018-04-04 21:24:14"
-        },
-        {
             "name": "paypal/rest-api-sdk-php",
             "version": "1.13.0",
             "source": {
@@ -2925,6 +2744,72 @@
                 "sdk"
             ],
             "time": "2017-11-13 19:21:59"
+        },
+        {
+            "name": "phpmailer/phpmailer",
+            "version": "v6.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPMailer/PHPMailer.git",
+                "reference": "cb3ea134d4d3729e7857737d5f320cce9caf4d32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/cb3ea134d4d3729e7857737d5f320cce9caf4d32",
+                "reference": "cb3ea134d4d3729e7857737d5f320cce9caf4d32",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-filter": "*",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "doctrine/annotations": "1.2.*",
+                "friendsofphp/php-cs-fixer": "^2.2",
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phpunit/phpunit": "^4.8 || ^5.7",
+                "zendframework/zend-eventmanager": "3.0.*",
+                "zendframework/zend-i18n": "2.7.3",
+                "zendframework/zend-serializer": "2.7.*"
+            },
+            "suggest": {
+                "ext-mbstring": "Needed to send email in multibyte encoding charset",
+                "hayageek/oauth2-yahoo": "Needed for Yahoo XOAUTH2 authentication",
+                "league/oauth2-google": "Needed for Google XOAUTH2 authentication",
+                "psr/log": "For optional PSR-3 debug logging",
+                "stevenmaguire/oauth2-microsoft": "Needed for Microsoft XOAUTH2 authentication",
+                "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPMailer\\PHPMailer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
+                },
+                {
+                    "name": "Marcus Bointon",
+                    "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Andy Prevost",
+                    "email": "codeworxtech@users.sourceforge.net"
+                },
+                {
+                    "name": "Brent R. Matzelle"
+                }
+            ],
+            "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+            "time": "2018-03-27 13:49:45"
         },
         {
             "name": "psr/http-message",
@@ -3173,120 +3058,6 @@
                 "pdf"
             ],
             "time": "2016-01-01 17:47:15"
-        },
-        {
-            "name": "socialconnect/auth",
-            "version": "1.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/SocialConnect/auth.git",
-                "reference": "f38ec8ee5aaa7d4f985d2f9a53127a37c5a62db4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SocialConnect/auth/zipball/f38ec8ee5aaa7d4f985d2f9a53127a37c5a62db4",
-                "reference": "f38ec8ee5aaa7d4f985d2f9a53127a37c5a62db4",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "paragonie/random_compat": "^2.0",
-                "php": ">=5.5",
-                "socialconnect/common": "^1.0"
-            },
-            "replace": {
-                "socialconnect/oauth1": "self.version",
-                "socialconnect/oauth2": "self.version",
-                "socialconnect/openid": "self.version",
-                "socialconnect/openid-connect": "self.version",
-                "socialconnect/provider": "self.version"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.8.34",
-                "squizlabs/php_codesniffer": "~3.0.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SocialConnect\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dmitry Patsura",
-                    "email": "talk@dmtry.me"
-                }
-            ],
-            "description": "Social Connect Auth Component",
-            "keywords": [
-                "amazon",
-                "auth",
-                "bitbucket",
-                "facebook",
-                "github",
-                "gitlab",
-                "google",
-                "login",
-                "oauth",
-                "slack",
-                "socialconnect",
-                "twitch",
-                "twitter",
-                "vk"
-            ],
-            "time": "2018-02-11 06:07:42"
-        },
-        {
-            "name": "socialconnect/common",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/SocialConnect/common.git",
-                "reference": "d9bc99b90a3d51bc6c753000079629bc33a63c8f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SocialConnect/common/zipball/d9bc99b90a3d51bc6c753000079629bc33a63c8f",
-                "reference": "d9bc99b90a3d51bc6c753000079629bc33a63c8f",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=5.5"
-            },
-            "require-dev": {
-                "doctrine/cache": "^1.5.1",
-                "ext-curl": "*",
-                "guzzlehttp/guzzle": "^5.3|^6.0",
-                "phpunit/phpunit": "^4.2",
-                "squizlabs/php_codesniffer": "^2.8"
-            },
-            "suggest": {
-                "ext-curl": "Allows to use Http\\Client\\Curl",
-                "guzzlehttp/guzzle": "Allows to use Http\\Client\\Guzzle, require guzzlehttp/guzzle:~5.3|~6.0."
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SocialConnect\\Common\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dmitry Patsura",
-                    "email": "talk@dmtry.me"
-                }
-            ],
-            "description": "Common component",
-            "time": "2018-04-11 11:24:55"
         },
         {
             "name": "sofort/sofortlib-php",
@@ -4932,72 +4703,6 @@
                 "php"
             ],
             "time": "2018-02-28 20:30:58"
-        },
-        {
-            "name": "phpmailer/phpmailer",
-            "version": "v6.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "cb3ea134d4d3729e7857737d5f320cce9caf4d32"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/cb3ea134d4d3729e7857737d5f320cce9caf4d32",
-                "reference": "cb3ea134d4d3729e7857737d5f320cce9caf4d32",
-                "shasum": ""
-            },
-            "require": {
-                "ext-ctype": "*",
-                "ext-filter": "*",
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "doctrine/annotations": "1.2.*",
-                "friendsofphp/php-cs-fixer": "^2.2",
-                "phpdocumentor/phpdocumentor": "2.*",
-                "phpunit/phpunit": "^4.8 || ^5.7",
-                "zendframework/zend-eventmanager": "3.0.*",
-                "zendframework/zend-i18n": "2.7.3",
-                "zendframework/zend-serializer": "2.7.*"
-            },
-            "suggest": {
-                "ext-mbstring": "Needed to send email in multibyte encoding charset",
-                "hayageek/oauth2-yahoo": "Needed for Yahoo XOAUTH2 authentication",
-                "league/oauth2-google": "Needed for Google XOAUTH2 authentication",
-                "psr/log": "For optional PSR-3 debug logging",
-                "stevenmaguire/oauth2-microsoft": "Needed for Microsoft XOAUTH2 authentication",
-                "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "PHPMailer\\PHPMailer\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1"
-            ],
-            "authors": [
-                {
-                    "name": "Jim Jagielski",
-                    "email": "jimjag@gmail.com"
-                },
-                {
-                    "name": "Marcus Bointon",
-                    "email": "phpmailer@synchromedia.co.uk"
-                },
-                {
-                    "name": "Andy Prevost",
-                    "email": "codeworxtech@users.sourceforge.net"
-                },
-                {
-                    "name": "Brent R. Matzelle"
-                }
-            ],
-            "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2018-03-27 13:49:45"
         },
         {
             "name": "psy/psysh",

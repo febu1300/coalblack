@@ -2,8 +2,6 @@
 $baseDir = dirname(dirname(__FILE__));
 return [
     'plugins' => [
-        'ADmad/HybridAuth' => $baseDir . '/vendor/admad/cakephp-hybridauth/',
-        'ADmad/SocialAuth' => $baseDir . '/vendor/admad/cakephp-social-auth/',
         'Bake' => $baseDir . '/vendor/cakephp/bake/',
         'Cake/Localized' => $baseDir . '/vendor/cakephp/localized/',
         'DebugKit' => $baseDir . '/vendor/cakephp/debug_kit/',
