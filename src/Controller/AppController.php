@@ -46,9 +46,9 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Filemanager');
         $this->loadComponent('Checkout');
-          $this->loadComponent('Passhashvalid');
-            $this->loadComponent('Preiseangebote');
-             $this->loadComponent('Checkout');
+        $this->loadComponent('Passhashvalid');
+        $this->loadComponent('Preiseangebote');
+        $this->loadComponent('Checkout');
          $this->loadComponent('Auth', [
       'authorize'=> 'Controller',
         'loginRedirect' => [
@@ -59,8 +59,9 @@ class AppController extends Controller
         'controller' => 'Pages',
         'action' => 'display',
         'home'
-        ]
-    ]);
+        ],
+        ]);
+//       
         /*
          * Enable the following components for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html

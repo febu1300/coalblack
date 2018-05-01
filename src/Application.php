@@ -37,15 +37,71 @@ class Application extends BaseApplication
     public function middleware($middlewareQueue)
     {
         $middlewareQueue
+                
             // Catch any exceptions in the lower layers,
             // and make an error page/response
+                
+         
+                
             ->add(ErrorHandlerMiddleware::class)
 
             // Handle plugin/theme assets like CakePHP normally does.
             ->add(AssetMiddleware::class)
 
             // Add routing middleware.
-            ->add(new RoutingMiddleware($this));
+            ->add(new RoutingMiddleware($this))
+                
+                ->add(new \ADmad\SocialAuth\Middleware\SocialAuthMiddleware([
+    // Request method type use to initiate authentication.
+    'requestMethod' => 'POST',
+    // Login page URL. In case of auth failure user is redirected to login
+    // page with "error" query string var.
+    'loginUrl' => '/users/login',
+    // URL to redirect to after authentication (string or array).
+    'loginRedirect' => '/',
+    // Boolean indicating whether user identity should be returned as entity.
+    'userEntity' => false,
+    // User model.
+    'userModel' => 'Users',
+    // Finder type.
+    'finder' => 'all',
+    // Fields.
+    'fields' => [
+        'password' => 'password',
+    ],
+    // Session key to which to write identity record to.
+    'sessionKey' => 'Auth.User',
+    // The method in user model which should be called in case of new user.
+    // It should return a User entity.
+    'getUserCallback' => 'getUser',
+    // SocialConnect Auth service's providers config. https://github.com/SocialConnect/auth/blob/master/README.md
+    'serviceConfig' => [
+        'provider' => [
+            'facebook' => [
+                'applicationId' => '1653299681414959',
+                'applicationSecret' => '0836400da33fe1a0e42ba8eb543b55e6',
+                'scope' => [
+                    'email',
+                ],
+                'fields' => [
+                    'email',
+                    // To get a full list of all posible values, refer to
+                    // https://developers.facebook.com/docs/graph-api/reference/user
+                ],
+            ],
+            'google' => [
+                'applicationId' => '<application id>',
+                'applicationSecret' => '<application secret>',
+                'scope' => [
+                    'https://www.googleapis.com/auth/userinfo.email',
+                    'https://www.googleapis.com/auth/userinfo.profile',
+                ],
+            ],
+        ],
+    ],
+    // Whether social connect errors should be logged. Default `true`.
+    'logErrors' => true,
+])) ;
 
         return $middlewareQueue;
     }
