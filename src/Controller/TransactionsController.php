@@ -47,15 +47,13 @@ class TransactionsController extends AppController {
     }
 
     public function beforeFilter(Event $event) {
-        $this->Auth->allow(['view', 'add', 'delete']);
+        $this->Auth->allow(['view', 'add', 'delete','pay','success','danke','checkout']);
     }
 
     public function isAuthorized($user) {
 // All registered users can add articles
 // Prior to 3.4.0 $this->request->param('action') was used.
-        if ($this->request->getParam('action') === 'pay' || $this->request->getParam('action') === 'success' || $this->request->getParam('action') === 'danke') {
-            return true;
-        }
+   
         if ($this->request->getParam('action') === 'checkout'|| $this->request->getParam('action') === 'nachname' ) {
             return true;
         }
