@@ -47,13 +47,15 @@ class TransactionsController extends AppController {
     }
 
     public function beforeFilter(Event $event) {
-        $this->Auth->allow(['view', 'add', 'delete','pay','success','danke','checkout']);
+        $this->Auth->allow(['view', 'add', 'delete']);
     }
 
     public function isAuthorized($user) {
 // All registered users can add articles
 // Prior to 3.4.0 $this->request->param('action') was used.
-   
+        if ($this->request->getParam('action') === 'pay' || $this->request->getParam('action') === 'success' || $this->request->getParam('action') === 'danke') {
+            return true;
+        }
         if ($this->request->getParam('action') === 'checkout'|| $this->request->getParam('action') === 'nachname' ) {
             return true;
         }
@@ -239,7 +241,7 @@ class TransactionsController extends AppController {
                     $amount->setDetails($details)
                             ->setTotal($Gg + 0.00)
                             ->setCurrency('EUR');
-                    $wennreturn = 'https://coalblack.supply' . Router::url([
+                    $wennreturn = 'http://coalblack.supply' . Router::url([
                                 'controller' => 'Transactions',
                                 'action' => 'success',
                                 '?' => ['best' => $bestlnumr]
