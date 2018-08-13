@@ -1,0 +1,16 @@
+[start @2017-08-23 09:56:40]
+
+[PHP ini]
+
+PHP version: 7.0.8
+cURL: 7.43.0
+ssl: OpenSSL/1.0.2k
+
+
+[transaction @2017-08-23 09:56:40]
+Zahlart: directDebitTransaction
+
+
+[exception @2017-08-23 09:56:40]
+Passed secret may not be empty
+
