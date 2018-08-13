@@ -65,33 +65,33 @@ class ProductsTable extends Table
             'foreignKey' => 'product_id'
         ]);
    // Add the behaviour to your table
-        $this->addBehavior('Search.Search');
+        //$this->addBehavior('Search.Search');
 
         // Setup search filter using search manager
-        $this->searchManager()
-            ->value('product_id')
-            // Here we will alias the 'q' query param to search the `Articles.title`
-            // field and the `Articles.content` field, using a LIKE match, with `%`
-            // both before and after.
-            ->add('q', 'Search.Like', [
-                'before' => true,
-                'after' => true,
-                'fieldMode' => 'OR',
-                'comparison' => 'LIKE',
-                'wildcardAny' => '*',
-                'wildcardOne' => '?',
-                'field' => ['product_name', 'id']
-            ]);
+//        $this->searchManager()
+//            ->value('product_id')
+//            // Here we will alias the 'q' query param to search the `Articles.title`
+//            // field and the `Articles.content` field, using a LIKE match, with `%`
+//            // both before and after.
+//            ->add('q', 'Search.Like', [
+//                'before' => true,
+//                'after' => true,
+//                'fieldMode' => 'OR',
+//                'comparison' => 'LIKE',
+//                'wildcardAny' => '*',
+//                'wildcardOne' => '?',
+//                'field' => ['product_name', 'id']
+//            ]);
     }
- public function searchManager()
-    {
-        $searchManager = $this->behaviors()->Search->searchManager();
-        $searchManager
-            ->like('product_name')
-            ->value('id');
-
-        return $searchManager;
-    }
+// public function searchManager()
+//    {
+//        $searchManager = $this->behaviors()->Search->searchManager();
+//        $searchManager
+//            ->like('product_name')
+//            ->value('id');
+//
+//        return $searchManager;
+//    }
     /**
      * Default validation rules.
      *

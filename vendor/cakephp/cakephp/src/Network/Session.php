@@ -39,7 +39,7 @@ class Session
     /**
      * The Session handler instance used as an engine for persisting the session data.
      *
-     * @var \SessionHandlerInterface
+     * @var \SessionHandlerInterface|null
      */
     protected $_engine;
 
@@ -48,14 +48,14 @@ class Session
      *
      * @var bool
      */
-    protected $_started;
+    protected $_started = false;
 
     /**
      * The time in seconds the session will be valid for
      *
      * @var int
      */
-    protected $_lifetime;
+    protected $_lifetime = 0;
 
     /**
      * Whether this session is running under a CLI environment
@@ -221,7 +221,7 @@ class Session
         if (!empty($config['handler']['engine'])) {
             $class = $config['handler']['engine'];
             unset($config['handler']['engine']);
-            session_set_save_handler($this->engine($class, $config['handler']), false);
+            $this->engine($class, $config['handler']);
         }
 
         $this->_lifetime = ini_get('session.gc_maxlifetime');
@@ -268,6 +268,9 @@ class Session
             throw new InvalidArgumentException(
                 'The chosen SessionHandler does not implement SessionHandlerInterface, it cannot be used as an engine.'
             );
+        }
+        if (!headers_sent()) {
+            session_set_save_handler($handler, false);
         }
 
         return $this->_engine = $handler;

@@ -62,11 +62,11 @@ class AppController extends Controller
         'home'
         ]
     ]);
-           $this->loadComponent('Search.Prg', [
-        // This is default config. You can modify "actions" as needed to make
-        // the PRG component work only for specified methods.
-        'actions' => ['index', 'lookup']
-    ]);
+//           $this->loadComponent('Search.Prg', [
+//        // This is default config. You can modify "actions" as needed to make
+//        // the PRG component work only for specified methods.
+//        'actions' => ['index', 'lookup']
+//    ]);
         /*
          * Enable the following components for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html

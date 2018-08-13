@@ -50,15 +50,15 @@ class ProductsController extends AppController
         $this->set(compact('products','SubCatagories'));
         $this->set('_serialize', ['products','SubCatagories']);
  
-     $query = $this->Products
-        // Use the plugins 'search' custom finder and pass in the
-        // processed query params
-        ->find('search', ['search' => $this->request->getQueryParams()])
-        // You can add extra things to the query if you need to
-        ->contain(['SubCatagories', 'DiscountsTypes','sizes','colors'])
-        ->where(['product_name IS NOT' => null]);
-
-    $this->set('products', $this->paginate($query));
+//     $query = $this->Products
+//        // Use the plugins 'search' custom finder and pass in the
+//        // processed query params
+//        ->find('search', ['search' => $this->request->getQueryParams()])
+//        // You can add extra things to the query if you need to
+//        ->contain(['SubCatagories', 'DiscountsTypes','sizes','colors'])
+//        ->where(['product_name IS NOT' => null]);
+//
+//    $this->set('products', $this->paginate($query));
         
     }
     }

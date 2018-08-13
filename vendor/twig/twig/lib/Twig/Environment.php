@@ -16,11 +16,11 @@
  */
 class Twig_Environment
 {
-    const VERSION = '1.35.1';
-    const VERSION_ID = 13501;
+    const VERSION = '1.35.4';
+    const VERSION_ID = 13504;
     const MAJOR_VERSION = 1;
     const MINOR_VERSION = 35;
-    const RELEASE_VERSION = 1;
+    const RELEASE_VERSION = 4;
     const EXTRA_VERSION = '';
 
     protected $charset;
@@ -132,14 +132,14 @@ class Twig_Environment
         // For BC
         if (is_string($this->originalCache)) {
             $r = new ReflectionMethod($this, 'writeCacheFile');
-            if ($r->getDeclaringClass()->getName() !== __CLASS__) {
+            if (__CLASS__ !== $r->getDeclaringClass()->getName()) {
                 @trigger_error('The Twig_Environment::writeCacheFile method is deprecated since version 1.22 and will be removed in Twig 2.0.', E_USER_DEPRECATED);
 
                 $this->bcWriteCacheFile = true;
             }
 
             $r = new ReflectionMethod($this, 'getCacheFilename');
-            if ($r->getDeclaringClass()->getName() !== __CLASS__) {
+            if (__CLASS__ !== $r->getDeclaringClass()->getName()) {
                 @trigger_error('The Twig_Environment::getCacheFilename method is deprecated since version 1.22 and will be removed in Twig 2.0.', E_USER_DEPRECATED);
 
                 $this->bcGetCacheFilename = true;

@@ -44,17 +44,7 @@
 <div class="col-sm-10 col-md-10 col-lg-10">
     <div class="row">
         <div class="col-sm-9 col-md-9 col-lg-9"><h3><?= __('Produkte') ?></h3></div>
-         <div class="col-sm-3 col-md-3 col-lg-3">
-       <?=$this->Form->create(null, ['valueSources' => 'query']) ?>
-                      <div class="col-sm-2 col-md-2 col-lg-2 no-gutters">
-          <?=$this->Form->button('Filter', ['type' => 'submit']) ?>
-               </div>
-             <div class="col-sm-8 col-md-8 col-lg-8 no-gutters">
-               <?=$this->Form->control('q',['label'=>false,'autocomplete'=>'off']) ?><?= $this->Html->link('Reset', ['action' => 'index']);?>
-             </div>
- 
-           <?=$this->Form->end()?>
-         </div>
+        
     </div>
    
     
