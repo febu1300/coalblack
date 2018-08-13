@@ -39,6 +39,7 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                 <th scope="col"><?= $this->Paginator->sort('main_catagory_name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('catagory_name') ?></th>
           
                 <th scope="col"><?= $this->Paginator->sort('photo') ?></th>
@@ -49,6 +50,7 @@
             <?php foreach ($productsCatagories as $productsCatagory): ?>
             <tr>
                 <td><?= $this->Number->format($productsCatagory->id) ?></td>
+           <td><?= $productsCatagory->has('main_catagory') ? $this->Html->link($productsCatagory->main_catagory->main_catagory_name, ['controller' => 'MainCatagories', 'action' => 'view', $productsCatagory->main_catagory->id]) : '' ?></td>
                 <td><?= h($productsCatagory->catagory_name) ?></td>
                 <td>
          
@@ -60,7 +62,7 @@
                 </td>
                 <td class="actions">
    
-                    <?= $this->Html->link(__(' '), ['action' => 'view', $productsCatagory->id],['class' => " glyphicon glyphicon-eye-open", 'data-toggle' => "modal", 'data-target' => "#viewSubcatagory"]) ?>
+                    <?= $this->Html->link(__(' '), ['action' => 'view', $productsCatagory->id],['class' => " glyphicon glyphicon-eye-open", 'data-toggle' => "modal", 'data-target' => "#viewMaincatagory"]) ?>
                     <?= $this->Html->link(__(''), ['action' => 'edit', $productsCatagory->id], ['class' => "glyphicon glyphicon-edit", 'data-toggle' => "modal", 'data-target' => "#editSubcatagory"]) ?>
                     
                 
@@ -116,7 +118,7 @@
     </div>
     
               
-               <div id="viewSubcatagory" class="modal fade">
+       <div id="viewMaincatagory" class="modal fade">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                      

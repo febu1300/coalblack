@@ -11,7 +11,7 @@
     <div class="row">
         
     <div class="col-sm-3 col-md-3 col-lg-3">
-    <img src="<?='/'. h($product->photo_dir.'/main/'.$product->photo)?>" style="width:150px; height:150px;">
+    <img class="img-style" src="<?='/'. h($product->photo_dir.'/main/'.$product->photo)?>" style="width:150px; height:150px;">
     </div>
         <div class="col-sm-9 col-md-9 col-lg-9">
             <table class="horizontalSlideShow-table">

@@ -91,5 +91,17 @@ foreach ($useraddress as $address){
 }
   return 0;
 }
-    
+      public function   getprice($prId) {
+            $usersTable = TableRegistry::get('Products');
+              $product =$usersTable->find('all',['id'=>$prId]); 
+          
+              foreach($product as $trans){
+                                      
+                     if($trans->discount_type_id===1 ){
+                       return  $trans->price;  
+                     }elseif($trans->discount_type_id===2){
+                               return  $trans->price-$trans->discount;  
+                     }elseif($trans->discount_type_id===3){return  $trans->price-$trans->price*($trans->discount/100); }
+              }
+    }
 }

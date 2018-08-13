@@ -4,6 +4,9 @@
  * @var \App\Model\Entity\SubCatagory $subCatagory
  */
 ?>
+<style>
+  
+</style>
 <div class="modal-header pull-left">
         <h3><?= h($subCatagory->id) ?>.<?= h($subCatagory->sub_catagory_name) ?></h3>
 </div>
@@ -13,8 +16,9 @@
     
     <div class="row">
         
+        
     <div class="col-sm-3 col-md-3 col-lg-3">
-    <img src="<?='/'. h($subCatagory->photo_dir.'/main/'.$subCatagory->photo)?>">
+    <img class="img-style" src="<?='/'. h($subCatagory->photo_dir.'/main/'.$subCatagory->photo)?>">
 
       </div>
    <div class="col-sm-9 col-md-9 col-lg-9">

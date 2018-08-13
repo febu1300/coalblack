@@ -42,7 +42,8 @@ $this->layout = 'frontlayout';
 <?=$this->cell('Hlogin')?>
       
     </div>
-  <div class="col-sm-5 col-md-5 col-lg-5">
+        <div class="col-sm-1 col-md-1 col-lg-1"></div>
+  <div class="col-sm-4 col-md-4 col-lg-4">
 <?=$this->cell('Hregister')?>
       
     </div>

@@ -147,7 +147,7 @@ class TransactionsController extends AppController {
                     if ($product->online_vorhanden && $product->photo && $name2) {
 
 
-                        $total = $total + ($name2[$product->id] * $product['product_price']);
+                        $total = $total + ($name2[$product->id] * $this->Checkout->getprice($product->id));
                     } else {
                         
                     }
@@ -197,7 +197,7 @@ class TransactionsController extends AppController {
                             $transaction->product_id = $product->id;
                             $transaction->created_date = Time::now();
                             $transaction->quantity = $name2[$product->id];
-                            $transaction->price = $product->price;
+                            $transaction->price = $this->Checkout->getprice($product->id);
                             $transaction->user_id = $this->Auth->user('id');
                             $transaction->transaction_status_id = 1;
                             $transaction->payment_method_id = 1;
@@ -216,8 +216,8 @@ class TransactionsController extends AppController {
                                     ->setPrice($product->price - $product->price * 19 / 100);
                             // $total = $total + ($name2[$product->id]*$product['product_price']);
                             array_push($items, $item1);
-                            $GesamtMenge = ($GesamtMenge + ($product->price - $product->price * 19 / 100) * $name2[$product->id]);
-                            $Gg = ($Gg + $product->price * $name2[$product->id]);
+                            $GesamtMenge = ($GesamtMenge + ($transaction->price - ($transaction->price * 19 / 100)) * $name2[$product->id]);
+                            $Gg = ($Gg +  $transaction->price * $name2[$product->id]);
                             $tax = $Gg - $GesamtMenge;
                         } else {
                             
@@ -534,7 +534,14 @@ public function checkout(){
 
         $this->set(compact('transactions', $transactions));
     }
+    public function sentItems() {
+        $transactions = $this->Transactions->find()->where(['transaction_status_id' => 2])
+                ->group('order_number')
+                ->having(['sent' =>1]);
 
+
+        $this->set(compact('transactions', $transactions));
+    }
     public function makepdf() {
         if ($this->request->is('post')) {
             $bestnum = $this->request->data['orderId'];

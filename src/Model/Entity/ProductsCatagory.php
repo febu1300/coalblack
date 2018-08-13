@@ -24,8 +24,11 @@ class ProductsCatagory extends Entity
      * @var array
      */
     protected $_accessible = [
+        'main_catagory_id' => true,
         'catagory_name' => true,
         'photo_dir' => true,
-        'photo' => true
-    ];
+        'photo' => true,
+      
+        ];
+
 }

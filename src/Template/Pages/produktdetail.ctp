@@ -21,13 +21,15 @@ $this->layout = 'frontlayout';
 
 
 ?>
+
+
 <head>
   
 
     <title>Produkt Detail</title>
 
 </head>
-
+	<script src='/js/jquery.elevatezoom.js'></script>
 
 
         

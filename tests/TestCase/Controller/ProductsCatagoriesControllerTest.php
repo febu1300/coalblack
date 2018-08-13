@@ -16,7 +16,24 @@ class ProductsCatagoriesControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.products_catagories'
+        'app.products_catagories',
+        'app.sub_catagories',
+        'app.products',
+        'app.products_title_translation',
+        'app.i18n',
+        'app.discounts_types',
+        'app.colors',
+        'app.sizes',
+        'app.products_details',
+        'app.transactions',
+        'app.transaction_types',
+        'app.users',
+        'app.users_detail',
+        'app.users_details_types',
+        'app.users_details',
+        'app.transactions_status',
+        'app.payment_methods',
+        'app.pictures'
     ];
 
     /**

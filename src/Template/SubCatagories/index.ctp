@@ -67,7 +67,7 @@
             ['class' => "glyphicon glyphicon-edit", 'data-toggle' => "modal", 'data-target' => "#changeImage"]) ?>
 
                 </td>
-             <td><?= h($subCatagory->photo_dir) ?></td>
+         
                     <td class="actions">
                           <?= $this->Html->link(__(' '), ['action' => 'view', $subCatagory->id],['class' => " glyphicon glyphicon-eye-open", 'data-toggle' => "modal", 'data-target' => "#viewSubcatagory"]) ?>
               

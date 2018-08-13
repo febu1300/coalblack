@@ -25,16 +25,16 @@ class ForsidemenuCell extends Cell
     public function display()
     {
                 $wh = $this->request->query('wh');         	
-        $this->loadModel('ProductsCatagories');
+        $this->loadModel('MainCatagories');
            
          
 		//$total_products = $this->Products->find()->count();
 
 //  pr($article_type);die();
-		$products1=$this->ProductsCatagories->find()
+		$products1=$this->MainCatagories->find()
                         
                         
-                     ->select(['id','catagory_name'])
+                     ->select(['id','main_catagory_name'])
                    
                 
 //                   

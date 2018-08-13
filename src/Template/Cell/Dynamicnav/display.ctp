@@ -1,7 +1,7 @@
   <?php foreach ($products1 as $productcat): ?>   
-<li class="nav-item">
+<li class="nav-item kein-gutters">
           
-           <a class="nav-link" href='/unterkatagorien?wh=<?=$productcat['id']?>'><?=strtoupper($productcat['catagory_name'])?></a>
+           <a class="nav-link" href='/produktkatagorien?wh=<?=$productcat['id']?>'><?=strtoupper($productcat['main_catagory_name'])?></a>
 
 
       </li>   

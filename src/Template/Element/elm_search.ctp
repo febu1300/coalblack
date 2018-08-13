@@ -10,26 +10,17 @@
 });
 
     </script>
-<!-- content -->
-        <div class="row"></div><div class="row"></div>
- 
-    <form class="form-inline my-2 my-lg-0">
-      <input   class="form-control bg-light border-color" id="inputid" list="product" name="ptoducts" autocomplete="off"   onkeyup="showResult(this.value)" type="text" placeholder="Suchst du etwas spezielles?">
-      
-    </form>
-<div  id="livesearch" ></div>
+
+  <div class="row"></div>
+  <div class="row"></div>
+  <input style="width:370px"  class="form-control bg-light border-color" id="inputid" list="product" name="ptoducts" autocomplete="off"   onkeyup="showResult(this.value)" type="text" placeholder="Suchst du etwas spezielles?">
+  <div id="livesearch" ></div>
 
 
-<script>
-    
-
-
-
-</script>
 <script>
  function showResult(str) {
        var obj,txt="";
-       obj={"table":str,"limit":6};
+       obj={"table":str,"limit":5};
      if (str.length===0) {
             document.getElementById("livesearch").innerHTML="";
             document.getElementById("livesearch").style.border="0px";
@@ -43,9 +34,9 @@
            }
             xmlhttp.onreadystatechange=function() { 
      if (this.readyState===4 && this.status===200) {
-       txt="<div >";
+ 
             txt+= this.responseText;
-         txt+='</div>';
+     
        
          document.getElementById("livesearch").innerHTML=txt;
          document.getElementById("livesearch").style.border="1px solid #A5ACB2";
@@ -53,9 +44,11 @@
                 }
             };
             
-            xmlhttp.open("GET","/autosuggest?wh="+str,true);
+            xmlhttp.open("GET","autosuggest?wh="+str,true);
                 
             xmlhttp.send();
             
     }
 </script>
+
+

@@ -38,7 +38,7 @@
 
         </div>
 <div class="col-sm-9 col-md-9 col-lg-9">
-    <?= $this->Form->create($product,['type'=>'file']) ?>
+    <?= $this->Form->create($product,['type'=>'file','enctype'=>'multipart/form-data']) ?>
     <fieldset>
         <legend><?= __('Neue Produkt hinzufügen') ?></legend>
       
@@ -46,11 +46,11 @@
             <div class="row"> 
                 <?php 
             echo $this->Form->label('Subkatagorie');
-            echo $this->Form->control('sub_catagory_id', ['options' => $subCatagories,'label'=>false]); ?>
+            echo $this->Form->control('sub_catagory_id', ['options' => $subCatagories,'empty'=>true,'label'=>false]); ?>
             </div>
          <hr>
                 <div class="row"> 
-                     <div class="col-sm-6 col-md-6 col-lg-6">
+                     <div class="col-sm-4 col-md-4 col-lg-4">
                     <?php
                          echo $this->Form->label('Produktname');
             echo $this->Form->control('product_name',['label'=>false]);
@@ -60,7 +60,18 @@
             echo $this->Form->control('unit',['label'=>false]);
                     ?>
                      </div>
-                    <div class="col-sm-6 col-md-6 col-lg-6">
+                         <div class="col-sm-4 col-md-4 col-lg-4">
+                             
+               <?php
+             echo $this->Form->label('Size');
+            echo $this->Form->control('size_id', ['options' => $sizes,'label'=>false]);
+            ?>     
+                <?php
+             echo $this->Form->label('Colors');
+            echo $this->Form->control('color_id', ['options' => $colors,'label'=>false]);
+            ?>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
                     <?php
         
             echo $this->Form->label('Produktsbeschreibung');
@@ -73,12 +84,19 @@
        
         <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-6">
+            
                          <?php
             echo $this->Form->label('Verkaufspreise');
             echo $this->Form->control('price',['label'=>false]);
          
      
-            ?>
+         
+            echo $this->Form->label('Coalblack Produkte');
+            echo $this->Form->control('coalblack_produkte');
+         
+     
+            ?> 
+             
             </div>
            <div class="col-sm-6 col-md-6 col-lg-6">
                  <?php
@@ -90,7 +108,8 @@
 //            echo $this->Form->label('Produktname');
 //            echo $this->Form->control('photo_dir',['label'=>false]);
             echo $this->Form->label('Photo');
-            echo $this->Form->control('photo',['type'=>'file','label'=>false]);
+            echo $this->Form->control('photo',['name'=>'photo[]','type'=>'file','label'=>false,'multiple'=>'multiple']);
+           // echo $this->Form->control('photo',['type'=>'file','label'=>false]);
         ?>
                   </div>     
         </div> 

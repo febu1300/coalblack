@@ -23,10 +23,11 @@ class AutosuggestCell extends Cell
      * @return void
      */
   
-    public function display()
+    public function display($wh)
     { 
-         
-        		$this->loadModel('Products');
+
+
+            $this->loadModel('Products');
            
          
 		//$total_products = $this->Products->find()->count();
@@ -36,8 +37,10 @@ class AutosuggestCell extends Cell
                         
                         
                      ->select('product_name')
-                              ->select('id')
-                        ->toArray();
+                     ->select('id')
+                      ->where(['product_name LIKE'=>'%'.$wh.'%'])
+                     ->limit(5)
+                     ->toArray();
  
            
 

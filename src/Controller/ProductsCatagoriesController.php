@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Filesystem\Folder;
 use Cake\Filesystem\File;
+use Imagick;
 /**
  * ProductsCatagories Controller
  *
@@ -22,6 +23,10 @@ class ProductsCatagoriesController extends AppController
      */
     public function index()
     {
+               
+             $this->paginate = [
+            'contain' => ['MainCatagories']
+        ];
         $productsCatagories = $this->paginate($this->ProductsCatagories);
 
         $this->set(compact('productsCatagories'));
@@ -37,10 +42,12 @@ class ProductsCatagoriesController extends AppController
     public function view($id = null)
     {
         $productsCatagory = $this->ProductsCatagories->get($id, [
-            'contain' => []
+             'contain' => ['SubCatagories', 'MainCatagories']
         ]);
 
         $this->set('productsCatagory', $productsCatagory);
+        
+      
     }
 
     /**
@@ -50,17 +57,16 @@ class ProductsCatagoriesController extends AppController
      */
     public function add()
     {
-       //pr($this->request->getData(['photo'=>'name']));die();
-       // $this->request->getData('photo.name');
         $productsCatagory = $this->ProductsCatagories->newEntity();
         if ($this->request->is('post')) {
    
-        $productsCatagory->catagory_name=$this->request->getData('catagory_name');
+        
+             $productsCatagory = $this->ProductsCatagories->patchEntity($productsCatagory, $this->request->getData());
+ 
         $productsCatagory->photo_dir="img/".$this->name.'/'.$productsCatagory->catagory_name;
         $productsCatagory->photo=$this->request->getData('photo.name');
       
-       
-// this line is added to call component upload
+    // this line is added to call component upload
         $this->Filemanager->doUpload($productsCatagory);            
             if ($this->ProductsCatagories->save($productsCatagory)) {
                 $this->Flash->success(__('The products catagory has been saved.'));
@@ -68,9 +74,19 @@ class ProductsCatagoriesController extends AppController
             }
             $this->Flash->error(__('The products catagory could not be saved. Please, try again.'));
         }
-        $this->set(compact('productsCatagory'));
+        
+         $mainCatagories = $this->ProductsCatagories->MainCatagories->find('list', ['limit' => 200]);
+        $this->set(compact('productsCatagory','mainCatagories'));
+        
     }
-
+    
+  public function pairing($id = null)
+    {
+              $productsCatagory = $this->ProductsCatagories->get($id, [
+            'contain' => []
+        ]);
+      pr($productsCatagory);die();
+    }
     /**
      * Edit method
      *
@@ -80,6 +96,7 @@ class ProductsCatagoriesController extends AppController
      */
     public function edit($id = null)
     {
+          
         $productsCatagory = $this->ProductsCatagories->get($id, [
             'contain' => []
         ]);
@@ -95,15 +112,18 @@ class ProductsCatagoriesController extends AppController
             }
             $this->Flash->error(__('The products catagory could not be saved. Please, try again.'));
         }
-        $this->set(compact('productsCatagory'));
+         $mainCatagories = $this->ProductsCatagories->MainCatagories->find('list', ['limit' => 200]);
+        $this->set(compact('productsCatagory','mainCatagories'));
     }
 public function changepic($id=null){
-// 
+
            $productsCatagory = $this->ProductsCatagories->get($id, [
             'contain' => []
         ]);
+         
            $productToDelete=$productsCatagory;
         if ($this->request->is(['patch', 'post', 'put'])) {
+        
             $productsCatagory = $this->ProductsCatagories->patchEntity($productsCatagory, $this->request->getData());
                 $this->Filemanager->doDelete($productToDelete);      
             $productsCatagory->catagory_name=$this->request->getData('catagory_name');

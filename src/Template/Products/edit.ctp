@@ -50,6 +50,14 @@
          
      
             ?>
+                      <div class="row">
+                                   <?php
+            echo $this->Form->label('Coalblack Produkte');
+            echo $this->Form->control('coalblack_produkte',['label'=>false]);
+         
+     
+            ?> 
+                </div>
             </div>
            <div class="col-sm-6 col-md-6 col-lg-6">
                  <?php

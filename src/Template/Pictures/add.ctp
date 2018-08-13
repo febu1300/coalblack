@@ -27,9 +27,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light" id="actions-sidebar">
     <ul class="nav nav-pills flex-column">
  <li class="nav-item"><?= $this->Html->link(__('Bilderauflisten'), ['action' => 'index']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('Produkte'), ['controller' => 'Products', 'action' => 'index']) ?></li>
-
-        
+ <li class="nav-item"><?= $this->Html->link(__('Produkte'), ['controller' => 'Products', 'action' => 'index']) ?></li>
+       
     </ul>
 </nav>
         </div>
@@ -37,7 +36,7 @@
 
 
         <?= $this->Form->create($picture,['type'=>'file']) ?>
-    <?= $this->Form->create($picture) ?>
+
     <fieldset>
         <legend><?= __('Add Picture') ?></legend>
         <?php

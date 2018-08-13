@@ -15,12 +15,16 @@ div.row-eq-height {
     align-items:stretch;
 }
 .mb-1{color:#000011;}
+.prod-det-img{
+    width:100%;
+    height: 300px;
+}
 </style>
 <?php foreach ($products1 as $product): ?>
 
 
  <div class="col-sm-4 col-md-4 col-lg-4 row-eq-height"> 
-<img src="<?php echo '/'. $product['photo_dir'] . '/main/' . $product['photo']; ?>" style="width:100%;" alt="<?=$product['product_name']?>">
+<img class="prod-det-img" id="zoom_05"   src="<?php echo '/'. $product['photo_dir'] . '/main/' . $product['photo']; ?>" data-zoom-image="<?php echo '/'. $product['photo_dir'] . '/main/' . $product['photo']; ?>" alt="<?=$product['product_name']?>">
 </div>
  <div class="col-sm-5 col-md-5 col-lg-5 row-eq-height"> 
           <?php echo $this->Form->create('Transactions', array('class' => 'add-form', 'name'=>'theform','url' => array('controller' => 'transactions', 'action' => 'add'))); ?>
@@ -31,7 +35,7 @@ div.row-eq-height {
  
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1"> <?php echo $product['product_name']; ?></h5>
-      
+ 
     </div>
          <hr>
             <div class="d-flex w-50 justify-content-between">
@@ -72,3 +76,13 @@ div.row-eq-height {
 
         <?php  endforeach; ?>
   
+<script>
+    $("#zoom_05").elevateZoom({
+   zoomType				: "lens",
+  lensShape : "round",
+  lensSize    : 220,
+scrollZoom : true,
+lensFadeIn: 200,
+lensFadeOut: 200
+});
+</script>

@@ -52,7 +52,9 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
     $routes->connect('/debug', ['controller' => 'Pages', 'action' => 'display', 'debugpage']);
+     $routes->connect('/produktkatagorien', ['controller' => 'Pages', 'action' => 'display','produktkatagorien']);
     $routes->connect('/unterkatagorien', ['controller' => 'Pages', 'action' => 'display','unterkatagorien']);
+    
     $routes->connect('/faq', ['controller' => 'Pages', 'action' => 'display','faq']);
     $routes->connect('/kontakt', ['controller' => 'Pages', 'action' => 'display','kontakt']);
         $routes->connect('/agb', ['controller' => 'Pages', 'action' => 'display','agb']);
@@ -69,9 +71,10 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/angeboten', ['controller' => 'Pages', 'action' => 'display','angeboten']);
     $routes->connect('/produktdetail', ['controller' => 'Pages', 'action' => 'display','produktdetail']);
     $routes->connect('/neue_produkte', ['controller' => 'Pages', 'action' => 'display','neue_produkte']);
+       $routes->connect('/coalblack_produkte', ['controller' => 'Pages', 'action' => 'display','coalblack_produkte']);
     $routes->connect('/all_produkte', ['controller' => 'Pages', 'action' => 'display','all_produkte']);
     $routes->connect('/autosuggest', ['controller' => 'Pages', 'action' => 'display','autosuggest']);
-         
+        
     $routes->connect('/cbbackend', ['controller' => 'Pages', 'action' => 'display','admin']);
     $routes->connect('/cb_admin', ['controller' => 'Dashboard', 'action' => 'index','dashboard']);
     $routes->connect('/cb_admin', ['controller' => 'Dashboard', 'action' => 'index','dashboard']);

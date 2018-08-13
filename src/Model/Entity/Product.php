@@ -42,7 +42,7 @@ class Product extends Entity
     protected $_accessible = [
         'product_name' => true,
         'product_title' => true,
-           'unit' => true,
+        'unit' => true,
         'product_description' => true,
         'sub_catagory_id' => true,
         'created_date' => true,
@@ -58,6 +58,7 @@ class Product extends Entity
         'discounts_type' => true,
         'product_details' => true,
         'transactions' => true,
-        'product_prices' => true
+        'product_prices' => true,
+        'coalblack_produkte' => true
     ];
 }

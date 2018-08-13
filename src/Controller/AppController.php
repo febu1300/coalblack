@@ -44,7 +44,8 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        $this->loadComponent('Filemanager');
+        $this->loadComponent('Filemanager'); 
+        //$this->loadComponent('UploadHandlerComponent');
         $this->loadComponent('Checkout');
           $this->loadComponent('Passhashvalid');
             $this->loadComponent('Preiseangebote');
@@ -60,6 +61,11 @@ class AppController extends Controller
         'action' => 'display',
         'home'
         ]
+    ]);
+           $this->loadComponent('Search.Prg', [
+        // This is default config. You can modify "actions" as needed to make
+        // the PRG component work only for specified methods.
+        'actions' => ['index', 'lookup']
     ]);
         /*
          * Enable the following components for recommended CakePHP security settings.

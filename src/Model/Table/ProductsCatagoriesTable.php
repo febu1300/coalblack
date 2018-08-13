@@ -35,12 +35,26 @@ class ProductsCatagoriesTable extends Table
         $this->setTable('products_catagories');
         $this->setDisplayField('catagory_name');
         $this->setPrimaryKey('id');
+    
+        
+        
+    
 
+        $this->belongsTo('MainCatagories', [
+         
+            'foreignKey' => 'main_catagory_id',
+            'joinType' => 'LEFT'
+        ]);
+    
         $this->hasMany('SubCatagories', [
             'foreignKey' => 'products_catagory_id'
         ]);
+        
+        
+      
+    
     }
-
+  
     /**
      * Default validation rules.
      *
@@ -68,5 +82,12 @@ class ProductsCatagoriesTable extends Table
             ->allowEmpty('photo');
 
         return $validator;
+    }
+    
+        public function buildRules(RulesChecker $rules)
+    {
+      
+       $rules->add($rules->existsIn(['main_catagory_id'], 'MainCatagories'));
+        return $rules;
     }
 }

@@ -1,8 +1,5 @@
 
-/*cells new in sale allproducte*/
-    @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
-/* Animation.css*/
-@import url(https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css);
+
 
 * {
     box-sizing: border-box;
@@ -27,85 +24,26 @@ body {
     padding: 0 4px;
 }
 
-
+.responsive1{
+   width:640px;
+   height:300px;
+}
 
 .column img {
-    margin-top: 8px;
+    margin-top: 2px;
     vertical-align: top;
 }
 /* Responsive layout - makes a two column-layout instead of four columns */
-@media (max-width: 800px) {
-.column {
-    flex: 50%;
-    max-width: 50%;
-    padding: 0 4px;
-    
-}
-  .price-display{ display: flex;
-               position:relative;
-margin-left:50px;
- 
 
-}
 
-}
 
-@media (min-width:600px) and ( max-width: 800px)  {
-    .column {
-        flex: 75%;
-        max-width: 75%;
-    }
-      .price-display{ display: flex;
-               position:relative;
-margin-left:50px;
- 
 
-}
-
-}
-@media (max-width: 480px) {
-
-  
-}         
+      
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
- 
-    .row {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 4px;
- 
-}
-
-        .column {
-        flex: 100%;
-        max-width: 100%;
-         justify-content: space-around;
-        
-    }
- 
-    * {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Arial;
-}
 
 
-
-/* Create four equal columns that sits next to each other */
-
-
-
-
-.column img {
-    margin-top: 0px;
-    vertical-align: top;
-}
-}
+/* END (min-width: 480px) and (max-width: 600px) */
 .container {
     position: relative;
     font-family: Arial;
@@ -281,33 +219,33 @@ font-weight:bold;}
     font-family: Arial;
 }
 
-.gold-rect {
- 
-position: absolute;
-    bottom: 120px;
-    right: 60px;
-
-    background-color: rgba(125,125,125,0);
-    color: red;
-    padding: 30px;
 
 
-    border: 5px solid #ffffff;
-   
-
-}
-.textoverimg{
-    color: #C7984E;
-}
 .no-gutters{
-   margin-right: 0;
-   margin-left: 0; 
-}   
-.border-primary1{border-color:#C7984E; }
-img {
-    max-width: 100%;
-    max-height: 100%;
+
+   margin-bottom: 0;
+   margin-top: 0;
+
+}  
+
+.no-guttersT{
+  margin-bottom: 0;
+
 }
+.no-guttersB{
+
+   margin-top: 0;
+}
+.no-guttersR{
+  margin-right: 0;
+   margin-left: 0;
+}
+.no-padding{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.border-primary1{border-color:#C7984E; }
+
 
     /*
  * Row with equal height columns
@@ -425,20 +363,7 @@ div.row-eq-height {
     font-family: Arial;
 }
 
-.gold-block {
-    position: absolute;
-    bottom: 50px;
-    right: 20px;
-    background-color: rgba(125,125,125,0);
-    color: red;
-    padding-left: 20px;
-    padding-right: 20px;
-       padding-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: 5px solid #ffffff;
-    border-right: 5px solid #ffffff;
 
-}
 .textoverimg{
     color: darkgoldenrod;
 }
@@ -447,41 +372,28 @@ div.row-eq-height {
         border-style:solid;
         border-width:2px;
         border-color:#c7984e; 
-width:375px;
+        width:375px;
      
     }
-
-
-       
-          
-            #livesearch{
-                margin-top: 5px;
-            }
-        #livesearch{ width: 19em;
+ #livesearch{
+           margin-top: 5px;
+           }
+ #livesearch{ width: 19em;
         position:absolute;
         z-index: 99999;
         background-color:white;
         font-size:18px; }
         
-      @media (min-width: 980px) and (max-width: 1094px) {    .nav-item{margin:0; font-size:9px;}}
-@media (min-width: 1094px) and (max-width: 1800px) {
-      .nav-item{margin:0; }
-}
+
+
 
 /*users Details*/
-
-/*custom font*/
-@import url(https://fonts.googleapis.com/css?family=Merriweather+Sans);
- @import url("//https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+/*cells new in sale allproducte*/
+ 
 * {margin: 0; padding: 0;}
 
 
 
-body {
-
-
-
-}
 
 .breadcrumb {
     /*centering*/
@@ -613,5 +525,37 @@ body {
 
 .fa{
     margin-right: 5px;
-     margin-top: 2px;
+    margin-top: 2px;
 }
+   .banner{
+       width:100%;
+       height:360px;
+       align-items: center;
+       margin-top: 0px;
+    }
+    
+  .cat-sm-textoverimg{
+    overflow-x: hidden;
+    word-wrap: break-word;
+    color: #C7984E;
+    font-size:20px;
+    font-weight: bold;
+}
+.cat-sm-gold-block {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    background-color: rgba(125,125,125,0);
+    color: red;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 5px solid #ffffff;
+    border-right: 5px solid #ffffff;
+
+}
+.cat-sm-responsive2{
+width:300px; 
+height:300px;
+}  

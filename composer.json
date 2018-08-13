@@ -14,14 +14,16 @@
         "cakephp/plugin-installer": "^1.0",
         "elasticsearch/elasticsearch": "@stable",
         "facebook/graph-sdk": "^5.6",
+        "friendsofcake/search": "^4.4",
         "josegonzalez/cakephp-upload": "^3.7",
         "josegonzalez/dotenv": "2.*",
         "mobiledetect/mobiledetectlib": "2.*",
+        "nielse63/phpimagecache": "^1.0",
         "omnipay/omnipay": "~2.0",
         "paypal/rest-api-sdk-php": "*",
-     
         "setasign/fpdf": "1.8.1",
         "sofort/sofortlib-php": "^3.3",
+        "spatie/image-optimizer": "^1.1",
         "zurb/foundation": "^6.4"
     },
     "require-dev": {

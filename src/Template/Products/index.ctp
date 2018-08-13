@@ -33,26 +33,45 @@
         <li class="nav-item"><?= $this->Html->link(__('Subkatagorieliste'), ['controller' => 'SubCatagories', 'action' => 'index']) ?></li>
         <li class="nav-item"><?= $this->Html->link(__('Produktdetailbearbeiten'), ['controller' => 'ProductsDetails', 'action' => 'detailsindex']) ?></li>
        <li class="nav-item"><?= $this->Html->link(__('Neueproduktdetail'), ['controller' => 'ProductsDetails', 'action' => 'add']) ?></li>
-        <li class="nav-item"><?= $this->Html->link(__('MehrBilder'), ['controller' => 'Pictures', 'action' => 'add']) ?></li>
+        <li class="nav-item"><?= $this->Html->link(__('MehrBilder'), ['controller' => 'Pictures', 'action' => 'index']) ?></li>
 
         
     </ul>
 </nav>
         </div>
+
+    
 <div class="col-sm-10 col-md-10 col-lg-10">
-    <h3><?= __('Produkte') ?></h3>
+    <div class="row">
+        <div class="col-sm-9 col-md-9 col-lg-9"><h3><?= __('Produkte') ?></h3></div>
+         <div class="col-sm-3 col-md-3 col-lg-3">
+       <?=$this->Form->create(null, ['valueSources' => 'query']) ?>
+                      <div class="col-sm-2 col-md-2 col-lg-2 no-gutters">
+          <?=$this->Form->button('Filter', ['type' => 'submit']) ?>
+               </div>
+             <div class="col-sm-8 col-md-8 col-lg-8 no-gutters">
+               <?=$this->Form->control('q',['label'=>false,'autocomplete'=>'off']) ?><?= $this->Html->link('Reset', ['action' => 'index']);?>
+             </div>
+ 
+           <?=$this->Form->end()?>
+         </div>
+    </div>
+   
+    
+    
     <table class="table table-sm table-bordered "  cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('product_name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('product_title') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('product_description') ?></th>
+
                 <th scope="col"><?= $this->Paginator->sort('sub_catagory_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created_date') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('price') ?></th>
-                  <th scope="col"><?= $this->Paginator->sort('unit') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('unit') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('online_vorhanden') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('coalblack_produkte') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('new_in') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('sale') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('discount') ?></th>
@@ -70,18 +89,19 @@
                 <td><?= $this->Number->format($product->id) ?></td>
                 <td><?= h($product->product_name) ?></td>
                 <td><?= h($product->product_title) ?></td>
-                <td><?= h($product->product_description) ?></td>
+              
                 <td><?= $product->has('sub_catagory') ? $this->Html->link($product->sub_catagory->sub_catagory_name, ['controller' => 'SubCatagories', 'action' => 'view', $product->sub_catagory->id]) : '' ?></td>
                 <td><?= h($product->created_date) ?></td>
                 <td><?= $this->Number->currency($product->price,'EUR') ?></td>
                <td><?= h($product->unit) ?></td>
                <td><?=  h($product->online_vorhanden) ? __('<span class="badge badge-success">Ja</span>') : __('<span class="badge badge-pill badge-primary">Nein</span>'); ?></td>
+               <td><?=  h($product->coalblack_produkte) ? __('<span class="badge badge-success">Ja</span>') : __('<span class="badge badge-pill badge-primary">Nein</span>'); ?></td>
                <td><?=  h($product->new_in) ? __('<span class="badge badge-success">Ja</span>') : __('<span class="badge badge-pill badge-primary">Nein</span>'); ?></td>
                <td><?=  h($product->sale) ? __('<span class="badge badge-success">Ja</span>') : __('<span class="badge badge-pill badge-primary">Nein</span>'); ?></td>
 
                 <td><?= $this->Number->format($product->discount) ?></td>
                 <td><?= $product->has('discounts_type') ? $this->Html->link($product->discounts_type->discount_type, ['controller' => 'DiscountsTypes', 'action' => 'view', $product->discounts_type->id]) : '' ?></td>
-                                <td><?= $product->has('size') ? $this->Html->link($product->size->id, ['controller' => 'Size', 'action' => 'view', $product->size->id]) : '' ?></td>
+                <td><?= $product->has('size') ? $this->Html->link($product->size->id, ['controller' => 'Size', 'action' => 'view', $product->size->id]) : '' ?></td>
                 <td><?= $product->has('color') ? $this->Html->link($product->color->id, ['controller' => 'Color', 'action' => 'view', $product->color->id]) : '' ?></td>
 
 

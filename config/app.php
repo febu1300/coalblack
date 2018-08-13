@@ -64,7 +64,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT', '__SALT__'),
+        'salt' => env('SECURITY_SALT', 'c70f6ba5q²aA«873c2″\7Ħe69kl=F023d30_'),
     ],
 
     /**
@@ -90,6 +90,11 @@ return [
         ],
 
         /**
+         * Configure the cache used for general
+            'url' => env('CACHE_DEFAULT_URL', null),
+        ],
+
+        /**
          * Configure the cache used for general framework caching.
          * Translation cache files are stored with this configuration.
          * Duration will be set to '+2 minutes' in bootstrap.php when debug = true
@@ -101,6 +106,11 @@ return [
             'path' => CACHE . 'persistent/',
             'serialize' => true,
             'duration' => '+1 years',
+            'url' => env('CACHE_DEFAULT_URL', null),
+        ],
+
+        /**
+         * Configure the cache used for general
             'url' => env('CACHE_CAKECORE_URL', null),
         ],
 
@@ -128,7 +138,12 @@ return [
      *
      * In CLI environments exceptions will be printed to stderr with a backtrace.
      * In web environments an HTML page will be displayed for the exception.
-     * With debug true, framework errors like Missing Controller will be displayed.
+     * With debug true, framework errors like M
+            'url' => env('CACHE_DEFAULT_URL', null),
+        ],
+
+        /**
+         * Configure the cache used for generalissing Controller will be displayed.
      * When debug is false, framework errors will be coerced into generic HTTP errors.
      *
      * Options:
@@ -176,17 +191,17 @@ return [
      * appropriate file to src/Mailer/Transport. Transports should be named
      * 'YourTransport.php', where 'Your' is the name of the transport.
      */
-    'EmailTransport' => [
+        'EmailTransport' => [
         'default' => [
             'className' => 'Mail',
             // The following keys are used in SMTP transports
-            'host' => 'localhost',
-            'port' => 25,
+            'host' => 'smtp.1und1.de',
+            'port' => 587,
             'timeout' => 30,
-            'username' => null,
-            'password' => null,
+            'username' => 'meinebestellung@coalblack.supply',
+            'password' => 'Winter+92',
             'client' => null,
-            'tls' => null,
+            'tls' => true,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ],
     ],
@@ -203,7 +218,7 @@ return [
     'Email' => [
         'default' => [
             'transport' => 'default',
-            'from' => 'you@localhost',
+            'from' => 'meinebestellung@coalblack.supply',
             //'charset' => 'utf-8',
             //'headerCharset' => 'utf-8',
         ],
@@ -229,9 +244,9 @@ return [
              * the following line and set the port accordingly
              */
             //'port' => 'non_standard_port_number',
-            'username' => 'my_app',
-            'password' => 'secret',
-            'database' => 'my_app',
+            'username' => 'root',
+            'password' => 'fac3b00k',
+            'database' => 'coalblack',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],

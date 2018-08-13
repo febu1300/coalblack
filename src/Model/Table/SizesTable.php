@@ -34,7 +34,7 @@ class SizesTable extends Table
         parent::initialize($config);
 
         $this->setTable('sizes');
-        $this->setDisplayField('id');
+        $this->setDisplayField('size');
         $this->setPrimaryKey('id');
 
       

@@ -34,18 +34,18 @@ class ProductsTable extends Table
     public function initialize(array $config)
     {
         parent::initialize($config);
-$this->addBehavior('Translate', ['fields' => ['title']]);
+        $this->addBehavior('Translate', ['fields' => ['title']]);
         $this->setTable('products');
         $this->setDisplayField('product_name');
         $this->setPrimaryKey('id');
 
         $this->belongsTo('SubCatagories', [
             'foreignKey' => 'sub_catagory_id',
-            'joinType' => 'INNER'
+            'joinType' => 'LEFT'
         ]);
         $this->belongsTo('DiscountsTypes', [
             'foreignKey' => 'discount_type_id',
-            'joinType' => 'INNER'
+            'joinType' => 'LEFT'
         ]);
               $this->belongsTo('Colors', [
             'foreignKey' => 'color_id',
@@ -64,8 +64,34 @@ $this->addBehavior('Translate', ['fields' => ['title']]);
           $this->hasMany('Pictures', [
             'foreignKey' => 'product_id'
         ]);
-    }
+   // Add the behaviour to your table
+        $this->addBehavior('Search.Search');
 
+        // Setup search filter using search manager
+        $this->searchManager()
+            ->value('product_id')
+            // Here we will alias the 'q' query param to search the `Articles.title`
+            // field and the `Articles.content` field, using a LIKE match, with `%`
+            // both before and after.
+            ->add('q', 'Search.Like', [
+                'before' => true,
+                'after' => true,
+                'fieldMode' => 'OR',
+                'comparison' => 'LIKE',
+                'wildcardAny' => '*',
+                'wildcardOne' => '?',
+                'field' => ['product_name', 'id']
+            ]);
+    }
+ public function searchManager()
+    {
+        $searchManager = $this->behaviors()->Search->searchManager();
+        $searchManager
+            ->like('product_name')
+            ->value('id');
+
+        return $searchManager;
+    }
     /**
      * Default validation rules.
      *
@@ -127,18 +153,21 @@ $this->addBehavior('Translate', ['fields' => ['title']]);
             ->decimal('discount')
             ->requirePresence('discount', 'create')
             ->allowEmpty('discount');
-
+        $validator
+            ->boolean('coalblack_produkte')
+            ->requirePresence('coalblack_produkte', 'create')
+            ->notEmpty('coalblack_produkte');
         $validator
             ->scalar('photo_dir')
             ->maxLength('photo_dir', 100)
             ->requirePresence('photo_dir', 'create')
-            ->allowEmpty('photo_dir');
+            ->notEmpty('photo_dir');
 
         $validator
             ->scalar('photo')
             ->maxLength('photo', 100)
             ->requirePresence('photo', 'create')
-            ->allowEmpty('photo');
+            ->notEmpty('photo');
 
         return $validator;
     }

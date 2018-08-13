@@ -4,15 +4,37 @@
  * @var \App\Model\Entity\Newsletter[]|\Cake\Collection\CollectionInterface $newsletter
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Newsletter'), ['action' => 'add']) ?></li>
+<div class="container-fluid">
+<nav class="navbar navbar-expand-lg  bg-light " >
+  <a class="navbar-brand" href="/dashboard">Dashboard</a>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+      
+      </li>
+  
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/transactions"><span class="glyphicon glyphicon-bell"></span>  <span class="badge badge-secondary bg-danger badge-pill"><?= $this->cell('Notification') ?></span></a></li>
+     
+      <li><a href="/users/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2">
+<nav class="navbar navbar-expand-lg navbar-dark bg-light" id="actions-sidebar">
+    <ul class="nav nav-pills flex-column">
+     <li><?= $this->Html->link(__('New Newsletter'), ['action' => 'add']) ?></li>
+          
     </ul>
 </nav>
-<div class="newsletter index large-9 medium-8 columns content">
-    <h3><?= __('Newsletter') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+        </div>
+
+<div class="col-sm-10 col-md-10 col-lg-10">
+    <h3><?= __('Products Catagories') ?></h3>
+    <table class="table table-sm table-bordered "  cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
@@ -46,4 +68,6 @@
         </ul>
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
+</div>
+</div>
 </div>

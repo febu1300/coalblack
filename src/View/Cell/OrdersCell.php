@@ -28,6 +28,7 @@ class OrdersCell extends Cell
 //  pr($article_type);die();
 $products1=$UsersDetailTable->find()
 ->select(['id','user_id','transaction_status_id','order_number','product_id','created_date','sent'])
+        ->group('id')
         ->where((['transaction_status_id'=>1]))
   ->where((['user_id'=>$this->request->session()->read('Auth.User.id')]))
                 ->order(['created_date'=>'DESC'])

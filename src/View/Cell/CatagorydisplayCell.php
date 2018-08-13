@@ -24,20 +24,20 @@ class CatagorydisplayCell extends Cell
      */
     public function display()
     {
-          		$this->loadModel('ProductsCatagories');
+          	$this->loadModel('Contents');
            
          
 		//$total_products = $this->Products->find()->count();
 
 //  pr($article_type);die();
-		$products1=$this->ProductsCatagories->find()
+		$products1=$this->Contents->find()
                         
                         
-                     ->select(['id','catagory_name','photo','photo_dir'])
+                ->select(['id','lable','link_page','photo_dir','photo'])
                    
-                      ->where((['id'=>54]))                  // important!! set coalblack Produkte id 54
-//                   
-	
+                 ->where((['id'=>6]))
+        
+
 			->limit(1)
 			->toArray();
               

@@ -14,7 +14,7 @@
  */
 
 $this->layout = false;
-
+//pr($this->request->query('wh'));die();
 
 ?>
 
@@ -22,9 +22,9 @@ $this->layout = false;
    
  
   
-  <div class="col-sm-4 col-md-4 col-lg-4">
-<?php $cell=$this->cell('Autosuggest')?>
-      <?=$cell?>
+  <div class="col-sm-12 col-md-12 col-lg-12">
+<?=$this->cell('Autosuggest',['wh'=>$this->request->query('wh')])?>
+  
     </div>
 
      

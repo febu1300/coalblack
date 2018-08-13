@@ -24,20 +24,20 @@ class CatagorydisplaySMCell extends Cell
      */
     public function display()
     {
-          		$this->loadModel('ProductsCatagories');
+          		$this->loadModel('MainCatagories');
            
          
 		//$total_products = $this->Products->find()->count();
 
 //  pr($article_type);die();
-		$products1=$this->ProductsCatagories->find()
+		$products1=$this->MainCatagories->find()
                         
                         
-                     ->select(['id','catagory_name','photo','photo_dir'])
+                     ->select(['id','main_catagory_name','photo','photo_dir'])
                    
-                      ->where((['id !='=>54]))            // important!!
+                            // important!!
 //                   
-		
+		->order(['id' => 'DESC'])
 			->limit(4)
 			->toArray();
               

@@ -25,24 +25,17 @@ class DynamicnavCell extends Cell
     public function display()
     {
           $wh = $this->request->query('wh');         	
-        $this->loadModel('ProductsCatagories');
-           
-         
-		//$total_products = $this->Products->find()->count();
+        $this->loadModel('MainCatagories');
 
-//  pr($article_type);die();
-		$products1=$this->ProductsCatagories->find()
-                        
-                        
-                     ->select(['id','catagory_name'])
-                   
-                
+		$products1=$this->MainCatagories->find()
+
+                     ->select(['id','main_catagory_name',])
 //                   
 		->order(['id'=>'ASC'])
 		
 			->toArray();
               
     $this->set(['products1'=>$products1]);
-   
+
     }
 }

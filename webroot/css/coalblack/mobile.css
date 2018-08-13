@@ -1,0 +1,635 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 11, 2018, 11:15:42 PM
+    Author     : buruk
+*/
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+
+
+  * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+    flex: 50%;
+    max-width: 50%;
+    padding: 0 4px;
+}
+
+.responsive1{
+   width:600px;
+   height:290px;
+}
+
+.column img {
+    margin-top: 1px;
+    vertical-align: top;
+}
+
+.container {
+    position: relative;
+    font-family: Arial;
+}
+
+.text-block {
+    position: absolute;
+    bottom: 150px;
+    right: 20px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+
+.col-item {
+  border: 1px solid #E1E1E1;
+  background: #FFF;
+  margin-bottom:12px;
+}
+.col-item .options {
+  position:absolute;
+ 
+  right:22px;
+}
+.col-item .photo {
+  overflow: hidden;
+}
+.col-item .photo .options {
+  display:none;
+}
+.col-item .photo img {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.col-item .options-cart {
+  position:absolute;
+  left:22px;
+
+  display:none;
+}
+.col-item .photo:hover .options,
+.col-item .photo:hover .options-cart {
+  display:block;
+  -webkit-animation: fadeIn .5s ease;
+  -moz-animation: fadeIn .5s ease;
+  -ms-animation: fadeIn .5s ease;
+  -o-animation: fadeIn .5s ease;
+  animation: fadeIn .5s ease;
+}
+.col-item .options-cart-round {
+  position:absolute;
+  left:42%;
+  top:22%;
+  display:none;
+}
+.col-item .options-cart-round button {
+  border-radius: 50%;
+  padding:14px 16px;
+  
+}
+.col-item .options-cart-round button .fa {
+  font-size:22px;
+}
+.col-item .photo:hover .options-cart-round {
+  display:block;
+  -webkit-animation: fadeInDown .5s ease;
+  -moz-animation: fadeInDown .5s ease;
+  -ms-animation: fadeInDown .5s ease;
+  -o-animation: fadeInDown .5s ease;
+  animation: fadeInDown .5s ease;
+}
+.col-item .info {
+  padding: 10px;
+  margin-top: 1px;
+}
+.col-item .price-details {
+  width: 100%;
+  margin-top: 5px;
+}
+.col-item .price-details h1 {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  float:left;
+}
+.col-item .price-details .details {
+  margin-bottom: 0px;
+  font-size:12px;
+}
+.col-item .price-details span {
+  float:right;
+}
+.col-item .price-details .price-new {
+  font-size:16px;
+}
+.col-item .price-details .price-old {
+  font-size:18px;
+  text-decoration:line-through;
+}
+.col-item .separator {
+  border-top: 1px solid #E1E1E1;
+}
+
+.col-item .clear-left {
+  clear: left;
+}
+.col-item .separator a {
+  text-decoration:none;
+}
+.col-item .separator p {
+  margin-bottom: 0;
+  margin-top: 6px;
+  text-align: center;
+}
+
+.col-item .separator p i {
+  margin-right: 5px;
+}
+.col-item .btn-add {
+  width: 60%;
+  float: left;
+}
+.col-item .btn-add a {
+  display:inline-block !important;
+}
+.col-item .btn-add {
+  border-right: 1px solid #E1E1E1;
+}
+.col-item .btn-details {
+  width: 40%;
+  float: left;
+  padding-left: 10px;
+}
+.col-item .btn-details a {
+  display:inline-block !important;
+}
+.col-item .btn-details a:first-child {
+  margin-right:12px;
+}
+.btn-block{
+    background-color:#111111;
+    padding-bottom: 5px;
+    padding-top:5px;
+}
+.fa{
+    color:red;
+}
+.text-block-new {
+    position: absolute;
+    bottom: 150px;
+    right: 20px;
+    background-color: #C7984E;
+    color: white;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+
+p.bold{font-family: inherit;
+color: black;
+font-weight:bold;}
+
+/*header element*/
+   .container {
+    position: relative;
+    font-family: Arial;
+}
+
+
+
+.no-gutters{
+
+   margin-bottom: 0;
+   margin-top: 0;
+
+}  
+
+.no-guttersT{
+  margin-bottom: 0;
+
+}
+.no-guttersB{
+
+   margin-top: 0;
+}
+.no-guttersR{
+  margin-right: 0;
+   margin-left: 0;
+}
+.no-padding{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.border-primary1{border-color:#C7984E; }
+
+
+    /*
+ * Row with equal height columns
+ * --------------------------------------------------
+ */
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+/*
+ * Styles copied from the Grid example to make grid rows & columns visible.
+ */
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+h4 {
+  margin-top: 25px;
+}
+.row {
+  margin-bottom: 20px;
+}
+.row .row {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+[class*="col-"] {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #fff;
+  background-color: rgba(255,255,255,0);
+
+}
+
+/*
+ * Callout styles copied from Bootstrap's main docs.
+ */
+/* Common styles for all types */
+.bs-callout {
+  padding: 20px;
+  margin: 20px 0;
+  border-left: 3px solid #eee;
+}
+.bs-callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+  margin-bottom: 0;
+}
+.bs-callout code {
+  background-color: #fff;
+  border-radius: 3px;
+}
+/* Variations */
+.bs-callout-danger {
+  background-color: #fdf7f7;
+  border-color: #d9534f;
+}
+.bs-callout-danger h4 {
+  color: #d9534f;
+}
+.bs-callout-warning {
+  background-color: #fcf8f2;
+  border-color: #f0ad4e;
+}
+.bs-callout-warning h4 {
+  color: #f0ad4e;
+}
+.bs-callout-info {
+  background-color: #f4f8fa;
+  border-color: #5bc0de;
+}
+.bs-callout-info h4 {
+  color: #5bc0de;
+}
+
+
+/*from layout*/
+
+        a {
+   outline: 0;
+}
+ 
+  a:hover{
+        color:darkgoldenrod;
+        text-decoration:none; 
+    }
+    .minpadding{
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
+        .kein-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+ .row-eq-height {
+    display: table-cell;
+    padding: 16px;
+}
+div.row-eq-height {
+    display:flex;    
+    align-items:stretch;
+}
+.container {
+    position: relative;
+    font-family: Arial;
+}
+
+
+.textoverimg{
+    color: darkgoldenrod;
+}
+ .border-color{
+
+        border-style:solid;
+        border-width:2px;
+        border-color:#c7984e; 
+        width:375px;
+     
+    }
+ #livesearch{
+           margin-top: 5px;
+           }
+ #livesearch{ width: 19em;
+        position:absolute;
+        z-index: 99999;
+        background-color:white;
+        font-size:18px; }
+        
+
+
+
+/*users Details*/
+/*cells new in sale allproducte*/
+ 
+* {margin: 0; padding: 0;}
+
+
+
+
+.breadcrumb {
+    /*centering*/
+    display: inline-block;
+
+    overflow: hidden;
+    border-radius: 5px;
+    /*Lets add the numbers for each link using CSS counters. flag is the name of the counter. to be defined using counter-reset in the parent element of the links*/
+    counter-reset: flag; 
+        text-align: center;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    outline: none;
+    display: block;
+    float: left;
+    font-size: 12px;
+    line-height: 36px;
+    color: white;
+    /*need more margin on the left of links to accomodate the numbers*/
+    padding: 0 25px 0 200px;
+    background: #ffffff;
+    background: linear-gradient(#ffffff, #000111);
+    position: relative;
+}
+/*since the first link does not have a triangle before it we can reduce the left padding to make it look consistent with other links*/
+.breadcrumb a:nth-child(1){
+    padding-left: 50px;
+    border-radius: 5px 0 0 5px; /*to match with the parent's radius*/
+    border: 3px #D39745 solid;
+}
+.breadcrumb a:nth-child(2) {
+    padding-left: 50px;
+    border-radius: 5px 0 0 5px; /*to match with the parent's radius*/
+    border: 3px #D39745 solid;
+}
+.breadcrumb a:nth-child(3) {
+    padding-left: 50px;
+    border-radius: 5px 0 0 5px; /*to match with the parent's radius*/
+    border: 3px #D39745 solid;
+}
+
+.breadcrumb a:nth-child(4) {
+    padding-left: 50px;
+    border-radius: 5px 0 0 5px; /*to match with the parent's radius*/
+    border: 3px #D39745 solid;
+}
+
+/*hover/active styles*/
+.breadcrumb a.active, .breadcrumb a:hover{
+    background: #333;
+    background: linear-gradient(#333, #000);
+}
+.breadcrumb a.active:after, .breadcrumb a:hover:after {
+    background: #333;
+    background: linear-gradient(135deg, #333, #000);
+}
+
+/*adding the arrows for the breadcrumbs using rotated pseudo elements*/
+.breadcrumb a:after {
+    content: '';
+    position: absolute;
+    top: 0; 
+    right: -18px; /*half of square's length*/
+    /*same dimension as the line-height of .breadcrumb a */
+    width: 36px; 
+    height: 36px;
+    /*as you see the rotated square takes a larger height. which makes it tough to position it properly. So we are going to scale it down so that the diagonals become equal to the line-height of the link. We scale it to 70.7% because if square's: 
+    length = 1; diagonal = (1^2 + 1^2)^0.5 = 1.414 (pythagoras theorem)
+    if diagonal required = 1; length = 1/1.414 = 0.707*/
+    transform: scale(0.707) rotate(45deg);
+    /*we need to prevent the arrows from getting buried under the next link*/
+    z-index: 1;
+    /*background same as links but the gradient will be rotated to compensate with the transform applied*/
+    background: #666;
+    background: linear-gradient(135deg, #666, #333);
+    /*stylish arrow design using box shadow*/
+    box-shadow: 
+        2px -2px 0 2px rgba(0, 0, 0, 0.4), 
+        3px -3px 0 2px rgba(255, 255, 255, 0.1);
+    /*
+        5px - for rounded arrows and 
+        50px - to prevent hover glitches on the border created using shadows*/
+    border-radius: 0 5px 0 50px;
+
+}
+/*we dont need an arrow after the last link*/
+.breadcrumb a:last-child:after {
+    content: none;
+}
+/*we will use the :before element to show numbers*/
+.breadcrumb a:before {
+ 
+    /*some styles now*/
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin: 8px 0;
+    position: absolute;
+    top: 0;
+    left: 30px;
+    background: #000011;
+    background: linear-gradient(#444, #222);
+    font-weight: bold;
+   
+}
+
+
+.flat a, .flat a:after {
+    background: white;
+    color: black;
+    transition: all 0.5s;
+}
+.flat a:before {
+    background: white;
+    box-shadow: 0 0 0 1px #ccc;
+}
+.flat a:hover, .flat a.active, 
+.flat a:hover:after, .flat a.active:after{
+    background: #D39745;
+}
+
+.cap {
+    text-transform: uppercase;
+    text-justify: auto;
+}
+
+.fa{
+    margin-right: 5px;
+    margin-top: 2px;
+}
+   .banner{
+       width:100%;
+       height:340px;
+       align-items: center;
+       margin-top: 0px;
+    }
+    /*catagory*/
+    .cat-textoverimg1{
+    overflow-x: hidden;
+    word-wrap: break-word;
+    color: #C7984E;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size:14px;
+    font-weight: bold;
+}
+.cat-gold-block {
+      position: absolute;
+    bottom: 15px;
+    left: 250px;
+  
+    background-color: rgba(125,125,125,0);
+    color: red;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 5px solid #ffffff;
+    border-right: 5px solid #ffffff;
+    font-size:20px;
+}
+.cat-img-responsive2{
+width:180px; 
+height:260px;
+}
+    
+    /* catagory sm*/
+  .cat-sm-textoverimg{
+    overflow-x: hidden;
+    word-wrap: break-word;
+    color: #C7984E;
+    font-size:12px;
+    font-weight: bold;
+}
+.cat-sm-gold-block {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    background-color: rgba(125,125,125,0);
+    color: red;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 5px solid #ffffff;
+    border-right: 5px solid #ffffff;
+
+}
+    .gold-rect {
+    position: absolute;
+    bottom: 10px;
+    left: 40px;
+    padding: 0 4px;
+ 
+    background-color: rgba(0,0,0,0.6);
+    color: red;
+    padding: 10px;
+    border: 3px solid #ffffff;
+}
+
+.cat-sm-responsive2{
+width:100px; 
+height:100px;
+}  
+
+/*footer*/
+.img-responsive3{
+width:250px; 
+height:250px;
+} 
+
+    .textoverimg3{
+overflow-x: hidden;
+    word-wrap: break-word;
+        color: #C7984E;
+  font-size:20px;
+  font-weight: bold;
+}
+.gold-block3 {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    background-color: rgba(125,125,125,0);
+    color: red;
+    padding-left: 20px;
+    padding-right: 20px;
+       padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 5px solid #ffffff;
+    border-right: 5px solid #ffffff;
+
+}
+
+.card-title{font-size: 10px;}
+} 

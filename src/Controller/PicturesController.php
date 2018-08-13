@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 
+   use Cake\ORM\TableRegistry; 
 /**
  * Pictures Controller
  *
@@ -21,11 +22,13 @@ class PicturesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Products']
+            'contain' => ['Products'],
+     
         ];
+
         $pictures = $this->paginate($this->Pictures);
 
-        $this->set(compact('pictures'));
+        $this->set(compact('pictures','products'));
     }
 
     /**
@@ -71,13 +74,14 @@ class PicturesController extends AppController
         $this->set(compact('picture', 'products'));
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Picture id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
+       public function upload(){
+               //$this->autoRender=false;
+       $this->request->is('ajax');
+  $pictures = $this->Pictures->find();
+  $this->set(['pictures' => $pictures]);
+        
+      }
+ 
     public function edit($id = null)
     {
         $picture = $this->Pictures->get($id, [
@@ -145,4 +149,6 @@ public function changepic($id=null){
 
         return $this->redirect(['action' => 'index']);
     }
+    
+
 }

@@ -31,7 +31,7 @@
         				<div class="price-details col-md-6">
                                             	 <p><?php echo $product['product_name']; ?></p>
         					
-                                             <p class="details"><?php echo $product['product_description']; ?>
+                                             <p class="details"><?php echo $product['title']; ?>
                                                  </div></div>
                                              <div class="row">
                                 </p> 

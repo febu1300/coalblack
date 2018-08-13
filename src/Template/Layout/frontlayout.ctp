@@ -29,14 +29,20 @@
 
 <?= $this->Html->meta(
     'favicon.ico',
-    'img/icon.svg',
+    'img/icon.png',
     ['type' => 'icon']
 );
 ?>
   
    <?= $this->Html->css('bootstrap.min.css') ?>
 
-<?=$this->Html->css('coalblack.css')?>
+<?=$this->Html->css('coalblack/mobile.css')?>
+    <?=$this->Html->css('coalblack/tablet.css')?>
+    <?=$this->Html->css('coalblack/desktop.css')?>
+    <?=$this->Html->css('coalblack/wearable.css')?> 
+    <?=$this->Html->css('coalblack/tv.css')?>
+ 
+    
     <?= $this->Html->script('jquery-1.8.3.min.js') ?>
     <?= $this->Html->script('popper.min.js') ?>
     <?= $this->Html->script('bootstrap.min.js') ?>
@@ -44,7 +50,11 @@
     <?= $this->fetch('script') ?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
-  
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather+Sans">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 
     <style>
@@ -53,7 +63,7 @@
 </head>
     <body>
 
-        <div class="container-fluid">
+        <div class="container-fluid no-padding">
  <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
          <?=$this->element('elm_header')?>
             
@@ -64,26 +74,22 @@
           <div class="col-sm-3 col-md-3 col-lg-3"> </div>
           <div class="col-sm-3 col-md-3 col-lg-3"> 
          <?=$this->element('elm_search')?>
+             
       </div>
      
        </div> 
                       
-      <div class="row">
-       <div class="col-sm-12 col-md-12 col-lg-12"> 
+     
+     
             <?=$this->element('elm_navbar')?>
 
-       </div>
- 
-       </div>
-  
-</div>
+  </div>
         </div>
 
            
         
 <div class="container" >
     
-         <?php echo $this->Html->getCrumbs(' > ', '',['escape'=>false]);?> 
         
 <?= $this->fetch('sidebar') ?>
 

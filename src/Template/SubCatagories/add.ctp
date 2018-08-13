@@ -29,7 +29,7 @@
  
           <li class="nav-item"><?= $this->Html->link(__('Subkatagorieliste'), ['controller' => 'SubCatagories', 'action' => 'index']) ?></li>
 
-         <li class="nav-item"><?= $this->Html->link(__('Produktkatagrieliste'), ['controller' => 'ProductsCatagories', 'action' => 'add']) ?></li>
+         <li class="nav-item"><?= $this->Html->link(__('Produktkatagrieliste'), ['controller' => 'ProductsCatagories', 'action' => 'index']) ?></li>
         <li class="nav-item"><?= $this->Html->link(__('Neue Produktkatagrie'), ['controller' => 'ProductsCatagories', 'action' => 'add']) ?></li>
 
         <li class="nav-item"><?= $this->Html->link(__('Produktliste'), ['action' => 'index']) ?></li>
@@ -53,8 +53,8 @@
        
                 <?=$this->Form->label('Product Catagory')?>
                 <?php 
-  
-            echo $this->Form->control('products_catagory_id', ['options' => $productsCatagories,'label'=>false]); ?>
+
+            echo $this->Form->control('products_catagory_id', ['options' => $productsCatagories,'empty' => true,'label'=>false]); ?>
             </div>
          <hr>
                 <div class="row"> 

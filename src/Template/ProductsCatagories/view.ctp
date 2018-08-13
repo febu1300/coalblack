@@ -4,19 +4,21 @@
  * @var \App\Model\Entity\ProductsCatagory $productsCatagory
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Products Catagory'), ['action' => 'edit', $productsCatagory->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Products Catagory'), ['action' => 'delete', $productsCatagory->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productsCatagory->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Products Catagories'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Products Catagory'), ['action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="productsCatagories view large-9 medium-8 columns content">
-    <img src="<?='/'. h($productsCatagory->photo_dir.'/main/'.$productsCatagory->photo)?>">
+<div class="modal-header pull-left">
+        <h3><?= h($productsCatagory->id) ?>.<?= h($productsCatagory->catagory_name) ?></h3>
+</div>
+<div class="container">
+    
+    <div class="row">
+     <div class="col-sm-3 col-md-3 col-lg-3">
+ <img class="img-style" src="<?='/'. h($productsCatagory->photo_dir.'/main/'.$productsCatagory->photo)?>">
+      </div>
+             <div class="col-sm-1 col-md-1 col-lg-1"> </div>
+ <div class="col-sm-6 col-md-6 col-lg-6">
+            <table class="horizontalSlideShow-table">
+   
     <h3><?= h($productsCatagory->id) ?></h3>
-    <table class="vertical-table">
+
         <tr>
             <th scope="row"><?= __('Catagory Name') ?></th>
             <td><?= h($productsCatagory->catagory_name) ?></td>
@@ -35,3 +37,12 @@
         </tr>
     </table>
 </div>
+
+    </div>
+ </div>
+
+<div class="clearfix"></div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Abschließen</button>
+
+    </div>

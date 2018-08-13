@@ -5407,71 +5407,159 @@
         ]
     },
     {
-        "name": "phpmailer/phpmailer",
-        "version": "v6.0.5",
-        "version_normalized": "6.0.5.0",
+        "name": "spatie/image-optimizer",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/PHPMailer/PHPMailer.git",
-            "reference": "cb3ea134d4d3729e7857737d5f320cce9caf4d32"
+            "url": "https://github.com/spatie/image-optimizer.git",
+            "reference": "1530d6cf72070068eecab150ffb73466c3806bdd"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/cb3ea134d4d3729e7857737d5f320cce9caf4d32",
-            "reference": "cb3ea134d4d3729e7857737d5f320cce9caf4d32",
+            "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/1530d6cf72070068eecab150ffb73466c3806bdd",
+            "reference": "1530d6cf72070068eecab150ffb73466c3806bdd",
             "shasum": ""
         },
         "require": {
-            "ext-ctype": "*",
-            "ext-filter": "*",
-            "php": ">=5.5.0"
+            "php": "^7.0",
+            "psr/log": "^1.0",
+            "symfony/process": "^2.8|^3.0|^4.0"
         },
         "require-dev": {
-            "doctrine/annotations": "1.2.*",
-            "friendsofphp/php-cs-fixer": "^2.2",
-            "phpdocumentor/phpdocumentor": "2.*",
-            "phpunit/phpunit": "^4.8 || ^5.7",
-            "zendframework/zend-eventmanager": "3.0.*",
-            "zendframework/zend-i18n": "2.7.3",
-            "zendframework/zend-serializer": "2.7.*"
+            "phpunit/phpunit": "^6.2|^7.0",
+            "symfony/var-dumper": "^3.0|^4.0"
         },
-        "suggest": {
-            "ext-mbstring": "Needed to send email in multibyte encoding charset",
-            "hayageek/oauth2-yahoo": "Needed for Yahoo XOAUTH2 authentication",
-            "league/oauth2-google": "Needed for Google XOAUTH2 authentication",
-            "psr/log": "For optional PSR-3 debug logging",
-            "stevenmaguire/oauth2-microsoft": "Needed for Microsoft XOAUTH2 authentication",
-            "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)"
-        },
-        "time": "2018-03-27 13:49:45",
+        "time": "2018-06-05 07:36:17",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "PHPMailer\\PHPMailer\\": "src/"
+                "Spatie\\ImageOptimizer\\": "src"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "LGPL-2.1"
+            "MIT"
         ],
         "authors": [
             {
-                "name": "Jim Jagielski",
-                "email": "jimjag@gmail.com"
-            },
-            {
-                "name": "Marcus Bointon",
-                "email": "phpmailer@synchromedia.co.uk"
-            },
-            {
-                "name": "Andy Prevost",
-                "email": "codeworxtech@users.sourceforge.net"
-            },
-            {
-                "name": "Brent R. Matzelle"
+                "name": "Freek Van der Herten",
+                "email": "freek@spatie.be",
+                "homepage": "https://spatie.be",
+                "role": "Developer"
             }
         ],
-        "description": "PHPMailer is a full-featured email creation and transfer class for PHP"
+        "description": "Easily optimize images using PHP",
+        "homepage": "https://github.com/spatie/image-optimizer",
+        "keywords": [
+            "image-optimizer",
+            "spatie"
+        ]
+    },
+    {
+        "name": "nielse63/phpimagecache",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nielse63/php-image-cache.git",
+            "reference": "c0d8195016f5c17e536f1292c59832d74f505bdb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nielse63/php-image-cache/zipball/c0d8195016f5c17e536f1292c59832d74f505bdb",
+            "reference": "c0d8195016f5c17e536f1292c59832d74f505bdb",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2014-09-29 23:13:13",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "ImageCache": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Creative Commons Attribution"
+        ],
+        "authors": [
+            {
+                "name": "Erik Nielsen",
+                "email": "erik@312development.com",
+                "homepage": "http://312development.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Image Cache is a very simple PHP module that accepts an image source and will compress and cache the file, move it to a new directory, and return the cache source for the image.",
+        "homepage": "http://nielse63.github.io/php-image-cache",
+        "keywords": [
+            "cache",
+            "caching",
+            "image cache",
+            "php cache"
+        ]
+    },
+    {
+        "name": "friendsofcake/search",
+        "version": "4.4.0",
+        "version_normalized": "4.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/FriendsOfCake/search.git",
+            "reference": "f928b2b594697fb65c8e9c1404f7cd89a31e7a88"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/FriendsOfCake/search/zipball/f928b2b594697fb65c8e9c1404f7cd89a31e7a88",
+            "reference": "f928b2b594697fb65c8e9c1404f7cd89a31e7a88",
+            "shasum": ""
+        },
+        "require": {
+            "cakephp/cakephp": "^3.5"
+        },
+        "require-dev": {
+            "cakephp/cakephp-codesniffer": "^3.0",
+            "cakephp/chronos": "^1.1",
+            "friendsofcake/cakephp-test-utilities": "^1.0",
+            "muffin/webservice": "^1.3",
+            "phpunit/phpunit": "^5.7.14|^6.0"
+        },
+        "time": "2018-04-16 21:29:06",
+        "type": "cakephp-plugin",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Search\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Christian Winther",
+                "homepage": "http://cakephp.nu/",
+                "role": "Author"
+            },
+            {
+                "name": "ADmad",
+                "homepage": "https://github.com/admad",
+                "role": "Contributor"
+            }
+        ],
+        "description": "CakePHP Search plugin using PRG pattern",
+        "homepage": "https://github.com/FriendsOfCake/search",
+        "keywords": [
+            "cake3",
+            "cakephp",
+            "cakephp3",
+            "search"
+        ]
     }
 ]

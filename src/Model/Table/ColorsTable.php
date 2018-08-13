@@ -34,7 +34,7 @@ class ColorsTable extends Table
         parent::initialize($config);
 
         $this->setTable('colors');
-        $this->setDisplayField('id');
+        $this->setDisplayField('color');
         $this->setPrimaryKey('id');
 
     

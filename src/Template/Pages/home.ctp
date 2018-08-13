@@ -34,16 +34,14 @@ $this->layout = 'frontlayout';
 
 </head>
  
-
-  
-
-<?=$this->element('/elm_home/elm_section');?>
-  
-     <div class="col-sm-12 col-md-12 col-lg-12 underlinegold">
+ 
+  <?=$this->cell('Jumbotron')?>
+     <div class="col-sm-12 col-md-12 col-lg-12 underlinegold no-gutters">
         <div class="row">
+        
           <div class="col-sm-4 col-md-4 col-lg-4 ">
-<?=$this->cell('Catagorydisplay')?>
-      
+           <?=$this->cell('Catagorydisplay')?>
+
     </div>
              <div class="col-sm-8 col-md-8 col-lg-8">
 <?=$this->cell('CatagorydisplaySM')?>

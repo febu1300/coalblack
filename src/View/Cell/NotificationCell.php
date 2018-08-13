@@ -26,10 +26,11 @@ class NotificationCell extends Cell
     {
         $this->loadModel('Transactions');
         $unread = $this->Transactions->find() 
-                ->select(['order_number','sent','id','transaction_status_id'])  
-               ->where(['transaction_status_id'=>2]) 
-                ->where(['sent'=>0]) 
+                ->select(['order_number','sent','id','transaction_status_id']) 
+                ->having(['transaction_status_id'=>2]) 
+                ->having(['sent'=>0])
                 ->distinct('order_number');
+    
         
         $this->set('unread_count', $unread->count());
     }

@@ -11,10 +11,12 @@
 
   <div class="collapse navbar-collapse  " id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item active kein-gutters ">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
-
+  <li class="nav-item kein-gutters">
+        <a class="nav-link" href="/coalblack_produkte">Coalblack Produkte</a>
+      </li>
       <?=$this->cell('Dynamicnav')?>
    
      <li class="nav-item kein-gutters">

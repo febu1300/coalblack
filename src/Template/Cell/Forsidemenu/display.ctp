@@ -1,10 +1,8 @@
 <p >
  <?php foreach ($products1 as $productcat): ?>   
 
-
       
-    <a  href='/unterkatagorien?wh=<?=$productcat['id']?>'><?=$productcat['catagory_name']?></a><br>
-
+<p class="no-gutters"><a class="no-gutters" href='/produktkatagorien?wh=<?=$productcat['id']?>' ><?=$productcat['main_catagory_name']?></a></p>
 
     
  <?php  endforeach; ?>

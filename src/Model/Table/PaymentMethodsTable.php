@@ -63,19 +63,19 @@ class PaymentMethodsTable extends Table
             ->scalar('cridential1')
             ->maxLength('cridential1', 100)
             ->requirePresence('cridential1', 'create')
-            ->notEmpty('cridential1');
+            ->allowEmpty('cridential1');
 
         $validator
             ->scalar('cridential2')
             ->maxLength('cridential2', 100)
             ->requirePresence('cridential2', 'create')
-            ->notEmpty('cridential2');
+            ->allowEmpty('cridential2');
 
         $validator
             ->scalar('credential3')
             ->maxLength('credential3', 100)
             ->requirePresence('credential3', 'create')
-            ->notEmpty('credential3');
+            ->allowEmpty('credential3');
 
         return $validator;
     }
