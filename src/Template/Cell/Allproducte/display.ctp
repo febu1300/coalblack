@@ -14,7 +14,7 @@
         				
         			</div>
         			<div class="options-cart">
-        				<button class="btn btn-block" title="In den Warenkorb">
+        				<button class="btn btn-block" data-toggle="modal" data-target=".myModal" title="In den Warenkorb">
         					<span class="fa fa-2x fa-shopping-cart"></span>
         				</button>
         			</div>

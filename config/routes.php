@@ -65,7 +65,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
-   
+  
     $routes->connect('/versanddetail', ['controller' => 'Pages', 'action' => 'display','versanddetail']);
     $routes->connect('/anmelden', ['controller' => 'Pages', 'action' => 'display','anmelden']);
     $routes->connect('/angeboten', ['controller' => 'Pages', 'action' => 'display','angeboten']);
@@ -74,7 +74,8 @@ Router::scope('/', function (RouteBuilder $routes) {
        $routes->connect('/coalblack_produkte', ['controller' => 'Pages', 'action' => 'display','coalblack_produkte']);
     $routes->connect('/all_produkte', ['controller' => 'Pages', 'action' => 'display','all_produkte']);
     $routes->connect('/autosuggest', ['controller' => 'Pages', 'action' => 'display','autosuggest']);
-        
+     $routes->connect('/dynamiccart', ['controller' => 'Pages', 'action' => 'display','viewcart']);
+    
     $routes->connect('/cbbackend', ['controller' => 'Pages', 'action' => 'display','admin']);
     $routes->connect('/cb_admin', ['controller' => 'Dashboard', 'action' => 'index','dashboard']);
     $routes->connect('/cb_admin', ['controller' => 'Dashboard', 'action' => 'index','dashboard']);

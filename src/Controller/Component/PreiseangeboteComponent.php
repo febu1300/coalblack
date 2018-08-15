@@ -30,7 +30,7 @@ class PreiseangeboteComponent extends Component
                     
                       return $product->price-$product->price*$product->discount/100 ;
                   }else {
-                      return 1;}
+                return  $product->price;}
                   
           
               }

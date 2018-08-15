@@ -42,7 +42,7 @@ class ProductsController extends AppController
         //$this->set('_serialize', ['products']);  
     } else{
         $this->paginate = [
-           'contain' => ['SubCatagories', 'DiscountsTypes','sizes','colors']
+           'contain' => ['SubCatagories', 'DiscountsTypes']
         ];
         $products = $this->paginate($this->Products);
 
@@ -73,7 +73,7 @@ class ProductsController extends AppController
     public function view($id = null)
     {
         $product = $this->Products->get($id, [
-            'contain' => ['SubCatagories', 'DiscountsTypes','Sizes','Colors', 'ProductsDetails', 'Transactions','Pictures']
+            'contain' => ['SubCatagories', 'DiscountsTypes', 'ProductsDetails', 'Transactions','Pictures']
         ]);
 
         $this->set('product', $product);
@@ -132,11 +132,10 @@ class ProductsController extends AppController
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
-            $colors = $this->Products->Colors->find('list', ['limit' => 200]);
-          $sizes = $this->Products->Sizes->find('list', ['limit' => 200]);
+  
         $subCatagories = $this->Products->SubCatagories->find('list', ['limit' => 200]);
         $discountsTypes = $this->Products->DiscountsTypes->find('list', ['limit' => 200]);
-        $this->set(compact('product', 'subCatagories', 'discountsTypes','sizes','colors'));
+        $this->set(compact('product', 'subCatagories', 'discountsTypes'));
     }
 public function changepic($id=null){
 // 
@@ -192,7 +191,7 @@ public function changepic($id=null){
         }
         $subCatagories = $this->Products->SubCatagories->find('list', ['limit' => 200]);
         $discountsTypes = $this->Products->DiscountsTypes->find('list', ['limit' => 200]);
-        $this->set(compact('product', 'subCatagories', 'discountsTypes','sizes','colors'));
+        $this->set(compact('product', 'subCatagories', 'discountsTypes'));
     }
 	
     /**
@@ -223,20 +222,20 @@ public function changepic($id=null){
     
         }
         
-        public function autocomplete() {
+public function autocomplete() {
          // $this->viewBuilder()->setLayout('false');
-$this->autoRender=false;
+    	
+        $this->autoRender=false;
        // $th=$this->request->query('query');
-         $wh = $this->request->query('wh');  
+         //$wh = $this->request->query('wh');  
 		//$this->autoRender = false;
-$query= $this->Products->find();
-$s=[];
-foreach($query as $q){
-    $s[]=$q->product_name;
-}
+         $query= $this->Products->find();
+         $s=[];
+        foreach($query as $q){
+            $s[]=$q->product_name;
+        }
  
    echo json_encode($s);	
-	
 				
 	}
 }

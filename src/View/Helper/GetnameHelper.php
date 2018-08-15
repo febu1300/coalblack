@@ -96,5 +96,7 @@ class GetnameHelper extends Helper {
 
     return $t;
     }
+    // Cell ViewCart
+ 
     //put your code here
 }

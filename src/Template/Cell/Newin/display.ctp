@@ -19,7 +19,7 @@
         				
         			</div>
         			<div class="options-cart">
-        				<button class="btn btn-block" title="In den Warenkorb">
+        				<button class="btn btn-block loadcart" data-toggle="modal" data-target=".myModal" title="In den Warenkorb">
         					<span class="fa fa-2x fa-shopping-cart"></span>
         				</button>
         			</div>
@@ -36,7 +36,8 @@
                                 </p> 
                                 <div class=" col-sm-6 col-md-6 col-lg-6"></div>
                                    <div class=" col-sm-3 col-md-3 col-lg-3"></div>
-<div class=" col-sm-3 col-md-3 col-lg-3 "><p class="bold"><strong><?= $this->Number->format($product->price,['places' => 2,'before'=>'€', 'locale' => 'de_DE']) ?></strong></p></div>        	
+<div class=" col-sm-3 col-md-3 col-lg-3 ">
+    <p class="bold"><strong><?= $this->Number->format($product->price,['places' => 2,'before'=>'€', 'locale' => 'de_DE']) ?></strong></p></div>        	
                                              </div>
         			
         		</div>

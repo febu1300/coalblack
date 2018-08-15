@@ -27,8 +27,8 @@
             echo $this->Form->control('product_name',['label'=>false]);
                         echo $this->Form->label('Produkttitle');
             echo $this->Form->control('product_title',['label'=>false]);
-           echo $this->Form->label('Einheit');
-            echo $this->Form->control('unit',['label'=>false]);
+          echo $this->Form->label('Anfangsbestand');
+            echo $this->Form->control('initial_stock',['label'=>false]);
                     ?>
                      </div>
                     <div class="col-sm-6 col-md-6 col-lg-6">

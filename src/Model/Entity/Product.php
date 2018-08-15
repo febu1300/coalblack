@@ -42,7 +42,7 @@ class Product extends Entity
     protected $_accessible = [
         'product_name' => true,
         'product_title' => true,
-        'unit' => true,
+        'initial_stock' => true,
         'product_description' => true,
         'sub_catagory_id' => true,
         'created_date' => true,

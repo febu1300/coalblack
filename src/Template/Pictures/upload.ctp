@@ -1,5 +1,6 @@
 <?php foreach ($pictures as $post): ?>
-  <h1><?= h($post->id) ?></h1>
+ <div class="col-sm-4 col-md-4 col-lg-4 "> <?= h($post->id) ?></div>
+  
 <?php endforeach; ?>
 
 <div id="ajax-content"></div>

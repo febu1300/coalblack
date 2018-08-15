@@ -25,8 +25,8 @@
             <td><?= h($product->product_description) ?></td>
         </tr>
             <tr>
-            <th scope="row"><?= __('Unit') ?></th>
-            <td><?= h($product->unit) ?></td>
+            <th scope="row"><?= __('InitialStock') ?></th>
+            <td><?= h($product->initial_stock) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Sub Catagory') ?></th>

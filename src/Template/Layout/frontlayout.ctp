@@ -50,7 +50,7 @@
     <?= $this->fetch('script') ?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather+Sans">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -84,8 +84,8 @@
             <?=$this->element('elm_navbar')?>
 
   </div>
+          
         </div>
-
            
         
 <div class="container" >
@@ -95,16 +95,36 @@
 
 
          <?= $this->Flash->render() ?>
-   
+    
         <?= $this->fetch('content') ?>
         
-      
+   
        </div>   
-     
+        <div id="target"></div>
       <div class="container-fluid ">
           
           <?= $this->element('elm_footer')?>
         </div>
+        
+
+<!-- Modal -->
+<div class="modal fade myModal" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+  
+      <div class="modal-body">
+            <div id="ajax-content"></div>
+          <div class="jumbotron"><?=$this->cell('ViewCart')?></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+        
+        
               <script>
     $(document).ready(function () {
                 $('.add-form').submit(function (e) {
@@ -114,11 +134,30 @@
                         $('#cart-counter').text(data);
                         return false;
                     });
+               
                 });
-            });
+   
+           
+    });
             
                     </script>
-                    
+           
+<script>
+
+$.getJSON( "products/autocomplete.json", function( data ) {
+  var items = [];
+  $.each( data, function( key, val ) { 
+    items.push( "<li id='" + key + "'>" + val + "</li>" );
+  });
+ 
+  $( "<ul/>", {
+    "class": "my-new-list",
+    html: items.join( "" )
+  }).appendTo( "#ajax-content" );
+});
+</script>
+
+          
 </body>
 
 </html>

@@ -59,15 +59,15 @@
                 <th scope="col"><?= $this->Paginator->sort('sub_catagory_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created_date') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('price') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('unit') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('initial_stock') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('online_vorhanden') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('coalblack_produkte') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('new_in') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('sale') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('discount') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('discount_type_id') ?></th>
-                      <th scope="col"><?= $this->Paginator->sort('size_id') ?></th>
-                            <th scope="col"><?= $this->Paginator->sort('color_id') ?></th>
+                      <th scope="col"><?= $this->Paginator->sort('size') ?></th>
+                            <th scope="col"><?= $this->Paginator->sort('color') ?></th>
    
                 <th scope="col"><?= $this->Paginator->sort('photo') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -83,7 +83,7 @@
                 <td><?= $product->has('sub_catagory') ? $this->Html->link($product->sub_catagory->sub_catagory_name, ['controller' => 'SubCatagories', 'action' => 'view', $product->sub_catagory->id]) : '' ?></td>
                 <td><?= h($product->created_date) ?></td>
                 <td><?= $this->Number->currency($product->price,'EUR') ?></td>
-               <td><?= h($product->unit) ?></td>
+               <td><?= h($product->initial_stock) ?></td>
                <td><?=  h($product->online_vorhanden) ? __('<span class="badge badge-success">Ja</span>') : __('<span class="badge badge-pill badge-primary">Nein</span>'); ?></td>
                <td><?=  h($product->coalblack_produkte) ? __('<span class="badge badge-success">Ja</span>') : __('<span class="badge badge-pill badge-primary">Nein</span>'); ?></td>
                <td><?=  h($product->new_in) ? __('<span class="badge badge-success">Ja</span>') : __('<span class="badge badge-pill badge-primary">Nein</span>'); ?></td>
@@ -91,9 +91,8 @@
 
                 <td><?= $this->Number->format($product->discount) ?></td>
                 <td><?= $product->has('discounts_type') ? $this->Html->link($product->discounts_type->discount_type, ['controller' => 'DiscountsTypes', 'action' => 'view', $product->discounts_type->id]) : '' ?></td>
-                <td><?= $product->has('size') ? $this->Html->link($product->size->id, ['controller' => 'Size', 'action' => 'view', $product->size->id]) : '' ?></td>
-                <td><?= $product->has('color') ? $this->Html->link($product->color->id, ['controller' => 'Color', 'action' => 'view', $product->color->id]) : '' ?></td>
-
+                <td><?= h($product->size) ?></td>
+                <td><?= h($product->color) ?></td>
 
            <td>
          

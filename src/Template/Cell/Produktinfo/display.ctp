@@ -62,7 +62,7 @@ div.row-eq-height {
    <div class="options-cart">
        
 
-<button type="submit" title="In den Warenkorb" class="btn btn-primary btn-lg btn-block">In den Warenkorb</button>
+<button type="submit" data-toggle="modal" data-target=".myModal" title="In den Warenkorb" class="btn btn-primary btn-lg btn-block loadcart">In den Warenkorb</button>
 
 
         			

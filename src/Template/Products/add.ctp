@@ -56,19 +56,19 @@
             echo $this->Form->control('product_name',['label'=>false]);
                         echo $this->Form->label('Produkttitle');
             echo $this->Form->control('product_title',['label'=>false]);
-           echo $this->Form->label('Einheit');
-            echo $this->Form->control('unit',['label'=>false]);
+           echo $this->Form->label('InitialStock');
+            echo $this->Form->control('initial_stock',['label'=>false, 'type'=>'number','step'=>'1']);
                     ?>
                      </div>
                          <div class="col-sm-4 col-md-4 col-lg-4">
                              
                <?php
              echo $this->Form->label('Size');
-            echo $this->Form->control('size_id', ['options' => $sizes,'label'=>false]);
+            echo $this->Form->control('size',['label'=>false]);
             ?>     
                 <?php
              echo $this->Form->label('Colors');
-            echo $this->Form->control('color_id', ['options' => $colors,'label'=>false]);
+            echo $this->Form->control('color',['label'=>false]);
             ?>
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-4">
@@ -87,7 +87,7 @@
             
                          <?php
             echo $this->Form->label('Verkaufspreise');
-            echo $this->Form->control('price',['label'=>false]);
+            echo $this->Form->control('price',['label'=>false, 'step'=>'1.00']);
          
      
          

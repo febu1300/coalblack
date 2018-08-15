@@ -11,4 +11,7 @@ RewriteBase /
     RewriteRule    ^(\.well-known/.*)$ $1 [L]
     RewriteRule    ^$    webroot/    [L]
     RewriteRule    (.*) webroot/$1    [L]
+#RewriteCond %{HTTP_HOST} !^www\.coalblack\.supply$ [NC]
+#RewriteRule ^(.*)$ https://www.coalblack.supply/$1 [R=301,L]
+
 </IfModule>

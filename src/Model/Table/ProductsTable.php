@@ -47,14 +47,7 @@ class ProductsTable extends Table
             'foreignKey' => 'discount_type_id',
             'joinType' => 'LEFT'
         ]);
-              $this->belongsTo('Colors', [
-            'foreignKey' => 'color_id',
-            'joinType' => 'LEFT'
-        ]);
-        $this->belongsTo('Sizes', [
-            'foreignKey' => 'size_id',
-            'joinType' => 'LEFT'
-        ]);
+        
         $this->hasMany('ProductsDetails', [
             'foreignKey' => 'product_id'
         ]);
@@ -115,9 +108,9 @@ class ProductsTable extends Table
             ->maxLength('product_title', 150)
             ->allowEmpty('product_title');
         $validator
-            ->scalar('unit')
-            ->maxLength('unit', 150)
-            ->allowEmpty('unit');
+            ->integer('initial_stock')
+            ->maxLength('initial_stock', 100)
+            ->allowEmpty('initial_stock');
 
         $validator
             ->scalar('product_description')
@@ -183,8 +176,6 @@ class ProductsTable extends Table
     {
         $rules->add($rules->existsIn(['sub_catagory_id'], 'SubCatagories'));
         $rules->add($rules->existsIn(['discount_type_id'], 'DiscountsTypes'));
-        $rules->add($rules->existsIn(['color_id'], 'Colors'));
-        $rules->add($rules->existsIn(['size_id'], 'Sizes'));
 
         return $rules;
     }
