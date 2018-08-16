@@ -6,37 +6,48 @@
 ?>
 
 <div class="container-fluid">
-             <legend><?= __('Produktdatai ändern')?></legend>
-    <div class="col-sm-1 col-md-1 col-lg-1"></div>
+
+    
 <div class="col-sm-9 col-md-9 col-lg-9">
     <?= $this->Form->create($product) ?>
     <fieldset>
-    
-           <h3><?= h($product->id) ?>.<?= h($product->product_name) ?></h3>
+     <legend><?= __('Edit Products ')?></legend>
+      
        
             <div class="row"> 
                 <?php 
             echo $this->Form->label('Subkatagorie');
-            echo $this->Form->control('sub_catagory_id', ['options' => $subCatagories,'label'=>false]); ?>
+            echo $this->Form->control('sub_catagory_id', ['options' => $subCatagories,'empty'=>true,'label'=>false]); ?>
             </div>
          <hr>
                 <div class="row"> 
-                     <div class="col-sm-6 col-md-6 col-lg-6">
+                     <div class="col-sm-4 col-md-4 col-lg-4">
                     <?php
                          echo $this->Form->label('Produktname');
             echo $this->Form->control('product_name',['label'=>false]);
                         echo $this->Form->label('Produkttitle');
             echo $this->Form->control('product_title',['label'=>false]);
-          echo $this->Form->label('Anfangsbestand');
-            echo $this->Form->control('initial_stock',['label'=>false]);
+           echo $this->Form->label('InitialStock');
+            echo $this->Form->control('initial_stock',['label'=>false, 'type'=>'number','step'=>'1']);
                     ?>
                      </div>
-                    <div class="col-sm-6 col-md-6 col-lg-6">
+                         <div class="col-sm-4 col-md-4 col-lg-4">
+                             
+               <?php
+             echo $this->Form->label('Size');
+            echo $this->Form->control('size',['label'=>false]);
+            ?>     
+                <?php
+             echo $this->Form->label('Colors');
+            echo $this->Form->control('color',['label'=>false]);
+            ?>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
                     <?php
         
             echo $this->Form->label('Produktsbeschreibung');
             echo $this->Form->control('product_description',['label'=>false,'style'=>'width:300px']);
-  echo $this->Form->control('created_date',['type'=>'hidden']);
+ 
                     ?> 
                     </div>
                </div>
@@ -44,20 +55,19 @@
        
         <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-6">
+            
                          <?php
             echo $this->Form->label('Verkaufspreise');
-            echo $this->Form->control('price',['label'=>false]);
+            echo $this->Form->control('price',['label'=>false, 'step'=>'1.00']);
          
      
-            ?>
-                      <div class="row">
-                                   <?php
+         
             echo $this->Form->label('Coalblack Produkte');
-            echo $this->Form->control('coalblack_produkte',['label'=>false]);
+            echo $this->Form->control('coalblack_produkte');
          
      
             ?> 
-                </div>
+             
             </div>
            <div class="col-sm-6 col-md-6 col-lg-6">
                  <?php
@@ -68,7 +78,7 @@
        
 //            echo $this->Form->label('Produktname');
 //            echo $this->Form->control('photo_dir',['label'=>false]);
-    
+         
         ?>
                   </div>     
         </div> 
@@ -100,9 +110,7 @@
        </div>
     </fieldset>
     <hr>
-    <?= $this->Form->button(__('Versenden'),['class'=>'btn btn-primary btn-lg btn-block']) ?>
+    <?= $this->Form->button(__('Speichern'),['class'=>'btn btn-primary btn-lg btn-block']) ?>
     <?= $this->Form->end() ?>
-      <br>
 </div>
-   
 </div>

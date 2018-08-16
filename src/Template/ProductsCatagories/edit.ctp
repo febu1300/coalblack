@@ -5,32 +5,60 @@
  */
 ?>
  
-<div class="container-fluid">
-      <div class="modal-header pull-left">
-              
-           <legend><?= __('Edit Products Catagory') ?></legend>
-                   
-                </div>
-    <div class="col-sm-1 col-md-1 col-lg-1"></div>
-<div class="col-sm-9 col-md-9 col-lg-9">
 
+              
+
+   
+   <div class="container-fluid">
+
+<div class="col-sm-9 col-md-9 col-lg-9">
     <?= $this->Form->create($productsCatagory) ?>
     <fieldset>
-   
-        <?php
-            echo $this->Form->control('main_catagory_id', ['options' => $mainCatagories]);
-            echo $this->Form->control('catagory_name');
-            echo $this->Form->control('photo_dir');
-            echo $this->Form->control('photo');
+        <legend><?= __('Edit Product Catagory') ?></legend>
+     
+
+                <div class="row"> 
+                     <div class="col-sm-6 col-md-6 col-lg-6">
+                    <?php
+                         echo $this->Form->label('Hauptkatagorie');
+         echo $this->Form->control('main_catagory_id', ['options' => $mainCatagories,'empty' => true, 'label'=>false]);
+
+       
+                    ?>
+                     </div>
+            
+               </div>
+                <div class="row"> 
+                     <div class="col-sm-6 col-md-6 col-lg-6">
+                    <?php
+                         echo $this->Form->label('Products catagory name');
+            echo $this->Form->control('catagory_name',['label'=>false]);
+       
+                    ?>
+                     </div>
+            
+               </div>
+       <hr>
+       
+        <div class="row">
+        
+           <div class="col-sm-6 col-md-6 col-lg-6">
+                 <?php
+         
+         
+            echo $this->Form->control('photo_dir',['type'=>'hidden']);
+
+        
+            echo $this->Form->control('photo',['type'=>'hidden']);
         ?>
+                  </div>     
+        </div> 
+       
+       
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <hr>
+    <?= $this->Form->button(__('Speichern'),['class'=>'btn btn-primary btn-lg btn-block']) ?>
     <?= $this->Form->end() ?>
-
 </div>
 </div>
-   <div class="clearfix"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Abschließen</button>
-
-                </div>
+   

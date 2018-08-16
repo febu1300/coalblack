@@ -54,10 +54,11 @@ class SubCatagoriesController extends AppController
         $subCatagory = $this->SubCatagories->newEntity();
         if ($this->request->is('post')) {
             $subCatagory = $this->SubCatagories->patchEntity($subCatagory, $this->request->getData());
-         if($this->request->getData('products_catagory_id')){
-         $productsCatagory->products_catagory_id=$this->request->getData('products_catagory_id');
+        
+            if($this->request->getData('products_catagory_id')){
+             $subCatagory->products_catagory_id=$this->request->getData('products_catagory_id');
             }else{   
-                $productsCatagory->products_catagory_id=NULL;
+               $subCatagory->products_catagory_id=NULL;
                 
             }
          $subCatagory->sub_catagory_name=$this->request->getData('sub_catagory_name');
@@ -66,7 +67,7 @@ class SubCatagoriesController extends AppController
       
         $subCatagory->photo=$this->request->getData('photo.name');
       
-       
+
 
         $this->Filemanager->doUpload($subCatagory);    
             if ($this->SubCatagories->save($subCatagory)) {

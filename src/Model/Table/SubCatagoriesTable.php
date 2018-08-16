@@ -39,7 +39,7 @@ class SubCatagoriesTable extends Table
 
         $this->belongsTo('ProductsCatagories', [
             'foreignKey' => 'products_catagory_id',
-            'joinType' => 'INNER'
+            'joinType' => 'LEFT'
         ]);
         $this->hasMany('Products', [
             'foreignKey' => 'sub_catagory_id'
