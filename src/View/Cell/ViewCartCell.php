@@ -17,7 +17,21 @@ class ViewCartCell extends Cell
      * @var array
      */
     protected $_validCellOptions = [];
+public function initialize()
+{
+    parent::initialize();
+    $this->loadComponent('RequestHandler');
+}
 
+public function beforeRender(Event $event)
+{
+    $this->RequestHandler->renderAs($this, 'json');
+    if (!array_key_exists('_serialize', $this->viewVars) &&
+            in_array($this->response->type(), ['application/json', 'application/xml'])
+        ) {
+            $this->set('_serialize', true);
+        }
+}
     /**
      * Default display method.
      *
@@ -25,9 +39,9 @@ class ViewCartCell extends Cell
      */
     public function display()
     {
-
+ $this->autoRender = false;
         $productTable=TableRegistry::get('Products');
-$products=$productTable->find();
+        $products=$productTable->find();
    
 
 
@@ -42,10 +56,11 @@ $products=$productTable->find();
 //                    
 //       
 //                    $total = $total + ($name2[$product->id] * $newprice);
-             
-        json_encode($products);
+       
+        //json_encode($products);
 
-               $this->set('products',$products);
+echo json_encode(compact('products'));
+        //;}
 
-            } 
+    } 
 }

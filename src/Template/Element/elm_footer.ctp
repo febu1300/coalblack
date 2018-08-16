@@ -91,13 +91,13 @@ h6.c,h5.c{color:white;}
                     <ul>
                         <li class="liner"> ------</li><br>
                         <li> <a href="#"> Versandinformationen </a> </li>
-                        <li> <a href="#"> Hilfe / FAQ </a> </li>
+                        <li> <a href="/faq"> Hilfe / FAQ </a> </li>
                         <li> <a href="/agb"> AGB </a> </li>
                         <li> <a href="/datenschutz"> Datenschutz </a> </li>
                 
-                        <li> <a href="#"> Zahlungsarten </a> </li>
+<!--                        <li> <a href="#"> Zahlungsarten </a> </li>-->
                         <li> <a href="#"> Newsletter </a> </li>
-                        <li> <a href="#"> Impressum </a> </li>
+                        <li> <a href="/impressum"> Impressum </a> </li>
                     </ul>
                 </div>
                  <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6"></div>

@@ -62,10 +62,13 @@ class ProductsCatagoriesController extends AppController
    
         
              $productsCatagory = $this->ProductsCatagories->patchEntity($productsCatagory, $this->request->getData());
- 
+ if($this->request->getData('main_catagory_id')){
+         $productsCatagory->main_catagory_id=$this->request->getData('main_catagory_id');
+ }else{    $productsCatagory->main_catagory_id=NULL;}
+         
         $productsCatagory->photo_dir="img/".$this->name.'/'.$productsCatagory->catagory_name;
         $productsCatagory->photo=$this->request->getData('photo.name');
-      
+  
     // this line is added to call component upload
         $this->Filemanager->doUpload($productsCatagory);            
             if ($this->ProductsCatagories->save($productsCatagory)) {

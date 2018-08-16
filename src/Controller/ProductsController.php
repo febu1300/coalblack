@@ -25,9 +25,11 @@ class ProductsController extends AppController
         ) {
             $this->set('_serialize', true);
         }
-        $this->Auth->allow(['autocomplete']);
+ 
     }
-
+ public function beforeFilter(Event $event) {
+         $this->Auth->allow(['autocomplete']);
+    }
     /**
      * Index method
      *
@@ -101,7 +103,15 @@ class ProductsController extends AppController
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
             $pics= array_slice($this->request->getData('photo'),1);
-       
+            
+            if($this->request->getData('sub_catagory_id')){
+             $product->sub_catagory_id=$this->request->getData('sub_catagory_id');
+            }else{   
+             $product->sub_catagory_id=NULL;
+                
+            }
+                //$product->product_name=$this->request->getData('product_name');
+        //$product->sub_catagory_id=$this->request->getData('sub_catagory_id');
             $product->created_date=Time::now();
          
               // the next 3 lines are added to call component upload
@@ -223,19 +233,54 @@ public function changepic($id=null){
         }
         
 public function autocomplete() {
-         // $this->viewBuilder()->setLayout('false');
-    	
-        $this->autoRender=false;
-       // $th=$this->request->query('query');
-         //$wh = $this->request->query('wh');  
-		//$this->autoRender = false;
-         $query= $this->Products->find();
-         $s=[];
-        foreach($query as $q){
-            $s[]=$q->product_name;
-        }
+    $this->autoRender=false;   
  
-   echo json_encode($s);	
+       $total = 0;
+        $pro = [];
+          $s=[];
+//$ordNo= uniqid();
+        $session = $this->request->session();
+        $count = $session->read('count');
+        if ($count) {
+            $products = $this->Products->find();
+
+            foreach ($products as $product) {
+                $productname = explode(" ", $product->product_name);
+                $productname1 = implode("", $productname);
+
+                $colorname1 = $productname1;
+                $name2 = $session->read($colorname1);
+                $this->set('name2', $name2);
+
+                if ($product->online_vorhanden && $product->photo && $name2) {
+            //$s[$product->id]=[[]$product->id,$name2[$product->id],$product->product_name];
+                  //  $newprice = $this->Preiseangebote->discountarten($product->id);
+$s = array($product->product_name => array('Menge' => $name2[$product->id], 'Preise' => $product->price));
+              echo json_encode($s);
+//  $total = $total + ($name2[$product->id] * $newprice);
+                } else {
+                    
+                }
+//            }}
+                $this->paginate($this->Products);
+
+                //$this->set(compact('colors'));
+         $this->set(compact('products', $products));
+                //$this->set(compact('sizes'));
+//        $this->set('_serialize', ['products']);
+//        $this->set(compact('pro'));
+            }
+        } 
+    
+    
+    
+//         $query= $transTable->find();
+//       
+//        foreach($query as $q){
+//            $s[]=$q->id;
+//        }
+ 
+	
 				
 	}
 }
