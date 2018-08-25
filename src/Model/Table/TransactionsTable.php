@@ -96,6 +96,10 @@ return $this->exists(['id' => $transactionId, 'user_id' => $userId]);
             ->decimal('price')
             ->requirePresence('price', 'create')
             ->allowEmpty('price');
+                $validator
+            ->decimal('shipping')
+            ->requirePresence('shipping', 'create')
+            ->allowEmpty('shipping');
         $validator
             ->scalar('order_number')
             ->requirePresence('order_number', 'create')

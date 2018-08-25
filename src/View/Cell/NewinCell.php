@@ -33,7 +33,7 @@ class NewinCell extends Cell
 		$products1=$this->Products->find()
                         
                         
-                ->select(['id','product_name','photo','photo_dir','new_in','price','product_description'])
+                ->select(['id','product_name','product_title','photo','photo_dir','new_in','discount','discount_type_id','price','product_description'])
                    
                  ->where((['new_in'=>1]))
            ->where((['online_vorhanden'=>1]))

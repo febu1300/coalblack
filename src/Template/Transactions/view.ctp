@@ -33,9 +33,9 @@
 
     </style>
      <?= $this->fetch('title') ?>
-       <?= $this->Html->meta(
+<?= $this->Html->meta(
     'favicon.ico',
-    'img/icon.svg',
+    'img/logo.png',
     ['type' => 'icon']
 );
 ?>
@@ -94,7 +94,7 @@
              <div class="row  " >
     
                  <div class="col-sm-3 col-md-3 col-lg-3 thebodyline " >
-                            <a class="thumbnail pull-left " href="#"> <img src="<?php echo '/'.$product['photo_dir']. '/main/'.$product['photo']; ?>" style="width:150px; height:150px" > </a>
+                            <a class="thumbnail pull-left " href="#"> <img src="<?php echo '/'.$product['photo_dir']. '/thumb/'.$product['photo']; ?>" style="width:50px; height:50px" > </a>
                           </div>
                   <div class="col-sm-1 col-md-1 col-lg-1 thebodyline alignend ">
             
@@ -128,7 +128,7 @@
                                <span class="pushdown"> <form method="post" action="/transactions/delete?prod=<?=$product->id?>">   
                              
                          <button class=" button button5 push-down" >
-                             <span ><img src="/img/x.svg" style="width:30px; height:30px"></span>
+                             <span ><img src="/img/x.svg" style="width:20px; height:20px"></span>
                          </button> 
                                      
                             </form></span>

@@ -357,7 +357,7 @@ div.row-eq-height {
         border-style:solid;
         border-width:2px;
         border-color:#c7984e; 
-        width:375px;
+
      
     }
  #livesearch{
@@ -596,14 +596,7 @@ div.row-eq-height {
 .textoverimg{
     color: darkgoldenrod;
 }
- .border-color{
 
-        border-style:solid;
-        border-width:2px;
-        border-color:#c7984e; 
-        width:375px;
-     
-    }
  #livesearch{
            margin-top: 5px;
            }
@@ -615,7 +608,31 @@ div.row-eq-height {
         
  
 * {margin: 0; padding: 0;}
-
+.inspiration{
+       width:300px;
+       height:100px;
+       align-items: center;
+       margin-left:-21px;
+object-fit: cover;
+    }
+    .gold-rect-insp{
+     position: absolute;
+    bottom: 30px;
+    left: 50px;
+    padding: 0 4px;
+ 
+    background-color: rgba(0,0,0,0.6);
+    color: red;
+    padding: 2px;
+    border: 5px solid #ffffff;
+}
+.textoverimginspire {
+    overflow-x: hidden;
+    word-wrap: break-word;
+    color: #C7984E;
+    font-size: 12px;
+         text-transform: uppercase;
+}
 /* Catagory*/
 .cat-textoverimg1{
     overflow-x: hidden;
@@ -642,14 +659,25 @@ div.row-eq-height {
     border-right: 5px solid #ffffff;
     font-size:20px;
 }
+.banner{
+       width:300px;
+       height:340px;
+       align-items: center;
+       margin-top: 0px;
+       margin-left:-15px;
+       object-fit: cover;
+    }
 .cat-img-responsive2{
 width:300px; 
 height:400px;
+      margin-left:-20px;
+     object-fit: cover;
 }
 /*Catagory SM*/
 .cat-sm-responsive2{
 width:300px; 
-height:250px;
+height:400px;
+object-fit: cover;
 }  
   .cat-sm-textoverimg{
     overflow-x: hidden;
@@ -661,20 +689,31 @@ height:250px;
    .gold-rect {
     position: absolute;
     bottom: 10px;
-    right: 40px;
+    right: 0px;
     padding: 0 4px;
  
     background-color: rgba(0,0,0,0.6);
     color: red;
-    padding: 25px;
+    padding: 15px;
+    border: 5px solid #ffffff;
+    margin-left: 10px;
+}
+.gold-rect-banner {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 0 4px;
+    background-color: rgba(0,0,0,0.6);
+    color: red;
+    padding: 5px;
     border: 5px solid #ffffff;
 }
 
-
 /*footer*/
 .img-responsive3{
-width:350px; 
-height:250px;
+width:340px; 
+height:380px;
+object-fit: cover;
 } 
 
     .textoverimg3{
@@ -687,7 +726,7 @@ overflow-x: hidden;
 .gold-block3 {
     position: absolute;
     bottom: 50px;
-    right: 80px;
+    right: 0px;
     background-color: rgba(125,125,125,0);
     color: red;
     padding-left: 20px;

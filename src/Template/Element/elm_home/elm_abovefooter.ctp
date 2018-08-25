@@ -25,7 +25,7 @@
 
           </div>      
           <div class="col-sm-3 col-md-3 col-lg-3 no-gutters newsletter-signup">
-                   <button type="submit" class="btn btn-secondary btn-sm" >signup</button>
+                   <button type="submit" class="btn btn-secondary btn-sm tablet-mini" >signup</button>
           </div>
 
     </div>

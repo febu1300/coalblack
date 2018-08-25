@@ -57,7 +57,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- /.row -->
+                                                 <div class="row">         <div class="col-sm-6 col-md-6 col-lg-6">
+                        <div class="form-group">
+                          <label for="zusatz">Zusatz</label>
+                          <input type="text" class="form-control" value="<?= $usersDetail->zusatz?>" name="zusatz">
+                         </div></div>
+                         </div>
 
                                     <div class="row">
                                         <div class="col-sm-6 col-md-2">

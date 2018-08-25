@@ -34,7 +34,7 @@ class AllproducteCell extends Cell
 		$products1=$this->Products->find()
                         
                         
-                     ->select(['id','online_vorhanden','sub_catagory_id','product_name','photo','photo_dir','new_in','sale','price','product_description','discount','discount_type_id'])
+                     ->select(['id','online_vorhanden','sub_catagory_id','product_name','product_title','photo','photo_dir','new_in','sale','price','product_description','discount','discount_type_id'])
                             ->where(['online_vorhanden'=>1])
                   ->where(['sub_catagory_id'=>$wh])
 //                   

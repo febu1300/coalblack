@@ -43,7 +43,7 @@ margin-bottom:0;
            <li class="nav-item"><?= $this->Html->link(__('Bestandsverwaltung'), ['controller' => 'Transactions', 'action' => 'bestandsposten']) ?></li>
         <li class="nav-item"><?= $this->Html->link(__('Produktliste'), ['controller'=>'products','action' => 'index']) ?></li>
       
-   
+   <li class="nav-item"><?= $this->Html->link(__('gesendete Artikel'), ['controller'=>'transactions','action' => 'sent_items']) ?></li>
 
       
     </ul>
@@ -73,7 +73,7 @@ margin-bottom:0;
 <td class="no-gutters" >
 <form  method="post" action="/transactions/sent">
     <input style=" width:50px " type="checkbox" name="orderId"  oninvalid="this.setCustomValidity('Einchecken erst ob die waren verschickt ist')" required value="<?= $cart->order_number?>"> 
-    <button  type="submit"  formtarget="_blank" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span></button>
+    <button  type="submit"   class="btn btn-primary"><span class="glyphicon glyphicon-send"></span></button>
 </form> 
 </td>
  <td class="no-gutters">

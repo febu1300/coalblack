@@ -1,11 +1,4 @@
-<style>
-    .banner{
-       width:100%;
-       height:360px;
-       align-items: center;
-       margin-top: 0px;
-    }
-</style>
+
 <div class="container no-padding no-margin">
  
  <div class="jumbotron bg-light border-light no-padding">

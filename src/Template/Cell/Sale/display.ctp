@@ -24,25 +24,30 @@
         					<span class="fa fa-2x fa-shopping-cart"></span>
         				</button>
         			</div>
-<a href='/produktdetail?wh=<?php echo $product['id']; ?>' ><img src="<?php echo '/'. $product['photo_dir'] . '/main/' . $product['photo']; ?>" style="width:100%" alt="<?=$product['product_name']?>"></a>        		</div>
+<a href='/produktdetail?wh=<?php echo $product['id']; ?>' >
+    <img src="<?php echo '/'. $product['photo_dir'] . '/main/' . $product['photo']; ?>" style="width:100%" alt="<?=$product['product_name']?>"></a>        		</div>
       		
 <div class="info">
         			<div class="row">
         				<div class="price-details col-md-6">
                                             	 <p><?php echo $product['product_name']; ?></p>
         					
-                                             <p class="details"><?php echo $product['title']; ?>
+                                             <p class="details"><?php echo $product['product_title']; ?>
                                                  </div></div>
                                              <div class="row">
                                 </p> 
                                 <div class=" col-sm-6 col-md-6 col-lg-6"></div>
         
 <div class=" col-sm-3 col-md-3 col-lg-3 ">
-    <p class="bold"><?php if($product->discount_type_id===2 ||$product->discount_type_id===3){echo "<strike>". $this->Number->currency($product->price,'EUR')."</strike>";} ?></p>
+    <p class="bold"><?php if($product->discount_type_id===2 ||$product->discount_type_id===3){
+        echo "<strike>". $this->Number->currency($product->price,'EUR')."</strike>";
+        
+    } ?></p>
 
 </div>        	
            <div class=" col-sm-3 col-md-3 col-lg-3">
-               <p class="bold"><strong><?php if($product->discount_type_id===1) 
+               <p class="bold"><strong>
+                   <?php if($product->discount_type_id===1) 
     {
         echo $this->Number->format($product->price,['places' => 2,'before'=>'€', 'locale' => 'de_DE']);
     

@@ -41,7 +41,7 @@ class UsersDetail extends Entity
         'postal_code' => true,
         'country' => true,
         'main_address' => true,
- 
+        'zusatz'=>true,
         'is_similar' => true,
         'user_detail_type_id'=>true
     ];

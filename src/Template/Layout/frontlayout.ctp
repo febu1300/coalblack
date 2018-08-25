@@ -29,7 +29,7 @@
 
 <?= $this->Html->meta(
     'favicon.ico',
-    'img/icon.png',
+    'img/logo.png',
     ['type' => 'icon']
 );
 ?>
@@ -58,11 +58,11 @@
 
 
     <style>
-.my-new-list{
- list-style: none;
-    color: red;}
-
-
+.blackli{
+   list-style: none;
+    color: black;}
+.fa-check{font-size:32px;
+          color:green;}
 </style>
 </head>
     <body>
@@ -75,7 +75,7 @@
       <div class="col-sm-6 col-md-6 col-lg-6"> 
             <?=$this->element('elm_logo')?>
       </div>
-          <div class="col-sm-3 col-md-3 col-lg-3"> </div>
+          <div class="col-sm-2 col-md-2 col-lg-2"> </div>
           <div class="col-sm-3 col-md-3 col-lg-3"> 
          <?=$this->element('elm_search')?>
              
@@ -119,11 +119,17 @@
   
       <div class="modal-body">
             
-          <div class="jumbotron">     <div id="ajax-content" ></div>  </div>
-      </div>
+          <div class="jumbotron">     
+              <div id="ajax-content" >
+                  <h6> Dieser Artiklen wurden in den Warenkorb hinzugefügt.</h6>
+              </div>  
+          </div>
+        <button type="button" class="btn btn-default  ml-auto" data-dismiss="modal">Weiter einkaufen</button>
+                   <a href="/transactions/view" class="btn btn-primary  pull-right">
+        Zum Warenkorb>></a> 
+     
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+
       </div>
     </div>
   </div>
@@ -140,13 +146,17 @@
                         
                 $.getJSON( "products/autocomplete", function( data ) { 
                 var items = []; 
+                var obj=JSON.stringify(data);
+            var stringify = JSON.parse(obj);
                 $.each( data, function( key, val ) { 
-                      $.each( val, function( k, v) {
-               
-                items.push( "<li id='" + k + "'>" + v + "</li>" );
-               
-                    });
- });    $('#ajax-content ul li').remove();
+           console.log(stringify[key]['Name']);
+    
+                items.push( "<li class='blackli' id='" + key + "'>" + stringify[key]['Name']+"  ("+stringify[key]['Menge']+")"+' &euro;'+stringify[key]['Preise'] );
+               items.push(" <i class='fa fa-check'></i>");
+               items.push("</li>");
+         
+ });    
+ $('#ajax-content ul').remove();
                 $( "<ul/>", {
                 "class": "my-new-list",
                  html: items.join( "" )

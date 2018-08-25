@@ -33,7 +33,7 @@ class SaleCell extends Cell
 		$products1=$this->Products->find()
                         
                         
-                     ->select(['id','online_vorhanden','product_name','photo','photo_dir','sale','price','product_description','discount','discount_type_id'])
+                     ->select(['id','online_vorhanden','product_name','product_title','photo','photo_dir','sale','price','product_description','discount','discount_type_id'])
                    
                          ->where((['sale'=>true]))
              ->where((['online_vorhanden'=>1]))

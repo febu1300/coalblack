@@ -128,9 +128,7 @@ $this->Auth->allow(['add', 'logout','login','clogin','cregister','hregister','hl
                   "controller" => "UsersDetail", 
                   "action" => "sendadress"  ] );
             }
-            
-        
-
+ 
             }
            
         
@@ -145,8 +143,10 @@ $this->Auth->allow(['add', 'logout','login','clogin','cregister','hregister','hl
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+     
           $user->role='customer';
-       
+ 
+    
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('Der Benutzer wurde gespeichert. Sie können sich jetzt einloggen.'));
 

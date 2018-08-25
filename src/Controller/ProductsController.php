@@ -7,6 +7,7 @@ use Cake\I18n\Time;
 use Cake\Filesystem\Folder;
 use Cake\Filesystem\File;
    use Cake\ORM\TableRegistry;
+
 // Prior to 3.5 use I18n::locale()
 
 /**
@@ -36,7 +37,10 @@ class ProductsController extends AppController
      * @return \Cake\Http\Response|void
      */
     public function index()
-    {
+    { 
+
+
+      
       if($this->request->is('json')){
    
         $products = $this->Products->find();
@@ -218,8 +222,7 @@ public function changepic($id=null){
       if ($this->request->is('post')) {
                      //this line is added to delete a Photo
             $this->Filemanager->doDelete($product);
-    
-          
+              
         if ($this->Products->delete($product)) {
      
             $this->Flash->success(__('The product has been deleted.'));
@@ -254,9 +257,9 @@ public function autocomplete() {
 
                 if ($product->online_vorhanden && $product->photo && $name2) {
             //$s[$product->id]=[[]$product->id,$name2[$product->id],$product->product_name];
-                  //  $newprice = $this->Preiseangebote->discountarten($product->id);
-$s = array($product->product_name => array('Menge' => $name2[$product->id], 'Preise' => $product->price));
-              echo json_encode($s);
+                  $newprice = $this->Preiseangebote->discountarten($product->id);
+$s[] =  array('Name'=>$product->product_name,'Menge' => $name2[$product->id], 'Preise' => $newprice);
+          
 //  $total = $total + ($name2[$product->id] * $newprice);
                 } else {
                     
@@ -271,7 +274,7 @@ $s = array($product->product_name => array('Menge' => $name2[$product->id], 'Pre
 //        $this->set(compact('pro'));
             }
         } 
-    
+        echo json_encode($s);
     
     
 //         $query= $transTable->find();

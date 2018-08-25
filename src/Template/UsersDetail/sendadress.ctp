@@ -4,9 +4,8 @@
  * @var \App\Model\Entity\UsersDetail $usersDetail
  */
 ?>
-<style>
 
-</style>
+
 
             <div class="container">
              
@@ -63,7 +62,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- /.row -->
+                                      <div class="row">         <div class="col-sm-6 col-md-6 col-lg-6">
+                        <div class="form-group">
+                          <label for="zusatz">Zusatz</label>
+                           <input type="text" class="form-control" name="zusatz">
+                         </div></div>
+                         </div>
+
 
                                     <div class="row">
                                         <div class="col-sm-6 col-md-2">
@@ -105,7 +110,7 @@
 
                                 <div class="box-footer">
                                     <div class="pull-left">
-                                        <a href="/Transctions/view" class="btn btn-default"><i class="fa fa-chevron-left"></i>Zurück</a>
+                                        <a href="/Transactions/view" class="btn btn-default"><i class="fa fa-chevron-left"></i>Zurück</a>
                                     </div>
                                     <div class="pull-right">
                                         <button type="submit" class="btn btn-template-main">Weiter<i class="fa fa-chevron-right"></i>

@@ -61,7 +61,7 @@ function ChapterTitle()
     $this->y0 = $this->GetY();
 }
 
-function ChapterBody($usersDetail)
+function ChapterBody($usersDetail,$fullname)
 {
     
    
@@ -108,16 +108,17 @@ $file7='212/280/30586';
     // Go back to first column
     $this->SetCol(1);
      $this->SetRow(55);
+      $this->Cell(50,5, utf8_decode($fullname) ,0,1,'l');
    foreach($usersDetail as $row)
     { 
       
-         $this->Cell(50,5, $row->studio_name ,0,1,'l');
-         $this->Cell(50,5, $row->address_line_1,0,1,'l');
-         $this->Cell(50,5, $row->address_line_2 ,0,1,'l');
+         $this->Cell(50,5,  utf8_decode($row->studio_name) ,0,1,'l');
+         $this->Cell(50,5, iconv('UTF-8', 'Windows-1252//TRANSLIT', $row->address_line_1),0,1,'l');
+         $this->Cell(50,5, iconv('UTF-8', 'Windows-1252//TRANSLIT', $row->address_line_2) ,0,1,'l');
     
          $this->Cell(50,5, $row->postal_code,0,1,'l');
-         $this->Cell(50,5, $row->city ,0,1,'l');
-         $this->Cell(50,5, $row->state ,0,1,'l');
+         $this->Cell(50,5, iconv('UTF-8', 'Windows-1252//TRANSLIT', $row->city) ,0,1,'l');
+         $this->Cell(50,5, iconv('UTF-8', 'Windows-1252//TRANSLIT', $row->state) ,0,1,'l');
          $this->Cell(50,5, $row->country,0,1,'l');
          $this->Ln(15);
         
@@ -128,14 +129,14 @@ $file7='212/280/30586';
 
 function FancyTable( $data)
 {
-  
+
     // Header
  
   $this->SetFillColor(240,240,240);
   $this->Cell(40,7,'Beschreibung',1,0,'C',1);
   $this->Cell(15,7,'Menge',1,0,'C',1);
-  $this->Cell(40,7,'Einheit.',1,0,'C',1);
-
+  $this->Cell(20,7,utf8_decode('Größe'),1,0,'C',1);
+  $this->Cell(20,7,'Farbe',1,0,'C',1);
   $this->Ln();
  
 
@@ -150,10 +151,10 @@ function FancyTable( $data)
     { 
      
           
-$this->Cell(40,6,$col->product->product_name,'LR');
+$this->Cell(40,6,utf8_decode($col->product->product_name),'LR');
 $this->Cell(15,6,$col->quantity,'LR');
-$this->Cell(40,6,$col->product->unit,'LR');
-
+$this->Cell(20,6,$col->product->size_id,'LR');
+$this->Cell(20,6,$col->product->color_id,'LR');
 $this->Ln();
 
      }
@@ -202,14 +203,14 @@ function PrintDate($transactions){
 }
 
 
-function PrintChapter($usersDetail)
+function PrintChapter($usersDetail,$fullname)
 {
     // Add chapter
     $this->AddPage();
     
     $this->ChapterTitle();
 
-    $this->ChapterBody($usersDetail);
+    $this->ChapterBody($usersDetail,$fullname);
    
      //$this->ChapterBody1($usersDetail);
 }

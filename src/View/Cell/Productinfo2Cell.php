@@ -25,11 +25,11 @@ class Productinfo2Cell extends Cell
     public function display($wh)
     {
         
-$ProductsTabel = TableRegistry::get('ProductsDetails');
+$ProductsTabel = TableRegistry::get('Products');
 //  pr($article_type);die();
 $products1=$ProductsTabel->find()
-->select(['id','product_id','photo','description'])
-  ->where(['product_id'=>$wh])
+->select(['id','photo','product_description'])
+  ->where(['id'=>$wh])
 
 			->limit(2)
 			->toArray();

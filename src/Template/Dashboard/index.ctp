@@ -31,9 +31,21 @@
   
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="/transactions"><span class="glyphicon glyphicon-bell"></span>  <span class="badge badge-secondary bg-danger badge-pill"><?=$this->cell('Notification')?></span></a></li>
-      <li><a href="/contents"><span class="glyphicon glyphicon-wrench"></span>  </a></li>
+        <li><a href="/transactions"><span class="glyphicon glyphicon-bell"></span>
+                <span class="badge badge-secondary bg-danger badge-pill"><?=$this->cell('Notification')?></span></a></li>
 
+      <li>
+   <div class="dropdown">
+       <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown"><i class="fa fa-cog" aria-hidden="true"></i>
+</button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+      <li role="presentation"><a href="/contents">Bilder ändern</a></li>
+      <li role="presentation"><a href="#">Nav items Auswahl</a></li>
+      <li role="presentation" class="divider"></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+    </ul>
+  </div>
+      </li>
    
       <li><a href="/users/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </ul>

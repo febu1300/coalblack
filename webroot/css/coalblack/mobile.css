@@ -363,16 +363,42 @@ div.row-eq-height {
     font-family: Arial;
 }
 
-
+.inspiration{
+       width:160px;
+       height:80px;
+       align-items: center;
+       margin-top: -30px;
+       margin-left:-20px;
+object-fit: cover;
+    }
+    .gold-rect-insp{
+     position: absolute;
+    bottom: 30px;
+    left: 50px;
+    padding: 0 4px;
+ 
+    background-color: rgba(0,0,0,0.6);
+    color: red;
+    padding: 2px;
+    border: 5px solid #ffffff;
+}
+.textoverimginspire {
+    overflow-x: hidden;
+    word-wrap: break-word;
+    color: #C7984E;
+    font-size: 12px;
+         text-transform: uppercase;
+}
 .textoverimg{
     color: darkgoldenrod;
 }
+
  .border-color{
 
         border-style:solid;
         border-width:2px;
         border-color:#c7984e; 
-        width:375px;
+     
      
     }
  #livesearch{
@@ -528,26 +554,28 @@ div.row-eq-height {
     margin-top: 2px;
 }
    .banner{
-       width:100%;
+       width:480px;
        height:340px;
        align-items: center;
        margin-top: 0px;
+       object-fit: cover;
     }
     /*catagory*/
     .cat-textoverimg1{
     overflow-x: hidden;
-    word-wrap: break-word;
+
     color: #C7984E;
-    position: absolute;
+      position: absolute;
     bottom: 8px;
-    right: 8px;
-    font-size:14px;
-    font-weight: bold;
+    right: 2px;
+    font-size:12px;
+  font-weight: bold;
+    text-transform: uppercase;
 }
 .cat-gold-block {
       position: absolute;
     bottom: 15px;
-    left: 250px;
+    left: 90px;
   
     background-color: rgba(125,125,125,0);
     color: red;
@@ -560,28 +588,39 @@ div.row-eq-height {
     font-size:20px;
 }
 .cat-img-responsive2{
-width:180px; 
-height:260px;
+width:160px; 
+height:230px;
 }
-    
+  .gold-rect-banner {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 0 4px;
+    background-color: rgba(0,0,0,0.6);
+    color: red;
+    padding: 5px;
+    border: 5px solid #ffffff;
+}  
     /* catagory sm*/
   .cat-sm-textoverimg{
     overflow-x: hidden;
     word-wrap: break-word;
     color: #C7984E;
-    font-size:12px;
+    font-size:8px;
     font-weight: bold;
 }
-.cat-sm-gold-block {
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
-    background-color: rgba(125,125,125,0);
+.cat-gold-block {
+       position: absolute;
+    bottom: 15px;
+   left: 60px;
+  
+ 
+    background-color: rgba(0,0,0,0.6);
     color: red;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+  padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 20px;
     border-bottom: 5px solid #ffffff;
     border-right: 5px solid #ffffff;
 
@@ -599,8 +638,8 @@ height:260px;
 }
 
 .cat-sm-responsive2{
-width:100px; 
-height:100px;
+width:130px; 
+height:130px;
 }  
 
 /*footer*/
@@ -632,4 +671,4 @@ overflow-x: hidden;
 }
 
 .card-title{font-size: 10px;}
-} 
+}

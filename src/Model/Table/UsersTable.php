@@ -62,6 +62,10 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
           $validator
             ->boolean('title')
+                       ->add('title', 'notBlank', [
+                'rule' => 'notBlank',
+                'message' => __('bitte wählen Sie Ihre Titel'),
+            ])
             ->requirePresence('title', 'create')
             ->notEmpty('title');
  $validator
@@ -81,17 +85,17 @@ class UsersTable extends Table
                 [
                     'validEmail' => [
                         'rule' => ['email'],
-                        'message' => 'Bitte e mail adresse eingeben!'
+                        'message' => '<h1>Bitte Emailadresse eingeben!</h1>'
                     ],
                     'unique' => [
-                        'message' => 'Diese emailadresse ist nicht verfügbar!',
+                        'message' => 'Diese Emailadresse ist nicht verfügbar!',
                         'provider' => 'table',
                         'rule' => 'validateUnique'
                     ]
                 ]
             )
             ->requirePresence('username', 'create', 'Passwort ist erforderlich!')
-            ->notEmpty('username', 'Bitte e mail adresse eingeben!');
+            ->notEmpty('username', 'Bitte Emailadresse eingeben!');
         $validator
             ->add(
                 'password',
@@ -119,7 +123,7 @@ class UsersTable extends Table
                         },
                     'message' => 'Passwort stimmt nicht überein'
                 ]
-            );
+            ); 
         return $validator;
     }
 

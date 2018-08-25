@@ -38,7 +38,7 @@
    
 <?= $this->Html->meta(
     'favicon.ico',
-    'img/icon.png',
+    'img/logo.png',
     ['type' => 'icon']
 );
 ?>

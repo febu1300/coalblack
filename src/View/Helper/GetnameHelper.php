@@ -15,7 +15,7 @@ use Cake\ORM\TableRegistry;
  * @author buruk
  */
 class GetnameHelper extends Helper {
-
+// used in /Users/view
     public function initialize(array $config) {
   
 

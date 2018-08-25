@@ -1,6 +1,4 @@
-<style>
- 
-</style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
@@ -13,7 +11,9 @@
 
   <div class="row"></div>
   <div class="row"></div>
-  <input style="width:370px"  class="form-control bg-light border-color" id="inputid" list="product" name="ptoducts" autocomplete="off"   onkeyup="showResult(this.value)" type="text" placeholder="Suchst du etwas spezielles?">
+ 
+  <input  class="form-control bg-light border-color" id="inputid" list="product" name="ptoducts" autocomplete="off"   onkeyup="showResult(this.value)" type="text" placeholder="Suchst du etwas spezielles?">
+
   <div id="livesearch" ></div>
 
 

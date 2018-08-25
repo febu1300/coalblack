@@ -4,19 +4,22 @@ $this->layout(false);
 ?>
 <head>
               <?= $this->fetch('title') ?>
-       <?= $this->Html->meta(
+<?= $this->Html->meta(
     'favicon.ico',
-    'img/icon.svg',
+    'img/logo.png',
     ['type' => 'icon']
 );
-?> <?= $this->Html->css('site_global.css') ?>
+?>
+<?= $this->Html->css('site_global.css') ?>
    <?= $this->Html->css('bootstrap.min.css') ?>
 
    <?= $this->Html->css('coalblack.css') ?>
     <?= $this->Html->script('jquery-1.8.3.min.js') ?>
                 <?= $this->Html->script('popper.min.js') ?>
  <?= $this->Html->script('bootstrap.min.js') ?>
-   
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
   <?= $this->fetch('script') ?>
 
@@ -39,9 +42,30 @@ $this->layout(false);
   flex: 1;
 }
     </style>
+  
+        <script>
+$(document).ready(function(){
+       $("#vorHanden").hide(300);
+       $("#neukunde").click(function(){
+        $("#neueUser").show(300);
+        $("#vorHanden").hide(300);
+    });
+    $("#existing").click(function(){
+        $("#vorHanden").show(300);
+        $("#neueUser").hide(300);
+    });
+
+$("#checkout").validate();
+$.validator.methods.email = function( value, element ) {
+  return this.optional( element ) || /[a-z]+@[a-z]+\.[a-z]+/.test( value );
+}
+});
+
+</script>
 </head>
+         <?= $this->Flash->render() ?>
 <div class="container ">
-    
+     
        <div class="row ">
         <div class="col-sm-3 col-md-4 col-lg-4 "></div>
         <img class="media-object" src="/img/logo.svg" style="width:200px; height: 120px" >
@@ -55,7 +79,7 @@ $this->layout(false);
         <a href="#" class="cap"><span class="fa fa-pencil-square-o fa-2x"></span>Personlicher Angabe</a>
         <a href="#" class="active cap"><span class="fa fa-euro fa-2x"></span>Zahlungsart</a>
         <a href="#" class="cap"><span class="fa fa-check-square-o fa-2x"></span>Checkout</a>
-         
+     
     </div>
 </div>
     <div class="jumbotron bg-light">
@@ -72,13 +96,109 @@ $this->layout(false);
 
 <div class="col">
  
+       <?php $u=$this->request->session()->read('Auth.User.role');?>
+            <?php if ($u=='admin') {?>
+         <form id="checkout" method="post" action="/transactions/pay">
+<fieldset>
+
+<div class="form-group">
+    <div class="custom-control custom-radio">
+      <input value='1' type="radio" id="neukunde" name="userdetchoice" class="custom-control-input" checked="checked" >
+      <label class="custom-control-label" for="neukunde">Neue Kunde</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input value='2' type="radio" id="existing" name="userdetchoice" class="custom-control-input">
+      <label class="custom-control-label" for="existing">Konto Vorhanden</label>
+    </div>
+ 
+  </div>
+
     
-   <form id="checkout" method="post" action="/transactions/pay">
+  <div id='neueUser'>
+ 
+ 
+  <div class="form-group">
+  <div class='row'>
+  <div class="col-sm-6 col-md-6 col-lg-6">
+  <label class="col-form-label col-form-label-sm" for="inputSmall">Vorname</label>
+  <input class="form-control form-control-sm" name='fname' type="text" placeholder="Vorname" id="inputFname">
+
+  </div>
+  
+  <div class="col-sm-6 col-md-6 col-lg-6">
+  <label class="col-form-label col-form-label-sm" for="inputSmall">Nachname</label>
+  <input class="form-control form-control-sm"  name='lname' type="text" placeholder="Nachname" id="inputLname">
+  </div>
+  </div>
+  
+  <label class="col-form-label col-form-label-sm" for="username">email</label>
+  <input class="form-control form-control-sm" style='width:50%' name='username' type="email" placeholder="muster@email.com" id="inputEmail">
+  </div>
+  </div>
+    <div id='vorHanden'> 
+       <?=$this->cell('Userslist');?>
+    </div>
+    <div class="form-group">
+  <label class="control-label">Versandkost</label>
+  <div class="form-group">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">€</span>
+      </div>
+      <input class="form-control form-control-sm" type="text" style='width:50%' name="shipping"class="form-control" aria-label="Betrag (to the nearest euro)">
+ 
+    </div>
+  </div>
+</div>
+  <div class="form-group">
+  
+   <div class="custom-control custom-radio">
+   <input  id="customRadio3" name="customRadio" class="custom-control-input" readonly="readonly" value='4'checked="checked" type="radio">
+   <label  hidden class="custom-control-label" for="customRadio4">Telefonebestellung</label>
+   </div>   
+  
+  </div> 
+</fieldset> 
+         <button id="adminpay" type="submit" class="btn btn-primary">CHECKOUT>></button>
+ </form>
+    
+    </div> 
+
+</div>
+     </div>  </div>
+ 
+
+     
+
+            <div class="col">
+                <div class="jumbotron" >
+    <div class="card-header"><h5>Versandadress</h5></div>
+  <div class="card-body">
+   <div class="col-sm-8 col-md-8 col-lg-8">
+ 
+    <?=$this->cell('Shippingadd');?>
+    </div>
+      </div>  
+  
+     
+      <div class="card-header"><h5>Rechnungadress</h5></div>
+      
+    <div class="card-body">
+  <div class="col-sm-8 col-md-8 col-lg-8">
+ <?=$this->cell('Billingadd');?>
+</div>
+</div>
+           
+          </div>
+    
+     </div>    
+            <?php                    } else { ?>
+         <form id="checkout" name='registration' method="post" action="/transactions/pay">
 <fieldset>
 
   <div class="form-group">
-   
-  <div class="custom-control custom-radio">
+                     
+       <div class="custom-control custom-radio">
    
       <input id="customRadio1" name="customRadio" class="custom-control-input " value='1' checked="" type="radio">
       <label class="custom-control-label" for="customRadio1">Paypal</label>
@@ -94,13 +214,15 @@ $this->layout(false);
       <input id="customRadio3" name="customRadio" class="custom-control-input" value='3' type="radio">
       <label class="custom-control-label" for="customRadio3">Nachnahme (Kostet €7.00 mehr)</label>
    </div>
+
+
   </div>
 
 
 </fieldset> 
-         <button id="paypal" type="submit" class="btn btn-primary">CHECKOUT>></button>
+         <button id="adminpay" type="submit" class="btn btn-primary">CHECKOUT>></button>
  </form>
-  
+        
 
 </div> 
 
@@ -124,14 +246,18 @@ $this->layout(false);
       <div class="card-header"><h5>Rechnungadress</h5></div>
       
     <div class="card-body">
-      <div class="col-sm-8 col-md-8 col-lg-8">
+  <div class="col-sm-8 col-md-8 col-lg-8">
  <?=$this->cell('Billingadd');?>
 </div>
 </div>
            
           </div>
     
-     </div>     </div>   
+     </div>    
+      
+               <?php                     }
+                                ?>
+      </div>   
               <div class="row">
         <?php $u=0;if (($this->request->session()->read('Auth.User.username'))){$u=1;}else{$u=0;}?>
 
@@ -247,4 +373,3 @@ $this->layout(false);
 
 
 
-   

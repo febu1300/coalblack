@@ -340,8 +340,8 @@ h4 {
   margin-right: 0;
   margin-left: 0;
 
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
  .row-eq-height {
@@ -366,7 +366,7 @@ div.row-eq-height {
         border-style:solid;
         border-width:2px;
         border-color:#c7984e; 
-        width:375px;
+    
      
     }
  #livesearch{
@@ -526,18 +526,28 @@ div.row-eq-height {
        height:340px;
        align-items: center;
        margin-top: 0px;
+       object-fit: cover;
     }
-    
+    .inspiration{
+       width:300px;
+       height:150px;
+       align-items: center;
+       margin-top: -20px;
+       margin-left:-20px;
+object-fit: cover;
+    }
+   
     /*Catagory*/
     .cat-textoverimg1{
     overflow-x: hidden;
     word-wrap: break-word;
     color: #C7984E;
-      position: absolute;
+    position: absolute;
     bottom: 8px;
     right: 8px;
     font-size:20px;
-  font-weight: bold;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 .cat-gold-block {
       position: absolute;
@@ -564,44 +574,67 @@ height:400px;
     overflow-x: hidden;
     word-wrap: break-word;
     color: #C7984E;
-    font-size:20px;
+    font-size:18px;
     font-weight: bold;
+          text-transform: uppercase;
 }
-.cat-sm-gold-block {
-    position: absolute;
-    bottom: 50px;
-    right: 20px;
-    background-color: rgba(125,125,125,0);
+.cat-gold-block {
+       position: absolute;
+    bottom: 15px;
+   left: 110px;
+
+    background-color: rgba(0,0,0,0.6);
     color: red;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 20px;
+  padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 50px;
     padding-bottom: 20px;
     border-bottom: 5px solid #ffffff;
     border-right: 5px solid #ffffff;
 
 }
- 
+ .gold-rect-banner {
+    position: absolute;
+    bottom: 10px;
+    right: 100px;
+    padding: 0 4px;
+    background-color: rgba(0,0,0,0.6);
+    color: red;
+    padding: 5px;
+    border: 5px solid #ffffff;
+}
     .gold-rect {
     position: absolute;
     bottom: 10px;
-    right: 40px;
+    right: 10px;
+    padding: 0 4px;
+ padding-top:10px;
+
+    background-color: rgba(0,0,0,0.6);
+    color: red;
+
+    border: 5px solid #ffffff;
+}
+.gold-rect-insp{
+     position: absolute;
+    bottom: 30px;
+    right: 10px;
     padding: 0 4px;
  
     background-color: rgba(0,0,0,0.6);
     color: red;
-    padding: 25px;
+    padding: 2px;
     border: 5px solid #ffffff;
 }
 .cat-sm-responsive2{
-width:300px; 
-height:300px;
+width:270px; 
+height:270px;
 } 
 
 
 /*footer*/
 .img-responsive3{
-width:620px; 
+width:510px; 
 height:300px;
 }
 
@@ -611,7 +644,16 @@ overflow-x: hidden;
         color: #C7984E;
   font-size:20px;
   font-weight: bold;
+       text-transform: uppercase;
 }
+ .textoverimginspire{
+overflow-x: hidden;
+    word-wrap: break-word;
+        color: #C7984E;
+  font-size:20px;
+  font-weight: bold;
+    text-transform: uppercase;
+    }
 .gold-block3 {
     position: absolute;
     bottom: 50px;

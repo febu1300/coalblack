@@ -34,6 +34,7 @@ class User extends Entity
         'lname' => true,
          'title' => true,
         'password' => true,
+        'cpassword' => true,
         'role' => true,
         'created' => true,
         'modified' => true,

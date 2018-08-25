@@ -35,7 +35,12 @@
       <?= $this->Html->css('site_global.css') ?>
    <?= $this->Html->css('bootstrap.min.css') ?>
 
-
+<?= $this->Html->meta(
+    'favicon.ico',
+    'img/logo.png',
+    ['type' => 'icon']
+);
+?>
     <?= $this->Html->script('jquery-1.8.3.min.js') ?>
                 <?= $this->Html->script('popper.min.js') ?>
  <?= $this->Html->script('bootstrap.min.js') ?>

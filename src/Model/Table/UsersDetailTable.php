@@ -73,7 +73,10 @@ class UsersDetailTable extends Table
             ->scalar('address_line_2')
             ->maxLength('address_line_2', 100)
             ->allowEmpty('address_line_2');
-
+        $validator
+            ->scalar('zusatz')
+            ->maxLength('zusatz', 255)
+            ->allowEmpty('zusatz');
         $validator
             ->scalar('city')
             ->maxLength('city', 50)

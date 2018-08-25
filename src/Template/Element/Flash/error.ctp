@@ -6,6 +6,6 @@ if (!isset($params['escape']) || $params['escape'] !== false) {
 <div class="message error" onclick="this.classList.add('hidden');">
 <div class="alert alert-dismissible alert-warning" >
   <button type="button" class="close"  data-dismiss="alert">&times;</button>
-  <strong></strong> <a href="#" class="alert-link"><?= $message ?></a>.
+  <strong></strong> <a href="#" class="alert-link"><?= $message ?><i class="fa fa-info-circle" aria-hidden="true"></i></a>.
 </div>
 </div>

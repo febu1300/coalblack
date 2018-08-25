@@ -40,6 +40,7 @@ class Transaction extends Entity
         'canceled_date'=> true,
         'quantity' => true,
         'price' => true,
+        'shipping'=>true,
         'order_number'=>true,
         'transaction_number' => true,
         'transaction_status_id' => true,

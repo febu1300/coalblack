@@ -28,6 +28,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light" id="actions-sidebar">
     <ul class="nav nav-pills flex-column">
  <li  class="nav-item"><?= $this->Html->link(__('New Products Catagory'), ['action' => 'add']) ?></li>
+  <li  class="nav-item"><?= $this->Html->link(__('List Main-Catagories'), ['controller' => 'MainCatagories', 'action' => 'index']) ?></li>
         <li  class="nav-item"><?= $this->Html->link(__('List Sub-Catagories'), ['controller' => 'SubCatagories', 'action' => 'index']) ?></li>
           
     </ul>

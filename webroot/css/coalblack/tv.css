@@ -1,5 +1,5 @@
 @media only screen and (min-width: 1200px) {
-     .nav-item{margin:0; }
+     .nav-item{margin:0; font-size:12px}
 
 * {
     box-sizing: border-box;
@@ -346,8 +346,8 @@ h4 {
   margin-right: 0;
   margin-left: 0;
 
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
  .row-eq-height {
@@ -532,6 +532,7 @@ div.row-eq-height {
        height:360px;
        align-items: center;
        margin-top: 0px;
+       object-fit: cover;
     }
     /* Catagory*/
     .cat-textoverimg1{
@@ -540,20 +541,24 @@ div.row-eq-height {
     color: #C7984E;
       position: absolute;
     bottom: 8px;
-    right: 2px;
-    font-size:14px;
+    right: 5px;
+    font-size:18px;
   font-weight: bold;
+    text-transform: uppercase;
+    margin-left:25px;
+     margin-top:-7px;
 }
 .cat-gold-block {
-      position: absolute;
+       position: absolute;
     bottom: 15px;
-   right: 50px;
+   left: 110px;
   
-    background-color: rgba(125,125,125,0);
+ 
+    background-color: rgba(0,0,0,0.6);
     color: red;
-    padding-left: 5px;
-    padding-right: 20px;
-    padding-top: 20px;
+  padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 50px;
     padding-bottom: 20px;
     border-bottom: 5px solid #ffffff;
     border-right: 5px solid #ffffff;
@@ -563,6 +568,35 @@ div.row-eq-height {
 width:300px; 
 height:400px;
 }
+
+  .inspiration{
+       width:300px;
+       height:200px;
+       align-items: center;
+       margin-top: -7px;
+       margin-left:-20px;
+object-fit: cover;
+    }
+ .textoverimginspire {
+    overflow-x: hidden;
+    word-wrap: break-word;
+    color: #C7984E;
+    font-size: 18px;
+       text-transform: uppercase;
+}
+.gold-rect-insp{
+     position: absolute;
+    bottom: 30px;
+    right: 50px;
+    padding: 0 4px;
+ 
+    background-color: rgba(0,0,0,0.6);
+    color: red;
+    padding: 5px;
+    border: 5px solid #ffffff;
+    
+}
+
     /*  CatagorySM */
   .cat-sm-textoverimg{
     overflow-x: hidden;
@@ -570,6 +604,7 @@ height:400px;
     color: #C7984E;
     font-size:14px;
     font-weight: bold;
+    text-transform: uppercase;
 }
 .cat-sm-gold-block {
     position: absolute;
@@ -600,7 +635,16 @@ height:300px;
     padding: 20px;
     border: 5px solid #ffffff;
 }
-
+.gold-rect-banner {
+    position: absolute;
+    bottom: 10px;
+    right: 100px;
+    padding: 0 4px;
+    background-color: rgba(0,0,0,0.6);
+    color: red;
+    padding: 5px;
+    border: 5px solid #ffffff;
+}
 .img-responsive3{
 width:620px; 
 height:300px;
@@ -615,6 +659,7 @@ overflow-x: hidden;
         color: #C7984E;
   font-size:20px;
   font-weight: bold;
+    text-transform: uppercase;
 }
 .gold-block3 {
     position: absolute;

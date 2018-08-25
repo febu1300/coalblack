@@ -61,10 +61,10 @@ function ChapterTitle()
     $this->y0 = $this->GetY();
 }
 
-function ChapterBody($usersDetail)
+function ChapterBody($usersDetail,$fullname)
 {
     
-   
+
     // Read text file
    // $txt = file_get_contents($file);
 $file='+49(0) 9651 318 660 2 mail@coalblack.supply';
@@ -108,16 +108,18 @@ $file7='212/280/30586';
     // Go back to first column
     $this->SetCol(1);
      $this->SetRow(55);
+ $this->Cell(50,5, utf8_decode($fullname) ,0,1,'l');
    foreach($usersDetail as $row)
     { 
       
-         $this->Cell(50,5, $row->studio_name ,0,1,'l');
-         $this->Cell(50,5, $row->address_line_1,0,1,'l');
-         $this->Cell(50,5, $row->address_line_2 ,0,1,'l');
+        
+         $this->Cell(50,5, utf8_decode($row->studio_name) ,0,1,'l');
+         $this->Cell(50,5,utf8_decode($row->address_line_1),0,1,'l');
+         $this->Cell(50,5, utf8_decode($row->address_line_2) ,0,1,'l');
     
          $this->Cell(50,5, $row->postal_code,0,1,'l');
-         $this->Cell(50,5, $row->city ,0,1,'l');
-         $this->Cell(50,5, $row->state ,0,1,'l');
+         $this->Cell(50,5, utf8_decode($row->city) ,0,1,'l');
+         $this->Cell(50,5, utf8_decode($row->state) ,0,1,'l');
          $this->Cell(50,5, $row->country,0,1,'l');
          $this->Ln(15);
         
@@ -128,7 +130,7 @@ $file7='212/280/30586';
 
 function FancyTable( $data)
 {
-  
+
     // Header
  
   $this->SetFillColor(240,240,240);
@@ -150,8 +152,8 @@ function FancyTable( $data)
     { 
      
           
-$this->Cell(40,6,$col->product->product_name,'LR');
-$this->Cell(15,6,$col->quantity.' '.metaphone($col->product->unit),'LR');
+$this->Cell(40,6,utf8_decode($col->product->product_name),'LR');
+$this->Cell(15,6,$col->quantity,'LR');
 $this->Cell(30,6, money_format('%i EUR',$col->product->price),'R',0,'R');
 $this->Cell(30,6,money_format('%i EUR',$col->product->price*$col->quantity),'R',0,'R');
 $this->Ln();
@@ -162,22 +164,29 @@ $this->Ln();
     }
    
 }
-function FancyTable1( $data)
+function FancyTable1($data)
 { $steuer=0;
 $netto=0;
 $ges=0;
+$shipping=0;
   foreach($data as $row)
     { 
-           $netto=$netto+$row->price-$row->price*19/100;
+      $netto=$netto+$row->price-$row->price*19/100;
      $steuer=$steuer+$row->price*19/100;
-     $ges=$ges+$row->price;
+         $shipping=$row->shipping;
+     $ges=$ges+$row->price+$row->shipping;
+ 
     }
  $this->Cell(55,6,'',0,0,'C',0);
      $this->Cell(30,6,'Netto','R',0,'C',0);
 $this->Cell(30,6, money_format('%i EUR',$netto),1,0,'R',1);$this->Ln();
-  $this->Cell(55,6,'',0,0,'C',0);
+ $this->Cell(55,6,'',0,0,'C',0);
      $this->Cell(30,6,'Mstr 19%','R',0,'C',0);
 $this->Cell(30,6, money_format('%i EUR',$steuer),1,0,'R',1);$this->Ln();
+ $this->Cell(55,6,'',0,0,'C',0);
+     $this->Cell(30,6,'Versand','R',0,'C',0);
+$this->Cell(30,6, money_format('%i EUR',$shipping),1,0,'R',1);$this->Ln();
+ 
  $this->Cell(55,6,'',0,0,'C',0);
      $this->Cell(30,6,'Gesamt','R',0,'C',0);
 $this->Cell(30,6, money_format('%i EUR',$ges),1,0,'R',1);
@@ -210,14 +219,14 @@ function PrintDate($transactions){
 }
 
 
-function PrintChapter($usersDetail)
+function PrintChapter($usersDetail,$fullname)
 {
     // Add chapter
     $this->AddPage();
     
     $this->ChapterTitle();
 
-    $this->ChapterBody($usersDetail);
+    $this->ChapterBody($usersDetail,$fullname);
    
      //$this->ChapterBody1($usersDetail);
 }

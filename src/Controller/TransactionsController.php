@@ -27,6 +27,8 @@ use App\FPDF\PDF;
 use App\FPDF\LIFERUNG;
 use Cake\Filesystem\Folder;
 use Cake\Filesystem\File;
+use App\Form\Phoneorder;
+use Cake\I18n\Number;  
 /**
  * Transactions Controller
  *
@@ -42,6 +44,7 @@ class TransactionsController extends AppController {
         $this->loadModel('Products');
         $this->loadModel('Transactions');
         $this->loadModel('UsersDetail');
+        $this->loadModel('Users');
 //          $this->loadModel('Colors');
 //        $this->loadModel('Sizes');
     }
@@ -75,28 +78,10 @@ class TransactionsController extends AppController {
         return parent::isAuthorized($user);
     }
 
-//          public function beforeRender(Event $event)
-//    {
-//        if (!array_key_exists('_serialize', $this->viewVars) &&
-//            in_array($this->response->type(), ['application/json', 'application/xml'])
-//        ) {
-//            $this->set('_serialize', true);
-//        }
-//    }
+
     public function pay() {
 
-//      $transid=$this->Checkout->findcart($this->Auth->user('id'));
-//
-//    for($i=0;$i<end($transid); $i++){
-// if(array_key_exists($i,$transid)){
-//         $toeditTrans = $this->Transactions->get($transid[$i]);
-//     
-//           $toeditTrans->transaction_status_id=2;
-//        
-// $this->Transactions->save($toeditTrans);
-// 
-// }
-//     }       
+     
         $bestlnumr = uniqid();
 
         if ($this->request->session()->read('Auth.User.id')) {
@@ -117,10 +102,24 @@ class TransactionsController extends AppController {
                     'EFmqGVhUmhBI2FDxZNbJ8_Hu5sMoC76SX4mWHPl8shVUpzRmF_F09f0REefGZlr5FCoC4mQyg_9ECY2d'      // ClientSecret
                     )
             );
+//                      $apiContext = new \PayPal\Rest\ApiContext(
+//        new \PayPal\Auth\OAuthTokenCredential(
+//            'AeozN4LO5eQMt0AaNHsKId8NwbTlIUW8cYcA69V38qwWxtYloAlyA3JH8Tj1Qp8fo-PcMjksPxi5Dzl2',     // ClientID Brk live
+//            'ELW7pET1uPppPNsaqQY9C7n56KNcIzW6rWnLZzRApZwDCHdtzY-3wh9Ov_TWt44raFeYnzrukRe-bY5J'      // ClientSecret
+//        )
+//);
 
+            $apiContext->setConfig(
+ [            //'mode' => 'live',
+    'log.LogEnabled' => true,
+    'log.FileName' => 'PayPal.log',
+    'log.LogLevel' => 'DEBUG'
+  ]
+);
+            
 //          $apiContext = new \PayPal\Rest\ApiContext(
 //        new \PayPal\Auth\OAuthTokenCredential(
-//            'Aa8Z4Q36vAUdFw6KKwrhl4pJGA2YMYgiv5U4SII5mXa2xEz6jDIGg-eSEFIbeYNTMQCVvP6ogYqrqyXq',     // ClientID
+//            'Aa8Z4Q36vAUdFw6KKwrhl4pJGA2YMYgiv5U4SII5mXa2xEz6jDIGg-eSEFIbeYNTMQCVvP6ogYqrqyXq',     // ClientID Brk Snd
 //            'EMrQwNR6iip3H749rOfcU0kEnhHB7nSghlimZsYy6Fn4ggSuI5Dgs1H21gv64OL_LhkW37IL43FLLlXP'      // ClientSecret
 //        )
 //);
@@ -164,7 +163,7 @@ class TransactionsController extends AppController {
                 $this->Flash->success(__('Ihrer Warenkorb ist Leer!'));
                 return $this->redirect(['controller' => 'Pages', 'action' => 'display', 'home']);
             }
-
+ 
             if ($this->request->is('post')) {
                 $selMeth = $this->request->getData();
 
@@ -197,7 +196,9 @@ class TransactionsController extends AppController {
                             $transaction->product_id = $product->id;
                             $transaction->created_date = Time::now();
                             $transaction->quantity = $name2[$product->id];
+                            
                             $transaction->price = $this->Checkout->getprice($product->id);
+                
                             $transaction->user_id = $this->Auth->user('id');
                             $transaction->transaction_status_id = 1;
                             $transaction->payment_method_id = 1;
@@ -213,19 +214,22 @@ class TransactionsController extends AppController {
                                     ->setCurrency('EUR')
                                     ->setQuantity($name2[$product->id])
                                     ->setSku($product->id) // Similar to `item_number` in Classic API 
-                                    ->setPrice($product->price - $product->price * 19 / 100);
+                                    ->setTax(number_format($transaction->price * 19/100,2))
+                                   ->setPrice(($transaction->price - number_format($transaction->price * 19/100,2))); //price without tax
+                           // pr($transaction->price - $transaction->price * 19 / 100);
+                        
                             // $total = $total + ($name2[$product->id]*$product['product_price']);
                             array_push($items, $item1);
-                            $GesamtMenge = ($GesamtMenge + ($transaction->price - ($transaction->price * 19 / 100)) * $name2[$product->id]);
-                            $Gg = ($Gg +  $transaction->price * $name2[$product->id]);
-                            $tax = $Gg - $GesamtMenge;
+                            $GesamtMenge = ($GesamtMenge + ($transaction->price - number_format($transaction->price * 19/100,2)) * $name2[$product->id]);
+                            $Gg = $Gg +  ($transaction->price * $name2[$product->id]);
+                            $tax = $Gg - $GesamtMenge;    
                         } else {
                             
                         }
 ////           }}
 //   
 //      
-                    }
+                    } 
 
                     $itemList = new \PayPal\Api\ItemList();
                     $itemList->setItems($items);
@@ -234,13 +238,16 @@ class TransactionsController extends AppController {
                     $details->setShipping(0.00)
                             ->setTax($tax)
                             ->setSubtotal($GesamtMenge);
+                
 
 
 
                     $amount = new \PayPal\Api\Amount();
                     $amount->setDetails($details)
+                            
                             ->setTotal($Gg + 0.00)
                             ->setCurrency('EUR');
+               
                     $wennreturn = 'https://coalblack.supply' . Router::url([
                                 'controller' => 'Transactions',
                                 'action' => 'success',
@@ -254,9 +261,11 @@ class TransactionsController extends AppController {
                             ->setItemList($itemList)
                             ->setDescription("here description")
                             ->setInvoiceNumber($bestlnumr);
+                    //pr(number_format($GesamtMenge,2));pr(number_format($Gg,2));pr($itemList);pr($amount);die();
+               
                     $redirectUrls = new \PayPal\Api\RedirectUrls();
                     $redirectUrls->setReturnUrl($wennreturn)
-                            ->setCancelUrl("http://coalblack.supply/transactions/canceled");
+                            ->setCancelUrl("https://coalblack.supply/transactions/canceled");
 
                     $payment = new \PayPal\Api\Payment();
                     $payment->setIntent('sale')
@@ -276,7 +285,7 @@ class TransactionsController extends AppController {
                         //REALLY HELPFUL FOR DEBUGGING
                         echo $ex->getData();
                     }
-                    return $this->redirect(['controller' => 'transactions', 'action' => 'success']);   
+                    //return $this->redirect(['controller' => 'transactions', 'action' => 'success']);   
                 } else if ($selMeth['customRadio'] == 2) {
                     $configkey = '166950:430655:d5e84b3e416d898b8338490cd991f0e5';
                     $Sofortueberweisung = new Sofortueberweisung($configkey);
@@ -354,7 +363,8 @@ class TransactionsController extends AppController {
                         return $this->redirect($paymentUrl);
                     }
                 } elseif ($selMeth['customRadio'] == 3) {
-          $session = $this->request->session();
+                    //$this->Checkout->savetrans($bestlnumr);
+                   $session = $this->request->session();
                     $products = $this->Products->find();
 ////         $colors = $this->Colors->find();
 ////             $sizes = $this->Sizes->find();
@@ -400,6 +410,47 @@ class TransactionsController extends AppController {
 
                  
                
+                }elseif ($selMeth['customRadio'] == 4) {
+                     
+                   $user = $this->Users->newEntity();
+                    if($this->request->is('post')){    
+                               
+
+              
+                        if($selMeth['userdetchoice']==2){
+                            
+                       if($selMeth['userdetchoice']){
+                     $this->Checkout->savetrans($selMeth['shipping'],$bestlnumr,$user->id);
+                    if($this->Checkout->userDetExists($selMeth['usersList'])){
+                                $this->redirect(["controller" => "UsersDetail","action" => "adressepruefen","?"=>["theId"=>$selMeth['usersList']]] );
+                            }else{
+   return   $this->redirect(["controller" => "UsersDetail","action" => "sendadressreg","?"=>["theId"=>$selMeth['usersList']]] ); }
+                       }else{
+                              $this->Flash->default(__('Kundenname muss ausgewählt werden!'));
+                           return $this->redirect(['action'=>'pay']);
+                           
+                       };
+                        //$selMeth['userdetchoice']==1 neue Konto
+                        }elseif($selMeth['userdetchoice']==1){
+                          
+                         $user->title=1;
+                         $user->fname=$selMeth['fname'];
+                         $user->lname=$selMeth['lname'];if($selMeth['username']){
+                         $user->username=$selMeth['username'];}else{ $user->username= uniqid()."@gmail.com";}
+                         $user->role='customer';
+                         $user->password="fake123";
+                         
+                        $this->Users->save($user);
+                        $this->Checkout->savetrans($selMeth['shipping'],$bestlnumr,$user->id);
+               
+                            return   $this->redirect(["controller" => "UsersDetail","action" => "sendadressreg","?"=>["theId"=>$user->id]] ); 
+ 
+                        };
+                        //$selMeth['userdetchoice'];
+               
+                    }   
+                 
+//end case 4
                 }
 
 
@@ -475,18 +526,27 @@ public function checkout(){
         }
 
         $this->set(compact('transaction', $transaction));
+     $paymentType=$this->Checkout-> findPaymentId($transaction);
 
         $useremail = $this->Checkout->findEmail($this->Auth->user('id'));
-        $email = new Email('default');
-
-        $email->from(['meinebestellung@coalblack.supply' => 'coalblack'])
+        $fullname=$this->Checkout->findFulltitle($this->Auth->user('id'));
+     
+        //$email = new Email('default');
+        $email = new Email('gmail');
+         $email->from(['tsegafana@gmail.com' => 'coalblack'])
+        //$email->from(['meinebestellung@coalblack.supply' => 'coalblack'])
                 ->to($useremail)
                 ->template('default', 'default')
                 ->subject('Zahlungsbestätigung')
                 ->emailFormat('html')
+                ->viewVars(['fullname' => $fullname])
+                  ->viewVars(['versand' => 0.00])
+                 ->viewVars([ 'datum'=>date_format(Time::now(), 'Y-m-d')])
+                 ->viewVars(['paymentType' => $paymentType])
                 ->viewVars(['value' => $bestnum])
                 ->viewVars(['transaction' => $transaction])
                 ->send();
+    
         return $this->redirect(['controller' => 'transactions', 'action' => 'danke', "?" => ['best' => $bestnum]]);
     }
 
@@ -554,14 +614,16 @@ public function checkout(){
             $usersDetail = $this->UsersDetail->find()
                     ->where(['UsersDetail.user_id' => $userId])
                     ->where(['UsersDetail.user_detail_type_id' => 2]);
-
+            $fullname=$this->Checkout->findFullname($userId);
+   
             $transactions = $this->Transactions->find()
                             ->select(['created_date', 'order_number', 'transaction_number', 'id'])
                             ->where(['Transactions.order_number' => $bestnum])->first();
             $this->set(compact('usersDetail', $usersDetail));
             $this->set(compact('transactions', $transactions));
             $this->set(compact('transaction', $transaction));
-
+            $this->set(compact('fullname', $fullname));
+            
             $this->viewBuilder()->setLayout(false);
 
             $pdf = new PDF();
@@ -570,7 +632,7 @@ public function checkout(){
             $text = 'Bei Rückfragen erreichen Sie uns unter der unten angegebenen Telefonnummer';
             $pdf->SetTitle($title);
             $pdf->SetAuthor('Lucas Teufel');
-            $pdf->PrintChapter($usersDetail);
+            $pdf->PrintChapter($usersDetail,$fullname);
 
             $pdf->PrintDate($transactions);
             $pdf->Ln();
@@ -600,7 +662,7 @@ public function checkout(){
             $usersDetail = $this->UsersDetail->find()
                     ->where(['UsersDetail.user_id' => $userId])
                     ->where(['UsersDetail.user_detail_type_id' => 2]);
-
+       $fullname=$this->Checkout->findFullname($userId);
             $transactions = $this->Transactions->find()
                             ->select(['created_date', 'order_number', 'transaction_number', 'id'])
                             ->where(['Transactions.order_number' => $bestnum])->first();
@@ -616,7 +678,7 @@ public function checkout(){
             $text = 'Bei Rückfragen erreichen Sie uns unter der unten angegebenen Telefonnummer';
            $lif ->SetTitle($title);
         $lif ->SetAuthor('Lucas Teufel');
-           $lif ->PrintChapter($usersDetail);
+           $lif ->PrintChapter($usersDetail,$fullname);
 
             $lif ->PrintDate($transactions);
             $lif ->Ln();
@@ -873,7 +935,7 @@ public function checkout(){
         //$this->set('_serialize', ['products']);  
 
         $this->paginate = [
-            'contain' => ['SubCatagories', 'DiscountsTypes', 'sizes', 'colors']
+            'contain' => ['SubCatagories', 'DiscountsTypes']
         ];
         $products = $this->paginate($this->Products);
 

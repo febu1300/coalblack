@@ -32,7 +32,7 @@ class CoalblackCell extends Cell
 //  pr($article_type);die();
 		$products1=$this->Products->find()
          
-             ->select(['id','online_vorhanden','product_name','photo','photo_dir','coalblack_produkte','price','product_description','discount','discount_type_id','sale'])
+             ->select(['id','online_vorhanden','product_name','product_title','photo','photo_dir','discount','discount_type_id','coalblack_produkte','price','product_description','discount','discount_type_id','sale'])
              ->where((['coalblack_produkte'=>1]))
              ->where((['online_vorhanden'=>1]))
 		

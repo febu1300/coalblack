@@ -29,14 +29,16 @@
 
 <?= $this->Html->meta(
     'favicon.ico',
-    'img/icon.png',
+    'img/logo.png',
     ['type' => 'icon']
 );
 ?>
   
    <?= $this->Html->css('bootstrap.min.css') ?>
-   <?= $this->Html->css('coalblack.css') ?>
-
+    <?=$this->Html->css('coalblack/tablet.css')?>
+    <?=$this->Html->css('coalblack/desktop.css')?>
+    <?=$this->Html->css('coalblack/wearable.css')?> 
+    <?=$this->Html->css('coalblack/tv.css')?>
     <?= $this->Html->script('jquery-1.8.3.min.js') ?>
     <?= $this->Html->script('popper.min.js') ?>
     <?= $this->Html->script('bootstrap.min.js') ?>
